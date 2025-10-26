@@ -88,11 +88,11 @@ export default {
 				'pulse-glow': {
 					'0%, 100%': {
 						opacity: '1',
-						boxShadow: '0 0 20px rgba(239, 68, 68, 0.5)'
+						boxShadow: '0 0 20px rgba(249, 115, 22, 0.5)'
 					},
 					'50%': {
 						opacity: '0.8',
-						boxShadow: '0 0 40px rgba(239, 68, 68, 0.8)'
+						boxShadow: '0 0 40px rgba(249, 115, 22, 0.8)'
 					}
 				},
 				'fade-in': {
