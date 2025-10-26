@@ -57,3 +57,14 @@
     font-family: "Montserrat", sans-serif;
   }
 }
+
+#pp-icon {
+  opacity: 0.15 !important;
+  transform: scale(0.5) !important;
+  pointer-events: none !important;
+  bottom: 160px !important;
+}
+
+#pp-icon:hover {
+  opacity: 0.25 !important;
+}
