@@ -1,13 +1,9 @@
-const CACHE_NAME = 'kontentmedia-pro-v1';
+const CACHE_NAME = 'kontentmedia-pro-v2';
 const AUDIO_CACHE = 'kontentmedia-audio-v1';
 
 const urlsToCache = [
   '/',
-  '/index.html',
-  '/src/main.tsx',
-  '/src/App.tsx',
-  '/src/pages/Index.tsx',
-  '/src/index.css'
+  '/index.html'
 ];
 
 self.addEventListener('install', (event) => {
