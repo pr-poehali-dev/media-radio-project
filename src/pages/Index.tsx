@@ -39,35 +39,16 @@ export default function Index() {
   useEffect(() => {
     if (!audioRef.current) {
       audioRef.current = new Audio('https://myradio24.org/54137');
-      audioRef.current.preload = 'metadata';
+      audioRef.current.preload = 'none';
       audioRef.current.crossOrigin = 'anonymous';
-      
-      audioRef.current.addEventListener('loadedmetadata', () => {
-        const title = (audioRef.current as any)?.title || '';
-        if (title) {
-          setCurrentTrack(title);
-        }
-      });
     }
 
     const fetchCurrentTrack = async () => {
       try {
-        const streamUrl = 'https://myradio24.org/54137';
-        const response = await fetch(streamUrl, { 
-          method: 'GET',
-          headers: {
-            'Icy-MetaData': '1'
-          }
-        });
-        
-        const icyName = response.headers.get('icy-name');
-        const icyDescription = response.headers.get('icy-description');
-        const icyUrl = response.headers.get('icy-url');
-        
-        if (icyName) {
-          setCurrentTrack(icyName);
-        } else if (icyDescription) {
-          setCurrentTrack(icyDescription);
+        const response = await fetch('https://functions.poehali.dev/bd23f8fb-a46d-42e0-ac9e-6ad3f03e9c5e');
+        const data = await response.json();
+        if (data && data.track) {
+          setCurrentTrack(data.track);
         } else {
           setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
         }

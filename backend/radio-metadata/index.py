@@ -1,0 +1,79 @@
+import json
+import urllib.request
+from typing import Dict, Any
+
+def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
+    '''
+    Business: Get current track information from radio stream
+    Args: event with httpMethod
+    Returns: JSON with track title and artist
+    '''
+    method: str = event.get('httpMethod', 'GET')
+    
+    if method == 'OPTIONS':
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, OPTIONS',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Max-Age': '86400'
+            },
+            'body': '',
+            'isBase64Encoded': False
+        }
+    
+    if method == 'GET':
+        try:
+            req = urllib.request.Request('https://myradio24.org/54137')
+            req.add_header('Icy-MetaData', '1')
+            req.add_header('User-Agent', 'Mozilla/5.0')
+            
+            with urllib.request.urlopen(req, timeout=5) as response:
+                icy_name = response.headers.get('icy-name', '')
+                icy_description = response.headers.get('icy-description', '')
+                icy_genre = response.headers.get('icy-genre', '')
+                icy_br = response.headers.get('icy-br', '')
+                
+                track_info = icy_name or icy_description or 'КонтентМедиаPRO - Прямой эфир'
+                
+                result = {
+                    'track': track_info,
+                    'genre': icy_genre,
+                    'bitrate': icy_br
+                }
+                
+                return {
+                    'statusCode': 200,
+                    'headers': {
+                        'Content-Type': 'application/json',
+                        'Access-Control-Allow-Origin': '*'
+                    },
+                    'body': json.dumps(result, ensure_ascii=False),
+                    'isBase64Encoded': False
+                }
+                
+        except Exception as e:
+            return {
+                'statusCode': 200,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                'body': json.dumps({
+                    'track': 'КонтентМедиаPRO - Прямой эфир',
+                    'genre': '',
+                    'bitrate': ''
+                }, ensure_ascii=False),
+                'isBase64Encoded': False
+            }
+    
+    return {
+        'statusCode': 405,
+        'headers': {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        'body': json.dumps({'error': 'Method not allowed'}),
+        'isBase64Encoded': False
+    }
