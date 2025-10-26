@@ -33,7 +33,7 @@ const interviews = [
 
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [currentTrack] = useState('Элджей - Hey, Guys');
+  const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [activeSection, setActiveSection] = useState('home');
   const [installPrompt, setInstallPrompt] = useState<any>(null);
   const [isInstalled, setIsInstalled] = useState(false);
@@ -41,10 +41,25 @@ export default function Index() {
 
   useEffect(() => {
     if (!audioRef.current) {
-      audioRef.current = new Audio('https://stream.zeno.fm/f3wvbbqmdg8uv');
+      audioRef.current = new Audio('https://myradio24.org/54137');
       audioRef.current.preload = 'none';
       audioRef.current.crossOrigin = 'anonymous';
     }
+
+    const fetchCurrentTrack = async () => {
+      try {
+        const response = await fetch('https://myradio24.org/api/54137');
+        const data = await response.json();
+        if (data && data.title) {
+          setCurrentTrack(data.title);
+        }
+      } catch (error) {
+        console.log('Failed to fetch track info');
+      }
+    };
+
+    fetchCurrentTrack();
+    const interval = setInterval(fetchCurrentTrack, 10000);
 
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
@@ -63,7 +78,15 @@ export default function Index() {
       setIsInstalled(true);
     }
 
-    if ('mediaSession' in navigator) {
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, []);
+
+  useEffect(() => {
+    if ('mediaSession' in navigator && currentTrack) {
       navigator.mediaSession.metadata = new MediaMetadata({
         title: currentTrack,
         artist: 'КонтентМедиаPRO',
@@ -97,11 +120,6 @@ export default function Index() {
         navigator.mediaSession.playbackState = 'none';
       });
     }
-
-    return () => {
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-      window.removeEventListener('appinstalled', handleAppInstalled);
-    };
   }, [currentTrack]);
 
   const handleInstallClick = async () => {
