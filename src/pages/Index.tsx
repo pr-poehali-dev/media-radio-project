@@ -11,7 +11,6 @@ const interviews = [
     title: 'О новом альбоме и творческом кризисе',
     date: '24 октября 2025',
     excerpt: 'Известный музыкант рассказал о своих творческих планах, работе над новым материалом и том, как преодолевает кризисные моменты.',
-    image: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg'
   },
   {
     id: 2,
@@ -19,7 +18,6 @@ const interviews = [
     title: 'Эволюция звука и новые горизонты',
     date: '22 октября 2025',
     excerpt: 'Артистка поделилась своими мыслями об изменениях в творчестве, влиянии западной музыки и планах на ближайшее будущее.',
-    image: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg'
   },
   {
     id: 3,
@@ -27,7 +25,6 @@ const interviews = [
     title: 'Казахстанский рэп и мировая сцена',
     date: '20 октября 2025',
     excerpt: 'Рэпер рассказал о развитии хип-хоп культуры в Казахстане, работе с молодыми артистами и международном признании.',
-    image: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg'
   }
 ];
 
@@ -36,7 +33,6 @@ export default function Index() {
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [activeSection, setActiveSection] = useState('home');
   const [installPrompt, setInstallPrompt] = useState<any>(null);
-  const [isInstalled, setIsInstalled] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -55,7 +51,6 @@ export default function Index() {
           setCurrentTrack(title);
         }
       } catch (error) {
-        console.log('Failed to fetch track info', error);
         setCurrentTrack('КонтентМедиаPRO - В эфире');
       }
     };
@@ -68,22 +63,15 @@ export default function Index() {
       setInstallPrompt(e);
     };
 
-    const handleAppInstalled = () => {
-      setIsInstalled(true);
-      setInstallPrompt(null);
-    };
-
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-    window.addEventListener('appinstalled', handleAppInstalled);
 
     if (window.matchMedia('(display-mode: standalone)').matches) {
-      setIsInstalled(true);
+      document.documentElement.classList.add('standalone');
     }
 
     return () => {
       clearInterval(interval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-      window.removeEventListener('appinstalled', handleAppInstalled);
     };
   }, []);
 
@@ -94,11 +82,6 @@ export default function Index() {
         artist: 'КонтентМедиаPRO',
         album: 'Прямой эфир',
         artwork: [
-          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '96x96', type: 'image/jpeg' },
-          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '128x128', type: 'image/jpeg' },
-          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '192x192', type: 'image/jpeg' },
-          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '256x256', type: 'image/jpeg' },
-          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '384x384', type: 'image/jpeg' },
           { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '512x512', type: 'image/jpeg' }
         ]
       });
@@ -114,26 +97,8 @@ export default function Index() {
         setIsPlaying(false);
         navigator.mediaSession.playbackState = 'paused';
       });
-
-      navigator.mediaSession.setActionHandler('stop', () => {
-        audioRef.current?.pause();
-        if (audioRef.current) audioRef.current.currentTime = 0;
-        setIsPlaying(false);
-        navigator.mediaSession.playbackState = 'none';
-      });
     }
   }, [currentTrack]);
-
-  const handleInstallClick = async () => {
-    if (!installPrompt) return;
-    
-    installPrompt.prompt();
-    const { outcome } = await installPrompt.userChoice;
-    
-    if (outcome === 'accepted') {
-      setInstallPrompt(null);
-    }
-  };
 
   const togglePlay = async () => {
     if (!audioRef.current) return;
@@ -166,320 +131,238 @@ export default function Index() {
     }
   };
 
-  return (
-    <div className="min-h-screen bg-background">
-      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-lg border-b border-border z-50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <img 
-                src="https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg" 
-                alt="КонтентМедиаPRO"
-                className="h-12 w-auto"
-              />
-            </div>
-            
-            <div className="flex items-center gap-8">
-              <button 
-                onClick={() => setActiveSection('home')}
-                className={`text-sm font-medium transition-colors ${activeSection === 'home' ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
-              >
-                Главная
-              </button>
-              <button 
-                onClick={() => setActiveSection('interviews')}
-                className={`text-sm font-medium transition-colors ${activeSection === 'interviews' ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
-              >
-                Интервью
-              </button>
-              <button 
-                onClick={() => setActiveSection('contacts')}
-                className={`text-sm font-medium transition-colors ${activeSection === 'contacts' ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'}`}
-              >
-                Контакты
-              </button>
-              
-              {installPrompt && !isInstalled && (
-                <Button 
-                  onClick={handleInstallClick}
-                  size="sm"
-                  className="bg-primary hover:bg-primary/90 text-white"
-                >
-                  <Icon name="Download" size={16} className="mr-2" />
-                  Установить
-                </Button>
-              )}
-            </div>
-          </div>
-        </div>
-      </nav>
+  const handleInstallClick = async () => {
+    if (!installPrompt) return;
+    installPrompt.prompt();
+    const { outcome } = await installPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setInstallPrompt(null);
+    }
+  };
 
-      <main className="pt-24">
-        {activeSection === 'home' && (
-          <div className="container mx-auto px-6 animate-fade-in">
-            <section className="py-20 text-center">
-              <Badge className="mb-6 bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold">
-                <Icon name="Radio" size={16} className="mr-2" />
-                В ЭФИРЕ
-              </Badge>
-              
-              <h1 className="text-6xl font-bold mb-4">
+  return (
+    <div className="min-h-screen bg-background pb-32">
+      <header className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border z-40 px-4 py-3">
+        <div className="flex items-center justify-between max-w-7xl mx-auto">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center">
+              <Icon name="Radio" size={20} className="text-white" />
+            </div>
+            <div>
+              <h1 className="text-lg font-bold leading-none">
                 <span className="text-foreground">КонтентМедиа</span>
                 <span className="text-primary">PRO</span>
               </h1>
-              
-              <p className="text-xl text-muted-foreground mb-8">
-                Музыка, которая вдохновляет
-              </p>
+            </div>
+          </div>
+          
+          {installPrompt && (
+            <Button onClick={handleInstallClick} size="sm" variant="outline">
+              <Icon name="Download" size={16} className="mr-2" />
+              Установить
+            </Button>
+          )}
+        </div>
+      </header>
 
-              {installPrompt && !isInstalled && (
-                <Button 
-                  onClick={handleInstallClick}
-                  size="lg"
-                  className="mb-6 bg-primary hover:bg-primary/90 text-white"
-                >
-                  <Icon name="Download" size={20} className="mr-2" />
-                  Установить приложение
-                </Button>
-              )}
-
-              <Card className="max-w-2xl mx-auto bg-card border-border">
-                <CardContent className="p-8">
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="flex items-center gap-4">
-                      <div className={`w-16 h-16 bg-gradient-to-br from-primary to-primary/60 rounded-full flex items-center justify-center ${isPlaying ? 'animate-pulse-glow' : ''}`}>
-                        <Icon name="Radio" size={32} className="text-white" />
-                      </div>
-                      <div className="text-left">
-                        <p className="text-sm text-muted-foreground">Сейчас играет</p>
-                        <p className="text-lg font-semibold">{currentTrack}</p>
-                      </div>
-                    </div>
+      <main className="max-w-7xl mx-auto px-4 py-6">
+        {activeSection === 'home' && (
+          <div className="space-y-6 animate-fade-in">
+            <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4 mb-4">
+                  <div className={`w-20 h-20 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center ${isPlaying ? 'animate-pulse-glow' : ''}`}>
+                    <Icon name="Radio" size={36} className="text-white" />
                   </div>
-
-                  <div className="flex items-center gap-4 justify-center">
-                    <Button
-                      size="lg"
-                      onClick={togglePlay}
-                      className="bg-primary hover:bg-primary/90 text-white px-8"
-                    >
-                      <Icon name={isPlaying ? 'Pause' : 'Play'} size={20} className="mr-2" />
-                      {isPlaying ? 'Пауза' : 'Слушать'}
-                    </Button>
-                    
-                    <Button
-                      size="lg"
-                      variant="outline"
-                      className="border-border hover:bg-secondary"
-                    >
-                      <Icon name="Volume2" size={20} />
-                    </Button>
+                  <div className="flex-1">
+                    <Badge className="mb-2 bg-primary/90 text-white">
+                      <Icon name="Radio" size={12} className="mr-1" />
+                      В ЭФИРЕ
+                    </Badge>
+                    <p className="text-sm text-muted-foreground">Сейчас играет</p>
+                    <p className="text-base font-semibold line-clamp-1">{currentTrack}</p>
                   </div>
+                </div>
 
-                  <div className="mt-8 pt-6 border-t border-border">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <p className="text-2xl font-bold text-primary">24/7</p>
-                        <p className="text-sm text-muted-foreground">Без перерыва</p>
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-primary">1000+</p>
-                        <p className="text-sm text-muted-foreground">Треков</p>
-                      </div>
-                      <div>
-                        <p className="text-2xl font-bold text-primary">50+</p>
-                        <p className="text-sm text-muted-foreground">Артистов</p>
-                      </div>
-                    </div>
+                <div className="grid grid-cols-3 gap-2 pt-4 border-t border-border">
+                  <div className="text-center">
+                    <p className="text-xl font-bold text-primary">24/7</p>
+                    <p className="text-xs text-muted-foreground">Эфир</p>
                   </div>
-                </CardContent>
-              </Card>
-            </section>
+                  <div className="text-center">
+                    <p className="text-xl font-bold text-primary">1000+</p>
+                    <p className="text-xs text-muted-foreground">Треков</p>
+                  </div>
+                  <div className="text-center">
+                    <p className="text-xl font-bold text-primary">50+</p>
+                    <p className="text-xs text-muted-foreground">Артистов</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-            <section className="py-16">
-              <div className="text-center mb-12">
-                <h2 className="text-4xl font-bold mb-4">Свежие интервью</h2>
-                <p className="text-muted-foreground">Эксклюзивные беседы с артистами</p>
-              </div>
-
-              <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h2 className="text-lg font-bold mb-3">Свежие интервью</h2>
+              <div className="space-y-3">
                 {interviews.map((interview) => (
-                  <Card key={interview.id} className="bg-card border-border overflow-hidden hover:border-primary transition-all cursor-pointer group">
-                    <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center overflow-hidden">
-                      <Icon name="Mic2" size={64} className="text-primary/40 group-hover:scale-110 transition-transform" />
-                    </div>
-                    <CardContent className="p-6">
-                      <Badge className="mb-3 bg-primary/10 text-primary border-primary/20">{interview.date}</Badge>
-                      <h3 className="text-xl font-bold mb-2">{interview.artist}</h3>
-                      <p className="text-lg text-muted-foreground mb-3">{interview.title}</p>
-                      <p className="text-sm text-muted-foreground line-clamp-3">{interview.excerpt}</p>
-                      <Button variant="link" className="mt-4 p-0 text-primary">
-                        Читать полностью
-                        <Icon name="ArrowRight" size={16} className="ml-2" />
-                      </Button>
+                  <Card key={interview.id} className="bg-card border-border overflow-hidden">
+                    <CardContent className="p-4">
+                      <div className="flex gap-4">
+                        <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <Icon name="Mic2" size={32} className="text-primary/60" />
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <Badge className="mb-2 bg-secondary text-secondary-foreground text-xs">{interview.date}</Badge>
+                          <h3 className="font-bold text-sm mb-1">{interview.artist}</h3>
+                          <p className="text-sm text-muted-foreground mb-2">{interview.title}</p>
+                          <Button variant="link" className="p-0 h-auto text-primary text-xs">
+                            Читать
+                            <Icon name="ChevronRight" size={14} className="ml-1" />
+                          </Button>
+                        </div>
+                      </div>
                     </CardContent>
                   </Card>
                 ))}
               </div>
-            </section>
+            </div>
           </div>
         )}
 
         {activeSection === 'interviews' && (
-          <div className="container mx-auto px-6 animate-fade-in">
-            <section className="py-16">
-              <div className="text-center mb-12">
-                <h2 className="text-5xl font-bold mb-4">Интервью артистов</h2>
-                <p className="text-xl text-muted-foreground">Глубокие беседы о музыке и творчестве</p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                {interviews.map((interview) => (
-                  <Card key={interview.id} className="bg-card border-border overflow-hidden hover:border-primary transition-all cursor-pointer group">
-                    <div className="aspect-video bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center overflow-hidden">
-                      <Icon name="Mic2" size={80} className="text-primary/40 group-hover:scale-110 transition-transform" />
+          <div className="space-y-4 animate-fade-in">
+            <h2 className="text-2xl font-bold">Интервью артистов</h2>
+            {interviews.map((interview) => (
+              <Card key={interview.id} className="bg-card border-border">
+                <CardContent className="p-5">
+                  <div className="flex gap-4">
+                    <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl flex items-center justify-center flex-shrink-0">
+                      <Icon name="Mic2" size={40} className="text-primary/60" />
                     </div>
-                    <CardContent className="p-8">
-                      <div className="flex items-center gap-3 mb-4">
-                        <Badge className="bg-primary/10 text-primary border-primary/20">
-                          <Icon name="Calendar" size={14} className="mr-2" />
-                          {interview.date}
-                        </Badge>
-                        <Badge className="bg-secondary text-secondary-foreground">
-                          <Icon name="Mic2" size={14} className="mr-2" />
-                          Интервью
-                        </Badge>
-                      </div>
-                      <h3 className="text-2xl font-bold mb-3">{interview.artist}</h3>
-                      <p className="text-xl text-muted-foreground mb-4">{interview.title}</p>
-                      <p className="text-sm text-muted-foreground mb-6">{interview.excerpt}</p>
-                      <Button className="bg-primary hover:bg-primary/90 text-white w-full">
-                        <Icon name="BookOpen" size={18} className="mr-2" />
-                        Читать интервью
-                      </Button>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </section>
+                    <div className="flex-1">
+                      <Badge className="mb-2 bg-primary/10 text-primary border-primary/20 text-xs">
+                        <Icon name="Calendar" size={12} className="mr-1" />
+                        {interview.date}
+                      </Badge>
+                      <h3 className="text-lg font-bold mb-1">{interview.artist}</h3>
+                      <p className="text-sm text-muted-foreground mb-2">{interview.title}</p>
+                      <p className="text-xs text-muted-foreground line-clamp-2">{interview.excerpt}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         )}
 
         {activeSection === 'contacts' && (
-          <div className="container mx-auto px-6 animate-fade-in">
-            <section className="py-16 max-w-4xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-5xl font-bold mb-4">Свяжитесь с нами</h2>
-                <p className="text-xl text-muted-foreground">Мы всегда рады новым идеям и сотрудничеству</p>
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-8">
-                <Card className="bg-card border-border p-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Icon name="Mail" size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Email</h3>
-                      <p className="text-muted-foreground mb-2">Напишите нам по любым вопросам</p>
-                      <a href="mailto:info@kontentmedia.pro" className="text-primary hover:underline">
-                        info@kontentmedia.pro
-                      </a>
-                    </div>
+          <div className="space-y-4 animate-fade-in">
+            <h2 className="text-2xl font-bold mb-4">Контакты</h2>
+            
+            <Card className="bg-card border-border">
+              <CardContent className="p-5">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Icon name="Mail" size={22} className="text-primary" />
                   </div>
-                </Card>
-
-                <Card className="bg-card border-border p-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Icon name="Phone" size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Телефон</h3>
-                      <p className="text-muted-foreground mb-2">Звоните в рабочие часы</p>
-                      <a href="tel:+74951234567" className="text-primary hover:underline">
-                        +7 (495) 123-45-67
-                      </a>
-                    </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold mb-1">Email</h3>
+                    <p className="text-sm text-muted-foreground mb-2">Напишите нам</p>
+                    <a href="mailto:info@kontentmedia.pro" className="text-sm text-primary">
+                      info@kontentmedia.pro
+                    </a>
                   </div>
-                </Card>
+                </div>
+              </CardContent>
+            </Card>
 
-                <Card className="bg-card border-border p-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Icon name="Instagram" size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Instagram</h3>
-                      <p className="text-muted-foreground mb-2">Следите за нашими новостями</p>
-                      <a href="https://instagram.com/kontentmediapro" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
-                        @kontentmediapro
-                      </a>
-                    </div>
+            <Card className="bg-card border-border">
+              <CardContent className="p-5">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Icon name="Phone" size={22} className="text-primary" />
                   </div>
-                </Card>
-
-                <Card className="bg-card border-border p-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Icon name="MapPin" size={24} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-2">Адрес</h3>
-                      <p className="text-muted-foreground mb-2">Приходите к нам в студию</p>
-                      <p className="text-primary">
-                        Москва, ул. Тверская, 1
-                      </p>
-                    </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold mb-1">Телефон</h3>
+                    <p className="text-sm text-muted-foreground mb-2">Звоните в рабочие часы</p>
+                    <a href="tel:+74951234567" className="text-sm text-primary">
+                      +7 (495) 123-45-67
+                    </a>
                   </div>
-                </Card>
-              </div>
+                </div>
+              </CardContent>
+            </Card>
 
-              <Card className="bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20 p-10 mt-8 text-center">
-                <Icon name="Radio" size={48} className="text-primary mx-auto mb-4" />
-                <h3 className="text-2xl font-bold mb-3">Предложить интервью?</h3>
-                <p className="text-muted-foreground mb-6">
-                  Если вы артист или представитель артиста и хотите дать интервью для нашего радио, свяжитесь с нами
-                </p>
-                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white">
-                  <Icon name="Send" size={18} className="mr-2" />
-                  Отправить заявку
-                </Button>
-              </Card>
-            </section>
+            <Card className="bg-card border-border">
+              <CardContent className="p-5">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Icon name="MapPin" size={22} className="text-primary" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold mb-1">Адрес</h3>
+                    <p className="text-sm text-muted-foreground mb-2">Приходите в студию</p>
+                    <p className="text-sm text-primary">Москва, ул. Тверская, 1</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         )}
       </main>
 
-      <footer className="border-t border-border py-12 mt-20">
-        <div className="container mx-auto px-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center gap-2">
-              <img 
-                src="https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg" 
-                alt="КонтентМедиаPRO"
-                className="h-10 w-auto"
-              />
+      <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border z-50">
+        <div className="max-w-7xl mx-auto px-4 py-2">
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-3 flex-1 min-w-0">
+              <div className={`w-12 h-12 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center ${isPlaying ? 'animate-pulse-glow' : ''}`}>
+                <Icon name="Radio" size={20} className="text-white" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-muted-foreground">Сейчас играет</p>
+                <p className="text-sm font-semibold truncate">{currentTrack}</p>
+              </div>
             </div>
-            
-            <p className="text-muted-foreground text-sm">
-              © 2025 КонтентМедиаPRO. Все права защищены.
-            </p>
-            
-            <div className="flex items-center gap-4">
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Icon name="Instagram" size={20} />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Icon name="Youtube" size={20} />
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                <Icon name="Music" size={20} />
-              </a>
-            </div>
+            <Button
+              onClick={togglePlay}
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-white w-14 h-14 rounded-full p-0"
+            >
+              <Icon name={isPlaying ? 'Pause' : 'Play'} size={24} />
+            </Button>
           </div>
+
+          <nav className="flex items-center justify-around pt-2 border-t border-border">
+            <button
+              onClick={() => setActiveSection('home')}
+              className={`flex flex-col items-center gap-1 py-2 px-4 ${
+                activeSection === 'home' ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              <Icon name="Home" size={22} />
+              <span className="text-xs font-medium">Главная</span>
+            </button>
+            <button
+              onClick={() => setActiveSection('interviews')}
+              className={`flex flex-col items-center gap-1 py-2 px-4 ${
+                activeSection === 'interviews' ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              <Icon name="Mic2" size={22} />
+              <span className="text-xs font-medium">Интервью</span>
+            </button>
+            <button
+              onClick={() => setActiveSection('contacts')}
+              className={`flex flex-col items-center gap-1 py-2 px-4 ${
+                activeSection === 'contacts' ? 'text-primary' : 'text-muted-foreground'
+              }`}
+            >
+              <Icon name="MessageCircle" size={22} />
+              <span className="text-xs font-medium">Контакты</span>
+            </button>
+          </nav>
         </div>
-      </footer>
+      </div>
     </div>
   );
 }
