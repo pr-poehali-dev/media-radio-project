@@ -15,23 +15,23 @@ const App = () => {
       const links = document.querySelectorAll('a[href*="poehali"]');
       links.forEach((link) => {
         (link as HTMLElement).style.cssText = `
-          opacity: 0.03 !important;
-          width: 20px !important;
-          height: 20px !important;
-          transform: scale(0.25) !important;
+          opacity: 0.02 !important;
+          width: 12px !important;
+          height: 12px !important;
+          transform: scale(0.15) !important;
           pointer-events: none !important;
           z-index: 1 !important;
           position: fixed !important;
-          bottom: 12px !important;
-          right: 12px !important;
+          top: 8px !important;
+          left: 8px !important;
         `;
         const children = link.querySelectorAll('*');
         children.forEach((child) => {
           (child as HTMLElement).style.cssText = `
-            width: 16px !important;
-            height: 16px !important;
-            max-width: 16px !important;
-            max-height: 16px !important;
+            width: 10px !important;
+            height: 10px !important;
+            max-width: 10px !important;
+            max-height: 10px !important;
           `;
         });
       });
