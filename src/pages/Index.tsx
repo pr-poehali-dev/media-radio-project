@@ -201,31 +201,7 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <div>
-              <h2 className="text-lg font-bold mb-3">Свежие интервью</h2>
-              <div className="space-y-3">
-                {interviews.map((interview) => (
-                  <Card key={interview.id} className="bg-card border-border overflow-hidden">
-                    <CardContent className="p-4">
-                      <div className="flex gap-4">
-                        <div className="w-20 h-20 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center flex-shrink-0">
-                          <Icon name="Mic2" size={32} className="text-primary/60" />
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <Badge className="mb-2 bg-secondary text-secondary-foreground text-xs">{interview.date}</Badge>
-                          <h3 className="font-bold text-sm mb-1">{interview.artist}</h3>
-                          <p className="text-sm text-muted-foreground mb-2">{interview.title}</p>
-                          <Button variant="link" className="p-0 h-auto text-primary text-xs">
-                            Читать
-                            <Icon name="ChevronRight" size={14} className="ml-1" />
-                          </Button>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
+
           </div>
         )}
 
