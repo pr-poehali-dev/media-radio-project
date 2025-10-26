@@ -58,7 +58,7 @@
   }
 }
 
-/* Hide poehali.dev branding */
+/* Minimize poehali.dev branding */
 body a[href*="poehali"],
 body div a[href*="poehali"],
 body > a[href*="poehali"],
@@ -69,20 +69,24 @@ a[href*="poehali.dev"],
 [class*="pp-"],
 a[href="https://poehali.dev"],
 a[target="_blank"][href*="poehali"] {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
-  min-width: 0 !important;
-  min-height: 0 !important;
-  max-width: 0 !important;
-  max-height: 0 !important;
+  opacity: 0.015 !important;
+  filter: brightness(0.3) !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  min-height: 16px !important;
+  max-width: 16px !important;
+  max-height: 16px !important;
+  transform: scale(0.25) !important;
+  transform-origin: bottom center !important;
   position: fixed !important;
-  top: -9999px !important;
-  left: -9999px !important;
+  bottom: 85px !important;
+  left: 50% !important;
+  margin-left: -8px !important;
   pointer-events: none !important;
-  z-index: -1 !important;
+  z-index: 1 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
 }
 
 body a[href*="poehali"] *,
@@ -93,7 +97,11 @@ body > div > a[href*="poehali"] *,
 a[href*="poehali.dev"] *,
 a[href="https://poehali.dev"] *,
 a[target="_blank"][href*="poehali"] * {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
+  width: 12px !important;
+  height: 12px !important;
+  max-width: 12px !important;
+  max-height: 12px !important;
+  min-width: 12px !important;
+  min-height: 12px !important;
+  font-size: 0 !important;
 }

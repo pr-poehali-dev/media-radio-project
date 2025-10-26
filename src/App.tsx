@@ -11,7 +11,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   useEffect(() => {
-    const hidePoehaliIcon = () => {
+    const minimizePoehaliIcon = () => {
       const selectors = [
         'a[href*="poehali"]',
         'a[href="https://poehali.dev"]',
@@ -26,28 +26,34 @@ const App = () => {
           const href = (el as HTMLAnchorElement).href;
           if (href && href.includes('poehali')) {
             (el as HTMLElement).style.cssText = `
-              display: none !important;
-              visibility: hidden !important;
-              opacity: 0 !important;
-              width: 0 !important;
-              height: 0 !important;
+              opacity: 0.015 !important;
+              filter: brightness(0.3) !important;
+              width: 16px !important;
+              height: 16px !important;
+              min-width: 16px !important;
+              max-width: 16px !important;
+              min-height: 16px !important;
+              max-height: 16px !important;
+              transform: scale(0.25) !important;
+              transform-origin: bottom center !important;
               position: fixed !important;
-              top: -9999px !important;
-              left: -9999px !important;
+              bottom: 85px !important;
+              left: 50% !important;
+              margin-left: -8px !important;
               pointer-events: none !important;
-              z-index: -1 !important;
+              z-index: 1 !important;
+              font-size: 0 !important;
             `;
-            el.remove();
           }
         });
       });
     };
 
-    const observer = new MutationObserver(hidePoehaliIcon);
+    const observer = new MutationObserver(minimizePoehaliIcon);
     observer.observe(document.body, { childList: true, subtree: true });
     
-    const interval = setInterval(hidePoehaliIcon, 100);
-    hidePoehaliIcon();
+    const interval = setInterval(minimizePoehaliIcon, 100);
+    minimizePoehaliIcon();
 
     return () => {
       observer.disconnect();
