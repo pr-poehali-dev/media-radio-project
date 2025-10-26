@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -35,6 +35,88 @@ export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack] = useState('Элджей - Hey, Guys');
   const [activeSection, setActiveSection] = useState('home');
+  const [installPrompt, setInstallPrompt] = useState<any>(null);
+  const [isInstalled, setIsInstalled] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio();
+      audioRef.current.preload = 'none';
+    }
+
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setInstallPrompt(e);
+    };
+
+    const handleAppInstalled = () => {
+      setIsInstalled(true);
+      setInstallPrompt(null);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    window.addEventListener('appinstalled', handleAppInstalled);
+
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsInstalled(true);
+    }
+
+    if ('mediaSession' in navigator) {
+      navigator.mediaSession.metadata = new MediaMetadata({
+        title: currentTrack,
+        artist: 'КонтентМедиаPRO',
+        album: 'Прямой эфир',
+        artwork: [
+          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '512x512', type: 'image/jpeg' }
+        ]
+      });
+
+      navigator.mediaSession.setActionHandler('play', () => {
+        audioRef.current?.play();
+        setIsPlaying(true);
+      });
+
+      navigator.mediaSession.setActionHandler('pause', () => {
+        audioRef.current?.pause();
+        setIsPlaying(false);
+      });
+    }
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('appinstalled', handleAppInstalled);
+    };
+  }, [currentTrack]);
+
+  const handleInstallClick = async () => {
+    if (!installPrompt) return;
+    
+    installPrompt.prompt();
+    const { outcome } = await installPrompt.userChoice;
+    
+    if (outcome === 'accepted') {
+      setInstallPrompt(null);
+    }
+  };
+
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+
+    if (isPlaying) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.playbackState = 'paused';
+      }
+    } else {
+      audioRef.current.play();
+      setIsPlaying(true);
+      if ('mediaSession' in navigator) {
+        navigator.mediaSession.playbackState = 'playing';
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -90,6 +172,17 @@ export default function Index() {
               <p className="text-xl text-muted-foreground mb-8">
                 Музыка, которая вдохновляет
               </p>
+
+              {installPrompt && !isInstalled && (
+                <Button 
+                  onClick={handleInstallClick}
+                  size="lg"
+                  className="mb-6 bg-primary hover:bg-primary/90 text-white"
+                >
+                  <Icon name="Download" size={20} className="mr-2" />
+                  Установить приложение
+                </Button>
+              )}
 
               <Card className="max-w-2xl mx-auto bg-card border-border">
                 <CardContent className="p-8">
