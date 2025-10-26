@@ -150,6 +150,17 @@ export default function Index() {
               >
                 Контакты
               </button>
+              
+              {installPrompt && !isInstalled && (
+                <Button 
+                  onClick={handleInstallClick}
+                  size="sm"
+                  className="bg-primary hover:bg-primary/90 text-white"
+                >
+                  <Icon name="Download" size={16} className="mr-2" />
+                  Установить
+                </Button>
+              )}
             </div>
           </div>
         </div>
