@@ -33,6 +33,7 @@ export default function Index() {
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [activeSection, setActiveSection] = useState('home');
   const [installPrompt, setInstallPrompt] = useState<any>(null);
+  const [listeners, setListeners] = useState(827);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -58,6 +59,16 @@ export default function Index() {
     fetchCurrentTrack();
     const interval = setInterval(fetchCurrentTrack, 15000);
 
+    const updateListeners = () => {
+      setListeners(prev => {
+        const change = Math.random() < 0.5 ? -1 : 1;
+        const newValue = prev + change;
+        return Math.max(827, Math.min(900, newValue));
+      });
+    };
+
+    const listenersInterval = setInterval(updateListeners, 3000 + Math.random() * 2000);
+
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setInstallPrompt(e);
@@ -71,6 +82,7 @@ export default function Index() {
 
     return () => {
       clearInterval(interval);
+      clearInterval(listenersInterval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
   }, []);
@@ -175,10 +187,16 @@ export default function Index() {
                     <Icon name="Radio" size={36} className="text-white" />
                   </div>
                   <div className="flex-1">
-                    <Badge className="mb-2 bg-primary/90 text-white">
-                      <Icon name="Radio" size={12} className="mr-1" />
-                      В ЭФИРЕ
-                    </Badge>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Badge className="bg-primary/90 text-white">
+                        <Icon name="Radio" size={12} className="mr-1" />
+                        В ЭФИРЕ
+                      </Badge>
+                      <Badge className="bg-green-500/90 text-white">
+                        <Icon name="Users" size={12} className="mr-1" />
+                        {listeners}
+                      </Badge>
+                    </div>
                     <p className="text-sm text-muted-foreground">Сейчас играет</p>
                     <p className="text-base font-semibold line-clamp-1">{currentTrack}</p>
                   </div>
