@@ -339,7 +339,22 @@ export default function Index() {
                   <p className="text-lg text-foreground mb-4 font-medium">{interview.title}</p>
                   <div className="prose prose-sm max-w-none">
                     <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed">
-                      {interview.fullText}
+                      {interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[0]}
+                    </div>
+                    
+                    <div className="my-6">
+                      <h4 className="text-base font-bold mb-4">❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ</h4>
+                      <div className="relative w-full h-auto mb-4 bg-muted rounded-2xl overflow-hidden">
+                        <img 
+                          src="https://cdn.poehali.dev/files/3cd66fac-8071-4c21-9a72-701e7112b5f8.jpg" 
+                          alt="Пан Пантер и Катя Денисова"
+                          className="w-full h-auto object-contain"
+                        />
+                      </div>
+                    </div>
+                    
+                    <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed">
+                      {interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[1]}
                     </div>
                   </div>
                   
