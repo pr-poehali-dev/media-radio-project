@@ -48,18 +48,20 @@ export default function Index() {
 
     const fetchCurrentTrack = async () => {
       try {
-        const response = await fetch('https://myradio24.org/api/54137');
+        const response = await fetch('https://myradio24.org/54137/status-json.xsl');
         const data = await response.json();
-        if (data && data.title) {
-          setCurrentTrack(data.title);
+        if (data && data.icestats && data.icestats.source) {
+          const title = data.icestats.source.title || 'КонтентМедиаPRO';
+          setCurrentTrack(title);
         }
       } catch (error) {
-        console.log('Failed to fetch track info');
+        console.log('Failed to fetch track info', error);
+        setCurrentTrack('КонтентМедиаPRO - В эфире');
       }
     };
 
     fetchCurrentTrack();
-    const interval = setInterval(fetchCurrentTrack, 10000);
+    const interval = setInterval(fetchCurrentTrack, 15000);
 
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
