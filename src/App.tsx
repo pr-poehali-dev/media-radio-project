@@ -12,36 +12,33 @@ const queryClient = new QueryClient();
 const App = () => {
   useEffect(() => {
     const hidePoehaliIcon = () => {
-      const links = document.querySelectorAll('a[href*="poehali"]');
-      links.forEach((link) => {
-        (link as HTMLElement).style.cssText = `
-          opacity: 0.01 !important;
-          width: 8px !important;
-          height: 8px !important;
-          min-width: 8px !important;
-          max-width: 8px !important;
-          min-height: 8px !important;
-          max-height: 8px !important;
-          transform: scale(0.1) !important;
-          transform-origin: top left !important;
-          pointer-events: none !important;
-          z-index: 1 !important;
-          position: fixed !important;
-          top: 4px !important;
-          left: 4px !important;
-          font-size: 0px !important;
-          overflow: hidden !important;
-        `;
-        const children = link.querySelectorAll('*');
-        children.forEach((child) => {
-          (child as HTMLElement).style.cssText = `
-            width: 6px !important;
-            height: 6px !important;
-            max-width: 6px !important;
-            max-height: 6px !important;
-            min-width: 6px !important;
-            min-height: 6px !important;
-          `;
+      const selectors = [
+        'a[href*="poehali"]',
+        'a[href="https://poehali.dev"]',
+        'a[target="_blank"]',
+        '[id*="pp-"]',
+        '[class*="pp-"]'
+      ];
+      
+      selectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach((el) => {
+          const href = (el as HTMLAnchorElement).href;
+          if (href && href.includes('poehali')) {
+            (el as HTMLElement).style.cssText = `
+              display: none !important;
+              visibility: hidden !important;
+              opacity: 0 !important;
+              width: 0 !important;
+              height: 0 !important;
+              position: fixed !important;
+              top: -9999px !important;
+              left: -9999px !important;
+              pointer-events: none !important;
+              z-index: -1 !important;
+            `;
+            el.remove();
+          }
         });
       });
     };
@@ -49,15 +46,13 @@ const App = () => {
     const observer = new MutationObserver(hidePoehaliIcon);
     observer.observe(document.body, { childList: true, subtree: true });
     
+    const interval = setInterval(hidePoehaliIcon, 100);
     hidePoehaliIcon();
-    setTimeout(hidePoehaliIcon, 50);
-    setTimeout(hidePoehaliIcon, 100);
-    setTimeout(hidePoehaliIcon, 300);
-    setTimeout(hidePoehaliIcon, 500);
-    setTimeout(hidePoehaliIcon, 1000);
-    setTimeout(hidePoehaliIcon, 2000);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      clearInterval(interval);
+    };
   }, []);
 
   return (
