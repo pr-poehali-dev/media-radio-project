@@ -15,23 +15,32 @@ const App = () => {
       const links = document.querySelectorAll('a[href*="poehali"]');
       links.forEach((link) => {
         (link as HTMLElement).style.cssText = `
-          opacity: 0.02 !important;
-          width: 12px !important;
-          height: 12px !important;
-          transform: scale(0.15) !important;
+          opacity: 0.01 !important;
+          width: 8px !important;
+          height: 8px !important;
+          min-width: 8px !important;
+          max-width: 8px !important;
+          min-height: 8px !important;
+          max-height: 8px !important;
+          transform: scale(0.1) !important;
+          transform-origin: top left !important;
           pointer-events: none !important;
           z-index: 1 !important;
           position: fixed !important;
-          top: 8px !important;
-          left: 8px !important;
+          top: 4px !important;
+          left: 4px !important;
+          font-size: 0px !important;
+          overflow: hidden !important;
         `;
         const children = link.querySelectorAll('*');
         children.forEach((child) => {
           (child as HTMLElement).style.cssText = `
-            width: 10px !important;
-            height: 10px !important;
-            max-width: 10px !important;
-            max-height: 10px !important;
+            width: 6px !important;
+            height: 6px !important;
+            max-width: 6px !important;
+            max-height: 6px !important;
+            min-width: 6px !important;
+            min-height: 6px !important;
           `;
         });
       });
@@ -41,9 +50,12 @@ const App = () => {
     observer.observe(document.body, { childList: true, subtree: true });
     
     hidePoehaliIcon();
+    setTimeout(hidePoehaliIcon, 50);
     setTimeout(hidePoehaliIcon, 100);
+    setTimeout(hidePoehaliIcon, 300);
     setTimeout(hidePoehaliIcon, 500);
     setTimeout(hidePoehaliIcon, 1000);
+    setTimeout(hidePoehaliIcon, 2000);
 
     return () => observer.disconnect();
   }, []);
