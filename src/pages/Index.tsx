@@ -179,6 +179,38 @@ export default function Index() {
         </div>
       </header>
 
+      <nav className="sticky top-[61px] bg-background/95 backdrop-blur-sm border-b border-border z-30">
+        <div className="max-w-7xl mx-auto flex justify-around">
+          <button
+            onClick={() => setActiveSection('home')}
+            className={`flex flex-col items-center gap-1 py-3 px-4 ${
+              activeSection === 'home' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            <Icon name="Home" size={22} />
+            <span className="text-xs font-medium">Главная</span>
+          </button>
+          <button
+            onClick={() => setActiveSection('interviews')}
+            className={`flex flex-col items-center gap-1 py-3 px-4 ${
+              activeSection === 'interviews' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            <Icon name="Mic2" size={22} />
+            <span className="text-xs font-medium">Интервью</span>
+          </button>
+          <button
+            onClick={() => setActiveSection('contacts')}
+            className={`flex flex-col items-center gap-1 py-3 px-4 ${
+              activeSection === 'contacts' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            <Icon name="MessageCircle" size={22} />
+            <span className="text-xs font-medium">Контакты</span>
+          </button>
+        </div>
+      </nav>
+
       <main className="max-w-7xl mx-auto px-4 py-6">
         {activeSection === 'home' && (
           <div className="space-y-6 animate-fade-in">
@@ -308,35 +340,7 @@ export default function Index() {
             </Button>
           </div>
 
-          <nav className="flex items-center justify-around pt-2 border-t border-border">
-            <button
-              onClick={() => setActiveSection('home')}
-              className={`flex flex-col items-center gap-1 py-2 px-4 ${
-                activeSection === 'home' ? 'text-primary' : 'text-muted-foreground'
-              }`}
-            >
-              <Icon name="Home" size={22} />
-              <span className="text-xs font-medium">Главная</span>
-            </button>
-            <button
-              onClick={() => setActiveSection('interviews')}
-              className={`flex flex-col items-center gap-1 py-2 px-4 ${
-                activeSection === 'interviews' ? 'text-primary' : 'text-muted-foreground'
-              }`}
-            >
-              <Icon name="Mic2" size={22} />
-              <span className="text-xs font-medium">Интервью</span>
-            </button>
-            <button
-              onClick={() => setActiveSection('contacts')}
-              className={`flex flex-col items-center gap-1 py-2 px-4 ${
-                activeSection === 'contacts' ? 'text-primary' : 'text-muted-foreground'
-              }`}
-            >
-              <Icon name="MessageCircle" size={22} />
-              <span className="text-xs font-medium">Контакты</span>
-            </button>
-          </nav>
+
         </div>
       </div>
     </div>
