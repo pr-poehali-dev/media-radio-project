@@ -238,8 +238,14 @@ export default function Index() {
             </div>
           </div>
           
-          {installPrompt && activeSection === 'home' && (
-            <Button onClick={handleInstallClick} size="sm" className="bg-primary hover:bg-primary/90 text-white text-xs">
+          {activeSection === 'home' && (
+            <Button 
+              onClick={handleInstallClick} 
+              size="sm" 
+              className="bg-primary hover:bg-primary/90 text-white text-xs"
+              disabled={!installPrompt}
+              style={{ opacity: installPrompt ? 1 : 0.5 }}
+            >
               <Icon name="Download" size={14} className="mr-1" />
               Установить
             </Button>
