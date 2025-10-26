@@ -182,6 +182,14 @@ export default function Index() {
       <main className="max-w-7xl mx-auto px-4 py-6">
         {activeSection === 'home' && (
           <div className="space-y-6 animate-fade-in">
+            <div className="text-center py-4">
+              <h2 className="text-2xl md:text-3xl font-bold leading-tight">
+                <span className="text-foreground">Твоя музыка. </span>
+                <span className="text-foreground">Твой ритм. </span>
+                <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">Твоя радиостанция.</span>
+              </h2>
+            </div>
+            
             <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4 mb-4">
