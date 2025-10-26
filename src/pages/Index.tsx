@@ -64,8 +64,29 @@ export default function Index() {
   useEffect(() => {
     if (!audioRef.current) {
       audioRef.current = new Audio('https://myradio24.org/54137');
-      audioRef.current.preload = 'none';
+      audioRef.current.preload = 'metadata';
       audioRef.current.crossOrigin = 'anonymous';
+      
+      audioRef.current.addEventListener('ended', () => {
+        audioRef.current?.play();
+      });
+      
+      audioRef.current.addEventListener('stalled', () => {
+        audioRef.current?.load();
+        if (isPlaying) {
+          audioRef.current?.play();
+        }
+      });
+      
+      audioRef.current.addEventListener('error', (e) => {
+        console.error('Audio error:', e);
+        setTimeout(() => {
+          if (isPlaying) {
+            audioRef.current?.load();
+            audioRef.current?.play();
+          }
+        }, 1000);
+      });
     }
 
     const fetchCurrentTrack = async () => {
@@ -107,6 +128,10 @@ export default function Index() {
       document.documentElement.classList.add('standalone');
     }
 
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').catch(() => {});
+    }
+
     return () => {
       clearInterval(interval);
       clearInterval(listenersInterval);
@@ -126,18 +151,43 @@ export default function Index() {
       });
 
       navigator.mediaSession.setActionHandler('play', async () => {
-        await audioRef.current?.play();
-        setIsPlaying(true);
-        navigator.mediaSession.playbackState = 'playing';
+        if (audioRef.current) {
+          await audioRef.current.play();
+          setIsPlaying(true);
+          navigator.mediaSession.playbackState = 'playing';
+        }
       });
 
       navigator.mediaSession.setActionHandler('pause', () => {
-        audioRef.current?.pause();
-        setIsPlaying(false);
-        navigator.mediaSession.playbackState = 'paused';
+        if (audioRef.current) {
+          audioRef.current.pause();
+          setIsPlaying(false);
+          navigator.mediaSession.playbackState = 'paused';
+        }
+      });
+
+      navigator.mediaSession.setActionHandler('stop', () => {
+        if (audioRef.current) {
+          audioRef.current.pause();
+          audioRef.current.currentTime = 0;
+          setIsPlaying(false);
+          navigator.mediaSession.playbackState = 'none';
+        }
       });
     }
-  }, [currentTrack]);
+
+    const handleVisibilityChange = () => {
+      if (document.hidden && isPlaying && audioRef.current) {
+        audioRef.current.play().catch(() => {});
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [currentTrack, isPlaying]);
 
   const togglePlay = async () => {
     if (!audioRef.current) return;
@@ -150,18 +200,11 @@ export default function Index() {
       }
     } else {
       try {
+        audioRef.current.load();
         await audioRef.current.play();
         setIsPlaying(true);
         if ('mediaSession' in navigator) {
           navigator.mediaSession.playbackState = 'playing';
-        }
-        
-        if ('wakeLock' in navigator) {
-          try {
-            await (navigator as any).wakeLock.request('screen');
-          } catch (err) {
-            console.log('Wake Lock not available');
-          }
         }
       } catch (error) {
         console.error('Playback failed:', error);
