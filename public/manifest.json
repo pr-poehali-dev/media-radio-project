@@ -1,0 +1,20 @@
+{
+  "name": "КонтентМедиаPRO",
+  "short_name": "КонтентМедиаPRO",
+  "description": "Интернет-радио с музыкой и интервью артистов",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#ef4444",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/files/01ec9e95-1449-4f97-a43d-2babe5bf2e78.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["music", "entertainment"],
+  "prefer_related_applications": false
+}
