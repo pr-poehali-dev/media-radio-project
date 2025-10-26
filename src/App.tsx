@@ -35,11 +35,10 @@ const App = () => {
               min-height: 16px !important;
               max-height: 16px !important;
               transform: scale(0.25) !important;
-              transform-origin: bottom center !important;
+              transform-origin: bottom left !important;
               position: fixed !important;
-              bottom: 85px !important;
-              left: 50% !important;
-              margin-left: -8px !important;
+              bottom: 90px !important;
+              left: 8px !important;
               pointer-events: none !important;
               z-index: 1 !important;
               font-size: 0 !important;
