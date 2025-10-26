@@ -238,9 +238,9 @@ export default function Index() {
             </div>
           </div>
           
-          {installPrompt && (
-            <Button onClick={handleInstallClick} size="sm" variant="outline">
-              <Icon name="Download" size={16} className="mr-2" />
+          {installPrompt && activeSection === 'home' && (
+            <Button onClick={handleInstallClick} size="sm" className="bg-primary hover:bg-primary/90 text-white text-xs">
+              <Icon name="Download" size={14} className="mr-1" />
               Установить
             </Button>
           )}
