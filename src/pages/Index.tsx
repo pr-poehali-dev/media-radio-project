@@ -191,12 +191,12 @@ export default function Index() {
                       <Icon name="Radio" size={12} className="mr-1" />
                       В ЭФИРЕ
                     </Badge>
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-2">
                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                       <p className="text-xs text-muted-foreground">Сейчас слушает: <span className="text-foreground font-semibold">{listeners}</span></p>
                     </div>
-                    <p className="text-sm text-muted-foreground">Сейчас играет</p>
-                    <p className="text-base font-semibold line-clamp-1">{currentTrack}</p>
+                    <p className="text-xs text-muted-foreground mb-1">Сейчас играет:</p>
+                    <p className="text-base font-bold line-clamp-2 leading-tight">{currentTrack}</p>
                   </div>
                 </div>
 
