@@ -58,27 +58,43 @@
   }
 }
 
+body > a[href*="poehali"],
+body > div > a[href*="poehali"],
 #pp-icon,
 a[href*="poehali.dev"],
 [id*="pp-"],
 [class*="pp-"] {
-  opacity: 0.08 !important;
-  transform: scale(0.35) !important;
+  opacity: 0.05 !important;
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  max-width: 24px !important;
+  max-height: 24px !important;
+  transform: scale(0.3) !important;
+  transform-origin: bottom right !important;
   pointer-events: none !important;
   z-index: 1 !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
 }
 
+body > a[href*="poehali"]:hover,
+body > div > a[href*="poehali"]:hover,
 #pp-icon:hover,
 a[href*="poehali.dev"]:hover {
-  opacity: 0.15 !important;
+  opacity: 0.12 !important;
 }
 
-#pp-icon img,
-#pp-icon svg,
-a[href*="poehali.dev"] img,
-a[href*="poehali.dev"] svg {
-  width: 18px !important;
-  height: 18px !important;
-  max-width: 18px !important;
-  max-height: 18px !important;
+body > a[href*="poehali"] *,
+body > div > a[href*="poehali"] *,
+#pp-icon *,
+a[href*="poehali.dev"] * {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  min-width: 20px !important;
+  min-height: 20px !important;
 }
