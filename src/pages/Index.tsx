@@ -40,6 +40,14 @@ const interview = {
 Следите за творчеством Пан Пантера — лучшее еще впереди! 🎵🔥`
 };
 
+const highlightText = (text: string, query: string): string => {
+  if (!query.trim() || query.length < 2) return text;
+  
+  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const regex = new RegExp(`(${escapedQuery})`, 'gi');
+  return text.replace(regex, '<mark class="bg-primary/30 text-foreground rounded px-0.5">$1</mark>');
+};
+
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
@@ -47,7 +55,11 @@ export default function Index() {
   const [installPrompt, setInstallPrompt] = useState<any>(null);
   const [listeners, setListeners] = useState(827);
   const [showFullInterview, setShowFullInterview] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState<number[]>([]);
+  const [currentSearchIndex, setCurrentSearchIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const interviewContentRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -322,25 +334,108 @@ export default function Index() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 </div>
                 <CardContent className="p-5">
-                  <Button 
-                    onClick={() => setShowFullInterview(false)}
-                    variant="ghost"
-                    size="sm"
-                    className="mb-4"
-                  >
-                    <Icon name="ArrowLeft" size={16} className="mr-2" />
-                    Назад
-                  </Button>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Button 
+                      onClick={() => {
+                        setShowFullInterview(false);
+                        setSearchQuery('');
+                        setSearchResults([]);
+                      }}
+                      variant="ghost"
+                      size="sm"
+                    >
+                      <Icon name="ArrowLeft" size={16} className="mr-2" />
+                      Назад
+                    </Button>
+                    
+                    <div className="flex-1 relative">
+                      <div className="relative">
+                        <Icon name="Search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+                        <input
+                          type="text"
+                          value={searchQuery}
+                          onChange={(e) => {
+                            const query = e.target.value;
+                            setSearchQuery(query);
+                            if (query.trim().length >= 2) {
+                              const text = interview.fullText.toLowerCase();
+                              const searchTerm = query.toLowerCase();
+                              const indices: number[] = [];
+                              let index = text.indexOf(searchTerm);
+                              while (index !== -1) {
+                                indices.push(index);
+                                index = text.indexOf(searchTerm, index + 1);
+                              }
+                              setSearchResults(indices);
+                              setCurrentSearchIndex(0);
+                              if (indices.length > 0 && interviewContentRef.current) {
+                                const elements = interviewContentRef.current.querySelectorAll('mark');
+                                if (elements.length > 0) {
+                                  elements[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                              }
+                            } else {
+                              setSearchResults([]);
+                              setCurrentSearchIndex(0);
+                            }
+                          }}
+                          placeholder="Поиск по интервью..."
+                          className="w-full pl-9 pr-3 py-2 text-sm border border-border rounded-xl bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
+                        />
+                      </div>
+                      {searchResults.length > 0 && (
+                        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                          <span className="text-xs text-muted-foreground mr-1">
+                            {currentSearchIndex + 1}/{searchResults.length}
+                          </span>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            className="h-6 w-6 p-0"
+                            onClick={() => {
+                              const newIndex = currentSearchIndex > 0 ? currentSearchIndex - 1 : searchResults.length - 1;
+                              setCurrentSearchIndex(newIndex);
+                              if (interviewContentRef.current) {
+                                const elements = interviewContentRef.current.querySelectorAll('mark');
+                                if (elements[newIndex]) {
+                                  elements[newIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                              }
+                            }}
+                          >
+                            <Icon name="ChevronUp" size={14} />
+                          </Button>
+                          <Button
+                            size="sm"
+                            variant="ghost"
+                            className="h-6 w-6 p-0"
+                            onClick={() => {
+                              const newIndex = currentSearchIndex < searchResults.length - 1 ? currentSearchIndex + 1 : 0;
+                              setCurrentSearchIndex(newIndex);
+                              if (interviewContentRef.current) {
+                                const elements = interviewContentRef.current.querySelectorAll('mark');
+                                if (elements[newIndex]) {
+                                  elements[newIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                              }
+                            }}
+                          >
+                            <Icon name="ChevronDown" size={14} />
+                          </Button>
+                        </div>
+                      )}
+                    </div>
+                  </div>
                   <Badge className="mb-3 bg-primary/10 text-primary border-primary/20 text-xs">
                     <Icon name="Calendar" size={12} className="mr-1" />
                     {interview.date}
                   </Badge>
                   <h3 className="text-2xl font-bold mb-2">{interview.artist}</h3>
                   <p className="text-lg text-foreground mb-4 font-medium">{interview.title}</p>
-                  <div className="prose prose-sm max-w-none">
-                    <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed">
-                      {interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[0]}
-                    </div>
+                  <div className="prose prose-sm max-w-none" ref={interviewContentRef}>
+                    <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed" dangerouslySetInnerHTML={{
+                      __html: highlightText(interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[0], searchQuery)
+                    }} />
                     
                     <div className="my-6">
                       <h4 className="text-base font-bold mb-4">❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ</h4>
@@ -353,9 +448,9 @@ export default function Index() {
                       </div>
                     </div>
                     
-                    <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed">
-                      {interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[1]}
-                    </div>
+                    <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed" dangerouslySetInnerHTML={{
+                      __html: highlightText(interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[1] || '', searchQuery)
+                    }} />
                   </div>
                   
                   <div className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-2xl">
