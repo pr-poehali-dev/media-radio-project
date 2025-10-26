@@ -220,7 +220,7 @@ export default function Index() {
                     <p className="text-xs text-muted-foreground">Треков</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-xl font-bold text-primary">50+</p>
+                    <p className="text-xl font-bold text-primary">100+</p>
                     <p className="text-xs text-muted-foreground">Артистов</p>
                   </div>
                 </div>
@@ -265,46 +265,20 @@ export default function Index() {
               <CardContent className="p-5">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Icon name="Mail" size={22} className="text-primary" />
+                    <Icon name="MessageCircle" size={22} className="text-primary" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="font-bold mb-1">Email</h3>
-                    <p className="text-sm text-muted-foreground mb-2">Напишите нам</p>
-                    <a href="mailto:info@kontentmedia.pro" className="text-sm text-primary">
-                      info@kontentmedia.pro
+                    <h3 className="font-bold mb-2">ВКонтакте</h3>
+                    <p className="text-sm text-muted-foreground mb-3">По всем вопросам и предложениям пишите нам в ВК</p>
+                    <a 
+                      href="https://vk.com/kontentmediapro" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                    >
+                      vk.com/kontentmediapro
+                      <Icon name="ExternalLink" size={14} />
                     </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card border-border">
-              <CardContent className="p-5">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Icon name="Phone" size={22} className="text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold mb-1">Телефон</h3>
-                    <p className="text-sm text-muted-foreground mb-2">Звоните в рабочие часы</p>
-                    <a href="tel:+74951234567" className="text-sm text-primary">
-                      +7 (495) 123-45-67
-                    </a>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-card border-border">
-              <CardContent className="p-5">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <Icon name="MapPin" size={22} className="text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold mb-1">Адрес</h3>
-                    <p className="text-sm text-muted-foreground mb-2">Приходите в студию</p>
-                    <p className="text-sm text-primary">Москва, ул. Тверская, 1</p>
                   </div>
                 </div>
               </CardContent>
