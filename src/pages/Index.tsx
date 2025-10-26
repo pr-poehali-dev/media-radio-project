@@ -33,8 +33,6 @@ const interview = {
 
 Артист намекает на возможные новые коллаборации: "С Катей мы уже обсуждаем идеи для следующего совместного проекта. Возможно, это будет целый мини-альбом. Также веду переговоры с несколькими известными артистами — но пока держу интригу!"
 
-Помимо музыки, Пан Пантер планирует серию выступлений в крупных городах: "Хочу, чтобы люди услышали 'Гравитацию' вживую, почувствовали эту энергию. Концертная программа будет яркой, с визуальными эффектами и спецгостями."
-
 ✨ ИТОГ
 
 "Гравитация" — это трек, который цепляет с первых секунд и не отпускает. Это музыкальное признание в любви к жизни, страсти и искусству. Пан Пантер доказывает, что современная русская поп-музыка может быть не только коммерчески успешной, но и глубоко личной, искренней и по-настоящему трогательной.
@@ -284,11 +282,11 @@ export default function Index() {
             
             {!showFullInterview ? (
               <Card className="bg-card border-border overflow-hidden">
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-64 overflow-hidden bg-muted">
                   <img 
                     src={interview.image} 
                     alt={interview.artist}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                   <Badge className="absolute top-4 left-4 bg-primary text-white border-none">
@@ -315,11 +313,11 @@ export default function Index() {
               </Card>
             ) : (
               <Card className="bg-card border-border">
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 overflow-hidden bg-muted">
                   <img 
                     src={interview.image} 
                     alt={interview.artist}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 </div>
