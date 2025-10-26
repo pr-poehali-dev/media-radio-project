@@ -41,8 +41,9 @@ export default function Index() {
 
   useEffect(() => {
     if (!audioRef.current) {
-      audioRef.current = new Audio();
+      audioRef.current = new Audio('https://stream.zeno.fm/f3wvbbqmdg8uv');
       audioRef.current.preload = 'none';
+      audioRef.current.crossOrigin = 'anonymous';
     }
 
     const handleBeforeInstallPrompt = (e: Event) => {
@@ -68,18 +69,32 @@ export default function Index() {
         artist: 'КонтентМедиаPRO',
         album: 'Прямой эфир',
         artwork: [
+          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '96x96', type: 'image/jpeg' },
+          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '128x128', type: 'image/jpeg' },
+          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '192x192', type: 'image/jpeg' },
+          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '256x256', type: 'image/jpeg' },
+          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '384x384', type: 'image/jpeg' },
           { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '512x512', type: 'image/jpeg' }
         ]
       });
 
-      navigator.mediaSession.setActionHandler('play', () => {
-        audioRef.current?.play();
+      navigator.mediaSession.setActionHandler('play', async () => {
+        await audioRef.current?.play();
         setIsPlaying(true);
+        navigator.mediaSession.playbackState = 'playing';
       });
 
       navigator.mediaSession.setActionHandler('pause', () => {
         audioRef.current?.pause();
         setIsPlaying(false);
+        navigator.mediaSession.playbackState = 'paused';
+      });
+
+      navigator.mediaSession.setActionHandler('stop', () => {
+        audioRef.current?.pause();
+        if (audioRef.current) audioRef.current.currentTime = 0;
+        setIsPlaying(false);
+        navigator.mediaSession.playbackState = 'none';
       });
     }
 
@@ -100,7 +115,7 @@ export default function Index() {
     }
   };
 
-  const togglePlay = () => {
+  const togglePlay = async () => {
     if (!audioRef.current) return;
 
     if (isPlaying) {
@@ -110,10 +125,23 @@ export default function Index() {
         navigator.mediaSession.playbackState = 'paused';
       }
     } else {
-      audioRef.current.play();
-      setIsPlaying(true);
-      if ('mediaSession' in navigator) {
-        navigator.mediaSession.playbackState = 'playing';
+      try {
+        await audioRef.current.play();
+        setIsPlaying(true);
+        if ('mediaSession' in navigator) {
+          navigator.mediaSession.playbackState = 'playing';
+        }
+        
+        if ('wakeLock' in navigator) {
+          try {
+            await (navigator as any).wakeLock.request('screen');
+          } catch (err) {
+            console.log('Wake Lock not available');
+          }
+        }
+      } catch (error) {
+        console.error('Playback failed:', error);
+        setIsPlaying(false);
       }
     }
   };
@@ -212,7 +240,7 @@ export default function Index() {
                   <div className="flex items-center gap-4 justify-center">
                     <Button
                       size="lg"
-                      onClick={() => setIsPlaying(!isPlaying)}
+                      onClick={togglePlay}
                       className="bg-primary hover:bg-primary/90 text-white px-8"
                     >
                       <Icon name={isPlaying ? 'Pause' : 'Play'} size={20} className="mr-2" />
