@@ -39,25 +39,46 @@ export default function Index() {
   useEffect(() => {
     if (!audioRef.current) {
       audioRef.current = new Audio('https://myradio24.org/54137');
-      audioRef.current.preload = 'none';
+      audioRef.current.preload = 'metadata';
       audioRef.current.crossOrigin = 'anonymous';
+      
+      audioRef.current.addEventListener('loadedmetadata', () => {
+        const title = (audioRef.current as any)?.title || '';
+        if (title) {
+          setCurrentTrack(title);
+        }
+      });
     }
 
     const fetchCurrentTrack = async () => {
       try {
-        const response = await fetch('https://myradio24.org/54137/status-json.xsl');
-        const data = await response.json();
-        if (data && data.icestats && data.icestats.source) {
-          const title = data.icestats.source.title || 'КонтентМедиаPRO';
-          setCurrentTrack(title);
+        const streamUrl = 'https://myradio24.org/54137';
+        const response = await fetch(streamUrl, { 
+          method: 'GET',
+          headers: {
+            'Icy-MetaData': '1'
+          }
+        });
+        
+        const icyName = response.headers.get('icy-name');
+        const icyDescription = response.headers.get('icy-description');
+        const icyUrl = response.headers.get('icy-url');
+        
+        if (icyName) {
+          setCurrentTrack(icyName);
+        } else if (icyDescription) {
+          setCurrentTrack(icyDescription);
+        } else {
+          setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
         }
       } catch (error) {
-        setCurrentTrack('КонтентМедиаPRO - В эфире');
+        console.error('Failed to fetch track info:', error);
+        setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
       }
     };
 
     fetchCurrentTrack();
-    const interval = setInterval(fetchCurrentTrack, 15000);
+    const interval = setInterval(fetchCurrentTrack, 10000);
 
     const updateListeners = () => {
       setListeners(prev => {
