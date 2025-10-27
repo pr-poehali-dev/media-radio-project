@@ -253,8 +253,8 @@ export default function Index() {
               activeSection === 'home' ? 'text-primary' : 'text-muted-foreground'
             }`}
           >
-            <Icon name="Home" size={22} />
-            <span className="text-xs font-medium">Главная</span>
+            <Icon name="Radio" size={22} />
+            <span className="text-xs font-medium">Радио</span>
           </button>
           <button
             onClick={() => setActiveSection('interviews')}
