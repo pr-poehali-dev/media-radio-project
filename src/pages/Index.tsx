@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import AudioPlayer from '@/components/AudioPlayer';
 
 const interview = {
   id: 1,
@@ -225,7 +226,7 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-32">
+    <div className="min-h-screen bg-background pb-24">
       <header className="sticky top-0 bg-background/95 backdrop-blur-sm border-b border-border z-40 px-4 py-3">
         <div className="flex items-center justify-between max-w-7xl mx-auto">
           <div className="flex items-center gap-3">
@@ -556,30 +557,11 @@ export default function Index() {
         )}
       </main>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border z-50">
-        <div className="max-w-7xl mx-auto px-4 py-2">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center gap-3 flex-1 min-w-0">
-              <div className={`w-12 h-12 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center ${isPlaying ? 'animate-pulse-glow' : ''}`}>
-                <Icon name="Radio" size={20} className="text-white" />
-              </div>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs text-muted-foreground">Сейчас играет</p>
-                <p className="text-sm font-semibold truncate">{currentTrack}</p>
-              </div>
-            </div>
-            <Button
-              onClick={togglePlay}
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-white w-14 h-14 rounded-full p-0"
-            >
-              <Icon name={isPlaying ? 'Pause' : 'Play'} size={24} />
-            </Button>
-          </div>
-
-
-        </div>
-      </div>
+      <AudioPlayer 
+        isPlaying={isPlaying}
+        currentTrack={currentTrack}
+        onTogglePlay={togglePlay}
+      />
     </div>
   );
 }
