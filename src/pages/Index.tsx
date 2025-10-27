@@ -438,7 +438,7 @@ export default function Index() {
                           </div>
                           <div>
                             <p className="text-base font-bold text-foreground">🎵 Послушай трек "Гравитация"</p>
-                            <p className="text-xs text-muted-foreground">Пан Пантер feat. Катя Денисова</p>
+                            <p className="text-xs text-muted-foreground">Катя Денисова feat. Пан Пантер</p>
                           </div>
                         </div>
                         <div className="bg-gradient-to-br from-background/90 to-background/50 rounded-2xl p-4 border border-primary/20 backdrop-blur-sm">
