@@ -55,6 +55,7 @@ export default function Index() {
   const [searchQuery, setSearchQuery] = useState('');
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showInstallButton, setShowInstallButton] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -147,10 +148,17 @@ export default function Index() {
 
     const listenersInterval = setInterval(updateListeners, 3000 + Math.random() * 2000);
 
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
     return () => {
       clearInterval(interval);
       clearInterval(listenersInterval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -374,6 +382,7 @@ export default function Index() {
                 const interview = interviews.find(int => int.id === selectedInterviewId);
                 if (!interview) return null;
                 return (
+                  <div className="relative">
                   <Card className="bg-card border-border">
                     <div className="relative h-48 overflow-hidden bg-muted">
                       <img 
@@ -483,8 +492,28 @@ export default function Index() {
                       </div>
                     </CardContent>
                   </Card>
+                  </div>
                 );
               })()
+            )}
+            
+            {showScrollTop && selectedInterviewId !== null && (
+              <div className="fixed right-4 bottom-24 flex flex-col gap-2 z-40">
+                <button
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  className="w-11 h-11 bg-primary/90 hover:bg-primary text-white rounded-full shadow-lg backdrop-blur-sm transition-all hover:scale-110 flex items-center justify-center group"
+                  aria-label="Наверх"
+                >
+                  <Icon name="ArrowUp" size={20} className="group-hover:translate-y-[-2px] transition-transform" />
+                </button>
+                <button
+                  onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
+                  className="w-11 h-11 bg-primary/90 hover:bg-primary text-white rounded-full shadow-lg backdrop-blur-sm transition-all hover:scale-110 flex items-center justify-center group"
+                  aria-label="Вниз"
+                >
+                  <Icon name="ArrowDown" size={20} className="group-hover:translate-y-[2px] transition-transform" />
+                </button>
+              </div>
             )}
           </div>
         )}
