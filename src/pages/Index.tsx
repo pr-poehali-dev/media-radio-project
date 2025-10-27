@@ -436,8 +436,10 @@ export default function Index() {
                         <div className="bg-gradient-to-br from-background/90 to-background/50 rounded-2xl p-4 border border-primary/20 backdrop-blur-sm">
                           <audio 
                             controls 
+                            controlsList="nodownload"
                             className="w-full"
-                            preload="metadata"
+                            preload="auto"
+                            crossOrigin="anonymous"
                             style={{
                               height: '48px',
                               borderRadius: '12px',
@@ -445,7 +447,8 @@ export default function Index() {
                             }}
                           >
                             <source src="https://files.catbox.moe/ulifu7.mp3" type="audio/mpeg" />
-                            Ваш браузер не поддерживает аудио элемент.
+                            <source src="https://files.catbox.moe/ulifu7.mp3" type="audio/mp3" />
+                            <p className="text-xs text-muted-foreground">Ваш браузер не поддерживает аудио. <a href="https://files.catbox.moe/ulifu7.mp3" className="text-primary underline" target="_blank" rel="noopener noreferrer">Скачать трек</a></p>
                           </audio>
                           <div className="flex items-center justify-between mt-3 px-1">
                             <div className="flex items-center gap-2">
