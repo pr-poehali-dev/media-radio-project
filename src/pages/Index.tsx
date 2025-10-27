@@ -433,16 +433,14 @@ export default function Index() {
                             <p className="text-xs text-muted-foreground">Пан Пантер feat. Катя Денисова</p>
                           </div>
                         </div>
-                        <div className="bg-background/50 rounded-xl overflow-hidden">
+                        <div className="bg-background/80 rounded-xl overflow-hidden border border-primary/10">
                           <iframe 
-                            style={{ borderRadius: '12px' }}
-                            src="https://open.spotify.com/embed/album/35XbX9VnCuMyESnFQjUx0V?utm_source=generator" 
+                            src="https://vk.com/audio_embed?audio=-2001614876_143614876_136bd6cc2c5bd0eea4" 
                             width="100%" 
-                            height="352" 
+                            height="96" 
                             frameBorder="0" 
-                            allowFullScreen
-                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                            loading="lazy"
+                            style={{ borderRadius: '12px', display: 'block' }}
+                            allow="autoplay"
                           />
                         </div>
                       </div>
