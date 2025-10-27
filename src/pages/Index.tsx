@@ -423,6 +423,34 @@ export default function Index() {
                         </div>
                       </div>
                       
+                      <div className="my-8 p-6 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center">
+                            <Icon name="Music" size={24} className="text-white" />
+                          </div>
+                          <div>
+                            <p className="text-base font-bold text-foreground">🎵 Послушай трек "Гравитация"</p>
+                            <p className="text-xs text-muted-foreground">Пан Пантер feat. Катя Денисова</p>
+                          </div>
+                        </div>
+                        <div className="bg-background/50 rounded-xl p-4 backdrop-blur-sm">
+                          <audio 
+                            controls 
+                            className="w-full"
+                            style={{
+                              height: '40px',
+                              borderRadius: '8px'
+                            }}
+                          >
+                            <source src="https://example.com/gravitacia.mp3" type="audio/mpeg" />
+                            Ваш браузер не поддерживает аудио элемент.
+                          </audio>
+                          <p className="text-xs text-muted-foreground mt-3 text-center">
+                            🔥 Послушай полную версию на всех музыкальных площадках
+                          </p>
+                        </div>
+                      </div>
+                      
                       <div className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-2xl">
                         <div className="flex items-center gap-4">
                           <a 
