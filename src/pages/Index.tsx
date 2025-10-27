@@ -5,14 +5,15 @@ import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import AudioPlayer from '@/components/AudioPlayer';
 
-const interview = {
-  id: 1,
-  artist: 'Пан Пантер',
-  title: '"Гравитация" - о страсти, любви и творческом тандеме с Катей Денисовой',
-  date: '27 октября 2025',
-  excerpt: 'Эксклюзивное интервью с Пан Пантером о новом треке "Гравитация", созданном вместе с талантливой певицей Катей Денисовой.',
-  image: 'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg',
-  fullText: `🔥 Эксклюзивное интервью с Пан Пантером
+const interviews = [
+  {
+    id: 1,
+    artist: 'Пан Пантер',
+    title: '"Гравитация" - о страсти, любви и творческом тандеме с Катей Денисовой',
+    date: '27 октября 2025',
+    excerpt: 'Эксклюзивное интервью с Пан Пантером о новом треке "Гравитация", созданном вместе с талантливой певицей Катей Денисовой.',
+    image: 'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg',
+    fullText: `🔥 Эксклюзивное интервью с Пан Пантером
 
 "Гравитация" — это не просто трек. Это чувственный манифест современной любви, где каждая нота пульсирует страстью, а каждое слово пропитано эмоциями. Пан Пантер и Катя Денисова создали настоящий музыкальный взрыв, который притягивает слушателей с неумолимой силой земного притяжения.
 
@@ -39,15 +40,10 @@ const interview = {
 "Гравитация" — это трек, который цепляет с первых секунд и не отпускает. Это музыкальное признание в любви к жизни, страсти и искусству. Пан Пантер доказывает, что современная русская поп-музыка может быть не только коммерчески успешной, но и глубоко личной, искренней и по-настоящему трогательной.
 
 Следите за творчеством Пан Пантера — лучшее еще впереди! 🎵🔥`
-};
+  }
+];
 
-const highlightText = (text: string, query: string): string => {
-  if (!query.trim() || query.length < 2) return text;
-  
-  const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const regex = new RegExp(`(${escapedQuery})`, 'gi');
-  return text.replace(regex, '<mark class="bg-primary/30 text-foreground rounded px-0.5">$1</mark>');
-};
+
 
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -55,12 +51,9 @@ export default function Index() {
   const [activeSection, setActiveSection] = useState('home');
 
   const [listeners, setListeners] = useState(827);
-  const [showFullInterview, setShowFullInterview] = useState(false);
+  const [selectedInterviewId, setSelectedInterviewId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  const [searchResults, setSearchResults] = useState<number[]>([]);
-  const [currentSearchIndex, setCurrentSearchIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const interviewContentRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (!audioRef.current) {
@@ -202,7 +195,7 @@ export default function Index() {
         </div>
       </nav>
 
-      {activeSection === 'interviews' && showFullInterview && (
+      {activeSection === 'interviews' && (
         <div className="sticky top-[140px] bg-background/95 backdrop-blur-sm border-b border-border z-20">
           <div className="max-w-7xl mx-auto px-4 py-3">
             <div className="relative">
@@ -210,77 +203,10 @@ export default function Index() {
               <input
                 type="text"
                 value={searchQuery}
-                onChange={(e) => {
-                  const query = e.target.value;
-                  setSearchQuery(query);
-                  if (query.trim().length >= 2) {
-                    const text = interview.fullText.toLowerCase();
-                    const searchTerm = query.toLowerCase();
-                    const indices: number[] = [];
-                    let index = text.indexOf(searchTerm);
-                    while (index !== -1) {
-                      indices.push(index);
-                      index = text.indexOf(searchTerm, index + 1);
-                    }
-                    setSearchResults(indices);
-                    setCurrentSearchIndex(0);
-                    if (indices.length > 0 && interviewContentRef.current) {
-                      setTimeout(() => {
-                        const elements = interviewContentRef.current?.querySelectorAll('mark');
-                        if (elements && elements.length > 0) {
-                          elements[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                      }, 100);
-                    }
-                  } else {
-                    setSearchResults([]);
-                    setCurrentSearchIndex(0);
-                  }
-                }}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Поиск по интервью..."
-                className="w-full pl-9 pr-20 py-2 text-sm border border-border rounded-xl bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
+                className="w-full pl-9 pr-3 py-2 text-sm border border-border rounded-xl bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
               />
-              {searchResults.length > 0 && (
-                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                  <span className="text-xs text-muted-foreground mr-1">
-                    {currentSearchIndex + 1}/{searchResults.length}
-                  </span>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    className="h-6 w-6 p-0"
-                    onClick={() => {
-                      const newIndex = currentSearchIndex > 0 ? currentSearchIndex - 1 : searchResults.length - 1;
-                      setCurrentSearchIndex(newIndex);
-                      if (interviewContentRef.current) {
-                        const elements = interviewContentRef.current.querySelectorAll('mark');
-                        if (elements[newIndex]) {
-                          elements[newIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                      }
-                    }}
-                  >
-                    <Icon name="ChevronUp" size={14} />
-                  </Button>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    className="h-6 w-6 p-0"
-                    onClick={() => {
-                      const newIndex = currentSearchIndex < searchResults.length - 1 ? currentSearchIndex + 1 : 0;
-                      setCurrentSearchIndex(newIndex);
-                      if (interviewContentRef.current) {
-                        const elements = interviewContentRef.current.querySelectorAll('mark');
-                        if (elements[newIndex]) {
-                          elements[newIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }
-                      }
-                    }}
-                  >
-                    <Icon name="ChevronDown" size={14} />
-                  </Button>
-                </div>
-              )}
             </div>
           </div>
         </div>
@@ -342,108 +268,126 @@ export default function Index() {
           <div className="space-y-4 animate-fade-in">
             <h2 className="text-2xl font-bold mb-4">Интервью артистов</h2>
             
-            {!showFullInterview ? (
-              <Card className="bg-card border-border overflow-hidden">
-                <div className="relative h-64 overflow-hidden bg-muted">
-                  <img 
-                    src={interview.image} 
-                    alt={interview.artist}
-                    className="w-full h-full object-contain"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                  <Badge className="absolute top-4 left-4 bg-primary text-white border-none">
-                    <Icon name="Star" size={12} className="mr-1" />
-                    Эксклюзив
-                  </Badge>
-                </div>
-                <CardContent className="p-5">
-                  <Badge className="mb-3 bg-primary/10 text-primary border-primary/20 text-xs">
-                    <Icon name="Calendar" size={12} className="mr-1" />
-                    {interview.date}
-                  </Badge>
-                  <h3 className="text-xl font-bold mb-2">{interview.artist}</h3>
-                  <p className="text-base text-foreground mb-3 font-medium">{interview.title}</p>
-                  <p className="text-sm text-muted-foreground mb-4">{interview.excerpt}</p>
-                  <Button 
-                    onClick={() => setShowFullInterview(true)}
-                    className="w-full bg-primary hover:bg-primary/90 text-white"
-                  >
-                    <Icon name="BookOpen" size={18} className="mr-2" />
-                    Читать интервью
-                  </Button>
-                </CardContent>
-              </Card>
-            ) : (
-              <Card className="bg-card border-border">
-                <div className="relative h-48 overflow-hidden bg-muted">
-                  <img 
-                    src={interview.image} 
-                    alt={interview.artist}
-                    className="w-full h-full object-contain"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                </div>
-                <CardContent className="p-5">
-                  <Button 
-                    onClick={() => {
-                      setShowFullInterview(false);
-                      setSearchQuery('');
-                      setSearchResults([]);
-                    }}
-                    variant="ghost"
-                    size="sm"
-                    className="mb-4"
-                  >
-                    <Icon name="ArrowLeft" size={16} className="mr-2" />
-                    Назад
-                  </Button>
-                  <Badge className="mb-3 bg-primary/10 text-primary border-primary/20 text-xs">
-                    <Icon name="Calendar" size={12} className="mr-1" />
-                    {interview.date}
-                  </Badge>
-                  <h3 className="text-2xl font-bold mb-2">{interview.artist}</h3>
-                  <p className="text-lg text-foreground mb-4 font-medium">{interview.title}</p>
-                  <div className="prose prose-sm max-w-none" ref={interviewContentRef}>
-                    <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed" dangerouslySetInnerHTML={{
-                      __html: highlightText(interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[0], searchQuery)
-                    }} />
-                    
-                    <div className="my-6">
-                      <h4 className="text-base font-bold mb-4">❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ</h4>
-                      <div className="relative w-full h-auto mb-4 bg-muted rounded-2xl overflow-hidden">
-                        <img 
-                          src="https://cdn.poehali.dev/files/3cd66fac-8071-4c21-9a72-701e7112b5f8.jpg" 
-                          alt="Пан Пантер и Катя Денисова"
-                          className="w-full h-auto object-contain"
-                        />
-                      </div>
+            {selectedInterviewId === null ? (
+              interviews
+                .filter(int => {
+                  if (!searchQuery.trim() || searchQuery.length < 2) return true;
+                  const query = searchQuery.toLowerCase();
+                  return (
+                    int.artist.toLowerCase().includes(query) ||
+                    int.title.toLowerCase().includes(query) ||
+                    int.excerpt.toLowerCase().includes(query) ||
+                    int.fullText.toLowerCase().includes(query)
+                  );
+                })
+                .map(interview => (
+                  <Card key={interview.id} className="bg-card border-border overflow-hidden">
+                    <div className="relative h-64 overflow-hidden bg-muted">
+                      <img 
+                        src={interview.image} 
+                        alt={interview.artist}
+                        className="w-full h-full object-contain"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                      <Badge className="absolute top-4 left-4 bg-primary text-white border-none">
+                        <Icon name="Star" size={12} className="mr-1" />
+                        Эксклюзив
+                      </Badge>
                     </div>
-                    
-                    <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed" dangerouslySetInnerHTML={{
-                      __html: highlightText(interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[1] || '', searchQuery)
-                    }} />
-                  </div>
-                  
-                  <div className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-2xl">
-                    <div className="flex items-center gap-4">
-                      <a 
-                        href="https://vk.com/pannpanter" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="w-14 h-14 bg-[#0077FF] hover:bg-[#0066DD] transition-all hover:scale-105 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
+                    <CardContent className="p-5">
+                      <Badge className="mb-3 bg-primary/10 text-primary border-primary/20 text-xs">
+                        <Icon name="Calendar" size={12} className="mr-1" />
+                        {interview.date}
+                      </Badge>
+                      <h3 className="text-xl font-bold mb-2">{interview.artist}</h3>
+                      <p className="text-base text-foreground mb-3 font-medium">{interview.title}</p>
+                      <p className="text-sm text-muted-foreground mb-4">{interview.excerpt}</p>
+                      <Button 
+                        onClick={() => setSelectedInterviewId(interview.id)}
+                        className="w-full bg-primary hover:bg-primary/90 text-white"
                       >
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z" fill="white"/>
-                        </svg>
-                      </a>
-                      <div className="flex-1">
-                        <p className="text-sm font-bold text-foreground mb-1">🔥 Не пропусти новые хиты!</p>
-                        <p className="text-xs text-muted-foreground">Подписывайся на Пан Пантера — эксклюзивы, закулисье, премьеры треков</p>
-                      </div>
+                        <Icon name="BookOpen" size={18} className="mr-2" />
+                        Читать интервью
+                      </Button>
+                    </CardContent>
+                  </Card>
+                ))
+            ) : (
+              (() => {
+                const interview = interviews.find(int => int.id === selectedInterviewId);
+                if (!interview) return null;
+                return (
+                  <Card className="bg-card border-border">
+                    <div className="relative h-48 overflow-hidden bg-muted">
+                      <img 
+                        src={interview.image} 
+                        alt={interview.artist}
+                        className="w-full h-full object-contain"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                    <CardContent className="p-5">
+                      <Button 
+                        onClick={() => {
+                          setSelectedInterviewId(null);
+                          setSearchQuery('');
+                        }}
+                        variant="ghost"
+                        size="sm"
+                        className="mb-4"
+                      >
+                        <Icon name="ArrowLeft" size={16} className="mr-2" />
+                        Назад
+                      </Button>
+                      <Badge className="mb-3 bg-primary/10 text-primary border-primary/20 text-xs">
+                        <Icon name="Calendar" size={12} className="mr-1" />
+                        {interview.date}
+                      </Badge>
+                      <h3 className="text-2xl font-bold mb-2">{interview.artist}</h3>
+                      <p className="text-lg text-foreground mb-4 font-medium">{interview.title}</p>
+                      <div className="prose prose-sm max-w-none">
+                        <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed">
+                          {interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[0]}
+                        </div>
+                        
+                        <div className="my-6">
+                          <h4 className="text-base font-bold mb-4">❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ</h4>
+                          <div className="relative w-full h-auto mb-4 bg-muted rounded-2xl overflow-hidden">
+                            <img 
+                              src="https://cdn.poehali.dev/files/3cd66fac-8071-4c21-9a72-701e7112b5f8.jpg" 
+                              alt="Пан Пантер и Катя Денисова"
+                              className="w-full h-auto object-contain"
+                            />
+                          </div>
+                        </div>
+                        
+                        <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed">
+                          {interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[1] || ''}
+                        </div>
+                      </div>
+                      
+                      <div className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-2xl">
+                        <div className="flex items-center gap-4">
+                          <a 
+                            href="https://vk.com/pannpanter" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="w-14 h-14 bg-[#0077FF] hover:bg-[#0066DD] transition-all hover:scale-105 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
+                          >
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z" fill="white"/>
+                            </svg>
+                          </a>
+                          <div className="flex-1">
+                            <p className="text-sm font-bold text-foreground mb-1">🔥 Не пропусти новые хиты!</p>
+                            <p className="text-xs text-muted-foreground">Подписывайся на Пан Пантера — эксклюзивы, закулисье, премьеры треков</p>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })()
             )}
           </div>
         )}
