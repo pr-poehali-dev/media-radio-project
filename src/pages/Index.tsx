@@ -53,7 +53,7 @@ export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [activeSection, setActiveSection] = useState('home');
-  const [installPrompt, setInstallPrompt] = useState<any>(null);
+
   const [listeners, setListeners] = useState(827);
   const [showFullInterview, setShowFullInterview] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -118,17 +118,6 @@ export default function Index() {
 
     const listenersInterval = setInterval(updateListeners, 3000 + Math.random() * 2000);
 
-    const handleBeforeInstallPrompt = (e: Event) => {
-      e.preventDefault();
-      setInstallPrompt(e);
-    };
-
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-      document.documentElement.classList.add('standalone');
-    }
-
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.getRegistrations().then((registrations) => {
         registrations.forEach((registration) => registration.unregister());
@@ -138,59 +127,10 @@ export default function Index() {
     return () => {
       clearInterval(interval);
       clearInterval(listenersInterval);
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
   }, []);
 
-  useEffect(() => {
-    if ('mediaSession' in navigator && currentTrack) {
-      navigator.mediaSession.metadata = new MediaMetadata({
-        title: currentTrack,
-        artist: 'КонтентМедиаPRO',
-        album: 'Прямой эфир',
-        artwork: [
-          { src: 'https://cdn.poehali.dev/files/2d3e3912-b6eb-47c7-ba9c-d15fa1f09df0.jpg', sizes: '512x512', type: 'image/jpeg' }
-        ]
-      });
 
-      navigator.mediaSession.setActionHandler('play', async () => {
-        if (audioRef.current) {
-          await audioRef.current.play();
-          setIsPlaying(true);
-          navigator.mediaSession.playbackState = 'playing';
-        }
-      });
-
-      navigator.mediaSession.setActionHandler('pause', () => {
-        if (audioRef.current) {
-          audioRef.current.pause();
-          setIsPlaying(false);
-          navigator.mediaSession.playbackState = 'paused';
-        }
-      });
-
-      navigator.mediaSession.setActionHandler('stop', () => {
-        if (audioRef.current) {
-          audioRef.current.pause();
-          audioRef.current.currentTime = 0;
-          setIsPlaying(false);
-          navigator.mediaSession.playbackState = 'none';
-        }
-      });
-    }
-
-    const handleVisibilityChange = () => {
-      if (document.hidden && isPlaying && audioRef.current) {
-        audioRef.current.play().catch(() => {});
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [currentTrack, isPlaying]);
 
   const togglePlay = async () => {
     if (!audioRef.current) return;
@@ -198,30 +138,15 @@ export default function Index() {
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
-      if ('mediaSession' in navigator) {
-        navigator.mediaSession.playbackState = 'paused';
-      }
     } else {
       try {
         audioRef.current.load();
         await audioRef.current.play();
         setIsPlaying(true);
-        if ('mediaSession' in navigator) {
-          navigator.mediaSession.playbackState = 'playing';
-        }
       } catch (error) {
         console.error('Playback failed:', error);
         setIsPlaying(false);
       }
-    }
-  };
-
-  const handleInstallClick = async () => {
-    if (!installPrompt) return;
-    installPrompt.prompt();
-    const { outcome } = await installPrompt.userChoice;
-    if (outcome === 'accepted') {
-      setInstallPrompt(null);
     }
   };
 
@@ -241,18 +166,7 @@ export default function Index() {
             </div>
           </div>
           
-          {activeSection === 'home' && (
-            <Button 
-              onClick={handleInstallClick} 
-              size="sm" 
-              className="bg-primary hover:bg-primary/90 text-white text-xs"
-              disabled={!installPrompt}
-              style={{ opacity: installPrompt ? 1 : 0.5 }}
-            >
-              <Icon name="Download" size={14} className="mr-1" />
-              Установить
-            </Button>
-          )}
+
         </div>
       </header>
 
