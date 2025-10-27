@@ -444,7 +444,7 @@ export default function Index() {
                               filter: 'brightness(0.95)'
                             }}
                           >
-                            <source src="https://files.catbox.moe/afr9dy.m4a" type="audio/mp4" />
+                            <source src="https://files.catbox.moe/ulifu7.mp3" type="audio/mpeg" />
                             Ваш браузер не поддерживает аудио элемент.
                           </audio>
                           <div className="flex items-center justify-between mt-3 px-1">
