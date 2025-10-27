@@ -202,6 +202,90 @@ export default function Index() {
         </div>
       </nav>
 
+      {activeSection === 'interviews' && showFullInterview && (
+        <div className="sticky top-[140px] bg-background/95 backdrop-blur-sm border-b border-border z-20">
+          <div className="max-w-7xl mx-auto px-4 py-3">
+            <div className="relative">
+              <Icon name="Search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => {
+                  const query = e.target.value;
+                  setSearchQuery(query);
+                  if (query.trim().length >= 2) {
+                    const text = interview.fullText.toLowerCase();
+                    const searchTerm = query.toLowerCase();
+                    const indices: number[] = [];
+                    let index = text.indexOf(searchTerm);
+                    while (index !== -1) {
+                      indices.push(index);
+                      index = text.indexOf(searchTerm, index + 1);
+                    }
+                    setSearchResults(indices);
+                    setCurrentSearchIndex(0);
+                    if (indices.length > 0 && interviewContentRef.current) {
+                      setTimeout(() => {
+                        const elements = interviewContentRef.current?.querySelectorAll('mark');
+                        if (elements && elements.length > 0) {
+                          elements[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                      }, 100);
+                    }
+                  } else {
+                    setSearchResults([]);
+                    setCurrentSearchIndex(0);
+                  }
+                }}
+                placeholder="Поиск по интервью..."
+                className="w-full pl-9 pr-20 py-2 text-sm border border-border rounded-xl bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
+              />
+              {searchResults.length > 0 && (
+                <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+                  <span className="text-xs text-muted-foreground mr-1">
+                    {currentSearchIndex + 1}/{searchResults.length}
+                  </span>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-6 w-6 p-0"
+                    onClick={() => {
+                      const newIndex = currentSearchIndex > 0 ? currentSearchIndex - 1 : searchResults.length - 1;
+                      setCurrentSearchIndex(newIndex);
+                      if (interviewContentRef.current) {
+                        const elements = interviewContentRef.current.querySelectorAll('mark');
+                        if (elements[newIndex]) {
+                          elements[newIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                      }
+                    }}
+                  >
+                    <Icon name="ChevronUp" size={14} />
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-6 w-6 p-0"
+                    onClick={() => {
+                      const newIndex = currentSearchIndex < searchResults.length - 1 ? currentSearchIndex + 1 : 0;
+                      setCurrentSearchIndex(newIndex);
+                      if (interviewContentRef.current) {
+                        const elements = interviewContentRef.current.querySelectorAll('mark');
+                        if (elements[newIndex]) {
+                          elements[newIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }
+                      }
+                    }}
+                  >
+                    <Icon name="ChevronDown" size={14} />
+                  </Button>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       <main className="max-w-7xl mx-auto px-4 py-6">
         {activeSection === 'home' && (
           <div className="space-y-6 animate-fade-in">
@@ -300,98 +384,19 @@ export default function Index() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
                 </div>
                 <CardContent className="p-5">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Button 
-                      onClick={() => {
-                        setShowFullInterview(false);
-                        setSearchQuery('');
-                        setSearchResults([]);
-                      }}
-                      variant="ghost"
-                      size="sm"
-                    >
-                      <Icon name="ArrowLeft" size={16} className="mr-2" />
-                      Назад
-                    </Button>
-                    
-                    <div className="flex-1 relative">
-                      <div className="relative">
-                        <Icon name="Search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-                        <input
-                          type="text"
-                          value={searchQuery}
-                          onChange={(e) => {
-                            const query = e.target.value;
-                            setSearchQuery(query);
-                            if (query.trim().length >= 2) {
-                              const text = interview.fullText.toLowerCase();
-                              const searchTerm = query.toLowerCase();
-                              const indices: number[] = [];
-                              let index = text.indexOf(searchTerm);
-                              while (index !== -1) {
-                                indices.push(index);
-                                index = text.indexOf(searchTerm, index + 1);
-                              }
-                              setSearchResults(indices);
-                              setCurrentSearchIndex(0);
-                              if (indices.length > 0 && interviewContentRef.current) {
-                                const elements = interviewContentRef.current.querySelectorAll('mark');
-                                if (elements.length > 0) {
-                                  elements[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                }
-                              }
-                            } else {
-                              setSearchResults([]);
-                              setCurrentSearchIndex(0);
-                            }
-                          }}
-                          placeholder="Поиск по интервью..."
-                          className="w-full pl-9 pr-3 py-2 text-sm border border-border rounded-xl bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
-                        />
-                      </div>
-                      {searchResults.length > 0 && (
-                        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
-                          <span className="text-xs text-muted-foreground mr-1">
-                            {currentSearchIndex + 1}/{searchResults.length}
-                          </span>
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            className="h-6 w-6 p-0"
-                            onClick={() => {
-                              const newIndex = currentSearchIndex > 0 ? currentSearchIndex - 1 : searchResults.length - 1;
-                              setCurrentSearchIndex(newIndex);
-                              if (interviewContentRef.current) {
-                                const elements = interviewContentRef.current.querySelectorAll('mark');
-                                if (elements[newIndex]) {
-                                  elements[newIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                }
-                              }
-                            }}
-                          >
-                            <Icon name="ChevronUp" size={14} />
-                          </Button>
-                          <Button
-                            size="sm"
-                            variant="ghost"
-                            className="h-6 w-6 p-0"
-                            onClick={() => {
-                              const newIndex = currentSearchIndex < searchResults.length - 1 ? currentSearchIndex + 1 : 0;
-                              setCurrentSearchIndex(newIndex);
-                              if (interviewContentRef.current) {
-                                const elements = interviewContentRef.current.querySelectorAll('mark');
-                                if (elements[newIndex]) {
-                                  elements[newIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
-                                }
-                              }
-                            }}
-                          >
-                            <Icon name="ChevronDown" size={14} />
-                          </Button>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <Button 
+                    onClick={() => {
+                      setShowFullInterview(false);
+                      setSearchQuery('');
+                      setSearchResults([]);
+                    }}
+                    variant="ghost"
+                    size="sm"
+                    className="mb-4"
+                  >
+                    <Icon name="ArrowLeft" size={16} className="mr-2" />
+                    Назад
+                  </Button>
                   <Badge className="mb-3 bg-primary/10 text-primary border-primary/20 text-xs">
                     <Icon name="Calendar" size={12} className="mr-1" />
                     {interview.date}
