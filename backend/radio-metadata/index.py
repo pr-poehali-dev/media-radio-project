@@ -2,6 +2,18 @@ import json
 import urllib.request
 from typing import Dict, Any
 
+def parse_icy_metadata(metadata_bytes: bytes) -> str:
+    try:
+        metadata_str = metadata_bytes.decode('utf-8', errors='ignore')
+        if 'StreamTitle=' in metadata_str:
+            start = metadata_str.index('StreamTitle=') + 13
+            end = metadata_str.index(';', start) if ';' in metadata_str[start:] else len(metadata_str)
+            title = metadata_str[start:end].strip("'\"")
+            return title if title else None
+    except:
+        pass
+    return None
+
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     '''
     Business: Get current track information from radio stream
@@ -30,17 +42,25 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             req.add_header('User-Agent', 'Mozilla/5.0')
             
             with urllib.request.urlopen(req, timeout=5) as response:
-                icy_name = response.headers.get('icy-name', '')
-                icy_description = response.headers.get('icy-description', '')
-                icy_genre = response.headers.get('icy-genre', '')
-                icy_br = response.headers.get('icy-br', '')
+                metaint = response.headers.get('icy-metaint')
                 
-                track_info = icy_name or icy_description or 'КонтентМедиаPRO - Прямой эфир'
+                track_info = 'КонтентМедиаPRO - Прямой эфир'
+                
+                if metaint:
+                    metaint = int(metaint)
+                    audio_data = response.read(metaint)
+                    
+                    metadata_length_byte = response.read(1)
+                    if metadata_length_byte:
+                        metadata_length = metadata_length_byte[0] * 16
+                        if metadata_length > 0:
+                            metadata = response.read(metadata_length)
+                            parsed_title = parse_icy_metadata(metadata)
+                            if parsed_title:
+                                track_info = parsed_title
                 
                 result = {
-                    'track': track_info,
-                    'genre': icy_genre,
-                    'bitrate': icy_br
+                    'track': track_info
                 }
                 
                 return {
@@ -61,9 +81,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                     'Access-Control-Allow-Origin': '*'
                 },
                 'body': json.dumps({
-                    'track': 'КонтентМедиаPRO - Прямой эфир',
-                    'genre': '',
-                    'bitrate': ''
+                    'track': 'КонтентМедиаPRO - Прямой эфир'
                 }, ensure_ascii=False),
                 'isBase64Encoded': False
             }
