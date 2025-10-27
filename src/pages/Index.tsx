@@ -228,6 +228,23 @@ export default function Index() {
         </div>
       </header>
 
+      {activeSection === 'interviews' && selectedInterviewId === null && (
+        <div className="sticky top-[61px] bg-background/95 backdrop-blur-sm border-b border-border z-30">
+          <div className="max-w-7xl mx-auto px-4 py-3">
+            <div className="relative">
+              <Icon name="Search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Поиск по интервью..."
+                className="w-full pl-9 pr-3 py-2 text-sm border border-border rounded-xl bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       <nav className="sticky top-[61px] bg-background/95 backdrop-blur-sm border-b border-border z-30">
         <div className="max-w-7xl mx-auto flex justify-around">
           <button
@@ -259,23 +276,6 @@ export default function Index() {
           </button>
         </div>
       </nav>
-
-      {activeSection === 'interviews' && selectedInterviewId === null && (
-        <div className="sticky top-[140px] bg-background/95 backdrop-blur-sm border-b border-border z-20">
-          <div className="max-w-7xl mx-auto px-4 py-3">
-            <div className="relative">
-              <Icon name="Search" size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Поиск по интервью..."
-                className="w-full pl-9 pr-3 py-2 text-sm border border-border rounded-xl bg-background focus:outline-none focus:ring-2 focus:ring-primary/20"
-              />
-            </div>
-          </div>
-        </div>
-      )}
 
       <main className="max-w-7xl mx-auto px-4 py-6">
         {activeSection === 'home' && (
