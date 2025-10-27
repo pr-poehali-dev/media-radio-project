@@ -53,6 +53,8 @@ export default function Index() {
   const [listeners, setListeners] = useState(827);
   const [selectedInterviewId, setSelectedInterviewId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+  const [showInstallButton, setShowInstallButton] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -74,6 +76,19 @@ export default function Index() {
     };
 
     clearAllCaches();
+
+    const handleBeforeInstallPrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      setShowInstallButton(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    if (!isStandalone && !window.navigator.standalone) {
+      setShowInstallButton(true);
+    }
 
     if (!audioRef.current) {
       audioRef.current = new Audio('https://myradio24.org/54137');
@@ -135,8 +150,25 @@ export default function Index() {
     return () => {
       clearInterval(interval);
       clearInterval(listenersInterval);
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
   }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) {
+      alert('Для установки приложения:\n\nAndroid: Откройте меню браузера → "Установить приложение" или "Добавить на главный экран"\n\niOS: Нажмите кнопку "Поделиться" → "На экран Домой"');
+      return;
+    }
+
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    
+    if (outcome === 'accepted') {
+      setShowInstallButton(false);
+    }
+    
+    setDeferredPrompt(null);
+  };
 
 
 
@@ -174,6 +206,16 @@ export default function Index() {
             </div>
           </div>
           
+          {showInstallButton && (
+            <Button
+              onClick={handleInstallClick}
+              size="sm"
+              className="bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg hover:shadow-xl transition-all"
+            >
+              <Icon name="Download" size={16} className="mr-1" />
+              <span className="hidden sm:inline">Установить</span>
+            </Button>
+          )}
 
         </div>
       </header>
