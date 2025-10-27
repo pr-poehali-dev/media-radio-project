@@ -260,7 +260,7 @@ export default function Index() {
         </div>
       </nav>
 
-      {activeSection === 'interviews' && (
+      {activeSection === 'interviews' && selectedInterviewId === null && (
         <div className="sticky top-[140px] bg-background/95 backdrop-blur-sm border-b border-border z-20">
           <div className="max-w-7xl mx-auto px-4 py-3">
             <div className="relative">
