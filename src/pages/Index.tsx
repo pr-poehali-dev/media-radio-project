@@ -331,7 +331,6 @@ export default function Index() {
 
         {activeSection === 'interviews' && (
           <div className="space-y-4 animate-fade-in">
-            <h2 className="text-2xl font-bold mb-4">Интервью артистов</h2>
             
             {selectedInterviewId === null ? (
               interviews
