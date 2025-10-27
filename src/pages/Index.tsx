@@ -512,20 +512,20 @@ export default function Index() {
             )}
             
             {showScrollTop && selectedInterviewId !== null && (
-              <div className="fixed right-4 bottom-24 flex flex-col gap-2 z-40">
+              <div className="fixed right-3 bottom-24 flex flex-col gap-1.5 z-40">
                 <button
                   onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                  className="w-11 h-11 bg-primary/90 hover:bg-primary text-white rounded-full shadow-lg backdrop-blur-sm transition-all hover:scale-110 flex items-center justify-center group"
+                  className="w-9 h-9 bg-primary/90 hover:bg-primary text-white rounded-full shadow-md backdrop-blur-sm transition-all hover:scale-110 flex items-center justify-center group"
                   aria-label="Наверх"
                 >
-                  <Icon name="ArrowUp" size={20} className="group-hover:translate-y-[-2px] transition-transform" />
+                  <Icon name="ArrowUp" size={16} className="group-hover:translate-y-[-2px] transition-transform" />
                 </button>
                 <button
                   onClick={() => window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' })}
-                  className="w-11 h-11 bg-primary/90 hover:bg-primary text-white rounded-full shadow-lg backdrop-blur-sm transition-all hover:scale-110 flex items-center justify-center group"
+                  className="w-9 h-9 bg-primary/90 hover:bg-primary text-white rounded-full shadow-md backdrop-blur-sm transition-all hover:scale-110 flex items-center justify-center group"
                   aria-label="Вниз"
                 >
-                  <Icon name="ArrowDown" size={20} className="group-hover:translate-y-[2px] transition-transform" />
+                  <Icon name="ArrowDown" size={16} className="group-hover:translate-y-[2px] transition-transform" />
                 </button>
               </div>
             )}
