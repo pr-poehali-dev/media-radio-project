@@ -139,9 +139,9 @@ export default function Index() {
 
     const updateListeners = () => {
       setListeners(prev => {
-        const change = Math.random() < 0.5 ? -1 : 1;
+        const change = Math.floor(Math.random() * 51) - 25;
         const newValue = prev + change;
-        return Math.max(827, Math.min(900, newValue));
+        return Math.max(827, Math.min(1003, newValue));
       });
     };
 
