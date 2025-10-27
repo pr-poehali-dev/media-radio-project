@@ -56,6 +56,20 @@ export default function Index() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((registrations) => {
+        registrations.forEach((registration) => registration.unregister());
+      });
+    }
+
+    if ('caches' in window) {
+      caches.keys().then((names) => {
+        names.forEach((name) => {
+          caches.delete(name);
+        });
+      });
+    }
+
     if (!audioRef.current) {
       audioRef.current = new Audio('https://myradio24.org/54137');
       audioRef.current.preload = 'metadata';
@@ -85,7 +99,9 @@ export default function Index() {
 
     const fetchCurrentTrack = async () => {
       try {
-        const response = await fetch('https://functions.poehali.dev/bd23f8fb-a46d-42e0-ac9e-6ad3f03e9c5e');
+        const response = await fetch('https://functions.poehali.dev/bd23f8fb-a46d-42e0-ac9e-6ad3f03e9c5e', {
+          cache: 'no-store'
+        });
         const data = await response.json();
         if (data && data.track) {
           setCurrentTrack(data.track);
@@ -110,12 +126,6 @@ export default function Index() {
     };
 
     const listenersInterval = setInterval(updateListeners, 3000 + Math.random() * 2000);
-
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
-        registrations.forEach((registration) => registration.unregister());
-      });
-    }
 
     return () => {
       clearInterval(interval);
