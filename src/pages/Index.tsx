@@ -490,6 +490,21 @@ export default function Index() {
                           </div>
                         </div>
                       </div>
+                      
+                      <div className="mt-6">
+                        <Button 
+                          onClick={() => {
+                            setSelectedInterviewId(null);
+                            setSearchQuery('');
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white shadow-md"
+                          size="lg"
+                        >
+                          <Icon name="ArrowLeft" size={18} className="mr-2" />
+                          Вернуться к списку интервью
+                        </Button>
+                      </div>
                     </CardContent>
                   </Card>
                   </div>
