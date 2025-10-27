@@ -1,6 +1,6 @@
 {
-  "name": "КонтентМедиаPRO",
-  "short_name": "КонтентМедиаPRO",
+  "name": "КМ PRO - RADIO",
+  "short_name": "КМ PRO",
   "description": "Интернет-радио с музыкой и эксклюзивными интервью артистов",
   "start_url": "/",
   "display": "standalone",
