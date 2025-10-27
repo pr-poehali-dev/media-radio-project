@@ -56,19 +56,24 @@ export default function Index() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.getRegistrations().then((registrations) => {
-        registrations.forEach((registration) => registration.unregister());
-      });
-    }
+    const clearAllCaches = async () => {
+      if ('serviceWorker' in navigator) {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(registrations.map(reg => reg.unregister()));
+      }
 
-    if ('caches' in window) {
-      caches.keys().then((names) => {
-        names.forEach((name) => {
-          caches.delete(name);
-        });
-      });
-    }
+      if ('caches' in window) {
+        const names = await caches.keys();
+        await Promise.all(names.map(name => caches.delete(name)));
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      if (!urlParams.has('nocache')) {
+        window.location.href = window.location.href + (window.location.search ? '&' : '?') + 'nocache=' + Date.now();
+      }
+    };
+
+    clearAllCaches();
 
     if (!audioRef.current) {
       audioRef.current = new Audio('https://myradio24.org/54137');
