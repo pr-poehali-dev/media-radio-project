@@ -433,15 +433,30 @@ export default function Index() {
                             <p className="text-xs text-muted-foreground">Пан Пантер feat. Катя Денисова</p>
                           </div>
                         </div>
-                        <div className="bg-background/80 rounded-xl overflow-hidden border border-primary/10">
-                          <iframe 
-                            src="https://vk.com/audio_embed?audio=-2001614876_143614876_136bd6cc2c5bd0eea4" 
-                            width="100%" 
-                            height="96" 
-                            frameBorder="0" 
-                            style={{ borderRadius: '12px', display: 'block' }}
-                            allow="autoplay"
-                          />
+                        <div className="bg-gradient-to-br from-background/90 to-background/50 rounded-2xl p-4 border border-primary/20 backdrop-blur-sm">
+                          <audio 
+                            controls 
+                            className="w-full"
+                            preload="metadata"
+                            style={{
+                              height: '48px',
+                              borderRadius: '12px',
+                              filter: 'brightness(0.95)'
+                            }}
+                          >
+                            <source src="https://files.catbox.moe/afr9dy.m4a" type="audio/mp4" />
+                            Ваш браузер не поддерживает аудио элемент.
+                          </audio>
+                          <div className="flex items-center justify-between mt-3 px-1">
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                              <p className="text-xs text-muted-foreground">Слушай полную версию</p>
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Icon name="Headphones" size={14} className="text-primary" />
+                              <span className="text-xs text-primary font-medium">320 kbps</span>
+                            </div>
+                          </div>
                         </div>
                       </div>
                       
