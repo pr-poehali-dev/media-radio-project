@@ -442,7 +442,7 @@ export default function Index() {
                               borderRadius: '8px'
                             }}
                           >
-                            <source src="https://example.com/gravitacia.mp3" type="audio/mpeg" />
+                            <source src="https://disk.yandex.ru/d/R_nSsYKdmZ-lSA" type="audio/mpeg" />
                             Ваш браузер не поддерживает аудио элемент.
                           </audio>
                           <p className="text-xs text-muted-foreground mt-3 text-center">
