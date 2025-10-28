@@ -248,7 +248,10 @@ export default function Index() {
       <nav className="sticky top-[61px] bg-background/95 backdrop-blur-sm border-b border-border z-30">
         <div className="max-w-7xl mx-auto flex justify-around">
           <button
-            onClick={() => setActiveSection('home')}
+            onClick={() => {
+              setActiveSection('home');
+              setSelectedInterviewId(null);
+            }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'home' ? 'text-primary' : 'text-muted-foreground'
             }`}
@@ -266,7 +269,10 @@ export default function Index() {
             <span className="text-xs font-medium">Интервью</span>
           </button>
           <button
-            onClick={() => setActiveSection('contacts')}
+            onClick={() => {
+              setActiveSection('contacts');
+              setSelectedInterviewId(null);
+            }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'contacts' ? 'text-primary' : 'text-muted-foreground'
             }`}
