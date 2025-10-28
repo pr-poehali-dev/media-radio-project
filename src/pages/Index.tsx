@@ -431,23 +431,23 @@ export default function Index() {
                         </div>
                       </div>
                       
-                      <div className="my-8 p-6 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl shadow-lg">
-                        <div className="flex items-center gap-3 mb-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center">
-                            <Icon name="Music" size={24} className="text-white" />
+                      <div className="my-6 p-4 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-xl shadow-lg">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-lg flex items-center justify-center">
+                            <Icon name="Music" size={16} className="text-white" />
                           </div>
                           <div>
-                            <p className="text-base font-bold text-foreground">🎵 Послушай трек "Гравитация"</p>
+                            <p className="text-sm font-bold text-foreground">🎵 Послушай трек "Гравитация"</p>
                             <p className="text-xs text-muted-foreground">Катя Денисова feat. Пан Пантер</p>
                           </div>
                         </div>
-                        <div className="rounded-xl overflow-hidden shadow-md">
+                        <div className="rounded-lg overflow-hidden">
                           <iframe 
                             frameBorder="0" 
                             allow="clipboard-write; autoplay" 
-                            style={{ border: 'none', width: '100%', height: '240px', display: 'block' }}
+                            style={{ border: 'none', width: '100%', height: '180px', display: 'block' }}
                             width="100%" 
-                            height="240" 
+                            height="180" 
                             src="https://music.yandex.ru/iframe/album/38582527/track/143848317"
                             title="Гравитация - Катя Денисова"
                           />
