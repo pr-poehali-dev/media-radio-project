@@ -163,8 +163,16 @@ export default function Index() {
   }, []);
 
   const handleInstallClick = async () => {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+    const isInStandaloneMode = window.matchMedia('(display-mode: standalone)').matches || (window.navigator as any).standalone;
+
+    if (isIOS && !isInStandaloneMode) {
+      alert('Для установки приложения:\n\n1. Нажмите кнопку "Поделиться" внизу экрана\n2. Выберите "На экран Домой"\n3. Нажмите "Добавить"');
+      return;
+    }
+
     if (!deferredPrompt) {
-      alert('Для установки приложения:\n\nAndroid: Откройте меню браузера → "Установить приложение" или "Добавить на главный экран"\n\niOS: Нажмите кнопку "Поделиться" → "На экран Домой"');
+      alert('Для установки приложения:\n\nОткройте меню браузера → "Установить приложение" или "Добавить на главный экран"');
       return;
     }
 
