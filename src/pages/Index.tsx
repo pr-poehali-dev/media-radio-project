@@ -811,6 +811,29 @@ export default function Index() {
           <div className="space-y-4 animate-fade-in">
             <h2 className="text-2xl font-bold mb-4">Контакты</h2>
             
+            <Card className="bg-card border-border overflow-hidden">
+              <CardContent className="p-0">
+                <div className="flex flex-col md:flex-row">
+                  <div className="md:w-2/5 relative h-64 md:h-auto">
+                    <img 
+                      src="https://cdn.poehali.dev/files/2483b166-8105-47df-85b5-ac1037c1a202.jpg" 
+                      alt="Ольга Миляр"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="md:w-3/5 p-6 md:p-8 flex flex-col justify-center">
+                    <h3 className="text-2xl font-bold mb-2">Ольга Миляр</h3>
+                    <p className="text-sm text-primary font-semibold mb-4">Основатель «Контент Медиа PRO»</p>
+                    <div className="space-y-3 text-muted-foreground leading-relaxed">
+                      <p>Я — журналист по призванию (окончила с красным дипломом СПбГУ) и практик с опытом работы в редакциях.</p>
+                      <p>Создала «Контент Медиа PRO», чтобы быть трамплином для начинающих музыкантов, писателей, художников и просто творческих людей. Мой профессиональный опыт и личное убеждение, что добрый и качественный контент меняет мир к лучшему, легли в основу этого проекта.</p>
+                      <p className="font-medium text-foreground">Здесь мы занимаемся реальным пиаром и поддерживаем тех, о ком завтра заговорят все.</p>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             <Card className="bg-card border-border">
               <CardContent className="p-5">
                 <div className="flex items-start gap-4">
