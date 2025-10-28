@@ -9,14 +9,22 @@ if ('serviceWorker' in navigator) {
       .then((registration) => {
         console.log('SW registered:', registration);
         
+        setInterval(() => {
+          registration.update();
+        }, 60000);
+        
+        let isUpdateShown = false;
+        
         registration.addEventListener('updatefound', () => {
           const newWorker = registration.installing;
           if (newWorker) {
             newWorker.addEventListener('statechange', () => {
-              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                if (confirm('Доступна новая версия радио. Обновить?')) {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller && !isUpdateShown) {
+                isUpdateShown = true;
+                
+                const userConfirmed = confirm('Доступна новая версия радио. Обновить?');
+                if (userConfirmed) {
                   newWorker.postMessage({ type: 'SKIP_WAITING' });
-                  window.location.reload();
                 }
               }
             });
