@@ -738,7 +738,7 @@ export default function Index() {
                             </div>
                           </div>
                         </>
-                      )}
+                      ) : null}
                       
                       <div className="mt-6">
                         <Button 
