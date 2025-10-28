@@ -431,7 +431,7 @@ export default function Index() {
                         </div>
                       </div>
                       
-                      <div className="my-8 p-6 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl">
+                      <div className="my-8 p-6 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-2xl shadow-lg">
                         <div className="flex items-center gap-3 mb-4">
                           <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/60 rounded-xl flex items-center justify-center">
                             <Icon name="Music" size={24} className="text-white" />
@@ -441,33 +441,16 @@ export default function Index() {
                             <p className="text-xs text-muted-foreground">Катя Денисова feat. Пан Пантер</p>
                           </div>
                         </div>
-                        <div className="bg-gradient-to-br from-background/90 to-background/50 rounded-2xl p-4 border border-primary/20 backdrop-blur-sm">
-                          <audio 
-                            controls 
-                            controlsList="nodownload"
-                            className="w-full"
-                            preload="auto"
-                            crossOrigin="anonymous"
-                            style={{
-                              height: '48px',
-                              borderRadius: '12px',
-                              filter: 'brightness(0.95)'
-                            }}
-                          >
-                            <source src="https://files.catbox.moe/ulifu7.mp3" type="audio/mpeg" />
-                            <source src="https://files.catbox.moe/ulifu7.mp3" type="audio/mp3" />
-                            <p className="text-xs text-muted-foreground">Ваш браузер не поддерживает аудио. <a href="https://files.catbox.moe/ulifu7.mp3" className="text-primary underline" target="_blank" rel="noopener noreferrer">Скачать трек</a></p>
-                          </audio>
-                          <div className="flex items-center justify-between mt-3 px-1">
-                            <div className="flex items-center gap-2">
-                              <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                              <p className="text-xs text-muted-foreground">Слушай полную версию</p>
-                            </div>
-                            <div className="flex items-center gap-1">
-                              <Icon name="Headphones" size={14} className="text-primary" />
-                              <span className="text-xs text-primary font-medium">320 kbps</span>
-                            </div>
-                          </div>
+                        <div className="rounded-xl overflow-hidden shadow-md">
+                          <iframe 
+                            frameBorder="0" 
+                            allow="clipboard-write; autoplay" 
+                            style={{ border: 'none', width: '100%', height: '240px', display: 'block' }}
+                            width="100%" 
+                            height="240" 
+                            src="https://music.yandex.ru/iframe/album/38582527/track/143848317"
+                            title="Гравитация - Катя Денисова"
+                          />
                         </div>
                       </div>
                       
