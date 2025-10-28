@@ -78,8 +78,8 @@ Catherine Flox: о музыке, свободе и любви к картошк�
     date: '30 октября 2025',
     excerpt: 'Эксклюзивное интервью с Пан Пантером о новом треке "Гравитация", созданном вместе с талантливой певицей Катей Денисовой.',
     image: 'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg',
-    vkLink: 'https://vk.com/panpanther',
-    yandexMusic: 'https://music.yandex.ru/iframe/album/32449070/track/125907918',
+    vkLink: 'https://vk.com/pannpanter',
+    yandexMusic: 'https://music.yandex.ru/iframe/album/38582527/track/143848317',
     images: [
       'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg'
     ],
