@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -9,7 +8,6 @@ import AudioPlayer from '@/components/AudioPlayer';
 const interviews = [
   {
     id: 1,
-    slug: 'catherine-flox',
     artist: 'Catherine Flox',
     title: 'Эксклюзивное интервью: о музыке, свободе и любви к картошке фри',
     date: '30 октября 2025',
@@ -75,7 +73,6 @@ Catherine Flox: о музыке, свободе и любви к картошк�
   },
   {
     id: 2,
-    slug: 'pan-pantera',
     artist: 'Пан Пантер',
     title: '"Гравитация" - о страсти, любви и творческом тандеме с Катей Денисовой',
     date: '30 октября 2025',
@@ -116,7 +113,6 @@ Catherine Flox: о музыке, свободе и любви к картошк�
   },
   {
     id: 3,
-    slug: 'zi-dron',
     artist: 'Zi Dron',
     title: 'Zi Dron здесь и сейчас: откровенный разговор о музыке, свободе и скандале без цензуры',
     date: '28 октября 2025',
@@ -182,7 +178,6 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 
 
 export default function Index() {
-  const navigate = useNavigate();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [activeSection, setActiveSection] = useState('home');
@@ -498,8 +493,7 @@ export default function Index() {
                 .map(interview => (
                   <Card 
                     key={interview.id} 
-                    className="bg-card border-border overflow-hidden cursor-pointer hover:shadow-lg transition-shadow duration-300"
-                    onClick={() => navigate(`/interview/${interview.slug}`)}
+                    className="bg-card border-border overflow-hidden transition-shadow duration-300"
                   >
                     <div className="relative h-64 overflow-hidden bg-muted">
                       <img 
