@@ -675,9 +675,8 @@ export default function Index() {
                   .my_lastsongs > div:first-of-type {
                     position: relative;
                     padding-top: 24px !important;
-                    margin-bottom: 12px !important;
-                    padding-bottom: 12px !important;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                    margin-bottom: 16px !important;
+                    padding-bottom: 16px !important;
                   }
                   .my_lastsongs > div:first-of-type::before {
                     content: 'Сейчас играет';
@@ -689,6 +688,31 @@ export default function Index() {
                     color: #ff6b35;
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
+                  }
+                  .my_lastsongs > div:first-of-type::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: -24px;
+                    right: -24px;
+                    height: 3px;
+                    background: linear-gradient(90deg, transparent 0%, #ff6b35 20%, #ff6b35 80%, transparent 100%);
+                    box-shadow: 0 2px 8px rgba(255, 107, 53, 0.3);
+                  }
+                  .my_lastsongs > div:nth-of-type(2) {
+                    position: relative;
+                    padding-top: 32px !important;
+                    margin-top: 8px !important;
+                  }
+                  .my_lastsongs > div:nth-of-type(2)::before {
+                    content: 'История проигранных треков';
+                    position: absolute;
+                    top: 8px;
+                    left: 0;
+                    font-size: 13px;
+                    font-weight: 700;
+                    color: rgba(255, 255, 255, 0.9);
+                    letter-spacing: 0.3px;
                   }
                 `}} />
               </CardContent>
