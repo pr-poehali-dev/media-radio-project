@@ -197,7 +197,6 @@ export default function Index() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const scrollPositionRestored = useRef(false);
-  const playerInitialized = useRef(false);
 
   useEffect(() => {
     const savedScrollPosition = sessionStorage.getItem('scrollPosition');
@@ -363,22 +362,11 @@ export default function Index() {
 
     window.addEventListener('scroll', handleScroll);
 
-    const checkPlayerInterval = setInterval(() => {
-      const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
-      
-      if (audio && !playerInitialized.current) {
-        playerInitialized.current = true;
-        
-        if (!audio.paused) {
-          setIsPlaying(true);
-        }
-      }
-    }, 300);
+
 
     return () => {
       clearInterval(interval);
       clearInterval(listenersInterval);
-      clearInterval(checkPlayerInterval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('scroll', handleScroll);
     };
@@ -633,61 +621,7 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
-              <button
-                onClick={() => {
-                  const findAndControlAudio = () => {
-                    const selectors = [
-                      '#my_player audio',
-                      '.my_player audio', 
-                      'audio[src*="myradio24"]',
-                      'audio[src*="54137"]',
-                      'audio'
-                    ];
-                    
-                    for (const selector of selectors) {
-                      const audio = document.querySelector(selector) as HTMLAudioElement;
-                      if (audio && audio.src) {
-                        if (isPlaying) {
-                          audio.pause();
-                          setIsPlaying(false);
-                        } else {
-                          audio.play()
-                            .then(() => setIsPlaying(true))
-                            .catch(() => setIsPlaying(false));
-                        }
-                        return true;
-                      }
-                    }
-                    return false;
-                  };
-                  
-                  if (!findAndControlAudio()) {
-                    setTimeout(findAndControlAudio, 500);
-                  }
-                }}
-                className={`group relative w-20 h-20 rounded-full border-4 border-black shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${
-                  isPlaying 
-                    ? 'bg-gradient-to-br from-red-500 to-red-700' 
-                    : 'bg-gradient-to-br from-primary via-orange-500 to-primary'
-                }`}
-              >
-                <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                {isPlaying ? (
-                  <div className="absolute inset-0 flex items-center justify-center gap-1.5">
-                    <div className="w-2 h-8 bg-white rounded-sm"></div>
-                    <div className="w-2 h-8 bg-white rounded-sm"></div>
-                  </div>
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Icon name="Play" size={36} className="text-white ml-1" />
-                  </div>
-                )}
-                {isPlaying && (
-                  <div className="absolute -inset-1 bg-primary/30 rounded-full animate-ping"></div>
-                )}
-              </button>
-            </div>
+
 
           </div>
         )}
