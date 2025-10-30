@@ -37,7 +37,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     
     if method == 'GET':
         try:
-            req = urllib.request.Request('http://live.topfm.hu:8000/comedy.mp3')
+            req = urllib.request.Request('https://myradio24.org/54137')
             req.add_header('Icy-MetaData', '1')
             req.add_header('User-Agent', 'Mozilla/5.0')
             
@@ -59,7 +59,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                                 track_info = parsed_title
                 
                 if not track_info:
-                    track_info = 'TOP FM Comedy - Прямой эфир'
+                    track_info = 'КонтентМедиаPRO - Прямой эфир'
                 
                 return {
                     'statusCode': 200,
@@ -83,7 +83,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                     'Cache-Control': 'no-cache, no-store, must-revalidate'
                 },
                 'body': json.dumps({
-                    'track': 'TOP FM Comedy - Прямой эфир'
+                    'track': 'КонтентМедиаPRO - Прямой эфир'
                 }, ensure_ascii=False),
                 'isBase64Encoded': False
             }
