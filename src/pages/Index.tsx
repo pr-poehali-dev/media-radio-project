@@ -291,7 +291,7 @@ export default function Index() {
     }
 
     if (!audioRef.current) {
-      audioRef.current = new Audio('https://myradio24.org/54137');
+      audioRef.current = new Audio('http://live.topfm.hu:8000/comedy.mp3');
       audioRef.current.preload = 'metadata';
       audioRef.current.crossOrigin = 'anonymous';
       
