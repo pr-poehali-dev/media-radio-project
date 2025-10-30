@@ -678,8 +678,9 @@ export default function Index() {
               >
                 <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 {isPlaying ? (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-6 h-6 bg-white rounded-sm"></div>
+                  <div className="absolute inset-0 flex items-center justify-center gap-1.5">
+                    <div className="w-2 h-8 bg-white rounded-sm"></div>
+                    <div className="w-2 h-8 bg-white rounded-sm"></div>
                   </div>
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -687,7 +688,7 @@ export default function Index() {
                   </div>
                 )}
                 {isPlaying && (
-                  <div className="absolute -inset-1 bg-red-400/30 rounded-full animate-ping"></div>
+                  <div className="absolute -inset-1 bg-primary/30 rounded-full animate-ping"></div>
                 )}
               </button>
             </div>
