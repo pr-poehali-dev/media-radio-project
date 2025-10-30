@@ -58,8 +58,29 @@
   }
 }
 
-.my_player .my_currentListeners {
+.my_currentListeners {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+#my_player .my_currentListeners,
+.my_player .my_currentListeners,
+[class*="currentListeners"],
+[id*="currentListeners"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  pointer-events: none !important;
 }
 
 /* Minimize poehali.dev branding */
