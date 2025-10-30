@@ -321,12 +321,6 @@ export default function Index() {
           }
         }, 1000);
       });
-      
-      audioRef.current.play().then(() => {
-        setIsPlaying(true);
-      }).catch(() => {
-        setIsPlaying(false);
-      });
     }
 
     const fetchCurrentTrack = async () => {
