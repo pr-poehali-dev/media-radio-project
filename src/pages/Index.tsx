@@ -1038,6 +1038,31 @@ export default function Index() {
               </CardContent>
             </Card>
 
+            <Card className="bg-gradient-to-br from-primary/10 via-primary/5 to-background border-primary/30 overflow-hidden relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
+              <CardContent className="p-6 relative">
+                <div className="flex items-start gap-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
+                    <Icon name="Tv" size={28} className="text-white" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-xl mb-2 flex items-center gap-2">
+                      📺 Телеканал
+                      <span className="text-xs font-normal bg-primary/20 text-primary px-2 py-1 rounded-full">В разработке</span>
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-3">
+                      Скоро здесь появятся эксклюзивные видеоинтервью, закулисье и многое другое
+                    </p>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Icon name="Clock" size={14} className="text-primary" />
+                      <span>Следите за обновлениями</span>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             <Card className="bg-card border-border">
               <CardContent className="p-5">
                 <div className="flex items-start gap-4">
