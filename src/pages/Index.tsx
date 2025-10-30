@@ -529,7 +529,7 @@ export default function Index() {
                   <div className="flex-1 w-full flex flex-col items-center">
                     <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137" style={{ display: 'none' }}></div>
                     
-                    <div className="flex items-center gap-4 bg-gradient-to-br from-primary/10 to-background border border-primary/20 rounded-2xl p-4 mb-4 w-full max-w-md">
+                    <div className="flex items-center gap-4 bg-gradient-to-br from-primary/10 to-background border-2 border-black rounded-2xl p-4 mb-4 w-full max-w-md">
                       <img 
                         src={trackInfo.cover} 
                         alt="Cover" 
