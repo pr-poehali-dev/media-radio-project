@@ -739,6 +739,67 @@ export default function Index() {
                               </div>
                             </div>
                           </div>
+
+                          <div className="mt-4 p-4 bg-muted/30 border border-muted rounded-2xl space-y-3">
+                            <div>
+                              <p className="text-sm font-bold text-foreground mb-2 flex items-center gap-2">
+                                <Icon name="Share2" size={16} className="text-primary" />
+                                Поделиться интервью
+                              </p>
+                              <div className="flex flex-wrap gap-2">
+                                <Button
+                                  size="sm"
+                                  onClick={() => {
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#3`);
+                                    const text = encodeURIComponent('🔥 Откровенное интервью с Zi Dron о музыке и свободе');
+                                    window.open(`https://vk.com/share.php?url=${url}&title=${text}`, '_blank');
+                                  }}
+                                  className="bg-[#0077FF] hover:bg-[#0066DD] text-white"
+                                >
+                                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mr-1">
+                                    <path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z" fill="white"/>
+                                  </svg>
+                                  VK
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  onClick={() => {
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#3`);
+                                    const text = encodeURIComponent('🔥 Откровенное интервью с Zi Dron о музыке и свободе');
+                                    window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+                                  }}
+                                  className="bg-[#0088cc] hover:bg-[#0077bb] text-white"
+                                >
+                                  <Icon name="Send" size={16} className="mr-1" />
+                                  Telegram
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  onClick={() => {
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#3`);
+                                    const text = encodeURIComponent('🔥 Откровенное интервью с Zi Dron о музыке и свободе');
+                                    window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
+                                  }}
+                                  className="bg-[#25D366] hover:bg-[#1fbf58] text-white"
+                                >
+                                  <Icon name="MessageCircle" size={16} className="mr-1" />
+                                  WhatsApp
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  onClick={() => {
+                                    const url = `${window.location.origin}${window.location.pathname}#3`;
+                                    navigator.clipboard.writeText(url);
+                                  }}
+                                  className="border-border"
+                                >
+                                  <Icon name="Copy" size={16} className="mr-1" />
+                                  Копировать
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
                         </>
                       ) : interview.id === 2 ? (
                         <>
