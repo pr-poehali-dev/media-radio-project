@@ -364,11 +364,10 @@ export default function Index() {
     window.addEventListener('scroll', handleScroll);
 
     const checkPlayerInterval = setInterval(() => {
-      if (!playerInitialized.current) {
-        const playerContainer = document.getElementById('my_player');
-        const audio = playerContainer?.querySelector('audio') as HTMLAudioElement;
-        
-        if (audio) {
+      const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
+      
+      if (audio) {
+        if (!playerInitialized.current) {
           playerInitialized.current = true;
           
           audio.addEventListener('play', () => {
@@ -383,9 +382,15 @@ export default function Index() {
             setIsPlaying(true);
           });
           
-          if (!audio.paused) {
-            setIsPlaying(true);
-          }
+          audio.addEventListener('ended', () => {
+            setIsPlaying(false);
+          });
+        }
+        
+        if (!audio.paused && audio.currentTime > 0) {
+          setIsPlaying(true);
+        } else if (audio.paused) {
+          setIsPlaying(false);
         }
       }
     }, 500);
