@@ -1053,7 +1053,7 @@ export default function Index() {
                   </div>
                   <div className="flex-1">
                     <h3 className="font-bold text-xl mb-2 flex items-center gap-2">
-                      📺 Телеканал
+                      📺 on-line TV
                       <span className="text-xs font-normal bg-primary/20 text-primary px-2 py-1 rounded-full">В разработке</span>
                     </h3>
                     <p className="text-sm text-muted-foreground mb-3">
