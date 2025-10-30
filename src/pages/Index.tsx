@@ -527,7 +527,7 @@ export default function Index() {
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row gap-6 items-start">
                   <div className="flex-1 w-full flex flex-col items-center">
-                    <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137" style={{ display: 'none' }}></div>
+                    <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="0" data-volume="70" data-streamurl="https://myradio24.org/54137" style={{ display: 'none' }}></div>
                     
                     <div className="flex items-center gap-4 bg-gradient-to-br from-primary/10 to-background border-2 border-black rounded-2xl p-4 mb-4 w-full max-w-md">
                       <img 
@@ -622,7 +622,17 @@ export default function Index() {
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
               <div className="bg-gradient-to-r from-primary via-orange-500 to-primary border-2 border-black rounded-2xl shadow-2xl backdrop-blur-sm">
                 <button
-                  onClick={() => setIsPlaying(!isPlaying)}
+                  onClick={() => {
+                    const player = document.querySelector('.my_player audio') as HTMLAudioElement;
+                    if (player) {
+                      if (isPlaying) {
+                        player.pause();
+                      } else {
+                        player.play();
+                      }
+                    }
+                    setIsPlaying(!isPlaying);
+                  }}
                   className="flex items-center gap-4 px-8 py-4 transition-all hover:scale-105 active:scale-95"
                 >
                   <div className="relative">
