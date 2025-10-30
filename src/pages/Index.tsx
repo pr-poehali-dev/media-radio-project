@@ -1052,7 +1052,7 @@ export default function Index() {
                       <span className="text-xs font-normal bg-primary/20 text-primary px-2 py-1 rounded-full">В разработке</span>
                     </h3>
                     <p className="text-sm text-muted-foreground mb-3">
-                      Скоро здесь появятся эксклюзивные видеоинтервью, закулисье и многое другое
+                      Скоро здесь появятся музыкальные клипы, эксклюзивные видеоинтервью и многое другое
                     </p>
                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
                       <Icon name="Clock" size={14} className="text-primary" />
