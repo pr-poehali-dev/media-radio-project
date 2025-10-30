@@ -527,36 +527,45 @@ export default function Index() {
                     </div>
                   </div>
                   
-                  <div className="md:w-64 w-full bg-gradient-to-br from-primary/10 to-background border border-primary/30 rounded-xl p-4 space-y-3">
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="relative">
-                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-                        <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
+                  <div className="md:w-80 w-full bg-gradient-to-br from-[#4a3832] via-[#3d2f2a] to-[#2d2420] border-2 border-primary/40 rounded-2xl p-6 space-y-4">
+                    <div className="flex items-center gap-4">
+                      <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center flex-shrink-0">
+                        <Icon name="Radio" size={40} className="text-white" />
                       </div>
-                      <span className="text-sm font-bold text-foreground">В ЭФИРЕ</span>
+                      
+                      <div className="flex-1">
+                        <div className="inline-flex items-center gap-2 bg-primary px-4 py-1.5 rounded-full mb-2">
+                          <Icon name="Radio" size={14} className="text-white" />
+                          <span className="text-sm font-bold text-white">В ЭФИРЕ</span>
+                        </div>
+                        
+                        <div className="flex items-center gap-2 text-sm">
+                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                          <span className="text-gray-400">Сейчас слушает:</span>
+                          <span className="text-white font-bold text-xl">{listenerCount}</span>
+                        </div>
+                      </div>
                     </div>
                     
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">Слушателей:</span>
-                        <span className="text-lg font-bold text-primary">{listenerCount}</span>
+                    <div>
+                      <p className="text-gray-400 text-sm mb-1">Сейчас играет:</p>
+                      <p className="text-white font-bold text-lg">КонтентМедиаPRO - Прямой эфир</p>
+                    </div>
+                    
+                    <div className="h-px bg-primary/20"></div>
+                    
+                    <div className="grid grid-cols-3 gap-4 text-center">
+                      <div>
+                        <p className="text-primary font-bold text-2xl mb-1">24/7</p>
+                        <p className="text-gray-400 text-xs">Эфир</p>
                       </div>
-                      
-                      <div className="h-px bg-border"></div>
-                      
-                      <div className="space-y-1.5 text-xs">
-                        <div className="flex items-center gap-2">
-                          <Icon name="Clock" size={14} className="text-primary" />
-                          <span className="text-muted-foreground">24/7 on-line</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon name="Music" size={14} className="text-primary" />
-                          <span className="text-muted-foreground">1000+ треков</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Icon name="Mic2" size={14} className="text-primary" />
-                          <span className="text-muted-foreground">100+ артистов</span>
-                        </div>
+                      <div>
+                        <p className="text-primary font-bold text-2xl mb-1">1000+</p>
+                        <p className="text-gray-400 text-xs">Треков</p>
+                      </div>
+                      <div>
+                        <p className="text-primary font-bold text-2xl mb-1">100+</p>
+                        <p className="text-gray-400 text-xs">Артистов</p>
                       </div>
                     </div>
                   </div>
