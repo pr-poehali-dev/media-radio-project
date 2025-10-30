@@ -1082,7 +1082,14 @@ export default function Index() {
                     </svg>
                   </a>
                   <div className="flex-1">
-                    <h3 className="font-bold mb-2">ВКонтакте</h3>
+                    <a 
+                      href="https://vk.com/kontentmediapro" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="font-bold mb-2 inline-block hover:text-primary transition-colors"
+                    >
+                      ВКонтакте
+                    </a>
                     <p className="text-sm text-muted-foreground">По всем вопросам и предложениям пишите нам в ВК</p>
                   </div>
                 </div>
