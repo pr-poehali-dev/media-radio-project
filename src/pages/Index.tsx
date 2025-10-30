@@ -187,6 +187,7 @@ export default function Index() {
   });
 
   const [listeners, setListeners] = useState(827);
+  const [targetListeners, setTargetListeners] = useState(827);
   const [selectedInterviewId, setSelectedInterviewId] = useState<number | null>(() => {
     const saved = sessionStorage.getItem('selectedInterviewId');
     return saved ? parseInt(saved) : null;
@@ -405,15 +406,25 @@ export default function Index() {
     const myRadioInterval = setInterval(checkMyRadio24Data, 3000);
     setTimeout(checkMyRadio24Data, 1000);
 
-    const updateListeners = () => {
-      setListenerCount(prev => {
+    const updateListenersTarget = () => {
+      setTargetListeners(prev => {
         const change = Math.random() > 0.5 ? 1 : -1;
-        const newCount = prev + change * Math.floor(Math.random() * 3);
-        return Math.max(713, Math.min(1003, newCount));
+        const newTarget = prev + change * Math.floor(Math.random() * 20 + 10);
+        return Math.max(713, Math.min(1003, newTarget));
       });
     };
 
-    const listenersInterval = setInterval(updateListeners, 3000 + Math.random() * 2000);
+    const smoothListenersAnimation = () => {
+      setListeners(prev => {
+        const diff = targetListeners - prev;
+        if (Math.abs(diff) < 1) return targetListeners;
+        const step = diff > 0 ? Math.ceil(diff / 10) : Math.floor(diff / 10);
+        return prev + step;
+      });
+    };
+
+    const targetInterval = setInterval(updateListenersTarget, 15000 + Math.random() * 10000);
+    const animationInterval = setInterval(smoothListenersAnimation, 300);
 
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
@@ -425,7 +436,8 @@ export default function Index() {
 
     return () => {
       clearInterval(interval);
-      clearInterval(listenersInterval);
+      clearInterval(targetInterval);
+      clearInterval(animationInterval);
       clearInterval(myRadioInterval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('scroll', handleScroll);
