@@ -635,7 +635,7 @@ export default function Index() {
             </Card>
 
             <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-              <div className="bg-gradient-to-r from-primary via-orange-500 to-primary backdrop-blur-lg border-2 border-black/20 rounded-full shadow-xl px-4 py-2.5 flex items-center gap-3">
+              <div className="bg-black/90 backdrop-blur-lg border-2 border-white/10 rounded-full shadow-xl px-4 py-2.5 flex items-center gap-3">
                 <button
                   onClick={() => {
                     if (audioRef.current) {
