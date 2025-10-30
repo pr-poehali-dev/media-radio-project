@@ -781,9 +781,9 @@ export default function Index() {
                       <p className="text-sm text-muted-foreground mb-4">{interview.excerpt}</p>
                       <Button 
                         onClick={() => {
+                          sessionStorage.setItem('interviewListScrollPosition', window.scrollY.toString());
                           setSelectedInterviewId(interview.id);
                           sessionStorage.setItem('selectedInterviewId', interview.id.toString());
-                          sessionStorage.setItem('scrollPosition', '0');
                           window.scrollTo(0, 0);
                         }}
                         className="w-full bg-primary hover:bg-primary/90 text-white"
@@ -815,6 +815,12 @@ export default function Index() {
                           setSelectedInterviewId(null);
                           setSearchQuery('');
                           sessionStorage.removeItem('selectedInterviewId');
+                          setTimeout(() => {
+                            const savedPosition = sessionStorage.getItem('interviewListScrollPosition');
+                            if (savedPosition) {
+                              window.scrollTo(0, parseInt(savedPosition));
+                            }
+                          }, 0);
                         }}
                         variant="ghost"
                         size="sm"
