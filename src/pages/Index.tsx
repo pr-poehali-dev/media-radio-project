@@ -652,18 +652,38 @@ export default function Index() {
               <div className="bg-gradient-to-r from-primary via-orange-500 to-primary border-2 border-black rounded-2xl shadow-2xl backdrop-blur-sm">
                 <button
                   onClick={() => {
-                    const playerContainer = document.getElementById('my_player');
-                    const audio = playerContainer?.querySelector('audio') as HTMLAudioElement;
-                    
-                    if (audio) {
-                      if (!audio.paused) {
-                        audio.pause();
+                    setTimeout(() => {
+                      const playerContainer = document.getElementById('my_player');
+                      console.log('Player container:', playerContainer);
+                      
+                      if (playerContainer) {
+                        const audio = playerContainer.querySelector('audio') as HTMLAudioElement;
+                        console.log('Audio element:', audio);
+                        
+                        if (audio) {
+                          console.log('Audio paused:', audio.paused);
+                          if (!audio.paused) {
+                            audio.pause();
+                            console.log('Pausing...');
+                          } else {
+                            const playPromise = audio.play();
+                            if (playPromise !== undefined) {
+                              playPromise
+                                .then(() => {
+                                  console.log('Playing...');
+                                })
+                                .catch(err => {
+                                  console.error('Play failed:', err);
+                                });
+                            }
+                          }
+                        } else {
+                          console.error('Audio element not found in player container');
+                        }
                       } else {
-                        audio.play().catch(err => {
-                          console.error('Play failed:', err);
-                        });
+                        console.error('Player container #my_player not found');
                       }
-                    }
+                    }, 100);
                   }}
                   className="flex items-center gap-4 px-8 py-4 transition-all hover:scale-105 active:scale-95"
                 >
