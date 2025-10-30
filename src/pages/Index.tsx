@@ -656,23 +656,29 @@ export default function Index() {
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
               <button
                 onClick={() => {
-                  const playerContainer = document.getElementById('my_player');
-                  const playButton = playerContainer?.querySelector('[class*="play"], [class*="pause"], button') as HTMLElement;
+                  console.log('Button clicked! isPlaying:', isPlaying);
                   
-                  if (playButton) {
-                    playButton.click();
+                  const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
+                  console.log('Audio element found:', !!audio, 'paused:', audio?.paused);
+                  
+                  if (audio) {
+                    if (audio.paused) {
+                      console.log('Trying to play...');
+                      audio.play()
+                        .then(() => {
+                          console.log('Play successful');
+                          setIsPlaying(true);
+                        })
+                        .catch(err => {
+                          console.error('Play error:', err);
+                        });
+                    } else {
+                      console.log('Pausing...');
+                      audio.pause();
+                      setIsPlaying(false);
+                    }
                   } else {
-                    setTimeout(() => {
-                      const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
-                      
-                      if (audio) {
-                        if (audio.paused) {
-                          audio.play().catch(err => console.error('Play error:', err));
-                        } else {
-                          audio.pause();
-                        }
-                      }
-                    }, 200);
+                    console.error('Audio element not found!');
                   }
                 }}
                 className={`group relative w-20 h-20 rounded-full border-4 border-black shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${
