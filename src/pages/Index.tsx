@@ -534,7 +534,7 @@ export default function Index() {
                       <div className="space-y-1.5 text-xs">
                         <div className="flex items-center gap-2">
                           <Icon name="Clock" size={14} className="text-primary" />
-                          <span className="text-muted-foreground">24/7 вещание</span>
+                          <span className="text-muted-foreground">24/7 on-line</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <Icon name="Music" size={14} className="text-primary" />
