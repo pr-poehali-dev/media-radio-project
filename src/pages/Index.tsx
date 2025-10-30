@@ -231,41 +231,22 @@ export default function Index() {
   }, []);
 
   useEffect(() => {
-    let intervalId: NodeJS.Timeout;
-
-    const fetchTrackInfo = () => {
-      try {
-        const widgetIframe = document.getElementById('myradio-widget') as HTMLIFrameElement;
-        if (widgetIframe && widgetIframe.contentWindow) {
-          const iframeDoc = widgetIframe.contentDocument || widgetIframe.contentWindow.document;
-          const trackElement = iframeDoc.querySelector('.track-title, .current-track, [class*="track"]');
-          
-          if (trackElement && trackElement.textContent) {
-            const trackText = trackElement.textContent.trim();
-            if (trackText && trackText !== '' && !trackText.includes('Loading')) {
-              setCurrentTrack(trackText);
-              return;
-            }
-          }
-        }
-      } catch (error) {
-        console.log('Cannot access iframe content');
-      }
-      
-      setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
-    };
-
-    if (isPlaying) {
-      setTimeout(fetchTrackInfo, 2000);
-      intervalId = setInterval(fetchTrackInfo, 5000);
-    } else {
-      setCurrentTrack('Загрузка...');
-    }
-
+    const script = document.createElement('script');
+    script.src = 'https://myradio24.com/player/player.js?v3.31';
+    script.setAttribute('data-radio', '54137');
+    script.setAttribute('data-interval', '15');
+    script.setAttribute('data-vmid', '0');
+    script.setAttribute('data-lang', 'ru');
+    script.async = true;
+    
+    document.body.appendChild(script);
+    
     return () => {
-      if (intervalId) clearInterval(intervalId);
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
     };
-  }, [isPlaying]);
+  }, []);
 
   useEffect(() => {
     const clearAllCaches = async () => {
@@ -526,36 +507,20 @@ export default function Index() {
             
             <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30">
               <CardContent className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className={`w-20 h-20 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center ${isPlaying ? 'animate-pulse-glow' : ''}`}>
-                    <Icon name="Radio" size={36} className="text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <Badge className="mb-2 bg-primary/90 text-white w-fit">
-                      <Icon name="Radio" size={12} className="mr-1" />
-                      В ЭФИРЕ
-                    </Badge>
-                    <div className="flex items-center gap-2 mb-2">
-                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                      <p className="text-xs text-muted-foreground">Сейчас слушает: <span className="text-foreground font-semibold">{listeners}</span></p>
-                    </div>
-                    <p className="text-xs text-muted-foreground mb-1">Сейчас играет:</p>
-                    <p className="text-base font-bold line-clamp-2 leading-tight">{currentTrack}</p>
-                  </div>
-                </div>
+                <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137"></div>
 
-                <div className="grid grid-cols-3 gap-2 pt-4 border-t border-border">
-                  <div className="text-center">
-                    <p className="text-xl font-bold text-primary">24/7</p>
-                    <p className="text-xs text-muted-foreground">Эфир</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xl font-bold text-primary">1000+</p>
-                    <p className="text-xs text-muted-foreground">Треков</p>
-                  </div>
-                  <div className="text-center">
-                    <p className="text-xl font-bold text-primary">100+</p>
-                    <p className="text-xs text-muted-foreground">Артистов</p>
+                <canvas className="my_visualizer w-full mb-4" width="500" height="128" data-size="64" data-revert="0" data-color="rgb"></canvas>
+
+                <div className="mt-4">
+                  <p className="font-bold text-lg mb-3">Последние песни</p>
+                  <div className="my_lastsongs" data-revert="1" style={{ display: 'inline-block', maxWidth: '100%' }}>
+                    <div className="my_lastsonghtml" style={{ display: 'none' }}>
+                      <div style={{ display: 'flex', gap: '8px', alignItems: 'center', textAlign: 'left', margin: '3px' }}>
+                        <img className="my_lastsong_cover" style={{ width: '45px', height: '45px', borderRadius: '4px', verticalAlign: 'middle' }} alt="Cover" />
+                        <span>%songtime%</span>
+                        <a href="https://www.youtube.com/results?search_query=%songencode%" target="_blank" rel="noopener noreferrer" title="YouTube">%song%</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -1177,22 +1142,6 @@ export default function Index() {
         isPlaying={isPlaying}
         currentTrack={currentTrack}
         onTogglePlay={togglePlay}
-      />
-
-      <iframe 
-        id="myradio-widget"
-        src="https://myradio24.com/ru/set/54137"
-        style={{
-          position: 'absolute',
-          width: '1px',
-          height: '1px',
-          top: '-9999px',
-          left: '-9999px',
-          border: 'none',
-          visibility: 'hidden',
-          pointerEvents: 'none'
-        }}
-        title="MyRadio Widget"
       />
     </div>
   );
