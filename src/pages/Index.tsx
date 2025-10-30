@@ -573,6 +573,8 @@ export default function Index() {
                         onClick={() => {
                           setSelectedInterviewId(interview.id);
                           sessionStorage.setItem('selectedInterviewId', interview.id.toString());
+                          sessionStorage.setItem('scrollPosition', '0');
+                          window.scrollTo(0, 0);
                         }}
                         className="w-full bg-primary hover:bg-primary/90 text-white"
                       >
