@@ -8,7 +8,7 @@ import AudioPlayer from '@/components/AudioPlayer';
 const interviews = [
   {
     id: 1,
-    artist: 'Zi Dron',
+    artist: 'Catherine Flox',
     title: 'Эксклюзивное интервью: о музыке, свободе и любви к картошке фри',
     date: '30 октября 2025',
     excerpt: 'Catherine Flox делится своим видением музыки, откровенно рассказывает о творческом пути и о том, что вдохновляет её создавать композиции.',
@@ -750,7 +750,7 @@ export default function Index() {
                                 <Button
                                   size="sm"
                                   onClick={() => {
-                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#1`);
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#3`);
                                     const text = encodeURIComponent('🔥 Откровенное интервью с Zi Dron о музыке и свободе');
                                     window.open(`https://vk.com/share.php?url=${url}&title=${text}`, '_blank');
                                   }}
@@ -764,7 +764,7 @@ export default function Index() {
                                 <Button
                                   size="sm"
                                   onClick={() => {
-                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#1`);
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#3`);
                                     const text = encodeURIComponent('🔥 Откровенное интервью с Zi Dron о музыке и свободе');
                                     window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
                                   }}
@@ -776,7 +776,7 @@ export default function Index() {
                                 <Button
                                   size="sm"
                                   onClick={() => {
-                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#1`);
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#3`);
                                     const text = encodeURIComponent('🔥 Откровенное интервью с Zi Dron о музыке и свободе');
                                     window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
                                   }}
@@ -789,7 +789,7 @@ export default function Index() {
                                   size="sm"
                                   variant="outline"
                                   onClick={() => {
-                                    const url = `${window.location.origin}${window.location.pathname}#1`;
+                                    const url = `${window.location.origin}${window.location.pathname}#3`;
                                     navigator.clipboard.writeText(url);
                                   }}
                                   className="border-border"
