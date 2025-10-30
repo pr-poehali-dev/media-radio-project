@@ -180,10 +180,15 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
-  const [activeSection, setActiveSection] = useState('home');
+  const [activeSection, setActiveSection] = useState(() => {
+    return sessionStorage.getItem('activeSection') || 'home';
+  });
 
   const [listeners, setListeners] = useState(827);
-  const [selectedInterviewId, setSelectedInterviewId] = useState<number | null>(null);
+  const [selectedInterviewId, setSelectedInterviewId] = useState<number | null>(() => {
+    const saved = sessionStorage.getItem('selectedInterviewId');
+    return saved ? parseInt(saved) : null;
+  });
   const [searchQuery, setSearchQuery] = useState('');
   const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
   const [showInstallButton, setShowInstallButton] = useState(false);
@@ -408,6 +413,8 @@ export default function Index() {
             onClick={() => {
               setActiveSection('home');
               setSelectedInterviewId(null);
+              sessionStorage.setItem('activeSection', 'home');
+              sessionStorage.removeItem('selectedInterviewId');
               window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
@@ -420,6 +427,7 @@ export default function Index() {
           <button
             onClick={() => {
               setActiveSection('interviews');
+              sessionStorage.setItem('activeSection', 'interviews');
               window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
@@ -433,6 +441,8 @@ export default function Index() {
             onClick={() => {
               setActiveSection('contacts');
               setSelectedInterviewId(null);
+              sessionStorage.setItem('activeSection', 'contacts');
+              sessionStorage.removeItem('selectedInterviewId');
               window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
@@ -539,7 +549,10 @@ export default function Index() {
                       <p className="text-base text-foreground mb-3 font-medium">{interview.title}</p>
                       <p className="text-sm text-muted-foreground mb-4">{interview.excerpt}</p>
                       <Button 
-                        onClick={() => setSelectedInterviewId(interview.id)}
+                        onClick={() => {
+                          setSelectedInterviewId(interview.id);
+                          sessionStorage.setItem('selectedInterviewId', interview.id.toString());
+                        }}
                         className="w-full bg-primary hover:bg-primary/90 text-white"
                       >
                         <Icon name="BookOpen" size={18} className="mr-2" />
@@ -568,6 +581,7 @@ export default function Index() {
                         onClick={() => {
                           setSelectedInterviewId(null);
                           setSearchQuery('');
+                          sessionStorage.removeItem('selectedInterviewId');
                         }}
                         variant="ghost"
                         size="sm"
