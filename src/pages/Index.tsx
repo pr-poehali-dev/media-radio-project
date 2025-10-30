@@ -8,7 +8,7 @@ import AudioPlayer from '@/components/AudioPlayer';
 const interviews = [
   {
     id: 1,
-    artist: 'Catherine Flox',
+    artist: 'Zi Dron',
     title: 'Эксклюзивное интервью: о музыке, свободе и любви к картошке фри',
     date: '30 октября 2025',
     excerpt: 'Catherine Flox делится своим видением музыки, откровенно рассказывает о творческом пути и о том, что вдохновляет её создавать композиции.',
