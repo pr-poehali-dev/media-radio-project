@@ -179,6 +179,7 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
+  const [listenerCount, setListenerCount] = useState(713);
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [activeSection, setActiveSection] = useState(() => {
     return sessionStorage.getItem('activeSection') || 'home';
@@ -329,10 +330,10 @@ export default function Index() {
     const interval = setInterval(fetchCurrentTrack, 10000);
 
     const updateListeners = () => {
-      setListeners(prev => {
-        const change = Math.floor(Math.random() * 51) - 25;
-        const newValue = prev + change;
-        return Math.max(827, Math.min(1003, newValue));
+      setListenerCount(prev => {
+        const change = Math.random() > 0.5 ? 1 : -1;
+        const newCount = prev + change * Math.floor(Math.random() * 3);
+        return Math.max(713, Math.min(1003, newCount));
       });
     };
 
@@ -507,9 +508,46 @@ export default function Index() {
             
             <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30">
               <CardContent className="p-6">
-                <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137"></div>
-
-                <canvas className="my_visualizer w-full mb-4 mx-auto" width="400" height="80" data-size="32" data-revert="0" data-color="rgb" style={{ maxWidth: '400px', height: '80px' }}></canvas>
+                <div className="flex flex-col md:flex-row gap-6 items-start">
+                  <div className="flex-1 w-full">
+                    <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137"></div>
+                    <canvas className="my_visualizer w-full mb-4" width="400" height="80" data-size="32" data-revert="0" data-color="rgb" style={{ maxWidth: '400px', height: '80px' }}></canvas>
+                  </div>
+                  
+                  <div className="md:w-64 w-full bg-gradient-to-br from-primary/10 to-background border border-primary/30 rounded-xl p-4 space-y-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <div className="relative">
+                        <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                        <div className="absolute inset-0 w-3 h-3 bg-green-500 rounded-full animate-ping"></div>
+                      </div>
+                      <span className="text-sm font-bold text-foreground">В ЭФИРЕ</span>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-sm">
+                        <span className="text-muted-foreground">Слушателей:</span>
+                        <span className="text-lg font-bold text-primary">{listenerCount}</span>
+                      </div>
+                      
+                      <div className="h-px bg-border"></div>
+                      
+                      <div className="space-y-1.5 text-xs">
+                        <div className="flex items-center gap-2">
+                          <Icon name="Clock" size={14} className="text-primary" />
+                          <span className="text-muted-foreground">24/7 вещание</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon name="Music" size={14} className="text-primary" />
+                          <span className="text-muted-foreground">1000+ треков</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Icon name="Mic2" size={14} className="text-primary" />
+                          <span className="text-muted-foreground">100+ артистов</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
                 <div className="mt-4">
                   <p className="font-bold text-lg mb-3">Последние песни</p>
