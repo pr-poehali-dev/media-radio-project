@@ -527,7 +527,7 @@ export default function Index() {
                     </div>
                   </div>
                   
-                  <div className="md:w-80 w-full bg-gradient-to-br from-[#4a3832] via-[#3d2f2a] to-[#2d2420] border-2 border-primary/40 rounded-2xl p-6 space-y-4">
+                  <div className="md:w-80 w-full bg-gradient-to-br from-[#4a3832] via-[#3d2f2a] to-[#2d2420] border-2 border-black rounded-2xl p-6 space-y-4">
                     <div className="flex items-center gap-4">
                       <div className="w-20 h-20 bg-primary rounded-2xl flex items-center justify-center flex-shrink-0">
                         <Icon name="Radio" size={40} className="text-white" />
