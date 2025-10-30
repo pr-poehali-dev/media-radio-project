@@ -366,34 +366,14 @@ export default function Index() {
     const checkPlayerInterval = setInterval(() => {
       const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
       
-      if (audio) {
-        if (!playerInitialized.current) {
-          playerInitialized.current = true;
-          
-          audio.addEventListener('play', () => {
-            setIsPlaying(true);
-          });
-          
-          audio.addEventListener('pause', () => {
-            setIsPlaying(false);
-          });
-          
-          audio.addEventListener('playing', () => {
-            setIsPlaying(true);
-          });
-          
-          audio.addEventListener('ended', () => {
-            setIsPlaying(false);
-          });
-        }
+      if (audio && !playerInitialized.current) {
+        playerInitialized.current = true;
         
-        if (!audio.paused && audio.currentTime > 0) {
+        if (!audio.paused) {
           setIsPlaying(true);
-        } else if (audio.paused) {
-          setIsPlaying(false);
         }
       }
-    }, 500);
+    }, 300);
 
     return () => {
       clearInterval(interval);
@@ -656,30 +636,19 @@ export default function Index() {
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
               <button
                 onClick={() => {
-                  console.log('Button clicked! isPlaying:', isPlaying);
+                  setIsPlaying(!isPlaying);
                   
-                  const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
-                  console.log('Audio element found:', !!audio, 'paused:', audio?.paused);
-                  
-                  if (audio) {
-                    if (audio.paused) {
-                      console.log('Trying to play...');
-                      audio.play()
-                        .then(() => {
-                          console.log('Play successful');
-                          setIsPlaying(true);
-                        })
-                        .catch(err => {
-                          console.error('Play error:', err);
-                        });
-                    } else {
-                      console.log('Pausing...');
-                      audio.pause();
-                      setIsPlaying(false);
+                  setTimeout(() => {
+                    const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
+                    
+                    if (audio) {
+                      if (!isPlaying) {
+                        audio.play().catch(() => {});
+                      } else {
+                        audio.pause();
+                      }
                     }
-                  } else {
-                    console.error('Audio element not found!');
-                  }
+                  }, 100);
                 }}
                 className={`group relative w-20 h-20 rounded-full border-4 border-black shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${
                   isPlaying 
