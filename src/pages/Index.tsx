@@ -671,6 +671,26 @@ export default function Index() {
                     </div>
                   </div>
                 </div>
+                <style dangerouslySetInnerHTML={{__html: `
+                  .my_lastsongs > div:first-of-type {
+                    position: relative;
+                    padding-top: 24px !important;
+                    margin-bottom: 12px !important;
+                    padding-bottom: 12px !important;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                  }
+                  .my_lastsongs > div:first-of-type::before {
+                    content: 'Сейчас играет';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    font-size: 11px;
+                    font-weight: 600;
+                    color: #ff6b35;
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                  }
+                `}} />
               </CardContent>
             </Card>
 
