@@ -507,7 +507,7 @@ export default function Index() {
             
             <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30">
               <CardContent className="p-6">
-                <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137"></div>
+                <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137" style={{ display: 'none' }}></div>
 
                 <canvas className="my_visualizer w-full mb-4" width="500" height="128" data-size="64" data-revert="0" data-color="rgb"></canvas>
 
