@@ -194,14 +194,25 @@ export default function Index() {
   const [showInstallButton, setShowInstallButton] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const scrollPositionRestored = useRef(false);
 
   useEffect(() => {
+    const savedScrollPosition = sessionStorage.getItem('scrollPosition');
+    if (savedScrollPosition && !scrollPositionRestored.current) {
+      scrollPositionRestored.current = true;
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedScrollPosition));
+      }, 50);
+    }
+
     const hash = window.location.hash.slice(1);
     if (hash) {
       const interview = interviews.find(i => i.id === parseInt(hash));
       if (interview) {
         setActiveSection('interviews');
         setSelectedInterviewId(interview.id);
+        sessionStorage.setItem('activeSection', 'interviews');
+        sessionStorage.setItem('selectedInterviewId', interview.id.toString());
         setTimeout(() => {
           const element = document.getElementById(`interview-${hash}`);
           if (element) {
@@ -210,6 +221,13 @@ export default function Index() {
         }, 100);
       }
     }
+
+    const handleScroll = () => {
+      sessionStorage.setItem('scrollPosition', window.scrollY.toString());
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
@@ -415,6 +433,7 @@ export default function Index() {
               setSelectedInterviewId(null);
               sessionStorage.setItem('activeSection', 'home');
               sessionStorage.removeItem('selectedInterviewId');
+              sessionStorage.setItem('scrollPosition', '0');
               window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
@@ -428,6 +447,7 @@ export default function Index() {
             onClick={() => {
               setActiveSection('interviews');
               sessionStorage.setItem('activeSection', 'interviews');
+              sessionStorage.setItem('scrollPosition', '0');
               window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
@@ -443,6 +463,7 @@ export default function Index() {
               setSelectedInterviewId(null);
               sessionStorage.setItem('activeSection', 'contacts');
               sessionStorage.removeItem('selectedInterviewId');
+              sessionStorage.setItem('scrollPosition', '0');
               window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
