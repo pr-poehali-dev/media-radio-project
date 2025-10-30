@@ -636,19 +636,35 @@ export default function Index() {
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
               <button
                 onClick={() => {
-                  setIsPlaying(!isPlaying);
-                  
-                  setTimeout(() => {
-                    const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
+                  const findAndControlAudio = () => {
+                    const selectors = [
+                      '#my_player audio',
+                      '.my_player audio', 
+                      'audio[src*="myradio24"]',
+                      'audio[src*="54137"]',
+                      'audio'
+                    ];
                     
-                    if (audio) {
-                      if (!isPlaying) {
-                        audio.play().catch(() => {});
-                      } else {
-                        audio.pause();
+                    for (const selector of selectors) {
+                      const audio = document.querySelector(selector) as HTMLAudioElement;
+                      if (audio && audio.src) {
+                        if (isPlaying) {
+                          audio.pause();
+                          setIsPlaying(false);
+                        } else {
+                          audio.play()
+                            .then(() => setIsPlaying(true))
+                            .catch(() => setIsPlaying(false));
+                        }
+                        return true;
                       }
                     }
-                  }, 100);
+                    return false;
+                  };
+                  
+                  if (!findAndControlAudio()) {
+                    setTimeout(findAndControlAudio, 500);
+                  }
                 }}
                 className={`group relative w-20 h-20 rounded-full border-4 border-black shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${
                   isPlaying 
