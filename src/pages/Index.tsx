@@ -648,8 +648,15 @@ export default function Index() {
                       if (audioRef.current) {
                         if (isPlaying) {
                           audioRef.current.pause();
+                          setIsPlaying(false);
                         } else {
-                          audioRef.current.play().catch(() => setAudioError(true));
+                          audioRef.current.play().then(() => {
+                            setIsPlaying(true);
+                            setAudioError(false);
+                          }).catch(() => {
+                            setAudioError(true);
+                            setIsPlaying(false);
+                          });
                         }
                       }
                     }}
@@ -682,36 +689,11 @@ export default function Index() {
                       </p>
                     </div>
                     
-                    <p className={`text-xs font-medium mb-3 ${
+                    <p className={`text-xs font-medium ${
                       audioError ? 'text-red-200' : isPlaying ? 'text-green-200' : 'text-white/70'
                     }`}>
                       {audioError ? 'Переподключение...' : isPlaying ? 'В эфире' : 'Остановлено'}
                     </p>
-
-                    <div className="flex items-center gap-3">
-                      <Icon name="Volume2" size={16} className="text-white flex-shrink-0" />
-                      <input
-                        type="range"
-                        min="0"
-                        max="100"
-                        value={volume}
-                        onChange={(e) => {
-                          const newVolume = parseInt(e.target.value);
-                          setVolume(newVolume);
-                          if (audioRef.current) {
-                            audioRef.current.volume = newVolume / 100;
-                          }
-                        }}
-                        className="flex-1 h-2 bg-white/30 rounded-full appearance-none cursor-pointer
-                          [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 
-                          [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:cursor-pointer
-                          [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:transition-all [&::-webkit-slider-thumb]:hover:scale-110
-                          [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full 
-                          [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-0
-                          [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:transition-all [&::-moz-range-thumb]:hover:scale-110"
-                      />
-                      <span className="text-white text-xs font-bold w-8 text-right">{volume}%</span>
-                    </div>
                   </div>
                 </div>
               </div>
