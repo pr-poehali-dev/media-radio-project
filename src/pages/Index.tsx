@@ -652,38 +652,24 @@ export default function Index() {
               <div className="bg-gradient-to-r from-primary via-orange-500 to-primary border-2 border-black rounded-2xl shadow-2xl backdrop-blur-sm">
                 <button
                   onClick={() => {
-                    setTimeout(() => {
-                      const playerContainer = document.getElementById('my_player');
-                      console.log('Player container:', playerContainer);
-                      
-                      if (playerContainer) {
-                        const audio = playerContainer.querySelector('audio') as HTMLAudioElement;
-                        console.log('Audio element:', audio);
+                    const playerContainer = document.getElementById('my_player');
+                    const playButton = playerContainer?.querySelector('[class*="play"], [class*="pause"], button') as HTMLElement;
+                    
+                    if (playButton) {
+                      playButton.click();
+                    } else {
+                      setTimeout(() => {
+                        const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
                         
                         if (audio) {
-                          console.log('Audio paused:', audio.paused);
-                          if (!audio.paused) {
-                            audio.pause();
-                            console.log('Pausing...');
+                          if (audio.paused) {
+                            audio.play().catch(err => console.error('Play error:', err));
                           } else {
-                            const playPromise = audio.play();
-                            if (playPromise !== undefined) {
-                              playPromise
-                                .then(() => {
-                                  console.log('Playing...');
-                                })
-                                .catch(err => {
-                                  console.error('Play failed:', err);
-                                });
-                            }
+                            audio.pause();
                           }
-                        } else {
-                          console.error('Audio element not found in player container');
                         }
-                      } else {
-                        console.error('Player container #my_player not found');
-                      }
-                    }, 100);
+                      }, 200);
+                    }
                   }}
                   className="flex items-center gap-4 px-8 py-4 transition-all hover:scale-105 active:scale-95"
                 >
