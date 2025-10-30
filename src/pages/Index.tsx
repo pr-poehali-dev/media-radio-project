@@ -720,10 +720,12 @@ export default function Index() {
                   )}
                 </button>
 
-                <div className="flex items-center gap-2">
-                  <Icon name="Radio" size={14} className="text-white" />
-                  <p className="text-white font-bold text-xs whitespace-nowrap">
-                    КонтентМедиаPRO
+                <div className="flex flex-col gap-0.5 min-w-0 max-w-[200px]">
+                  <p className="text-white/70 text-[10px] leading-none">
+                    {trackInfo.artist}
+                  </p>
+                  <p className="text-white font-bold text-xs leading-none truncate">
+                    {trackInfo.title}
                   </p>
                 </div>
                 
