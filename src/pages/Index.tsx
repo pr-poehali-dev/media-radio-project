@@ -619,6 +619,31 @@ export default function Index() {
               </CardContent>
             </Card>
 
+            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
+              <div className="bg-gradient-to-r from-primary via-orange-500 to-primary border-2 border-black rounded-2xl shadow-2xl backdrop-blur-sm">
+                <button
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  className="flex items-center gap-4 px-8 py-4 transition-all hover:scale-105 active:scale-95"
+                >
+                  <div className="relative">
+                    {isPlaying ? (
+                      <Icon name="Pause" size={32} className="text-white" />
+                    ) : (
+                      <Icon name="Play" size={32} className="text-white" />
+                    )}
+                    <div className={`absolute -inset-1 bg-white/20 rounded-full ${isPlaying ? 'animate-ping' : ''}`}></div>
+                  </div>
+                  <div className="text-left">
+                    <p className="text-white font-bold text-lg">
+                      {isPlaying ? 'Сейчас играет' : 'Нажми для прослушивания'}
+                    </p>
+                    <p className="text-white/80 text-sm">
+                      {isPlaying ? 'Пауза' : 'Включить радио'}
+                    </p>
+                  </div>
+                </button>
+              </div>
+            </div>
 
           </div>
         )}
