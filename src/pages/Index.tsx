@@ -233,21 +233,31 @@ export default function Index() {
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
 
-    const fetchTrackInfo = async () => {
+    const fetchTrackInfo = () => {
       try {
-        const response = await fetch('https://functions.poehali.dev/bd23f8fb-a46d-42e0-ac9e-6ad3f03e9c5e');
-        const data = await response.json();
-        if (data.track) {
-          setCurrentTrack(data.track);
+        const widgetIframe = document.getElementById('myradio-widget') as HTMLIFrameElement;
+        if (widgetIframe && widgetIframe.contentWindow) {
+          const iframeDoc = widgetIframe.contentDocument || widgetIframe.contentWindow.document;
+          const trackElement = iframeDoc.querySelector('.track-title, .current-track, [class*="track"]');
+          
+          if (trackElement && trackElement.textContent) {
+            const trackText = trackElement.textContent.trim();
+            if (trackText && trackText !== '' && !trackText.includes('Loading')) {
+              setCurrentTrack(trackText);
+              return;
+            }
+          }
         }
       } catch (error) {
-        setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
+        console.log('Cannot access iframe content');
       }
+      
+      setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
     };
 
     if (isPlaying) {
-      fetchTrackInfo();
-      intervalId = setInterval(fetchTrackInfo, 10000);
+      setTimeout(fetchTrackInfo, 2000);
+      intervalId = setInterval(fetchTrackInfo, 5000);
     } else {
       setCurrentTrack('Загрузка...');
     }
@@ -1167,6 +1177,22 @@ export default function Index() {
         isPlaying={isPlaying}
         currentTrack={currentTrack}
         onTogglePlay={togglePlay}
+      />
+
+      <iframe 
+        id="myradio-widget"
+        src="https://myradio24.com/ru/set/54137"
+        style={{
+          position: 'absolute',
+          width: '1px',
+          height: '1px',
+          top: '-9999px',
+          left: '-9999px',
+          border: 'none',
+          visibility: 'hidden',
+          pointerEvents: 'none'
+        }}
+        title="MyRadio Widget"
       />
     </div>
   );
