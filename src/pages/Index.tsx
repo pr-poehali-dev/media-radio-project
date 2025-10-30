@@ -245,7 +245,28 @@ export default function Index() {
     
     document.body.appendChild(script);
     
+    const checkForAudioElements = () => {
+      const allAudios = document.querySelectorAll('audio');
+      allAudios.forEach(audio => {
+        const handlePlay = () => {
+          setIsPlaying(true);
+          audioRef.current = audio;
+        };
+        const handlePause = () => {
+          setIsPlaying(false);
+        };
+        
+        audio.addEventListener('play', handlePlay);
+        audio.addEventListener('pause', handlePause);
+        audio.addEventListener('ended', handlePause);
+      });
+    };
+    
+    const intervalId = setInterval(checkForAudioElements, 500);
+    setTimeout(() => clearInterval(intervalId), 5000);
+    
     return () => {
+      clearInterval(intervalId);
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
@@ -636,14 +657,18 @@ export default function Index() {
               <div className="bg-black/90 backdrop-blur-lg border-2 border-white/10 rounded-full shadow-xl px-4 py-2.5 flex items-center gap-3">
                 <button
                   onClick={() => {
-                    if (audioRef.current) {
+                    const allAudios = document.querySelectorAll('audio');
+                    const activeAudio = audioRef.current || Array.from(allAudios).find(a => !a.paused) || allAudios[0];
+                    
+                    if (activeAudio) {
                       if (isPlaying) {
-                        audioRef.current.pause();
+                        activeAudio.pause();
                         setIsPlaying(false);
                       } else {
-                        audioRef.current.play().then(() => {
+                        activeAudio.play().then(() => {
                           setIsPlaying(true);
                           setAudioError(false);
+                          audioRef.current = activeAudio;
                         }).catch(() => {
                           setAudioError(true);
                           setIsPlaying(false);
