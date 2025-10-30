@@ -1137,12 +1137,6 @@ export default function Index() {
           </div>
         )}
       </main>
-
-      <AudioPlayer 
-        isPlaying={isPlaying}
-        currentTrack={currentTrack}
-        onTogglePlay={togglePlay}
-      />
     </div>
   );
 }
