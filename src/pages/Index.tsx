@@ -512,18 +512,22 @@ export default function Index() {
                   <div className="flex-1 w-full flex flex-col items-center">
                     <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137"></div>
                     
-                    <div className="flex items-center justify-center gap-1.5 h-16 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-xl px-4 mb-4 w-full max-w-md">
-                      {[...Array(24)].map((_, i) => (
-                        <div
-                          key={i}
-                          className="w-1 bg-gradient-to-t from-primary to-primary/40 rounded-full animate-pulse"
-                          style={{
-                            height: `${20 + Math.random() * 40}%`,
-                            animationDelay: `${i * 0.1}s`,
-                            animationDuration: `${0.6 + Math.random() * 0.8}s`
-                          }}
-                        />
-                      ))}
+                    <div className="flex items-center justify-center gap-1.5 h-16 bg-gradient-to-r from-black via-zinc-900 to-black rounded-xl px-4 mb-4 w-full max-w-md border border-white/10">
+                      {[...Array(24)].map((_, i) => {
+                        const colors = ['from-primary to-orange-400', 'from-white to-zinc-300', 'from-black to-zinc-800'];
+                        const colorClass = colors[i % 3];
+                        return (
+                          <div
+                            key={i}
+                            className={`w-1 bg-gradient-to-t ${colorClass} rounded-full animate-pulse`}
+                            style={{
+                              height: `${20 + Math.random() * 40}%`,
+                              animationDelay: `${i * 0.1}s`,
+                              animationDuration: `${0.6 + Math.random() * 0.8}s`
+                            }}
+                          />
+                        );
+                      })}
                     </div>
                   </div>
                   
