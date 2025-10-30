@@ -509,7 +509,7 @@ export default function Index() {
               <CardContent className="p-6">
                 <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137"></div>
 
-                <canvas className="my_visualizer w-full mb-4" width="500" height="128" data-size="64" data-revert="0" data-color="rgb"></canvas>
+                <canvas className="my_visualizer w-full mb-4 mx-auto" width="400" height="80" data-size="32" data-revert="0" data-color="rgb" style={{ maxWidth: '400px', height: '80px' }}></canvas>
 
                 <div className="mt-4">
                   <p className="font-bold text-lg mb-3">Последние песни</p>
