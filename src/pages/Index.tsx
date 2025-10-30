@@ -640,11 +640,6 @@ export default function Index() {
                       </div>
                     </div>
                     
-                    <div>
-                      <p className="text-gray-400 text-sm mb-1">Сейчас играет:</p>
-                      <p className="text-white font-bold text-lg">{currentTrack}</p>
-                    </div>
-                    
                     <div className="h-px bg-primary/20"></div>
                     
                     <div className="grid grid-cols-3 gap-4 text-center">
