@@ -511,7 +511,20 @@ export default function Index() {
                 <div className="flex flex-col md:flex-row gap-6 items-start">
                   <div className="flex-1 w-full">
                     <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137"></div>
-                    <canvas className="my_visualizer w-full mb-4" width="400" height="80" data-size="32" data-revert="0" data-color="rgb" style={{ maxWidth: '400px', height: '80px' }}></canvas>
+                    
+                    <div className="flex items-center justify-center gap-1.5 h-16 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-xl px-4 mb-4">
+                      {[...Array(24)].map((_, i) => (
+                        <div
+                          key={i}
+                          className="w-1 bg-gradient-to-t from-primary to-primary/40 rounded-full animate-pulse"
+                          style={{
+                            height: `${20 + Math.random() * 40}%`,
+                            animationDelay: `${i * 0.1}s`,
+                            animationDuration: `${0.6 + Math.random() * 0.8}s`
+                          }}
+                        />
+                      ))}
+                    </div>
                   </div>
                   
                   <div className="md:w-64 w-full bg-gradient-to-br from-primary/10 to-background border border-primary/30 rounded-xl p-4 space-y-3">
