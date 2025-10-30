@@ -549,7 +549,7 @@ export default function Index() {
                     
                     <div>
                       <p className="text-gray-400 text-sm mb-1">Сейчас играет:</p>
-                      <p className="text-white font-bold text-lg">КонтентМедиаPRO - Прямой эфир</p>
+                      <p className="text-white font-bold text-lg">{currentTrack}</p>
                     </div>
                     
                     <div className="h-px bg-primary/20"></div>
