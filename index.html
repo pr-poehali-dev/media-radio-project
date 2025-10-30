@@ -37,11 +37,42 @@
       <script src="https://cdn.poehali.dev/intertnal/js/route-min.js"></script>
       <script src="https://cdn.poehali.dev/intertnal/js/inspector-min.js"></script>
       <script src="https://cdn.poehali.dev/intertnal/js/telemetry-min.js"></script>
+      
+      <style>
+        /* Hide MyRadio24 listeners counter */
+        .my_currentListeners,
+        .my_player .my_currentListeners,
+        #my_player .my_currentListeners,
+        [class*="currentListeners"],
+        [class*="listeners"],
+        span[class*="listener"],
+        div[class*="listener"] {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+        }
+      </style>
   </head>
 
 <body>
 <div id="root"></div>
 <script type="module" src="/src/main.tsx?v=672a91f"></script>
+<script>
+  // Aggressively hide listeners counter after page load
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      const hideListeners = () => {
+        document.querySelectorAll('[class*="listener"], [class*="Listener"]').forEach(el => {
+          el.style.display = 'none';
+          el.style.visibility = 'hidden';
+          el.style.opacity = '0';
+        });
+      };
+      hideListeners();
+      setInterval(hideListeners, 500);
+    }, 100);
+  });
+</script>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
