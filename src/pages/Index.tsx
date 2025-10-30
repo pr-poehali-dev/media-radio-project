@@ -634,62 +634,53 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
-              <div className="bg-gradient-to-br from-primary/95 via-orange-500/95 to-primary/95 backdrop-blur-xl border-2 border-black rounded-3xl shadow-2xl p-6">
-                <div className="flex items-center gap-6">
-                  <button
-                    onClick={() => {
-                      if (audioRef.current) {
-                        if (isPlaying) {
-                          audioRef.current.pause();
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+              <div className="bg-gradient-to-r from-primary via-orange-500 to-primary backdrop-blur-lg border-2 border-black/20 rounded-full shadow-xl px-4 py-2.5 flex items-center gap-3">
+                <button
+                  onClick={() => {
+                    if (audioRef.current) {
+                      if (isPlaying) {
+                        audioRef.current.pause();
+                        setIsPlaying(false);
+                      } else {
+                        audioRef.current.play().then(() => {
+                          setIsPlaying(true);
+                          setAudioError(false);
+                        }).catch(() => {
+                          setAudioError(true);
                           setIsPlaying(false);
-                        } else {
-                          audioRef.current.play().then(() => {
-                            setIsPlaying(true);
-                            setAudioError(false);
-                          }).catch(() => {
-                            setAudioError(true);
-                            setIsPlaying(false);
-                          });
-                        }
+                        });
                       }
-                    }}
-                    className={`relative w-16 h-16 rounded-full border-4 border-white shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 flex-shrink-0 ${
-                      isPlaying 
-                        ? 'bg-gradient-to-br from-red-500 to-red-700' 
-                        : 'bg-gradient-to-br from-green-500 to-green-700'
-                    }`}
-                  >
-                    {isPlaying ? (
-                      <div className="absolute inset-0 flex items-center justify-center gap-1">
-                        <div className="w-1.5 h-6 bg-white rounded-sm"></div>
-                        <div className="w-1.5 h-6 bg-white rounded-sm"></div>
-                      </div>
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <Icon name="Play" size={28} className="text-white ml-1" />
-                      </div>
-                    )}
-                    {isPlaying && (
-                      <div className="absolute -inset-1 bg-red-400/30 rounded-full animate-ping"></div>
-                    )}
-                  </button>
-
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-2">
-                      <Icon name="Radio" size={16} className="text-white" />
-                      <p className="text-white font-bold text-sm truncate">
-                        КонтентМедиаPRO Radio
-                      </p>
+                    }
+                  }}
+                  className={`relative w-10 h-10 rounded-full border-2 border-white/80 shadow-lg transition-all duration-300 hover:scale-110 active:scale-95 flex-shrink-0 ${
+                    isPlaying 
+                      ? 'bg-red-500' 
+                      : 'bg-green-500'
+                  }`}
+                >
+                  {isPlaying ? (
+                    <div className="absolute inset-0 flex items-center justify-center gap-0.5">
+                      <div className="w-1 h-4 bg-white rounded-sm"></div>
+                      <div className="w-1 h-4 bg-white rounded-sm"></div>
                     </div>
-                    
-                    <p className={`text-xs font-medium ${
-                      audioError ? 'text-red-200' : isPlaying ? 'text-green-200' : 'text-white/70'
-                    }`}>
-                      {audioError ? 'Переподключение...' : isPlaying ? 'В эфире' : 'Остановлено'}
-                    </p>
-                  </div>
+                  ) : (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Icon name="Play" size={18} className="text-white ml-0.5" />
+                    </div>
+                  )}
+                </button>
+
+                <div className="flex items-center gap-2">
+                  <Icon name="Radio" size={14} className="text-white" />
+                  <p className="text-white font-bold text-xs whitespace-nowrap">
+                    КонтентМедиаPRO
+                  </p>
                 </div>
+                
+                <div className={`w-2 h-2 rounded-full ${
+                  audioError ? 'bg-red-300' : isPlaying ? 'bg-green-300 animate-pulse' : 'bg-white/50'
+                }`}></div>
               </div>
             </div>
 
