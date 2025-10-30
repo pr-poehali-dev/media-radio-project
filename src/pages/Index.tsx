@@ -408,7 +408,7 @@ export default function Index() {
             onClick={() => {
               setActiveSection('home');
               setSelectedInterviewId(null);
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'home' ? 'text-primary' : 'text-muted-foreground'
@@ -420,7 +420,7 @@ export default function Index() {
           <button
             onClick={() => {
               setActiveSection('interviews');
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'interviews' ? 'text-primary' : 'text-muted-foreground'
@@ -433,7 +433,7 @@ export default function Index() {
             onClick={() => {
               setActiveSection('contacts');
               setSelectedInterviewId(null);
-              window.scrollTo({ top: 0, behavior: 'smooth' });
+              window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'contacts' ? 'text-primary' : 'text-muted-foreground'
