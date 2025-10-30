@@ -191,6 +191,23 @@ export default function Index() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      const interview = interviews.find(i => i.id === parseInt(hash));
+      if (interview) {
+        setActiveSection('interviews');
+        setSelectedInterviewId(interview.id);
+        setTimeout(() => {
+          const element = document.getElementById(`interview-${hash}`);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
     const clearAllCaches = async () => {
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations();
@@ -492,7 +509,8 @@ export default function Index() {
                 })
                 .map(interview => (
                   <Card 
-                    key={interview.id} 
+                    key={interview.id}
+                    id={`interview-${interview.id}`}
                     className="bg-card border-border overflow-hidden transition-shadow duration-300"
                   >
                     <div className="relative h-64 overflow-hidden bg-muted">
@@ -763,6 +781,36 @@ export default function Index() {
                                 <p className="text-sm font-bold text-foreground mb-1">🔥 Не пропусти новые хиты!</p>
                                 <p className="text-xs text-muted-foreground">Подписывайся на Пан Пантера — эксклюзивы, закулисье, премьеры треков</p>
                               </div>
+                            </div>
+                          </div>
+
+                          <div className="mt-4 p-3 bg-muted/30 border border-muted rounded-2xl">
+                            <div className="flex items-center gap-2">
+                              <Icon name="Link" size={16} className="text-muted-foreground" />
+                              <div className="flex-1">
+                                <p className="text-xs font-medium text-muted-foreground mb-1">Прямая ссылка на интервью:</p>
+                                <input 
+                                  type="text" 
+                                  readOnly 
+                                  value={`${window.location.origin}${window.location.pathname}#2`}
+                                  className="w-full text-xs bg-background border border-border rounded px-2 py-1 text-foreground"
+                                  onClick={(e) => {
+                                    (e.target as HTMLInputElement).select();
+                                    navigator.clipboard.writeText((e.target as HTMLInputElement).value);
+                                  }}
+                                />
+                              </div>
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => {
+                                  const url = `${window.location.origin}${window.location.pathname}#2`;
+                                  navigator.clipboard.writeText(url);
+                                }}
+                                className="flex-shrink-0"
+                              >
+                                <Icon name="Copy" size={14} />
+                              </Button>
                             </div>
                           </div>
                         </>
