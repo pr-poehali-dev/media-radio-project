@@ -509,10 +509,10 @@ export default function Index() {
             <Card className="bg-gradient-to-br from-primary/20 to-primary/5 border-primary/30">
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row gap-6 items-start">
-                  <div className="flex-1 w-full">
+                  <div className="flex-1 w-full flex flex-col items-center">
                     <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137"></div>
                     
-                    <div className="flex items-center justify-center gap-1.5 h-16 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-xl px-4 mb-4">
+                    <div className="flex items-center justify-center gap-1.5 h-16 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-xl px-4 mb-4 w-full max-w-md">
                       {[...Array(24)].map((_, i) => (
                         <div
                           key={i}
