@@ -623,15 +623,24 @@ export default function Index() {
               <div className="bg-gradient-to-r from-primary via-orange-500 to-primary border-2 border-black rounded-2xl shadow-2xl backdrop-blur-sm">
                 <button
                   onClick={() => {
-                    const player = document.querySelector('.my_player audio') as HTMLAudioElement;
+                    const playerContainer = document.getElementById('my_player');
+                    const player = playerContainer?.querySelector('audio') as HTMLAudioElement;
+                    
                     if (player) {
                       if (isPlaying) {
                         player.pause();
+                        setIsPlaying(false);
                       } else {
-                        player.play();
+                        player.play().then(() => {
+                          setIsPlaying(true);
+                        }).catch(err => {
+                          console.error('Play failed:', err);
+                          setIsPlaying(false);
+                        });
                       }
+                    } else {
+                      console.error('Player not found');
                     }
-                    setIsPlaying(!isPlaying);
                   }}
                   className="flex items-center gap-4 px-8 py-4 transition-all hover:scale-105 active:scale-95"
                 >
