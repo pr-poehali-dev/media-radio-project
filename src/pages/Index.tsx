@@ -350,7 +350,9 @@ export default function Index() {
           cache: 'no-store'
         });
         const data = await response.json();
-        if (data && data.track) {
+        
+        if (data && data.track && data.track !== 'КонтентМедиаPRO - Прямой эфир') {
+          console.log('Fetched track:', data.track);
           setCurrentTrack(data.track);
           const parts = data.track.split(' - ');
           setTrackInfo({
@@ -359,6 +361,7 @@ export default function Index() {
             cover: data.cover || 'https://cdn.poehali.dev/files/125c8ebe-bdaf-427c-8fb8-f11824ba2f00.jpg'
           });
         } else {
+          console.log('Using default track info');
           setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
           setTrackInfo({
             artist: 'КонтентМедиаPRO',
@@ -379,6 +382,28 @@ export default function Index() {
 
     fetchCurrentTrack();
     const interval = setInterval(fetchCurrentTrack, 10000);
+    
+    const checkMyRadio24Data = () => {
+      const myRadioElements = document.querySelectorAll('[data-radio="54137"]');
+      console.log('MyRadio24 elements found:', myRadioElements.length);
+      
+      if ((window as any).myradio24_song) {
+        const song = (window as any).myradio24_song;
+        console.log('MyRadio24 global song:', song);
+        if (song && song !== currentTrack) {
+          setCurrentTrack(song);
+          const parts = song.split(' - ');
+          setTrackInfo({
+            artist: parts[0] || 'КонтентМедиаPRO',
+            title: parts[1] || 'Прямой эфир',
+            cover: 'https://cdn.poehali.dev/files/125c8ebe-bdaf-427c-8fb8-f11824ba2f00.jpg'
+          });
+        }
+      }
+    };
+    
+    const myRadioInterval = setInterval(checkMyRadio24Data, 3000);
+    setTimeout(checkMyRadio24Data, 1000);
 
     const updateListeners = () => {
       setListenerCount(prev => {
@@ -401,6 +426,7 @@ export default function Index() {
     return () => {
       clearInterval(interval);
       clearInterval(listenersInterval);
+      clearInterval(myRadioInterval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('scroll', handleScroll);
     };
