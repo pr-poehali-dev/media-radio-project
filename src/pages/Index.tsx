@@ -231,6 +231,33 @@ export default function Index() {
   }, []);
 
   useEffect(() => {
+    let intervalId: NodeJS.Timeout;
+
+    const fetchTrackInfo = async () => {
+      try {
+        const response = await fetch('https://functions.poehali.dev/bd23f8fb-a46d-42e0-ac9e-6ad3f03e9c5e');
+        const data = await response.json();
+        if (data.track) {
+          setCurrentTrack(data.track);
+        }
+      } catch (error) {
+        setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
+      }
+    };
+
+    if (isPlaying) {
+      fetchTrackInfo();
+      intervalId = setInterval(fetchTrackInfo, 10000);
+    } else {
+      setCurrentTrack('Загрузка...');
+    }
+
+    return () => {
+      if (intervalId) clearInterval(intervalId);
+    };
+  }, [isPlaying]);
+
+  useEffect(() => {
     const clearAllCaches = async () => {
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations();
