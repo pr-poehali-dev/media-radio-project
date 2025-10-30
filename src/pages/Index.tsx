@@ -649,48 +649,47 @@ export default function Index() {
             </Card>
 
             <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
-              <div className="bg-gradient-to-r from-primary via-orange-500 to-primary border-2 border-black rounded-2xl shadow-2xl backdrop-blur-sm">
-                <button
-                  onClick={() => {
-                    const playerContainer = document.getElementById('my_player');
-                    const playButton = playerContainer?.querySelector('[class*="play"], [class*="pause"], button') as HTMLElement;
-                    
-                    if (playButton) {
-                      playButton.click();
-                    } else {
-                      setTimeout(() => {
-                        const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
-                        
-                        if (audio) {
-                          if (audio.paused) {
-                            audio.play().catch(err => console.error('Play error:', err));
-                          } else {
-                            audio.pause();
-                          }
+              <button
+                onClick={() => {
+                  const playerContainer = document.getElementById('my_player');
+                  const playButton = playerContainer?.querySelector('[class*="play"], [class*="pause"], button') as HTMLElement;
+                  
+                  if (playButton) {
+                    playButton.click();
+                  } else {
+                    setTimeout(() => {
+                      const audio = document.querySelector('#my_player audio, .my_player audio, audio[src*="myradio24"]') as HTMLAudioElement;
+                      
+                      if (audio) {
+                        if (audio.paused) {
+                          audio.play().catch(err => console.error('Play error:', err));
+                        } else {
+                          audio.pause();
                         }
-                      }, 200);
-                    }
-                  }}
-                  className="flex items-center gap-4 px-8 py-4 transition-all hover:scale-105 active:scale-95"
-                >
-                  <div className="relative">
-                    {isPlaying ? (
-                      <Icon name="Pause" size={32} className="text-white" />
-                    ) : (
-                      <Icon name="Play" size={32} className="text-white" />
-                    )}
-                    <div className={`absolute -inset-1 bg-white/20 rounded-full ${isPlaying ? 'animate-ping' : ''}`}></div>
+                      }
+                    }, 200);
+                  }
+                }}
+                className={`group relative w-20 h-20 rounded-full border-4 border-black shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 ${
+                  isPlaying 
+                    ? 'bg-gradient-to-br from-red-500 to-red-700' 
+                    : 'bg-gradient-to-br from-primary via-orange-500 to-primary'
+                }`}
+              >
+                <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                {isPlaying ? (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-6 h-6 bg-white rounded-sm"></div>
                   </div>
-                  <div className="text-left">
-                    <p className="text-white font-bold text-lg">
-                      {isPlaying ? 'Сейчас играет' : 'Нажми для прослушивания'}
-                    </p>
-                    <p className="text-white/80 text-sm">
-                      {isPlaying ? 'Пауза' : 'Включить радио'}
-                    </p>
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Icon name="Play" size={36} className="text-white ml-1" />
                   </div>
-                </button>
-              </div>
+                )}
+                {isPlaying && (
+                  <div className="absolute -inset-1 bg-red-400/30 rounded-full animate-ping"></div>
+                )}
+              </button>
             </div>
 
           </div>
