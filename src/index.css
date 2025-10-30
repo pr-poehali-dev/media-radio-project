@@ -58,6 +58,10 @@
   }
 }
 
+.my_player .my_currentListeners {
+  display: none !important;
+}
+
 /* Minimize poehali.dev branding */
 body a[href*="poehali"],
 body div a[href*="poehali"],
