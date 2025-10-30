@@ -498,8 +498,6 @@ export default function Index() {
             onClick={() => {
               setActiveSection('interviews');
               sessionStorage.setItem('activeSection', 'interviews');
-              sessionStorage.setItem('scrollPosition', '0');
-              window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'interviews' ? 'text-primary' : 'text-muted-foreground'
