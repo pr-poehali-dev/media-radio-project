@@ -197,6 +197,8 @@ export default function Index() {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const scrollPositionRestored = useRef(false);
+  const [volume, setVolume] = useState(70);
+  const [audioError, setAudioError] = useState(false);
 
   useEffect(() => {
     const savedScrollPosition = sessionStorage.getItem('scrollPosition');
@@ -287,26 +289,43 @@ export default function Index() {
       audioRef.current = new Audio('https://myradio24.org/54137');
       audioRef.current.preload = 'metadata';
       audioRef.current.crossOrigin = 'anonymous';
+      audioRef.current.volume = volume / 100;
+      
+      audioRef.current.addEventListener('play', () => {
+        setIsPlaying(true);
+        setAudioError(false);
+      });
+      
+      audioRef.current.addEventListener('pause', () => {
+        setIsPlaying(false);
+      });
       
       audioRef.current.addEventListener('ended', () => {
         audioRef.current?.play();
       });
       
       audioRef.current.addEventListener('stalled', () => {
+        setAudioError(true);
         audioRef.current?.load();
         if (isPlaying) {
           audioRef.current?.play();
         }
       });
       
-      audioRef.current.addEventListener('error', (e) => {
-        console.error('Audio error:', e);
+      audioRef.current.addEventListener('error', () => {
+        setAudioError(true);
         setTimeout(() => {
           if (isPlaying) {
             audioRef.current?.load();
             audioRef.current?.play();
           }
         }, 1000);
+      });
+      
+      audioRef.current.play().then(() => {
+        setIsPlaying(true);
+      }).catch(() => {
+        setIsPlaying(false);
       });
     }
 
@@ -621,7 +640,82 @@ export default function Index() {
               </CardContent>
             </Card>
 
+            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-md px-4">
+              <div className="bg-gradient-to-br from-primary/95 via-orange-500/95 to-primary/95 backdrop-blur-xl border-2 border-black rounded-3xl shadow-2xl p-6">
+                <div className="flex items-center gap-6">
+                  <button
+                    onClick={() => {
+                      if (audioRef.current) {
+                        if (isPlaying) {
+                          audioRef.current.pause();
+                        } else {
+                          audioRef.current.play().catch(() => setAudioError(true));
+                        }
+                      }
+                    }}
+                    className={`relative w-16 h-16 rounded-full border-4 border-white shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 flex-shrink-0 ${
+                      isPlaying 
+                        ? 'bg-gradient-to-br from-red-500 to-red-700' 
+                        : 'bg-gradient-to-br from-green-500 to-green-700'
+                    }`}
+                  >
+                    {isPlaying ? (
+                      <div className="absolute inset-0 flex items-center justify-center gap-1">
+                        <div className="w-1.5 h-6 bg-white rounded-sm"></div>
+                        <div className="w-1.5 h-6 bg-white rounded-sm"></div>
+                      </div>
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <Icon name="Play" size={28} className="text-white ml-1" />
+                      </div>
+                    )}
+                    {isPlaying && (
+                      <div className="absolute -inset-1 bg-red-400/30 rounded-full animate-ping"></div>
+                    )}
+                  </button>
 
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Icon name="Radio" size={16} className="text-white" />
+                      <p className="text-white font-bold text-sm truncate">
+                        КонтентМедиаPRO Radio
+                      </p>
+                    </div>
+                    
+                    <p className={`text-xs font-medium mb-3 ${
+                      audioError ? 'text-red-200' : isPlaying ? 'text-green-200' : 'text-white/70'
+                    }`}>
+                      {audioError ? 'Переподключение...' : isPlaying ? 'В эфире' : 'Остановлено'}
+                    </p>
+
+                    <div className="flex items-center gap-3">
+                      <Icon name="Volume2" size={16} className="text-white flex-shrink-0" />
+                      <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={volume}
+                        onChange={(e) => {
+                          const newVolume = parseInt(e.target.value);
+                          setVolume(newVolume);
+                          if (audioRef.current) {
+                            audioRef.current.volume = newVolume / 100;
+                          }
+                        }}
+                        className="flex-1 h-2 bg-white/30 rounded-full appearance-none cursor-pointer
+                          [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:h-4 
+                          [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:cursor-pointer
+                          [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:transition-all [&::-webkit-slider-thumb]:hover:scale-110
+                          [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:rounded-full 
+                          [&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:cursor-pointer [&::-moz-range-thumb]:border-0
+                          [&::-moz-range-thumb]:shadow-lg [&::-moz-range-thumb]:transition-all [&::-moz-range-thumb]:hover:scale-110"
+                      />
+                      <span className="text-white text-xs font-bold w-8 text-right">{volume}%</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
           </div>
         )}
