@@ -181,6 +181,7 @@ export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [listenerCount, setListenerCount] = useState(713);
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
+  const [trackInfo, setTrackInfo] = useState({ artist: '', title: '', cover: '' });
   const [activeSection, setActiveSection] = useState(() => {
     return sessionStorage.getItem('activeSection') || 'home';
   });
@@ -317,12 +318,28 @@ export default function Index() {
         const data = await response.json();
         if (data && data.track) {
           setCurrentTrack(data.track);
+          const parts = data.track.split(' - ');
+          setTrackInfo({
+            artist: parts[0] || 'КонтентМедиаPRO',
+            title: parts[1] || 'Прямой эфир',
+            cover: data.cover || 'https://cdn.poehali.dev/files/125c8ebe-bdaf-427c-8fb8-f11824ba2f00.jpg'
+          });
         } else {
           setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
+          setTrackInfo({
+            artist: 'КонтентМедиаPRO',
+            title: 'Прямой эфир',
+            cover: 'https://cdn.poehali.dev/files/125c8ebe-bdaf-427c-8fb8-f11824ba2f00.jpg'
+          });
         }
       } catch (error) {
         console.error('Failed to fetch track info:', error);
         setCurrentTrack('КонтентМедиаPRO - Прямой эфир');
+        setTrackInfo({
+          artist: 'КонтентМедиаPRO',
+          title: 'Прямой эфир',
+          cover: 'https://cdn.poehali.dev/files/125c8ebe-bdaf-427c-8fb8-f11824ba2f00.jpg'
+        });
       }
     };
 
@@ -510,7 +527,19 @@ export default function Index() {
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row gap-6 items-start">
                   <div className="flex-1 w-full flex flex-col items-center">
-                    <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137"></div>
+                    <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137" style={{ display: 'none' }}></div>
+                    
+                    <div className="flex items-center gap-4 bg-gradient-to-br from-primary/10 to-background border border-primary/20 rounded-2xl p-4 mb-4 w-full max-w-md">
+                      <img 
+                        src={trackInfo.cover} 
+                        alt="Cover" 
+                        className="w-20 h-20 rounded-xl object-cover flex-shrink-0"
+                      />
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm text-primary font-semibold truncate">{trackInfo.artist}</p>
+                        <p className="text-lg font-bold text-foreground truncate">{trackInfo.title}</p>
+                      </div>
+                    </div>
                     
                     <div className="flex items-center justify-center gap-1.5 h-16 rounded-xl px-4 mb-4 w-full max-w-md">
                       {[...Array(24)].map((_, i) => {
