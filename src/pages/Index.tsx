@@ -408,6 +408,7 @@ export default function Index() {
             onClick={() => {
               setActiveSection('home');
               setSelectedInterviewId(null);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'home' ? 'text-primary' : 'text-muted-foreground'
@@ -417,7 +418,10 @@ export default function Index() {
             <span className="text-xs font-medium">Радио</span>
           </button>
           <button
-            onClick={() => setActiveSection('interviews')}
+            onClick={() => {
+              setActiveSection('interviews');
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'interviews' ? 'text-primary' : 'text-muted-foreground'
             }`}
@@ -429,6 +433,7 @@ export default function Index() {
             onClick={() => {
               setActiveSection('contacts');
               setSelectedInterviewId(null);
+              window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'contacts' ? 'text-primary' : 'text-muted-foreground'
