@@ -544,7 +544,11 @@ export default function Index() {
           <button
             onClick={() => {
               setActiveSection('interviews');
+              setSelectedInterviewId(null);
               sessionStorage.setItem('activeSection', 'interviews');
+              sessionStorage.removeItem('selectedInterviewId');
+              sessionStorage.removeItem('interviewListScrollPosition');
+              window.scrollTo(0, 0);
             }}
             className={`flex flex-col items-center gap-1 py-3 px-4 ${
               activeSection === 'interviews' ? 'text-primary' : 'text-muted-foreground'
@@ -1271,7 +1275,13 @@ export default function Index() {
                           onClick={() => {
                             setSelectedInterviewId(null);
                             setSearchQuery('');
-                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                            sessionStorage.removeItem('selectedInterviewId');
+                            setTimeout(() => {
+                              const savedPosition = sessionStorage.getItem('interviewListScrollPosition');
+                              if (savedPosition) {
+                                window.scrollTo(0, parseInt(savedPosition));
+                              }
+                            }, 0);
                           }}
                           className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-white shadow-md"
                           size="lg"
