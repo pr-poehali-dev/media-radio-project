@@ -527,7 +527,7 @@ export default function Index() {
               <CardContent className="p-6">
                 <div className="flex flex-col md:flex-row gap-6 items-start">
                   <div className="flex-1 w-full flex flex-col items-center">
-                    <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="0" data-volume="70" data-streamurl="https://myradio24.org/54137" style={{ display: 'none' }}></div>
+                    <div id="my_player" className="my_player mb-4" data-player="energy" data-skin="blue" data-width="200" data-autoplay="1" data-volume="70" data-streamurl="https://myradio24.org/54137" style={{ display: 'none' }}></div>
                     
                     <div className="flex items-center gap-4 bg-gradient-to-br from-primary/10 to-background border-2 border-black rounded-2xl p-4 mb-4 w-full max-w-md">
                       <img 
@@ -619,50 +619,6 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50">
-              <div className="bg-gradient-to-r from-primary via-orange-500 to-primary border-2 border-black rounded-2xl shadow-2xl backdrop-blur-sm">
-                <button
-                  onClick={() => {
-                    const playerContainer = document.getElementById('my_player');
-                    const player = playerContainer?.querySelector('audio') as HTMLAudioElement;
-                    
-                    if (player) {
-                      if (isPlaying) {
-                        player.pause();
-                        setIsPlaying(false);
-                      } else {
-                        player.play().then(() => {
-                          setIsPlaying(true);
-                        }).catch(err => {
-                          console.error('Play failed:', err);
-                          setIsPlaying(false);
-                        });
-                      }
-                    } else {
-                      console.error('Player not found');
-                    }
-                  }}
-                  className="flex items-center gap-4 px-8 py-4 transition-all hover:scale-105 active:scale-95"
-                >
-                  <div className="relative">
-                    {isPlaying ? (
-                      <Icon name="Pause" size={32} className="text-white" />
-                    ) : (
-                      <Icon name="Play" size={32} className="text-white" />
-                    )}
-                    <div className={`absolute -inset-1 bg-white/20 rounded-full ${isPlaying ? 'animate-ping' : ''}`}></div>
-                  </div>
-                  <div className="text-left">
-                    <p className="text-white font-bold text-lg">
-                      {isPlaying ? 'Сейчас играет' : 'Нажми для прослушивания'}
-                    </p>
-                    <p className="text-white/80 text-sm">
-                      {isPlaying ? 'Пауза' : 'Включить радио'}
-                    </p>
-                  </div>
-                </button>
-              </div>
-            </div>
 
           </div>
         )}
