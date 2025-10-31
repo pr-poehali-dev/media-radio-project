@@ -14,6 +14,7 @@ const interviews = [
     excerpt: 'Catherine Flox делится своим видением музыки, откровенно рассказывает о творческом пути и о том, что вдохновляет её создавать композиции.',
     image: 'https://cdn.poehali.dev/files/3d89c3c9-2e7e-4e59-b3df-c9d1b93ee86b.jpg',
     vkLink: 'https://vk.com/catherineflox',
+    publishedAt: new Date('2025-10-30T12:00:00'),
     images: [
       'https://cdn.poehali.dev/files/3d89c3c9-2e7e-4e59-b3df-c9d1b93ee86b.jpg',
       'https://cdn.poehali.dev/files/aae19a93-47e9-4273-a5bb-5eadc7a784b0.jpg',
@@ -80,6 +81,7 @@ Catherine Flox: о музыке, свободе и любви к картошк�
     image: 'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg',
     vkLink: 'https://vk.com/pannpanter',
     yandexMusic: 'https://music.yandex.ru/iframe/album/38582527/track/143848317',
+    publishedAt: new Date('2025-10-30T12:00:00'),
     images: [
       'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg'
     ],
@@ -120,6 +122,7 @@ Catherine Flox: о музыке, свободе и любви к картошк�
     image: 'https://cdn.poehali.dev/files/24e14799-cdb1-42fa-983a-5b5234a1e6ca.jpg',
     vkLink: 'https://m.vk.com/harcorerap',
     yandexMusic: 'https://music.yandex.ru/iframe/album/36666533/track/139256845',
+    publishedAt: new Date('2025-10-28T12:00:00'),
     images: [
       'https://cdn.poehali.dev/files/24e14799-cdb1-42fa-983a-5b5234a1e6ca.jpg',
       'https://cdn.poehali.dev/files/d533f998-e174-4d41-867b-6c0c6691d01e.jpg',
@@ -199,6 +202,18 @@ export default function Index() {
   const scrollPositionRestored = useRef(false);
   const [volume, setVolume] = useState(70);
   const [audioError, setAudioError] = useState(false);
+  
+  const [interviewViews, setInterviewViews] = useState<Record<number, number>>(() => {
+    const saved = localStorage.getItem('interviewViews');
+    if (saved) return JSON.parse(saved);
+    
+    const initialViews: Record<number, number> = {};
+    interviews.forEach(interview => {
+      const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
+      initialViews[interview.id] = 100 + Math.floor(hoursSincePublish * 20);
+    });
+    return initialViews;
+  });
 
   useEffect(() => {
     const savedScrollPosition = sessionStorage.getItem('scrollPosition');
@@ -432,11 +447,22 @@ export default function Index() {
 
     window.addEventListener('scroll', handleScroll);
 
-
+    const viewsInterval = setInterval(() => {
+      setInterviewViews(prev => {
+        const updated: Record<number, number> = {};
+        interviews.forEach(interview => {
+          const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
+          updated[interview.id] = 100 + Math.floor(hoursSincePublish * 20);
+        });
+        localStorage.setItem('interviewViews', JSON.stringify(updated));
+        return updated;
+      });
+    }, 60000);
 
     return () => {
       clearInterval(interval);
       clearInterval(myRadioInterval);
+      clearInterval(viewsInterval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('scroll', handleScroll);
     };
@@ -882,10 +908,16 @@ export default function Index() {
                         <Icon name="ArrowLeft" size={16} className="mr-2" />
                         Назад
                       </Button>
-                      <Badge className="mb-3 bg-primary/10 text-primary border-primary/20 text-xs">
-                        <Icon name="Calendar" size={12} className="mr-1" />
-                        {interview.date}
-                      </Badge>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Badge className="bg-primary/10 text-primary border-primary/20 text-xs">
+                          <Icon name="Calendar" size={12} className="mr-1" />
+                          {interview.date}
+                        </Badge>
+                        <Badge className="bg-muted/50 text-muted-foreground border-muted text-xs">
+                          <Icon name="Eye" size={12} className="mr-1" />
+                          {interviewViews[interview.id]?.toLocaleString() || '100'} просмотров
+                        </Badge>
+                      </div>
                       <h3 className="text-2xl font-bold mb-2">{interview.artist}</h3>
                       <p className="text-lg text-foreground mb-4 font-medium">{interview.title}</p>
                       <div className="prose prose-sm max-w-none">
