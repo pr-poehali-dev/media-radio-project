@@ -413,7 +413,11 @@ export default function Index() {
       });
     };
 
-    const listenersInterval = setInterval(updateListeners, 3000 + Math.random() * 2000);
+    setTimeout(updateListeners, 2000);
+    
+    const listenersInterval = setInterval(() => {
+      updateListeners();
+    }, 3000 + Math.random() * 2000);
 
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
