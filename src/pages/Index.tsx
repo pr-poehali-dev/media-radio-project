@@ -438,11 +438,11 @@ export default function Index() {
     setTimeout(checkMyRadio24Data, 1000);
 
     const scheduleNextUpdate = () => {
-      const delay = 3000 + Math.random() * 2000;
+      const delay = 10000 + Math.random() * 10000;
       setTimeout(() => {
         setListenerCount(prev => {
           const change = Math.random() > 0.5 ? 1 : -1;
-          const newCount = prev + change * (5 + Math.floor(Math.random() * 6));
+          const newCount = prev + change * (1 + Math.floor(Math.random() * 3));
           return Math.max(653, Math.min(1034, newCount));
         });
         scheduleNextUpdate();
@@ -452,11 +452,11 @@ export default function Index() {
     setTimeout(() => {
       setListenerCount(prev => {
         const change = Math.random() > 0.5 ? 1 : -1;
-        const newCount = prev + change * (5 + Math.floor(Math.random() * 6));
+        const newCount = prev + change * (1 + Math.floor(Math.random() * 3));
         return Math.max(653, Math.min(1034, newCount));
       });
       scheduleNextUpdate();
-    }, 2000);
+    }, 10000 + Math.random() * 10000);
 
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
