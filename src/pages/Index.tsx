@@ -185,9 +185,7 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [listenerCount, setListenerCount] = useState(() => {
-    return 613 + Math.floor(Math.random() * (702 - 613 + 1));
-  });
+  const [listenerCount, setListenerCount] = useState(650);
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [trackInfo, setTrackInfo] = useState({ artist: '', title: '', cover: '' });
   const [activeSection, setActiveSection] = useState(() => {
@@ -437,26 +435,20 @@ export default function Index() {
     const myRadioInterval = setInterval(checkMyRadio24Data, 3000);
     setTimeout(checkMyRadio24Data, 1000);
 
-    const scheduleNextUpdate = () => {
-      const delay = 10000 + Math.random() * 10000;
-      setTimeout(() => {
-        setListenerCount(prev => {
-          const change = Math.random() > 0.5 ? 1 : -1;
-          const newCount = prev + change * (1 + Math.floor(Math.random() * 3));
-          return Math.max(613, Math.min(702, newCount));
-        });
-        scheduleNextUpdate();
-      }, delay);
+    const fetchListenerCount = async () => {
+      try {
+        const response = await fetch('https://functions.poehali.dev/0163cd97-e927-4aeb-ae86-d56d91c071cc');
+        if (response.ok) {
+          const data = await response.json();
+          setListenerCount(data.count);
+        }
+      } catch (error) {
+        console.error('Failed to fetch listener count:', error);
+      }
     };
 
-    setTimeout(() => {
-      setListenerCount(prev => {
-        const change = Math.random() > 0.5 ? 1 : -1;
-        const newCount = prev + change * (1 + Math.floor(Math.random() * 3));
-        return Math.max(613, Math.min(702, newCount));
-      });
-      scheduleNextUpdate();
-    }, 10000 + Math.random() * 10000);
+    fetchListenerCount();
+    const listenerInterval = setInterval(fetchListenerCount, 5000);
 
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
@@ -479,6 +471,7 @@ export default function Index() {
       clearInterval(interval);
       clearInterval(myRadioInterval);
       clearInterval(viewsInterval);
+      clearInterval(listenerInterval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('scroll', handleScroll);
     };
