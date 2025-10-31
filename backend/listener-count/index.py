@@ -71,13 +71,13 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             
             if time_since_last_change >= next_change_delay:
                 change_direction = 1 if random.random() > 0.5 else -1
-                change_amount = random.randint(1, 4)
+                change_amount = random.randint(5, 6)
                 
                 count = count + (change_direction * change_amount)
                 count = max(613, min(702, count))
                 
                 last_change = current_time
-                next_change_delay = random.uniform(8, 25)
+                next_change_delay = random.uniform(10, 20)
                 
                 cursor.execute(
                     "UPDATE t_p37980721_media_radio_project.listener_state SET count = %s, last_change = %s, next_change_delay = %s WHERE id = 1",
@@ -85,10 +85,7 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
                 )
                 conn.commit()
         
-        time_offset = (current_time - base_time) / 300
-        natural_variation = math.sin(time_offset) * 2
-        display_count = int(count + natural_variation)
-        display_count = max(613, min(702, display_count))
+        display_count = count
         
         time_since_last_change = current_time - last_change
         
