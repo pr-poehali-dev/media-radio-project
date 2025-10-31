@@ -186,7 +186,7 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [listenerCount, setListenerCount] = useState(() => {
-    return 653 + Math.floor(Math.random() * (1034 - 653 + 1));
+    return 613 + Math.floor(Math.random() * (702 - 613 + 1));
   });
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [trackInfo, setTrackInfo] = useState({ artist: '', title: '', cover: '' });
@@ -443,7 +443,7 @@ export default function Index() {
         setListenerCount(prev => {
           const change = Math.random() > 0.5 ? 1 : -1;
           const newCount = prev + change * (1 + Math.floor(Math.random() * 3));
-          return Math.max(653, Math.min(1034, newCount));
+          return Math.max(613, Math.min(702, newCount));
         });
         scheduleNextUpdate();
       }, delay);
@@ -453,7 +453,7 @@ export default function Index() {
       setListenerCount(prev => {
         const change = Math.random() > 0.5 ? 1 : -1;
         const newCount = prev + change * (1 + Math.floor(Math.random() * 3));
-        return Math.max(653, Math.min(1034, newCount));
+        return Math.max(613, Math.min(702, newCount));
       });
       scheduleNextUpdate();
     }, 10000 + Math.random() * 10000);
