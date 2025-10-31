@@ -410,7 +410,7 @@ export default function Index() {
       setTimeout(() => {
         setListenerCount(prev => {
           const change = Math.random() > 0.5 ? 1 : -1;
-          const newCount = prev + change * Math.floor(Math.random() * 3);
+          const newCount = prev + change * (5 + Math.floor(Math.random() * 6));
           return Math.max(713, Math.min(1003, newCount));
         });
         scheduleNextUpdate();
@@ -420,7 +420,7 @@ export default function Index() {
     setTimeout(() => {
       setListenerCount(prev => {
         const change = Math.random() > 0.5 ? 1 : -1;
-        const newCount = prev + change * Math.floor(Math.random() * 3);
+        const newCount = prev + change * (5 + Math.floor(Math.random() * 6));
         return Math.max(713, Math.min(1003, newCount));
       });
       scheduleNextUpdate();
