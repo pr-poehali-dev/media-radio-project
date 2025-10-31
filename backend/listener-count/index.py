@@ -10,14 +10,14 @@ import random
 import math
 from typing import Dict, Any
 
-# Seeded random based on day to ensure same starting number for everyone each day
-def get_daily_seed():
-    # Use current day as seed so it changes daily but stays consistent during the day
-    current_day = int(time.time() // 86400)  # Days since epoch
-    return current_day
+# Seeded random based on 2-hour period to ensure same starting number for everyone
+def get_period_seed():
+    # Use current 2-hour period as seed (changes every 2 hours)
+    current_period = int(time.time() // 7200)  # 2-hour periods since epoch
+    return current_period
 
-# Initialize with daily seed
-random.seed(get_daily_seed())
+# Initialize with period seed
+random.seed(get_period_seed())
 initial_count = random.randint(613, 702)
 random.seed()  # Reset to random seed for subsequent changes
 
@@ -27,7 +27,8 @@ _state = {
     'base_time': time.time(),
     'last_change': time.time(),
     'next_change_delay': random.uniform(8, 25),
-    'initialized': False
+    'initialized': False,
+    'current_period': get_period_seed()
 }
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
@@ -49,15 +50,16 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     if method == 'GET':
         current_time = time.time()
         
-        # Re-initialize count if it's a new day
-        if not _state['initialized']:
-            current_seed = get_daily_seed()
-            random.seed(current_seed)
+        # Re-initialize count if it's a new 2-hour period
+        current_period = get_period_seed()
+        if not _state['initialized'] or current_period != _state['current_period']:
+            random.seed(current_period)
             _state['count'] = random.randint(613, 702)
             random.seed()  # Reset seed
             _state['base_time'] = current_time
             _state['last_change'] = current_time
             _state['initialized'] = True
+            _state['current_period'] = current_period
         
         # Check if it's time for the next change
         time_since_last_change = current_time - _state['last_change']
