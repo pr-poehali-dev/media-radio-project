@@ -7,12 +7,15 @@ Returns: Current listener count for the radio station
 import json
 import time
 import random
+import math
 from typing import Dict, Any
 
 # Global state to track listener count and last update
 _state = {
-    'count': 613 + random.randint(0, 89),  # Random initial value between 613-702
-    'last_update': time.time()
+    'count': 650,
+    'base_time': time.time(),
+    'last_change': time.time(),
+    'next_change_delay': random.uniform(8, 25)
 }
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
@@ -34,15 +37,27 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     if method == 'GET':
         current_time = time.time()
         
-        # Update count every 10-20 seconds
-        if current_time - _state['last_update'] >= 10:
-            change = 1 if random.random() > 0.5 else -1
-            amount = random.randint(1, 3)
-            new_count = _state['count'] + (change * amount)
+        # Check if it's time for the next change
+        time_since_last_change = current_time - _state['last_change']
+        
+        if time_since_last_change >= _state['next_change_delay']:
+            # Determine change direction and amount
+            change_direction = 1 if random.random() > 0.5 else -1
+            change_amount = random.randint(1, 4)
             
-            # Keep within bounds
+            # Apply change
+            new_count = _state['count'] + (change_direction * change_amount)
             _state['count'] = max(613, min(702, new_count))
-            _state['last_update'] = current_time
+            
+            # Schedule next change with random delay (8-25 seconds)
+            _state['last_change'] = current_time
+            _state['next_change_delay'] = random.uniform(8, 25)
+        
+        # Add small natural variation based on time (sine wave for smooth changes)
+        time_offset = (current_time - _state['base_time']) / 300  # 5-minute cycle
+        natural_variation = math.sin(time_offset) * 2
+        display_count = int(_state['count'] + natural_variation)
+        display_count = max(613, min(702, display_count))
         
         return {
             'statusCode': 200,
@@ -53,8 +68,9 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             },
             'isBase64Encoded': False,
             'body': json.dumps({
-                'count': _state['count'],
-                'timestamp': current_time
+                'count': display_count,
+                'timestamp': current_time,
+                'next_change_in': max(0, _state['next_change_delay'] - time_since_last_change)
             })
         }
     
