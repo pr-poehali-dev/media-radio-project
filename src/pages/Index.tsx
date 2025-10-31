@@ -15,6 +15,7 @@ const interviews = [
     image: 'https://cdn.poehali.dev/files/3d89c3c9-2e7e-4e59-b3df-c9d1b93ee86b.jpg',
     vkLink: 'https://vk.com/catherineflox',
     publishedAt: new Date('2025-10-30T12:00:00'),
+    initialViews: 267,
     images: [
       'https://cdn.poehali.dev/files/3d89c3c9-2e7e-4e59-b3df-c9d1b93ee86b.jpg',
       'https://cdn.poehali.dev/files/aae19a93-47e9-4273-a5bb-5eadc7a784b0.jpg',
@@ -82,6 +83,7 @@ Catherine Flox: о музыке, свободе и любви к картошк�
     vkLink: 'https://vk.com/pannpanter',
     yandexMusic: 'https://music.yandex.ru/iframe/album/38582527/track/143848317',
     publishedAt: new Date('2025-10-30T12:00:00'),
+    initialViews: 234,
     images: [
       'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg'
     ],
@@ -123,6 +125,7 @@ Catherine Flox: о музыке, свободе и любви к картошк�
     vkLink: 'https://m.vk.com/harcorerap',
     yandexMusic: 'https://music.yandex.ru/iframe/album/36666533/track/139256845',
     publishedAt: new Date('2025-10-28T12:00:00'),
+    initialViews: 291,
     images: [
       'https://cdn.poehali.dev/files/24e14799-cdb1-42fa-983a-5b5234a1e6ca.jpg',
       'https://cdn.poehali.dev/files/d533f998-e174-4d41-867b-6c0c6691d01e.jpg',
@@ -204,14 +207,26 @@ export default function Index() {
   const [audioError, setAudioError] = useState(false);
   
   const [interviewViews, setInterviewViews] = useState<Record<number, number>>(() => {
-    const saved = localStorage.getItem('interviewViews');
-    if (saved) return JSON.parse(saved);
+    const calculateViews = (interview: typeof interviews[0]) => {
+      const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
+      return interview.initialViews + Math.floor(hoursSincePublish * 20);
+    };
+    
+    const saved = localStorage.getItem('interviewViewsData');
+    if (saved) {
+      const data = JSON.parse(saved);
+      const views: Record<number, number> = {};
+      interviews.forEach(interview => {
+        views[interview.id] = calculateViews(interview);
+      });
+      return views;
+    }
     
     const initialViews: Record<number, number> = {};
     interviews.forEach(interview => {
-      const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
-      initialViews[interview.id] = 100 + Math.floor(hoursSincePublish * 20);
+      initialViews[interview.id] = calculateViews(interview);
     });
+    localStorage.setItem('interviewViewsData', JSON.stringify({ initialized: true }));
     return initialViews;
   });
 
@@ -452,9 +467,8 @@ export default function Index() {
         const updated: Record<number, number> = {};
         interviews.forEach(interview => {
           const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
-          updated[interview.id] = 100 + Math.floor(hoursSincePublish * 20);
+          updated[interview.id] = interview.initialViews + Math.floor(hoursSincePublish * 20);
         });
-        localStorage.setItem('interviewViews', JSON.stringify(updated));
         return updated;
       });
     }, 60000);
