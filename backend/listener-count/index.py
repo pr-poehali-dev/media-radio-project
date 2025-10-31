@@ -10,12 +10,24 @@ import random
 import math
 from typing import Dict, Any
 
+# Seeded random based on day to ensure same starting number for everyone each day
+def get_daily_seed():
+    # Use current day as seed so it changes daily but stays consistent during the day
+    current_day = int(time.time() // 86400)  # Days since epoch
+    return current_day
+
+# Initialize with daily seed
+random.seed(get_daily_seed())
+initial_count = random.randint(613, 702)
+random.seed()  # Reset to random seed for subsequent changes
+
 # Global state to track listener count and last update
 _state = {
-    'count': 650,
+    'count': initial_count,
     'base_time': time.time(),
     'last_change': time.time(),
-    'next_change_delay': random.uniform(8, 25)
+    'next_change_delay': random.uniform(8, 25),
+    'initialized': False
 }
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
@@ -36,6 +48,16 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     
     if method == 'GET':
         current_time = time.time()
+        
+        # Re-initialize count if it's a new day
+        if not _state['initialized']:
+            current_seed = get_daily_seed()
+            random.seed(current_seed)
+            _state['count'] = random.randint(613, 702)
+            random.seed()  # Reset seed
+            _state['base_time'] = current_time
+            _state['last_change'] = current_time
+            _state['initialized'] = True
         
         # Check if it's time for the next change
         time_since_last_change = current_time - _state['last_change']
