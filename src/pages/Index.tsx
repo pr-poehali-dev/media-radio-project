@@ -186,17 +186,13 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [listenerCount, setListenerCount] = useState(650);
-  const [displayedCount, setDisplayedCount] = useState(650);
-  const [targetCount, setTargetCount] = useState(650);
-  const [prevListenerCount, setPrevListenerCount] = useState(650);
-  const [countAnimation, setCountAnimation] = useState('');
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [trackInfo, setTrackInfo] = useState({ artist: '', title: '', cover: '' });
   const [activeSection, setActiveSection] = useState(() => {
     return sessionStorage.getItem('activeSection') || 'home';
   });
 
-  const [listeners, setListeners] = useState(827);
+
   const [selectedInterviewId, setSelectedInterviewId] = useState<number | null>(() => {
     const saved = sessionStorage.getItem('selectedInterviewId');
     return saved ? parseInt(saved) : null;
@@ -439,31 +435,7 @@ export default function Index() {
     const myRadioInterval = setInterval(checkMyRadio24Data, 3000);
     setTimeout(checkMyRadio24Data, 1000);
 
-    const fetchListenerCount = async () => {
-      try {
-        const response = await fetch('https://functions.poehali.dev/0163cd97-e927-4aeb-ae86-d56d91c071cc');
-        if (response.ok) {
-          const data = await response.json();
-          const newCount = data.count;
-          
-          if (newCount !== listenerCount) {
-            setPrevListenerCount(listenerCount);
-            setTargetCount(newCount);
-            setCountAnimation(newCount > listenerCount ? 'listener-count-up' : 'listener-count-down');
-            setListenerCount(newCount);
-            
-            setTimeout(() => {
-              setCountAnimation('');
-            }, 600);
-          }
-        }
-      } catch (error) {
-        console.error('Failed to fetch listener count:', error);
-      }
-    };
 
-    fetchListenerCount();
-    const listenerInterval = setInterval(fetchListenerCount, 5000);
 
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
@@ -486,30 +458,10 @@ export default function Index() {
       clearInterval(interval);
       clearInterval(myRadioInterval);
       clearInterval(viewsInterval);
-      clearInterval(listenerInterval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  useEffect(() => {
-    if (displayedCount === targetCount) return;
-    
-    const diff = targetCount - displayedCount;
-    const step = diff > 0 ? 1 : -1;
-    const duration = 2000;
-    const steps = Math.abs(diff);
-    const delay = duration / steps;
-    
-    const timer = setTimeout(() => {
-      setDisplayedCount(prev => {
-        const next = prev + step;
-        return diff > 0 ? Math.min(next, targetCount) : Math.max(next, targetCount);
-      });
-    }, delay);
-    
-    return () => clearTimeout(timer);
-  }, [displayedCount, targetCount]);
 
   const handleInstallClick = async () => {
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
@@ -716,9 +668,9 @@ export default function Index() {
                         </div>
                         
                         <div className="flex items-center gap-2 text-sm">
-                          <div className="w-2.5 h-2.5 bg-green-500 rounded-full pulse-indicator"></div>
+                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                           <span className="text-gray-400">Сейчас слушает:</span>
-                          <span className={`text-white font-bold text-2xl transition-all duration-300 inline-block min-w-[60px] ${countAnimation}`}>{displayedCount || 650}</span>
+                          <span className="text-white font-bold text-xl">{listenerCount}</span>
                         </div>
                       </div>
                     </div>
