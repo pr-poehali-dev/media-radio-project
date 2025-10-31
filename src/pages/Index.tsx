@@ -209,7 +209,7 @@ export default function Index() {
   const [interviewViews, setInterviewViews] = useState<Record<number, number>>(() => {
     const calculateViews = (interview: typeof interviews[0]) => {
       const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
-      return interview.initialViews + Math.floor(hoursSincePublish * 20);
+      return interview.initialViews + Math.floor(hoursSincePublish * 7);
     };
     
     const saved = localStorage.getItem('interviewViewsData');
@@ -467,7 +467,7 @@ export default function Index() {
         const updated: Record<number, number> = {};
         interviews.forEach(interview => {
           const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
-          updated[interview.id] = interview.initialViews + Math.floor(hoursSincePublish * 20);
+          updated[interview.id] = interview.initialViews + Math.floor(hoursSincePublish * 7);
         });
         return updated;
       });
