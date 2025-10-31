@@ -696,7 +696,7 @@ export default function Index() {
                         <div className="flex items-center gap-2 text-sm">
                           <div className="w-2.5 h-2.5 bg-green-500 rounded-full pulse-indicator"></div>
                           <span className="text-gray-400">Сейчас слушает:</span>
-                          <span className={`text-white font-bold text-2xl transition-all duration-300 ${countAnimation}`}>{listenerCount}</span>
+                          <span className={`text-white font-bold text-2xl transition-all duration-300 inline-block min-w-[60px] ${countAnimation}`}>{listenerCount || 650}</span>
                         </div>
                       </div>
                     </div>
