@@ -851,10 +851,16 @@ export default function Index() {
                       </Badge>
                     </div>
                     <CardContent className="p-5">
-                      <Badge className="mb-3 bg-primary/10 text-primary border-primary/20 text-xs">
-                        <Icon name="Calendar" size={12} className="mr-1" />
-                        {interview.date}
-                      </Badge>
+                      <div className="flex items-center gap-2 mb-3">
+                        <Badge className="bg-primary/10 text-primary border-primary/20 text-xs">
+                          <Icon name="Calendar" size={12} className="mr-1" />
+                          {interview.date}
+                        </Badge>
+                        <Badge className="bg-muted/50 text-muted-foreground border-muted text-xs">
+                          <Icon name="Eye" size={12} className="mr-1" />
+                          {interviewViews[interview.id]?.toLocaleString() || '100'}
+                        </Badge>
+                      </div>
                       <h3 className="text-xl font-bold mb-2">{interview.artist}</h3>
                       <p className="text-base text-foreground mb-3 font-medium">{interview.title}</p>
                       <p className="text-sm text-muted-foreground mb-4">{interview.excerpt}</p>
