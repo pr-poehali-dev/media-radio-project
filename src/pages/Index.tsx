@@ -14,7 +14,7 @@ const interviews = [
     excerpt: 'Catherine Flox делится своим видением музыки, откровенно рассказывает о творческом пути и о том, что вдохновляет её создавать композиции.',
     image: 'https://cdn.poehali.dev/files/3d89c3c9-2e7e-4e59-b3df-c9d1b93ee86b.jpg',
     vkLink: 'https://vk.com/catherineflox',
-    publishedAt: new Date('2025-10-30T12:00:00'),
+    publishedAt: new Date('2025-11-01T00:00:00'),
     initialViews: 267,
     images: [
       'https://cdn.poehali.dev/files/3d89c3c9-2e7e-4e59-b3df-c9d1b93ee86b.jpg',
@@ -82,7 +82,7 @@ Catherine Flox: о музыке, свободе и любви к картошк�
     image: 'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg',
     vkLink: 'https://vk.com/pannpanter',
     yandexMusic: 'https://music.yandex.ru/iframe/album/38582527/track/143848317',
-    publishedAt: new Date('2025-10-30T12:00:00'),
+    publishedAt: new Date('2025-11-01T00:00:00'),
     initialViews: 234,
     images: [
       'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg'
@@ -124,7 +124,7 @@ Catherine Flox: о музыке, свободе и любви к картошк�
     image: 'https://cdn.poehali.dev/files/24e14799-cdb1-42fa-983a-5b5234a1e6ca.jpg',
     vkLink: 'https://m.vk.com/harcorerap',
     yandexMusic: 'https://music.yandex.ru/iframe/album/36666533/track/139256845',
-    publishedAt: new Date('2025-10-28T12:00:00'),
+    publishedAt: new Date('2025-11-01T00:00:00'),
     initialViews: 291,
     images: [
       'https://cdn.poehali.dev/files/24e14799-cdb1-42fa-983a-5b5234a1e6ca.jpg',
