@@ -405,19 +405,26 @@ export default function Index() {
     const myRadioInterval = setInterval(checkMyRadio24Data, 3000);
     setTimeout(checkMyRadio24Data, 1000);
 
-    const updateListeners = () => {
+    const scheduleNextUpdate = () => {
+      const delay = 3000 + Math.random() * 2000;
+      setTimeout(() => {
+        setListenerCount(prev => {
+          const change = Math.random() > 0.5 ? 1 : -1;
+          const newCount = prev + change * Math.floor(Math.random() * 3);
+          return Math.max(713, Math.min(1003, newCount));
+        });
+        scheduleNextUpdate();
+      }, delay);
+    };
+
+    setTimeout(() => {
       setListenerCount(prev => {
         const change = Math.random() > 0.5 ? 1 : -1;
         const newCount = prev + change * Math.floor(Math.random() * 3);
         return Math.max(713, Math.min(1003, newCount));
       });
-    };
-
-    setTimeout(updateListeners, 2000);
-    
-    const listenersInterval = setInterval(() => {
-      updateListeners();
-    }, 3000 + Math.random() * 2000);
+      scheduleNextUpdate();
+    }, 2000);
 
     const handleScroll = () => {
       setShowScrollTop(window.scrollY > 300);
@@ -429,7 +436,6 @@ export default function Index() {
 
     return () => {
       clearInterval(interval);
-      clearInterval(listenersInterval);
       clearInterval(myRadioInterval);
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
       window.removeEventListener('scroll', handleScroll);
