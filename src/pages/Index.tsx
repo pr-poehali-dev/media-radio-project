@@ -186,6 +186,8 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [listenerCount, setListenerCount] = useState(650);
+  const [prevListenerCount, setPrevListenerCount] = useState(650);
+  const [countAnimation, setCountAnimation] = useState('');
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [trackInfo, setTrackInfo] = useState({ artist: '', title: '', cover: '' });
   const [activeSection, setActiveSection] = useState(() => {
@@ -440,7 +442,17 @@ export default function Index() {
         const response = await fetch('https://functions.poehali.dev/0163cd97-e927-4aeb-ae86-d56d91c071cc');
         if (response.ok) {
           const data = await response.json();
-          setListenerCount(data.count);
+          const newCount = data.count;
+          
+          if (newCount !== listenerCount) {
+            setPrevListenerCount(listenerCount);
+            setCountAnimation(newCount > listenerCount ? 'listener-count-up' : 'listener-count-down');
+            setListenerCount(newCount);
+            
+            setTimeout(() => {
+              setCountAnimation('');
+            }, 500);
+          }
         }
       } catch (error) {
         console.error('Failed to fetch listener count:', error);
@@ -684,7 +696,7 @@ export default function Index() {
                         <div className="flex items-center gap-2 text-sm">
                           <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                           <span className="text-gray-400">Сейчас слушает:</span>
-                          <span className="text-white font-bold text-xl">{listenerCount}</span>
+                          <span className={`text-white font-bold text-xl ${countAnimation}`}>{listenerCount}</span>
                         </div>
                       </div>
                     </div>
