@@ -1,7 +1,7 @@
 """
-Business: Provides synchronized listener count for all users
+Business: Provides real-time synchronized listener count for all users
 Args: event with httpMethod; context with request_id
-Returns: Current listener count for the radio station
+Returns: Current listener count for the radio station with live updates
 """
 
 import json
@@ -47,11 +47,11 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         cursor.execute("SELECT * FROM t_p37980721_media_radio_project.listener_state WHERE id = 1")
         state = cursor.fetchone()
         
-        count = state['count']
-        last_change = state['last_change']
-        next_change_delay = state['next_change_delay']
-        stored_period = state['current_period']
-        base_time = state['base_time']
+        count = int(state['count'])
+        last_change = float(state['last_change'])
+        next_change_delay = float(state['next_change_delay'])
+        stored_period = int(state['current_period'])
+        base_time = float(state['base_time'])
         
         if current_period != stored_period:
             random.seed(current_period)
