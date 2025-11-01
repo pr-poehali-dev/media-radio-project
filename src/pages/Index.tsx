@@ -709,7 +709,7 @@ export default function Index() {
                         
                         <div className="flex items-center gap-1.5 text-xs">
                           <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                          <span className="text-gray-400">Слушают:</span>
+                          <span className="text-gray-400">Сейчас слушают:</span>
                           <span className="text-white font-bold">{listenerCount}</span>
                         </div>
                       </div>
