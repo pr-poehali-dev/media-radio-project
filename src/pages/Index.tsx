@@ -236,6 +236,7 @@ export default function Index() {
       try {
         const response = await fetch('https://functions.poehali.dev/0163cd97-e927-4aeb-ae86-d56d91c071cc');
         const data = await response.json();
+        console.log('Listener count updated:', data.count);
         setTargetCount(data.count);
       } catch (error) {
         console.error('Failed to fetch listener count:', error);
