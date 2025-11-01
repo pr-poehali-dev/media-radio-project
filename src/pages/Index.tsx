@@ -186,6 +186,7 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 export default function Index() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [listenerCount, setListenerCount] = useState(650);
+  const [targetCount, setTargetCount] = useState(650);
   const [currentTrack, setCurrentTrack] = useState('Загрузка...');
   const [trackInfo, setTrackInfo] = useState({ artist: '', title: '', cover: '' });
   const [activeSection, setActiveSection] = useState(() => {
@@ -229,6 +230,45 @@ export default function Index() {
     localStorage.setItem('interviewViewsData', JSON.stringify({ initialized: true }));
     return initialViews;
   });
+
+  useEffect(() => {
+    const fetchListenerCount = async () => {
+      try {
+        const response = await fetch('https://functions.poehali.dev/0163cd97-e927-4aeb-ae86-d56d91c071cc');
+        const data = await response.json();
+        setTargetCount(data.count);
+      } catch (error) {
+        console.error('Failed to fetch listener count:', error);
+      }
+    };
+
+    fetchListenerCount();
+    const interval = setInterval(fetchListenerCount, 8000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    if (listenerCount === targetCount) return;
+
+    const difference = targetCount - listenerCount;
+    const step = difference > 0 ? 1 : -1;
+    const duration = Math.abs(difference) * 200;
+
+    let currentStep = 0;
+    const totalSteps = Math.abs(difference);
+
+    const timer = setInterval(() => {
+      currentStep++;
+      setListenerCount(prev => prev + step);
+
+      if (currentStep >= totalSteps) {
+        clearInterval(timer);
+      }
+    }, duration / totalSteps);
+
+    return () => clearInterval(timer);
+  }, [targetCount, listenerCount]);
 
   useEffect(() => {
     const savedScrollPosition = sessionStorage.getItem('scrollPosition');
