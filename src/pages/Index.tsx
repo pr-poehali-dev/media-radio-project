@@ -707,10 +707,10 @@ export default function Index() {
                           <span className="text-sm font-bold text-white">В ЭФИРЕ</span>
                         </div>
                         
-                        <div className="flex items-center gap-2 text-sm">
-                          <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                          <span className="text-gray-400">Сейчас слушает:</span>
-                          <span className="text-white font-bold text-xl">{listenerCount}</span>
+                        <div className="flex items-center gap-1.5 text-xs">
+                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
+                          <span className="text-gray-400">Слушают:</span>
+                          <span className="text-white font-bold">{listenerCount}</span>
                         </div>
                       </div>
                     </div>
