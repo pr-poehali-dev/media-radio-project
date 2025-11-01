@@ -232,44 +232,28 @@ export default function Index() {
   });
 
   useEffect(() => {
-    const fetchListenerCount = async () => {
+    const fetchCurrentTrack = async () => {
       try {
-        const response = await fetch('https://functions.poehali.dev/0163cd97-e927-4aeb-ae86-d56d91c071cc');
+        const response = await fetch('https://myradio24.com/api/history?radioID=54137&limit=1');
         const data = await response.json();
-        console.log('Listener count updated:', data.count);
-        setTargetCount(data.count);
+        if (data && data.length > 0) {
+          setCurrentTrack({
+            artist: data[0].artist || 'КонтентМедиа',
+            title: data[0].title || 'PRO Radio'
+          });
+        }
       } catch (error) {
-        console.error('Failed to fetch listener count:', error);
+        console.error('Failed to fetch track info:', error);
       }
     };
 
-    fetchListenerCount();
-    const interval = setInterval(fetchListenerCount, 8000);
+    fetchCurrentTrack();
+    const interval = setInterval(fetchCurrentTrack, 15000);
 
     return () => clearInterval(interval);
   }, []);
 
-  useEffect(() => {
-    if (listenerCount === targetCount) return;
 
-    const difference = targetCount - listenerCount;
-    const step = difference > 0 ? 1 : -1;
-    const duration = Math.abs(difference) * 200;
-
-    let currentStep = 0;
-    const totalSteps = Math.abs(difference);
-
-    const timer = setInterval(() => {
-      currentStep++;
-      setListenerCount(prev => prev + step);
-
-      if (currentStep >= totalSteps) {
-        clearInterval(timer);
-      }
-    }, duration / totalSteps);
-
-    return () => clearInterval(timer);
-  }, [targetCount, listenerCount]);
 
   useEffect(() => {
     const savedScrollPosition = sessionStorage.getItem('scrollPosition');
@@ -703,15 +687,14 @@ export default function Index() {
                       </div>
                       
                       <div className="flex-1">
-                        <div className="inline-flex items-center gap-2 bg-primary px-4 py-1.5 rounded-full mb-2">
-                          <Icon name="Radio" size={14} className="text-white" />
-                          <span className="text-sm font-bold text-white">В ЭФИРЕ</span>
+                        <div className="inline-flex items-center gap-2 bg-green-500 px-3 py-1.5 rounded-full mb-2 animate-pulse">
+                          <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                          <span className="text-xs font-bold text-white uppercase tracking-wide">Live</span>
                         </div>
                         
-                        <div className="flex items-center gap-1.5 text-xs">
-                          <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                          <span className="text-gray-400">Сейчас слушают:</span>
-                          <span className="text-white font-bold">{listenerCount}</span>
+                        <div className="space-y-0.5">
+                          <p className="text-white font-bold text-sm truncate leading-tight">{currentTrack.artist}</p>
+                          <p className="text-gray-400 text-xs truncate leading-tight">{currentTrack.title}</p>
                         </div>
                       </div>
                     </div>
