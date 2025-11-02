@@ -83,6 +83,14 @@
   video:-ms-fullscreen ~ .fullscreen-watermark {
     opacity: 1 !important;
   }
+
+  video::-webkit-media-controls-fullscreen-button {
+    display: none !important;
+  }
+
+  video::-moz-media-controls-fullscreen-button {
+    display: none !important;
+  }
 }
 
 .my_currentListeners {
