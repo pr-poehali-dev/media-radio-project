@@ -192,10 +192,16 @@ a[target="_blank"][href*="poehali"] * {
   text-decoration: none;
   font-weight: 600;
   transition: all 0.3s ease;
-  border-bottom: 2px solid transparent;
+  border-bottom: 2px solid hsl(14 90% 58%);
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  background: linear-gradient(to right, hsl(14 90% 58% / 0.1), transparent);
 }
 
 .interview-link:hover {
   color: hsl(14 90% 68%);
-  border-bottom-color: hsl(14 90% 58%);
+  border-bottom-color: hsl(14 90% 68%);
+  background: linear-gradient(to right, hsl(14 90% 58% / 0.2), transparent);
+  transform: translateX(2px);
 }
