@@ -1451,11 +1451,11 @@ export default function Index() {
                     muted
                   />
                   
-                  <div className="absolute top-0 left-0 w-32 h-10 bg-gradient-to-br from-black/40 via-black/20 to-transparent backdrop-blur-sm z-10"></div>
+                  <div className="absolute top-0 left-0 w-24 h-8 bg-gradient-to-br from-black/25 via-black/10 to-transparent backdrop-blur-[2px] z-10"></div>
                   
-                  <div className="absolute top-0 right-0 w-24 h-10 bg-gradient-to-bl from-black/40 via-black/20 to-transparent backdrop-blur-sm z-10"></div>
+                  <div className="absolute top-0 right-0 w-20 h-8 bg-gradient-to-bl from-black/25 via-black/10 to-transparent backdrop-blur-[2px] z-10"></div>
                   
-                  <div className="absolute bottom-0 right-0 w-24 h-10 bg-gradient-to-tl from-black/40 via-black/20 to-transparent backdrop-blur-sm z-10"></div>
+                  <div className="absolute bottom-0 right-0 w-20 h-8 bg-gradient-to-tl from-black/25 via-black/10 to-transparent backdrop-blur-[2px] z-10"></div>
                   
                   <div className="absolute top-2 left-2 z-20">
                     <h3 className="text-white font-bold text-base whitespace-nowrap leading-none drop-shadow-lg">
