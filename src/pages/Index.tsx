@@ -1444,17 +1444,17 @@ export default function Index() {
               <CardContent className="p-0 relative">
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
                   <div className="absolute top-0 left-0 z-20">
-                    <div className="bg-black/80 border-2 border-red-500/70 rounded-3xl px-6 py-3">
-                      <h3 className="text-white font-bold text-xl whitespace-nowrap leading-none">
+                    <div className="bg-black/80 border-2 border-red-500/70 rounded-2xl px-4 py-2">
+                      <h3 className="text-white font-bold text-base whitespace-nowrap leading-none">
                         <span className="text-white">КонтентМедиа</span>
                         <span className="text-red-500">PRO</span>
                       </h3>
                     </div>
                   </div>
                   
-                  <div className="absolute top-2 right-2 z-20">
-                    <div className="bg-transparent">
-                      <div className="text-white font-mono text-3xl font-normal tracking-wider leading-none">
+                  <div className="absolute top-0 right-0 z-20">
+                    <div className="bg-black/80 border-2 border-red-500/70 rounded-2xl px-4 py-2">
+                      <div className="text-white font-mono text-base font-normal tracking-wider leading-none">
                         {currentTime.toLocaleTimeString('ru-RU', { 
                           timeZone: 'Europe/Moscow',
                           hour: '2-digit', 
@@ -1464,9 +1464,9 @@ export default function Index() {
                     </div>
                   </div>
                   
-                  <div className="absolute bottom-3 right-3 z-20">
+                  <div className="absolute bottom-0 right-0 z-20">
                     <div className="bg-black/80 border-2 border-red-500/70 rounded-2xl px-4 py-2">
-                      <div className="text-red-500 font-bold text-lg whitespace-nowrap leading-none">
+                      <div className="text-red-500 font-bold text-base whitespace-nowrap leading-none">
                         PRO <span className="text-white">TV</span>
                       </div>
                     </div>
