@@ -205,6 +205,7 @@ export default function Index() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const scrollPositionRestored = useRef(false);
   const [volume, setVolume] = useState(70);
+  const [currentTime, setCurrentTime] = useState(new Date());
   const [audioError, setAudioError] = useState(false);
   
   const [interviewViews, setInterviewViews] = useState<Record<number, number>>(() => {
@@ -253,7 +254,12 @@ export default function Index() {
     return () => clearInterval(interval);
   }, []);
 
-
+  useEffect(() => {
+    const timeInterval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timeInterval);
+  }, []);
 
   useEffect(() => {
     const savedScrollPosition = sessionStorage.getItem('scrollPosition');
@@ -1405,31 +1411,58 @@ export default function Index() {
           <div className="space-y-4 animate-fade-in">
             <h2 className="text-2xl font-bold mb-4">📺 On-line TV</h2>
             
-            <Card className="bg-card border-border overflow-hidden">
-              <CardContent className="p-4">
-                <div className="mb-3">
-                  <h3 className="font-bold text-lg mb-1 flex items-center gap-2">
-                    🎵 7 YOU & ME
-                    <Badge variant="outline" className="text-xs">720p • Европа</Badge>
-                  </h3>
-                  <p className="text-sm text-muted-foreground">Европейский музыкальный канал</p>
-                </div>
-                <div className="relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: '56.25%' }}>
-                  <iframe
-                    src="https://rr.vavoo.to/iptv/TU9WUExVUy0wMTk2Mzk/playlist.m3u8?play"
-                    className="absolute top-0 left-0 w-full h-full"
-                    frameBorder="0"
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    title="7 YOU & ME"
-                  />
-                </div>
-                <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
-                  <Icon name="Radio" size={14} className="text-primary" />
-                  <span>Прямая трансляция • IPTV-ORG</span>
+            <Card className="bg-black border-0 overflow-hidden">
+              <CardContent className="p-0 relative">
+                <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
+                  <div className="absolute top-4 left-4 z-20">
+                    <div className="bg-black/80 border-2 border-primary/50 rounded-2xl px-6 py-3 backdrop-blur-sm">
+                      <h3 className="text-white font-bold text-xl">
+                        <span className="text-white">КонтентМедиа</span>
+                        <span className="text-primary">PRO</span>
+                      </h3>
+                    </div>
+                  </div>
+                  
+                  <div className="absolute top-4 right-4 z-20">
+                    <div className="bg-black/80 border border-primary/30 rounded-xl px-4 py-2 backdrop-blur-sm">
+                      <div className="text-white font-mono text-2xl font-bold tracking-wider">
+                        {currentTime.toLocaleTimeString('ru-RU', { 
+                          timeZone: 'Europe/Moscow',
+                          hour: '2-digit', 
+                          minute: '2-digit' 
+                        })}
+                      </div>
+                      <div className="text-primary/80 text-xs text-center mt-0.5">МСК</div>
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-4 right-4 z-20">
+                    <div className="bg-black/80 border-2 border-primary/50 rounded-2xl px-4 py-2 backdrop-blur-sm">
+                      <div className="text-primary font-bold text-lg">
+                        PRO <span className="text-white">TV</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <video
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    autoPlay
+                    controls
+                    playsInline
+                    src="https://rr.vavoo.to/iptv/TU9WUExVUy0wMTk2Mzk/playlist.m3u8"
+                  >
+                    <source src="https://rr.vavoo.to/iptv/TU9WUExVUy0wMTk2Mzk/playlist.m3u8" type="application/x-mpegURL" />
+                  </video>
                 </div>
               </CardContent>
             </Card>
+            
+            <div className="text-center">
+              <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
+                <Icon name="Tv" size={16} className="text-primary" />
+                <span>КонтентМедиаPRO TV</span>
+              </p>
+            </div>
           </div>
         )}
 
