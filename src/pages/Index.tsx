@@ -479,7 +479,7 @@ export default function Index() {
     };
 
     fetchCurrentTrack();
-    const interval = setInterval(fetchCurrentTrack, 10000);
+    const interval = setInterval(fetchCurrentTrack, 30000);
     
     const checkMyRadio24Data = () => {
       const myRadioElements = document.querySelectorAll('[data-radio="54137"]');
@@ -500,8 +500,8 @@ export default function Index() {
       }
     };
     
-    const myRadioInterval = setInterval(checkMyRadio24Data, 3000);
-    setTimeout(checkMyRadio24Data, 1000);
+    const myRadioInterval = setInterval(checkMyRadio24Data, 15000);
+    setTimeout(checkMyRadio24Data, 2000);
 
 
 
