@@ -1444,8 +1444,8 @@ export default function Index() {
               <CardContent className="p-0 relative">
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
                   <div className="absolute top-0 left-0 z-20">
-                    <div className="bg-black/95 border-2 border-primary/50 rounded-br-lg px-3 py-1.5 backdrop-blur-md">
-                      <h3 className="text-white font-bold text-xs whitespace-nowrap">
+                    <div className="bg-black/95 border border-primary/50 rounded-br-md px-2 py-1 backdrop-blur-md">
+                      <h3 className="text-white font-bold text-[10px] whitespace-nowrap leading-none">
                         <span className="text-white">КонтентМедиа</span>
                         <span className="text-primary">PRO</span>
                         <span className="text-white"> </span>
@@ -1455,14 +1455,14 @@ export default function Index() {
                   </div>
                   
                   <div className="absolute top-0 right-0 z-20">
-                    <div className="bg-black/95 border-2 border-primary/50 rounded-bl-lg px-3 py-1.5 backdrop-blur-md">
-                      <div className="text-white font-mono text-xs font-bold tracking-wide">
+                    <div className="bg-black/95 border border-primary/50 rounded-bl-md px-2 py-1 backdrop-blur-md">
+                      <div className="text-white font-mono text-[10px] font-bold tracking-tight leading-none">
                         {currentTime.toLocaleTimeString('ru-RU', { 
                           timeZone: 'Europe/Moscow',
                           hour: '2-digit', 
                           minute: '2-digit' 
                         })}
-                        <span className="text-primary/80 text-[10px] ml-1">МСК</span>
+                        <span className="text-primary/80 text-[8px] ml-0.5">МСК</span>
                       </div>
                     </div>
                   </div>
