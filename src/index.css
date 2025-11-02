@@ -59,22 +59,22 @@
 
   video:fullscreen {
     object-fit: cover !important;
-    transform: scale(1.16) !important;
+    transform: scale(1.2) !important;
   }
 
   video:-webkit-full-screen {
     object-fit: cover !important;
-    transform: scale(1.16) !important;
+    transform: scale(1.2) !important;
   }
 
   video:-moz-full-screen {
     object-fit: cover !important;
-    transform: scale(1.16) !important;
+    transform: scale(1.2) !important;
   }
 
   video:-ms-fullscreen {
     object-fit: cover !important;
-    transform: scale(1.16) !important;
+    transform: scale(1.2) !important;
   }
 
   video:fullscreen ~ .fullscreen-watermark,
