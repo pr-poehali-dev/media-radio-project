@@ -1460,7 +1460,7 @@ export default function Index() {
                   
                   <div className="absolute top-0 right-0 w-[70px] h-[28px] bg-gradient-to-bl from-black/85 via-black/60 to-transparent backdrop-blur-lg z-10"></div>
                   
-
+                  <div className="absolute bottom-0 left-0 right-0 h-[24px] bg-gradient-to-t from-black/70 via-black/40 to-transparent backdrop-blur-md z-[5]"></div>
                   
                   <div className="absolute top-2 left-2 z-20">
                     <h3 className="text-white font-bold text-base whitespace-nowrap leading-none drop-shadow-lg">
