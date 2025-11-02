@@ -1462,6 +1462,8 @@ export default function Index() {
                   
                   <div className="absolute bottom-0 left-0 right-0 h-[36px] bg-gradient-to-t from-black/80 via-black/50 to-transparent backdrop-blur-md z-[5]"></div>
                   
+                  <div className="fullscreen-watermark absolute top-3 right-3 w-[75px] h-[38px] bg-gradient-to-bl from-black/90 via-black/70 to-black/85 backdrop-blur-xl rounded-sm opacity-0 pointer-events-none transition-opacity duration-300"></div>
+                  
                   <div className="absolute top-2 left-2 z-20">
                     <h3 className="text-white font-bold text-base whitespace-nowrap leading-none drop-shadow-lg">
                       <span className="text-white">КонтентМедиа</span>

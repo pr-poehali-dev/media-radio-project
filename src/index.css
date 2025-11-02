@@ -76,6 +76,13 @@
     object-fit: cover !important;
     transform: scale(1.16) !important;
   }
+
+  video:fullscreen ~ .fullscreen-watermark,
+  video:-webkit-full-screen ~ .fullscreen-watermark,
+  video:-moz-full-screen ~ .fullscreen-watermark,
+  video:-ms-fullscreen ~ .fullscreen-watermark {
+    opacity: 1 !important;
+  }
 }
 
 .my_currentListeners {
