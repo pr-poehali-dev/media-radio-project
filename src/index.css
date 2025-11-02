@@ -59,22 +59,22 @@
 
   video:fullscreen {
     object-fit: cover !important;
-    transform: scale(1.08) translateY(-4%) !important;
+    transform: scale(1.12) translateY(-5.5%) !important;
   }
 
   video:-webkit-full-screen {
     object-fit: cover !important;
-    transform: scale(1.08) translateY(-4%) !important;
+    transform: scale(1.12) translateY(-5.5%) !important;
   }
 
   video:-moz-full-screen {
     object-fit: cover !important;
-    transform: scale(1.08) translateY(-4%) !important;
+    transform: scale(1.12) translateY(-5.5%) !important;
   }
 
   video:-ms-fullscreen {
     object-fit: cover !important;
-    transform: scale(1.08) translateY(-4%) !important;
+    transform: scale(1.12) translateY(-5.5%) !important;
   }
 }
 
