@@ -58,19 +58,19 @@
   }
 
   video:fullscreen {
-    object-position: 50% -8% !important;
+    object-position: 50% 8% !important;
   }
 
   video:-webkit-full-screen {
-    object-position: 50% -8% !important;
+    object-position: 50% 8% !important;
   }
 
   video:-moz-full-screen {
-    object-position: 50% -8% !important;
+    object-position: 50% 8% !important;
   }
 
   video:-ms-fullscreen {
-    object-position: 50% -8% !important;
+    object-position: 50% 8% !important;
   }
 }
 
