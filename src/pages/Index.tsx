@@ -1443,32 +1443,26 @@ export default function Index() {
             <Card className="bg-black border-0 overflow-hidden">
               <CardContent className="p-0 relative">
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
-                  <div className="absolute top-0 left-0 z-20">
-                    <div className="bg-black/80 border-2 border-red-500/70 rounded-tl-none rounded-tr-3xl rounded-br-3xl rounded-bl-none px-4 py-2 backdrop-blur-sm">
-                      <h3 className="text-white font-bold text-base whitespace-nowrap leading-none">
-                        <span className="text-white">КонтентМедиа</span>
-                        <span className="text-red-500">PRO</span>
-                      </h3>
+                  <div className="absolute top-2 left-2 z-20">
+                    <h3 className="text-white font-bold text-base whitespace-nowrap leading-none drop-shadow-lg">
+                      <span className="text-white">КонтентМедиа</span>
+                      <span className="text-red-500">PRO</span>
+                    </h3>
+                  </div>
+                  
+                  <div className="absolute top-2 right-2 z-20">
+                    <div className="text-white font-mono text-base font-normal tracking-wider leading-none drop-shadow-lg">
+                      {currentTime.toLocaleTimeString('ru-RU', { 
+                        timeZone: 'Europe/Moscow',
+                        hour: '2-digit', 
+                        minute: '2-digit' 
+                      })}
                     </div>
                   </div>
                   
-                  <div className="absolute top-0 right-0 z-20">
-                    <div className="bg-black/80 border-2 border-red-500/70 rounded-tl-3xl rounded-tr-none rounded-br-none rounded-bl-3xl px-4 py-2 backdrop-blur-sm">
-                      <div className="text-white font-mono text-base font-normal tracking-wider leading-none">
-                        {currentTime.toLocaleTimeString('ru-RU', { 
-                          timeZone: 'Europe/Moscow',
-                          hour: '2-digit', 
-                          minute: '2-digit' 
-                        })}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute bottom-0 right-0 z-20">
-                    <div className="bg-black/80 border-2 border-red-500/70 rounded-tl-3xl rounded-tr-none rounded-br-none rounded-bl-none px-4 py-2 backdrop-blur-sm">
-                      <div className="text-red-500 font-bold text-base whitespace-nowrap leading-none">
-                        PRO <span className="text-white">TV</span>
-                      </div>
+                  <div className="absolute bottom-2 right-2 z-20">
+                    <div className="text-red-500 font-bold text-base whitespace-nowrap leading-none drop-shadow-lg">
+                      PRO <span className="text-white">TV</span>
                     </div>
                   </div>
                   
