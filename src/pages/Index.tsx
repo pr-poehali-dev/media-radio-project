@@ -1467,6 +1467,12 @@ export default function Index() {
           </div>
         )}
       </main>
+      
+      <footer className="mt-8 py-6 px-4 border-t border-border bg-card/50">
+        <p className="text-[10px] leading-relaxed text-muted-foreground/70 text-center max-w-4xl mx-auto">
+          © 2025 КонтентМедиаPRO. Все права защищены. Полное или частичное копирование материалов Сайта в коммерческих целях разрешено только с письменного разрешения владельца Сайта. В случае обнаружения нарушений, виновные лица могут быть привлечены к ответственности в соответствии с действующим законодательством Российской Федерации.
+        </p>
+      </footer>
     </div>
   );
 }
