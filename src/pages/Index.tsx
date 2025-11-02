@@ -277,7 +277,9 @@ export default function Index() {
       hls.loadSource(streamUrl);
       hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
-        video.play().catch(() => {});
+        if (activeSection === 'tv') {
+          video.play().catch(() => {});
+        }
       });
       return () => {
         hls.destroy();
@@ -285,10 +287,12 @@ export default function Index() {
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
       video.src = streamUrl;
       video.addEventListener('loadedmetadata', () => {
-        video.play().catch(() => {});
+        if (activeSection === 'tv') {
+          video.play().catch(() => {});
+        }
       });
     }
-  }, []);
+  }, [activeSection]);
 
   useEffect(() => {
     const savedScrollPosition = sessionStorage.getItem('scrollPosition');
@@ -1495,7 +1499,7 @@ export default function Index() {
                 <span>КонтентМедиаPRO TV</span>
               </p>
               <p className="text-xs text-muted-foreground/70">
-                Раздел находится в разработке. Скоро будет доступно для ваших видеоклипов и видеоинтервью
+                Раздел находится в разработке. Скоро будет доступен для ваших видеоклипов и видеоинтервью
               </p>
             </div>
           </div>
