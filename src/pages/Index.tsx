@@ -1060,19 +1060,7 @@ export default function Index() {
                           <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: interview.fullText.replace(/<img /g, '<img class="w-full h-auto rounded-2xl my-6" ') }} />
                         ) : interview.id === 4 ? (
                           <>
-                            <div className="my-6">
-                              <div className="relative w-full h-auto mb-4 bg-muted rounded-2xl overflow-hidden">
-                                <img 
-                                  src={(interview as any).images[1]} 
-                                  alt="Таисия Кайсарова"
-                                  className="w-full h-auto object-contain"
-                                />
-                              </div>
-                            </div>
-                            
-                            <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed">
-                              {interview.fullText}
-                            </div>
+                            <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: interview.fullText.replace(/<img /g, '<img class="w-full h-auto rounded-2xl my-6" ') }} />
                             
                             <div className="mt-8 flex flex-col gap-3">
                               <h4 className="text-base font-bold text-foreground mb-2">📖 Читать книги Таисии:</h4>
@@ -1104,7 +1092,7 @@ export default function Index() {
                                   <Icon name="Share2" size={16} className="text-primary" />
                                   Поделиться интервью
                                 </p>
-                                <div className="flex flex-wrap gap-2">
+                                <div className="flex items-center flex-wrap gap-2">
                                   <Button
                                     size="sm"
                                     onClick={() => {
