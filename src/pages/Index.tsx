@@ -615,6 +615,22 @@ export default function Index() {
           </button>
           <button
             onClick={() => {
+              setActiveSection('tv');
+              setSelectedInterviewId(null);
+              sessionStorage.setItem('activeSection', 'tv');
+              sessionStorage.removeItem('selectedInterviewId');
+              sessionStorage.setItem('scrollPosition', '0');
+              window.scrollTo(0, 0);
+            }}
+            className={`flex flex-col items-center gap-1 py-3 px-4 ${
+              activeSection === 'tv' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            <Icon name="Tv" size={22} />
+            <span className="text-xs font-medium">TV</span>
+          </button>
+          <button
+            onClick={() => {
               setActiveSection('contacts');
               setSelectedInterviewId(null);
               sessionStorage.setItem('activeSection', 'contacts');
@@ -1385,6 +1401,38 @@ export default function Index() {
           </div>
         )}
 
+        {activeSection === 'tv' && (
+          <div className="space-y-4 animate-fade-in">
+            <h2 className="text-2xl font-bold mb-4">📺 On-line TV</h2>
+            
+            <Card className="bg-card border-border overflow-hidden">
+              <CardContent className="p-4">
+                <div className="mb-3">
+                  <h3 className="font-bold text-lg mb-1 flex items-center gap-2">
+                    🎵 7 YOU & ME
+                    <Badge variant="outline" className="text-xs">720p • Европа</Badge>
+                  </h3>
+                  <p className="text-sm text-muted-foreground">Европейский музыкальный канал</p>
+                </div>
+                <div className="relative w-full rounded-xl overflow-hidden bg-black" style={{ paddingBottom: '56.25%' }}>
+                  <iframe
+                    src="https://rr.vavoo.to/iptv/TU9WUExVUy0wMTk2Mzk/playlist.m3u8?play"
+                    className="absolute top-0 left-0 w-full h-full"
+                    frameBorder="0"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    title="7 YOU & ME"
+                  />
+                </div>
+                <div className="mt-3 flex items-center gap-2 text-xs text-muted-foreground">
+                  <Icon name="Radio" size={14} className="text-primary" />
+                  <span>Прямая трансляция • IPTV-ORG</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
         {activeSection === 'contacts' && (
           <div className="space-y-4 animate-fade-in">
             <h2 className="text-2xl font-bold mb-4">Контакты</h2>
@@ -1412,30 +1460,7 @@ export default function Index() {
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-primary/10 via-primary/5 to-background border-primary/30 overflow-hidden relative">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl"></div>
-              <div className="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl"></div>
-              <CardContent className="p-6 relative">
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-primary to-primary/60 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <Icon name="Tv" size={28} className="text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="font-bold text-xl mb-2 flex items-center gap-2">
-                      📺 on-line TV
-                      <span className="text-xs font-normal bg-primary/20 text-primary px-2 py-1 rounded-full">В разработке</span>
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-3">
-                      Скоро здесь появятся музыкальные клипы, эксклюзивные видеоинтервью и многое другое
-                    </p>
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                      <Icon name="Clock" size={14} className="text-primary" />
-                      <span>Следите за обновлениями</span>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+
 
             <Card className="bg-card border-border">
               <CardContent className="p-5">
