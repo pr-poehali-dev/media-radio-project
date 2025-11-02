@@ -265,6 +265,7 @@ export default function Index() {
 
   useEffect(() => {
     const video = videoRef.current;
+    const audio = audioRef.current;
     if (!video) return;
 
     const streamUrl = 'https://hls-03-video.webcaramba.com/rutv/live.m3u8';
@@ -278,7 +279,11 @@ export default function Index() {
       hls.attachMedia(video);
       hls.on(Hls.Events.MANIFEST_PARSED, () => {
         if (activeSection === 'tv') {
+          video.muted = false;
           video.play().catch(() => {});
+          if (audio) {
+            audio.pause();
+          }
         }
       });
       return () => {
@@ -288,7 +293,11 @@ export default function Index() {
       video.src = streamUrl;
       video.addEventListener('loadedmetadata', () => {
         if (activeSection === 'tv') {
+          video.muted = false;
           video.play().catch(() => {});
+          if (audio) {
+            audio.pause();
+          }
         }
       });
     }
@@ -1457,7 +1466,6 @@ export default function Index() {
                     className="absolute top-0 left-0 w-full h-full object-cover"
                     controls
                     playsInline
-                    muted
                   />
                   
                   <div className="absolute top-0 left-0 w-[135px] h-[28px] bg-gradient-to-br from-black/35 via-black/15 to-transparent backdrop-blur-sm z-10"></div>
