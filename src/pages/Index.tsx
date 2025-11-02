@@ -1451,13 +1451,13 @@ export default function Index() {
                     muted
                   />
                   
-                  <div className="absolute top-0 left-0 w-[140px] h-[32px] bg-gradient-to-br from-black/60 via-black/40 to-transparent backdrop-blur-md z-10"></div>
+                  <div className="absolute top-0 left-0 w-[135px] h-[28px] bg-gradient-to-br from-black/35 via-black/15 to-transparent backdrop-blur-sm z-10"></div>
                   
-                  <div className="absolute top-0 right-0 w-[90px] h-[32px] bg-gradient-to-bl from-black/60 via-black/40 to-transparent backdrop-blur-md z-10"></div>
+                  <div className="absolute top-0 right-0 w-[85px] h-[28px] bg-gradient-to-bl from-black/35 via-black/15 to-transparent backdrop-blur-sm z-10"></div>
                   
-                  <div className="absolute bottom-0 left-0 w-[100px] h-[32px] bg-gradient-to-tr from-black/60 via-black/40 to-transparent backdrop-blur-md z-10"></div>
+                  <div className="absolute bottom-0 left-0 w-[95px] h-[28px] bg-gradient-to-tr from-black/35 via-black/15 to-transparent backdrop-blur-sm z-10"></div>
                   
-                  <div className="absolute bottom-0 right-0 w-[100px] h-[32px] bg-gradient-to-tl from-black/60 via-black/40 to-transparent backdrop-blur-md z-10"></div>
+                  <div className="absolute bottom-0 right-0 w-[95px] h-[28px] bg-gradient-to-tl from-black/35 via-black/15 to-transparent backdrop-blur-sm z-10"></div>
                   
                   <div className="absolute top-2 left-2 z-20">
                     <h3 className="text-white font-bold text-base whitespace-nowrap leading-none drop-shadow-lg">
