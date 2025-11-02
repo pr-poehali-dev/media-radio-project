@@ -473,7 +473,7 @@ export default function Index() {
         const updated: Record<number, number> = {};
         interviews.forEach(interview => {
           const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
-          updated[interview.id] = interview.initialViews + Math.floor(hoursSincePublish * 7);
+          updated[interview.id] = interview.initialViews + Math.floor(hoursSincePublish * 1.5);
         });
         return updated;
       });
