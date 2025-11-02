@@ -177,3 +177,25 @@ a[target="_blank"][href*="poehali"] * {
   min-height: 12px !important;
   font-size: 0 !important;
 }
+
+.interview-photo {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  margin: 2rem 0;
+  object-fit: cover;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.interview-link {
+  color: hsl(14 90% 58%);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.interview-link:hover {
+  color: hsl(14 90% 68%);
+  border-bottom-color: hsl(14 90% 58%);
+}
