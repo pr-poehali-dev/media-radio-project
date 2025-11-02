@@ -1444,7 +1444,7 @@ export default function Index() {
               <CardContent className="p-0 relative">
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
                   <div className="absolute top-0 left-0 z-20">
-                    <div className="bg-black/80 border-2 border-red-500/70 rounded-2xl px-4 py-2">
+                    <div className="bg-black/80 border-2 border-red-500/70 rounded-tl-none rounded-tr-3xl rounded-br-3xl rounded-bl-none px-4 py-2 backdrop-blur-sm">
                       <h3 className="text-white font-bold text-base whitespace-nowrap leading-none">
                         <span className="text-white">КонтентМедиа</span>
                         <span className="text-red-500">PRO</span>
@@ -1453,7 +1453,7 @@ export default function Index() {
                   </div>
                   
                   <div className="absolute top-0 right-0 z-20">
-                    <div className="bg-black/80 border-2 border-red-500/70 rounded-2xl px-4 py-2">
+                    <div className="bg-black/80 border-2 border-red-500/70 rounded-tl-3xl rounded-tr-none rounded-br-none rounded-bl-3xl px-4 py-2 backdrop-blur-sm">
                       <div className="text-white font-mono text-base font-normal tracking-wider leading-none">
                         {currentTime.toLocaleTimeString('ru-RU', { 
                           timeZone: 'Europe/Moscow',
@@ -1465,7 +1465,7 @@ export default function Index() {
                   </div>
                   
                   <div className="absolute bottom-0 right-0 z-20">
-                    <div className="bg-black/80 border-2 border-red-500/70 rounded-2xl px-4 py-2">
+                    <div className="bg-black/80 border-2 border-red-500/70 rounded-tl-3xl rounded-tr-none rounded-br-none rounded-bl-none px-4 py-2 backdrop-blur-sm">
                       <div className="text-red-500 font-bold text-base whitespace-nowrap leading-none">
                         PRO <span className="text-white">TV</span>
                       </div>
