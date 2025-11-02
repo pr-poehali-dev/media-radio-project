@@ -267,7 +267,7 @@ export default function Index() {
     const video = videoRef.current;
     if (!video) return;
 
-    const streamUrl = 'https://rr.vavoo.to/iptv/TU9WUExVUy0wMTk2Mzk/playlist.m3u8';
+    const streamUrl = 'https://hls-03-video.webcaramba.com/rutv/live.m3u8';
 
     if (Hls.isSupported()) {
       const hls = new Hls({
@@ -1489,7 +1489,7 @@ export default function Index() {
                 <Icon name="Tv" size={16} className="text-primary" />
                 <span>КонтентМедиаPRO TV</span>
               </p>
-              <p className="text-xs text-muted-foreground/70 italic">
+              <p className="text-xs text-muted-foreground/70">
                 Раздел находится в разработке. Скоро будет доступно для ваших видеоклипов и видеоинтервью
               </p>
             </div>
