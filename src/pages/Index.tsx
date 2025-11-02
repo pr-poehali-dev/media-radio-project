@@ -1443,6 +1443,20 @@ export default function Index() {
             <Card className="bg-black border-0 overflow-hidden">
               <CardContent className="p-0 relative">
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
+                  <video
+                    ref={videoRef}
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    controls
+                    playsInline
+                    muted
+                  />
+                  
+                  <div className="absolute top-0 left-0 w-48 h-16 bg-gradient-to-br from-black/90 via-black/70 to-transparent backdrop-blur-md z-10"></div>
+                  
+                  <div className="absolute top-0 right-0 w-32 h-16 bg-gradient-to-bl from-black/90 via-black/70 to-transparent backdrop-blur-md z-10"></div>
+                  
+                  <div className="absolute bottom-0 right-0 w-32 h-16 bg-gradient-to-tl from-black/90 via-black/70 to-transparent backdrop-blur-md z-10"></div>
+                  
                   <div className="absolute top-2 left-2 z-20">
                     <h3 className="text-white font-bold text-base whitespace-nowrap leading-none drop-shadow-lg">
                       <span className="text-white">КонтентМедиа</span>
@@ -1465,14 +1479,6 @@ export default function Index() {
                       PRO <span className="text-white">TV</span>
                     </div>
                   </div>
-                  
-                  <video
-                    ref={videoRef}
-                    className="absolute top-0 left-0 w-full h-full object-cover"
-                    controls
-                    playsInline
-                    muted
-                  />
                 </div>
               </CardContent>
             </Card>
