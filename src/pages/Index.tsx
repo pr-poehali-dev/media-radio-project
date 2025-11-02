@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import Hls from 'hls.js';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -206,6 +207,7 @@ export default function Index() {
   const scrollPositionRestored = useRef(false);
   const [volume, setVolume] = useState(70);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const videoRef = useRef<HTMLVideoElement>(null);
   const [audioError, setAudioError] = useState(false);
   
   const [interviewViews, setInterviewViews] = useState<Record<number, number>>(() => {
@@ -259,6 +261,33 @@ export default function Index() {
       setCurrentTime(new Date());
     }, 1000);
     return () => clearInterval(timeInterval);
+  }, []);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const streamUrl = 'https://rr.vavoo.to/iptv/TU9WUExVUy0wMTk2Mzk/playlist.m3u8';
+
+    if (Hls.isSupported()) {
+      const hls = new Hls({
+        enableWorker: true,
+        lowLatencyMode: true,
+      });
+      hls.loadSource(streamUrl);
+      hls.attachMedia(video);
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play().catch(() => {});
+      });
+      return () => {
+        hls.destroy();
+      };
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = streamUrl;
+      video.addEventListener('loadedmetadata', () => {
+        video.play().catch(() => {});
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -1445,22 +1474,23 @@ export default function Index() {
                   </div>
                   
                   <video
+                    ref={videoRef}
                     className="absolute top-0 left-0 w-full h-full object-cover"
-                    autoPlay
                     controls
                     playsInline
-                    src="https://rr.vavoo.to/iptv/TU9WUExVUy0wMTk2Mzk/playlist.m3u8"
-                  >
-                    <source src="https://rr.vavoo.to/iptv/TU9WUExVUy0wMTk2Mzk/playlist.m3u8" type="application/x-mpegURL" />
-                  </video>
+                    muted
+                  />
                 </div>
               </CardContent>
             </Card>
             
-            <div className="text-center">
+            <div className="text-center space-y-2">
               <p className="text-sm text-muted-foreground flex items-center justify-center gap-2">
                 <Icon name="Tv" size={16} className="text-primary" />
                 <span>КонтентМедиаPRO TV</span>
+              </p>
+              <p className="text-xs text-muted-foreground/70 italic">
+                Раздел находится в разработке. Скоро будет доступно для ваших видеоклипов и видеоинтервью
               </p>
             </div>
           </div>
