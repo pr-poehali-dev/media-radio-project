@@ -1450,7 +1450,7 @@ export default function Index() {
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
                   <video
                     ref={videoRef}
-                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    className="absolute top-0 left-0 w-full h-full object-cover fullscreen:object-[50%_-8%]"
                     controls
                     playsInline
                     muted
