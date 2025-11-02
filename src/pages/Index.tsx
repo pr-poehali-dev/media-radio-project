@@ -377,32 +377,32 @@ export default function Index() {
   }, []);
 
   useEffect(() => {
-    const clearAllCaches = async () => {
+    const disablePWA = async () => {
       if ('serviceWorker' in navigator) {
         const registrations = await navigator.serviceWorker.getRegistrations();
-        await Promise.all(registrations.map(reg => reg.unregister()));
+        for (const registration of registrations) {
+          await registration.unregister();
+        }
       }
 
       if ('caches' in window) {
-        const names = await caches.keys();
-        await Promise.all(names.map(name => caches.delete(name)));
+        const cacheNames = await caches.keys();
+        for (const cacheName of cacheNames) {
+          await caches.delete(cacheName);
+        }
       }
     };
 
-    clearAllCaches();
+    disablePWA();
 
-    const handleBeforeInstallPrompt = (e: Event) => {
+    const preventInstall = (e: Event) => {
       e.preventDefault();
-      setDeferredPrompt(e);
-      setShowInstallButton(true);
+      e.stopImmediatePropagation();
+      return false;
     };
 
-    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
-
-    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-    if (!isStandalone && !window.navigator.standalone) {
-      setShowInstallButton(true);
-    }
+    window.addEventListener('beforeinstallprompt', preventInstall, true);
+    window.addEventListener('appinstalled', preventInstall, true);
 
     if (!audioRef.current) {
       audioRef.current = new Audio('https://myradio24.org/54137');
@@ -526,7 +526,8 @@ export default function Index() {
       clearInterval(interval);
       clearInterval(myRadioInterval);
       clearInterval(viewsInterval);
-      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+      window.removeEventListener('beforeinstallprompt', preventInstall, true);
+      window.removeEventListener('appinstalled', preventInstall, true);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
