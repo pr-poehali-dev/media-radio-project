@@ -1467,18 +1467,17 @@ export default function Index() {
                   </div>
                   
                   <div className="absolute top-2 right-2 z-20">
-                    <div className="text-red-500 font-bold text-base whitespace-nowrap leading-none drop-shadow-lg">
-                      PRO <span className="text-white">TV</span>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute bottom-2 right-2 z-20">
-                    <div className="text-white font-mono text-base font-normal tracking-wider leading-none drop-shadow-lg">
-                      {currentTime.toLocaleTimeString('ru-RU', { 
-                        timeZone: 'Europe/Moscow',
-                        hour: '2-digit', 
-                        minute: '2-digit' 
-                      })}
+                    <div className="flex flex-col items-center gap-0.5">
+                      <div className="text-red-500 font-bold text-base whitespace-nowrap leading-none drop-shadow-lg">
+                        PRO <span className="text-white">TV</span>
+                      </div>
+                      <div className="text-white font-mono text-xs font-normal tracking-wider leading-none drop-shadow-lg">
+                        {currentTime.toLocaleTimeString('ru-RU', { 
+                          timeZone: 'Europe/Moscow',
+                          hour: '2-digit', 
+                          minute: '2-digit' 
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
