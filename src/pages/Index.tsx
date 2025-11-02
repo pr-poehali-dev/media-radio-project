@@ -387,11 +387,6 @@ export default function Index() {
         const names = await caches.keys();
         await Promise.all(names.map(name => caches.delete(name)));
       }
-
-      const urlParams = new URLSearchParams(window.location.search);
-      if (!urlParams.has('nocache')) {
-        window.location.href = window.location.href + (window.location.search ? '&' : '?') + 'nocache=' + Date.now();
-      }
     };
 
     clearAllCaches();
