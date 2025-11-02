@@ -1443,9 +1443,9 @@ export default function Index() {
             <Card className="bg-black border-0 overflow-hidden">
               <CardContent className="p-0 relative">
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
-                  <div className="absolute top-4 left-4 z-20">
-                    <div className="bg-black/90 border border-primary/40 rounded-lg px-4 py-2 backdrop-blur-md">
-                      <h3 className="text-white font-bold text-sm whitespace-nowrap">
+                  <div className="absolute top-2 left-2 z-20">
+                    <div className="bg-black/95 border-2 border-primary/50 rounded-xl px-8 py-4 backdrop-blur-md">
+                      <h3 className="text-white font-bold text-xl whitespace-nowrap">
                         <span className="text-white">КонтентМедиа</span>
                         <span className="text-primary">PRO</span>
                         <span className="text-white"> </span>
@@ -1454,15 +1454,15 @@ export default function Index() {
                     </div>
                   </div>
                   
-                  <div className="absolute bottom-4 left-4 z-20">
-                    <div className="bg-black/90 border border-primary/40 rounded-lg px-4 py-2 backdrop-blur-md">
-                      <div className="text-white font-mono text-sm font-bold tracking-wide">
+                  <div className="absolute bottom-2 left-2 z-20">
+                    <div className="bg-black/95 border-2 border-primary/50 rounded-xl px-8 py-4 backdrop-blur-md">
+                      <div className="text-white font-mono text-2xl font-bold tracking-wider">
                         {currentTime.toLocaleTimeString('ru-RU', { 
                           timeZone: 'Europe/Moscow',
                           hour: '2-digit', 
                           minute: '2-digit' 
                         })}
-                        <span className="text-primary/70 text-[10px] ml-1">МСК</span>
+                        <span className="text-primary/80 text-sm ml-2">МСК</span>
                       </div>
                     </div>
                   </div>
