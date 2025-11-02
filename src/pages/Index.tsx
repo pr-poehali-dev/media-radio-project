@@ -1443,32 +1443,26 @@ export default function Index() {
             <Card className="bg-black border-0 overflow-hidden">
               <CardContent className="p-0 relative">
                 <div className="relative w-full bg-black" style={{ paddingBottom: '56.25%' }}>
-                  <div className="absolute top-4 left-4 z-20">
-                    <div className="bg-black/80 border-2 border-primary/50 rounded-2xl px-6 py-3 backdrop-blur-sm">
-                      <h3 className="text-white font-bold text-xl">
-                        <span className="text-white">КонтентМедиа</span>
-                        <span className="text-primary">PRO</span>
-                      </h3>
-                    </div>
-                  </div>
-                  
-                  <div className="absolute top-4 right-4 z-20">
-                    <div className="bg-black/80 border border-primary/30 rounded-xl px-4 py-2 backdrop-blur-sm">
-                      <div className="text-white font-mono text-2xl font-bold tracking-wider">
-                        {currentTime.toLocaleTimeString('ru-RU', { 
-                          timeZone: 'Europe/Moscow',
-                          hour: '2-digit', 
-                          minute: '2-digit' 
-                        })}
-                      </div>
-                      <div className="text-primary/80 text-xs text-center mt-0.5">МСК</div>
-                    </div>
-                  </div>
-
-                  <div className="absolute bottom-4 right-4 z-20">
-                    <div className="bg-black/80 border-2 border-primary/50 rounded-2xl px-4 py-2 backdrop-blur-sm">
-                      <div className="text-primary font-bold text-lg">
-                        PRO <span className="text-white">TV</span>
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20">
+                    <div className="bg-black/90 border border-primary/40 rounded-lg px-4 py-2 backdrop-blur-md">
+                      <div className="flex items-center gap-3">
+                        <h3 className="text-white font-bold text-sm whitespace-nowrap">
+                          <span className="text-white">КонтентМедиа</span>
+                          <span className="text-primary">PRO</span>
+                        </h3>
+                        <div className="h-4 w-px bg-primary/30"></div>
+                        <div className="text-white font-mono text-sm font-bold tracking-wide">
+                          {currentTime.toLocaleTimeString('ru-RU', { 
+                            timeZone: 'Europe/Moscow',
+                            hour: '2-digit', 
+                            minute: '2-digit' 
+                          })}
+                          <span className="text-primary/70 text-[10px] ml-1">МСК</span>
+                        </div>
+                        <div className="h-4 w-px bg-primary/30"></div>
+                        <div className="text-primary font-bold text-sm whitespace-nowrap">
+                          PRO <span className="text-white">TV</span>
+                        </div>
                       </div>
                     </div>
                   </div>
