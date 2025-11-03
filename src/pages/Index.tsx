@@ -285,6 +285,23 @@ export default function Index() {
   });
 
   useEffect(() => {
+    const incrementViews = () => {
+      setInterviewViews(prev => {
+        const newViews = { ...prev };
+        interviews.forEach(interview => {
+          const randomIncrease = Math.floor(Math.random() * 2) + 2;
+          newViews[interview.id] = (newViews[interview.id] || interview.initialViews) + randomIncrease;
+        });
+        return newViews;
+      });
+    };
+
+    const viewsInterval = setInterval(incrementViews, 2 * 60 * 60 * 1000);
+
+    return () => clearInterval(viewsInterval);
+  }, []);
+
+  useEffect(() => {
     const fetchCurrentTrack = async () => {
       try {
         const response = await fetch('https://myradio24.com/api/history?radioID=54137&limit=1');
