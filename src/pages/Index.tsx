@@ -1693,33 +1693,61 @@ export default function Index() {
 
 
 
-            <Card className="bg-card border-border">
-              <CardContent className="p-5">
-                <div className="flex items-start gap-4">
-                  <a 
-                    href="https://vk.com/kontentmediapro" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 bg-[#0077FF] hover:bg-[#0066DD] transition-colors rounded-2xl flex items-center justify-center flex-shrink-0"
-                  >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z" fill="white"/>
-                    </svg>
-                  </a>
-                  <div className="flex-1">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Card className="bg-card border-border">
+                <CardContent className="p-5">
+                  <div className="flex items-start gap-4">
                     <a 
                       href="https://vk.com/kontentmediapro" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="font-bold mb-2 inline-block hover:text-primary transition-colors"
+                      className="w-12 h-12 bg-[#0077FF] hover:bg-[#0066DD] transition-all hover:scale-105 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
                     >
-                      ВКонтакте
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z" fill="white"/>
+                      </svg>
                     </a>
-                    <p className="text-sm text-muted-foreground">По всем вопросам и предложениям пишите нам в ВК</p>
+                    <div className="flex-1">
+                      <a 
+                        href="https://vk.com/kontentmediapro" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="font-bold mb-2 inline-block hover:text-primary transition-colors"
+                      >
+                        ВКонтакте
+                      </a>
+                      <p className="text-sm text-muted-foreground">По всем вопросам и предложениям пишите нам в ВК</p>
+                    </div>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card border-border">
+                <CardContent className="p-5">
+                  <div className="flex items-start gap-4">
+                    <a 
+                      href="https://t.me/kontentmediapro" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="w-12 h-12 bg-[#0088cc] hover:bg-[#0077bb] transition-all hover:scale-105 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
+                    >
+                      <Icon name="Send" size={24} className="text-white" />
+                    </a>
+                    <div className="flex-1">
+                      <a 
+                        href="https://t.me/kontentmediapro" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="font-bold mb-2 inline-block hover:text-primary transition-colors"
+                      >
+                        Telegram
+                      </a>
+                      <p className="text-sm text-muted-foreground">Следите за новостями и общайтесь с нами в Telegram</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         )}
       </main>
