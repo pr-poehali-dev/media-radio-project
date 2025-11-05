@@ -261,17 +261,7 @@ export default function Index() {
   
   const [interviewViews, setInterviewViews] = useState<Record<number, number>>(() => {
     const calculateViews = (interview: typeof interviews[0]) => {
-      const specialInterviewIds = [1, 2, 3];
-      const startDate = new Date('2025-11-05T00:00:00');
-      const now = Date.now();
-      
-      if (specialInterviewIds.includes(interview.id) && now >= startDate.getTime()) {
-        const daysSinceStart = Math.floor((now - startDate.getTime()) / (1000 * 60 * 60 * 24));
-        const additionalViews = daysSinceStart * 4;
-        return interview.initialViews + additionalViews;
-      }
-      
-      const hoursSincePublish = (now - interview.publishedAt.getTime()) / (1000 * 60 * 60);
+      const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
       const viewsPerHour = (interview as any).viewsPerHour || 7;
       return interview.initialViews + Math.floor(hoursSincePublish * viewsPerHour);
     };
@@ -295,28 +285,18 @@ export default function Index() {
   });
 
   useEffect(() => {
-    const updateViews = () => {
+    const incrementViews = () => {
       setInterviewViews(prev => {
         const newViews = { ...prev };
-        const specialInterviewIds = [1, 2, 3];
-        const startDate = new Date('2025-11-05T00:00:00');
-        const now = Date.now();
-        
         interviews.forEach(interview => {
-          if (specialInterviewIds.includes(interview.id) && now >= startDate.getTime()) {
-            const daysSinceStart = Math.floor((now - startDate.getTime()) / (1000 * 60 * 60 * 24));
-            const additionalViews = daysSinceStart * 4;
-            newViews[interview.id] = interview.initialViews + additionalViews;
-          } else {
-            const randomIncrease = Math.floor(Math.random() * 2) + 2;
-            newViews[interview.id] = (newViews[interview.id] || interview.initialViews) + randomIncrease;
-          }
+          const randomIncrease = Math.floor(Math.random() * 2) + 2;
+          newViews[interview.id] = (newViews[interview.id] || interview.initialViews) + randomIncrease;
         });
         return newViews;
       });
     };
 
-    const viewsInterval = setInterval(updateViews, 2 * 60 * 60 * 1000);
+    const viewsInterval = setInterval(incrementViews, 2 * 60 * 60 * 1000);
 
     return () => clearInterval(viewsInterval);
   }, []);
