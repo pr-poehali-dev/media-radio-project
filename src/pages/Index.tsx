@@ -1332,7 +1332,7 @@ export default function Index() {
                                 <Button
                                   size="sm"
                                   onClick={() => {
-                                    const url = encodeURIComponent('https://kontentmediapro.ru/катяденисова#1');
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#5`);
                                     const text = encodeURIComponent('🔥 Катя Денисова: «Танец на обломках воспоминаний»');
                                     window.open(`https://vk.com/share.php?url=${url}&title=${text}`, '_blank');
                                   }}
@@ -1346,7 +1346,7 @@ export default function Index() {
                                 <Button
                                   size="sm"
                                   onClick={() => {
-                                    const url = encodeURIComponent('https://kontentmediapro.ru/катяденисова#1');
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#5`);
                                     const text = encodeURIComponent('🔥 Катя Денисова: «Танец на обломках воспоминаний»');
                                     window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
                                   }}
@@ -1358,7 +1358,7 @@ export default function Index() {
                                 <Button
                                   size="sm"
                                   onClick={() => {
-                                    const url = encodeURIComponent('https://kontentmediapro.ru/катяденисова#1');
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#5`);
                                     const text = encodeURIComponent('🔥 Катя Денисова: «Танец на обломках воспоминаний»');
                                     window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
                                   }}
@@ -1371,7 +1371,7 @@ export default function Index() {
                                   size="sm"
                                   variant="outline"
                                   onClick={() => {
-                                    const url = 'https://kontentmediapro.ru/катяденисова#1';
+                                    const url = `${window.location.origin}${window.location.pathname}#5`;
                                     navigator.clipboard.writeText(url);
                                   }}
                                   className="border-border"
