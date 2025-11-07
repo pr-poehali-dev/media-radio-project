@@ -72,6 +72,27 @@ export default function Admin() {
       console.log('Загружено интервью:', parsed.length);
       console.log('Все ID:', parsed.map((i: any) => ({ id: i.id, artist: i.artist })));
       setInterviews(parsed);
+    } else {
+      const initialData: Interview[] = [
+        {
+          id: 6,
+          artist: 'Кот Феликс',
+          title: 'Кот Феликс: «Мяу мяу мяу»',
+          date: '8 ноября 2025',
+          excerpt: 'Интервью с самым известным котом',
+          image: 'https://via.placeholder.com/800x600',
+          vkLink: 'https://vk.com',
+          publishedAt: new Date('2025-11-08'),
+          initialViews: 1000,
+          viewsPerHour: 10,
+          images: [],
+          yandexMusic: '',
+          fullText: 'Полный текст интервью с котом Феликсом'
+        }
+      ];
+      localStorage.setItem('interviews', JSON.stringify(initialData));
+      setInterviews(initialData);
+      console.log('Созданы начальные данные:', initialData.length);
     }
   }, []);
 
