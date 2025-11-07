@@ -11,7 +11,7 @@ export default function Admin() {
     return localStorage.getItem('adminAuth') === '06243020kako';
   });
   const [password, setPassword] = useState('');
-  const [interviews, setInterviews] = useState<Interview[]>([]);
+  const [interviews, setInterviews] = useState<Interview[]>(defaultInterviews);
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
