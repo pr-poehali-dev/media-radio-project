@@ -22,6 +22,10 @@ interface Interview {
 }
 
 export default function Admin() {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return localStorage.getItem('adminAuth') === '06243020kako';
+  });
+  const [password, setPassword] = useState('');
   const [interviews, setInterviews] = useState<Interview[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -40,6 +44,22 @@ export default function Admin() {
     yandexMusic: '',
     fullText: ''
   });
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === '06243020kako') {
+      localStorage.setItem('adminAuth', password);
+      setIsAuthenticated(true);
+    } else {
+      alert('Неверный пароль');
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('adminAuth');
+    setIsAuthenticated(false);
+    setPassword('');
+  };
 
   useEffect(() => {
     const savedInterviews = localStorage.getItem('interviews');
@@ -137,15 +157,52 @@ export default function Admin() {
     });
   };
 
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center px-4">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle className="text-2xl text-center">Вход в админ-панель</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <div>
+                <label className="block text-sm font-medium mb-2">Пароль</label>
+                <Input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Введите пароль"
+                  required
+                  autoFocus
+                />
+              </div>
+              <Button type="submit" className="w-full">
+                <Icon name="Lock" size={16} className="mr-2" />
+                Войти
+              </Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background py-8 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold">Админ-панель: Интервью</h1>
-          <Button onClick={() => window.location.href = '/'} variant="outline">
-            <Icon name="ArrowLeft" size={16} className="mr-2" />
-            На главную
-          </Button>
+          <div className="flex gap-2">
+            <Button onClick={handleLogout} variant="outline" size="sm">
+              <Icon name="LogOut" size={16} className="mr-2" />
+              Выйти
+            </Button>
+            <Button onClick={() => window.location.href = '/'} variant="outline">
+              <Icon name="ArrowLeft" size={16} className="mr-2" />
+              На главную
+            </Button>
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
