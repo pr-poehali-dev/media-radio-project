@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import AudioPlayer from '@/components/AudioPlayer';
 
-const interviews = [
+const defaultInterviews = [
   {
     id: 5,
     artist: 'Катя Денисова',
@@ -275,6 +275,22 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 
 
 export default function Index() {
+  const [interviews, setInterviews] = useState(() => {
+    const savedInterviews = localStorage.getItem('interviews');
+    if (savedInterviews) {
+      try {
+        const parsed = JSON.parse(savedInterviews);
+        parsed.forEach((item: any) => {
+          item.publishedAt = new Date(item.publishedAt);
+        });
+        return [...parsed, ...defaultInterviews];
+      } catch {
+        return defaultInterviews;
+      }
+    }
+    return defaultInterviews;
+  });
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [listenerCount, setListenerCount] = useState(650);
   const [targetCount, setTargetCount] = useState(650);
