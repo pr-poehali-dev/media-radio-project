@@ -715,17 +715,29 @@ export default function Index() {
               </h1>
             </div>
           </div>
-          
-          {showInstallButton && (
+
+          <div className="flex items-center gap-2">
             <Button
-              onClick={handleInstallClick}
+              onClick={() => window.location.href = '/admin'}
               size="sm"
-              className="bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg hover:shadow-xl transition-all"
+              variant="outline"
+              className="border-primary/20 text-primary hover:bg-primary/10"
             >
-              <Icon name="Download" size={16} className="mr-1" />
-              <span className="hidden sm:inline">Установить</span>
+              <Icon name="Settings" size={16} className="mr-1" />
+              Админ
             </Button>
-          )}
+          
+            {showInstallButton && (
+              <Button
+                onClick={handleInstallClick}
+                size="sm"
+                className="bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg hover:shadow-xl transition-all"
+              >
+                <Icon name="Download" size={16} className="mr-1" />
+                <span className="hidden sm:inline">Установить</span>
+              </Button>
+            )}
+          </div>
 
         </div>
       </header>
