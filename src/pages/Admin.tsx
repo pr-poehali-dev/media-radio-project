@@ -4,22 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
-
-interface Interview {
-  id: number;
-  artist: string;
-  title: string;
-  date: string;
-  excerpt: string;
-  image: string;
-  vkLink: string;
-  publishedAt: Date;
-  initialViews: number;
-  viewsPerHour: number;
-  images: string[];
-  yandexMusic: string;
-  fullText: string;
-}
+import { defaultInterviews, type Interview } from '@/data/interviews';
 
 export default function Admin() {
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
@@ -70,7 +55,9 @@ export default function Admin() {
       parsed.forEach((item: any) => {
         item.publishedAt = new Date(item.publishedAt);
       });
-      setInterviews(parsed);
+      setInterviews([...defaultInterviews, ...parsed]);
+    } else {
+      setInterviews(defaultInterviews);
     }
   }, []);
 
