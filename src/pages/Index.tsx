@@ -275,25 +275,32 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 
 
 export default function Index() {
-  const [interviews, setInterviews] = useState(() => {
-    const savedInterviews = localStorage.getItem('interviews');
-    if (savedInterviews) {
+  const [interviews, setInterviews] = useState<any[]>([]);
+  const [interviewsLoading, setInterviewsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadInterviews = async () => {
       try {
-        const parsed = JSON.parse(savedInterviews);
-        const filtered = parsed.filter((item: any) => item.id !== 6);
-        filtered.forEach((item: any) => {
-          item.publishedAt = new Date(item.publishedAt);
-        });
-        if (filtered.length !== parsed.length) {
-          localStorage.setItem('interviews', JSON.stringify(filtered));
-        }
-        return [...filtered, ...defaultInterviews];
-      } catch {
-        return defaultInterviews;
+        const response = await fetch('https://functions.poehali.dev/b6d79023-63bc-4221-a0dc-e8ca92218ef5');
+        const data = await response.json();
+        const dbInterviews = data.interviews || [];
+        
+        const merged = [...dbInterviews, ...defaultInterviews];
+        const unique = merged.filter((item, index, self) => 
+          index === self.findIndex((t) => t.id === item.id)
+        );
+        
+        setInterviews(unique);
+      } catch (error) {
+        console.error('Failed to load interviews:', error);
+        setInterviews(defaultInterviews);
+      } finally {
+        setInterviewsLoading(false);
       }
-    }
-    return defaultInterviews;
-  });
+    };
+
+    loadInterviews();
+  }, []);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [listenerCount, setListenerCount] = useState(650);

@@ -1,5 +1,5 @@
 '''
-Business: Upload image file to cloud storage
+Business: Upload image file - saves to local storage
 Args: event - dict with httpMethod, body (base64 encoded image), headers
       context - object with request_id, function_name attributes
 Returns: HTTP response with image URL or error
@@ -8,19 +8,7 @@ Returns: HTTP response with image URL or error
 import json
 import base64
 import uuid
-import os
 from typing import Dict, Any
-import boto3
-from botocore.exceptions import ClientError
-
-s3_client = boto3.client(
-    's3',
-    endpoint_url='https://storage.yandexcloud.net',
-    region_name='ru-central1'
-)
-
-BUCKET_NAME = os.environ.get('S3_BUCKET_NAME', 'poehali-images')
-PROJECT_ID = os.environ.get('PROJECT_ID', 'default')
 
 def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     method: str = event.get('httpMethod', 'POST')
@@ -92,37 +80,14 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     elif 'webp' in file_type:
         file_extension = 'webp'
     
-    file_name = f"interview_{uuid.uuid4().hex}.{file_extension}"
-    file_path = f"{PROJECT_ID}/{file_name}"
+    image_data_url = f"data:{file_type};base64,{base64.b64encode(image_bytes).decode('utf-8')}"
     
-    try:
-        s3_client.put_object(
-            Bucket=BUCKET_NAME,
-            Key=file_path,
-            Body=image_bytes,
-            ContentType=file_type,
-            ACL='public-read'
-        )
-        
-        image_url = f"https://storage.yandexcloud.net/{BUCKET_NAME}/{file_path}"
-        
-        return {
-            'statusCode': 200,
-            'headers': {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            'body': json.dumps({'url': image_url}),
-            'isBase64Encoded': False
-        }
-    
-    except ClientError as e:
-        return {
-            'statusCode': 500,
-            'headers': {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            'body': json.dumps({'error': f'Upload failed: {str(e)}'}),
-            'isBase64Encoded': False
-        }
+    return {
+        'statusCode': 200,
+        'headers': {
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+        },
+        'body': json.dumps({'url': image_data_url}),
+        'isBase64Encoded': False
+    }
