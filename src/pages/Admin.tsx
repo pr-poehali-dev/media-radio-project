@@ -7,6 +7,8 @@ export default function Admin() {
   const [token, setToken] = useState<string>('');
 
   useEffect(() => {
+    localStorage.removeItem('adminAuth');
+    
     const savedToken = localStorage.getItem('adminToken');
     if (savedToken === '0624') {
       setToken(savedToken);
