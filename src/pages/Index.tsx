@@ -717,16 +717,6 @@ export default function Index() {
           </div>
 
           <div className="flex items-center gap-2">
-            <Button
-              onClick={() => window.location.href = '/admin'}
-              size="sm"
-              variant="outline"
-              className="border-primary/20 text-primary hover:bg-primary/10"
-            >
-              <Icon name="Settings" size={16} className="mr-1" />
-              Админ
-            </Button>
-          
             {showInstallButton && (
               <Button
                 onClick={handleInstallClick}
