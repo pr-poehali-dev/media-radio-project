@@ -1,7 +1,3 @@
 {
-  "interviews": "https://functions.poehali.dev/b6d79023-63bc-4221-a0dc-e8ca92218ef5",
-  "auth": "https://functions.poehali.dev/049162d4-5feb-490f-8c24-24de478c6716",
-  "upload-image": "https://functions.poehali.dev/e34e61ca-8ab7-40b5-8c53-6a01c400868e",
-  "listener-count": "https://functions.poehali.dev/0163cd97-e927-4aeb-ae86-d56d91c071cc",
-  "radio-metadata": "https://functions.poehali.dev/bd23f8fb-a46d-42e0-ac9e-6ad3f03e9c5e"
+  "listener-count": "https://functions.poehali.dev/0163cd97-e927-4aeb-ae86-d56d91c071cc"
 }

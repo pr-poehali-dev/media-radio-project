@@ -8,7 +8,7 @@ import AudioPlayer from '@/components/AudioPlayer';
 
 const defaultInterviews = [
   {
-    id: 105,
+    id: 5,
     artist: 'Катя Денисова',
     title: 'Катя Денисова: «Танец на обломках воспоминаний»',
     date: '5 ноября 2025',
@@ -49,7 +49,7 @@ const defaultInterviews = [
 💌 Присоединяйтесь к сообществу Кати ВКонтакте и следите за новыми релизами!`
   },
   {
-    id: 104,
+    id: 4,
     artist: 'Таисия Кайсарова',
     title: 'Таисия Кайсарова — голос современной женщины в литературе',
     date: '2 ноября 2025',
@@ -99,7 +99,7 @@ const defaultInterviews = [
 Таисия Кайсарова — автор, который только начинает свой большой путь в большой литературе, но уже сейчас ясно, что её голос будет звучать громко и точно найдёт отклик в сердцах многих.`
   },
   {
-    id: 103,
+    id: 1,
     artist: 'Catherine Flox',
     title: 'Эксклюзивное интервью: о музыке, свободе и любви к картошке фри',
     date: '30 октября 2025',
@@ -166,7 +166,7 @@ Catherine Flox: о музыке, свободе и любви к картошк�
 ✨ Присоединяйтесь к нашему сообществу VK`
   },
   {
-    id: 102,
+    id: 2,
     artist: 'Пан Пантер',
     title: '"Гравитация" - о страсти, любви и творческом тандеме с Катей Денисовой',
     date: '30 октября 2025',
@@ -207,7 +207,7 @@ Catherine Flox: о музыке, свободе и любви к картошк�
 Следите за творчеством Пан Пантера — лучшее еще впереди! 🎵🔥`
   },
   {
-    id: 101,
+    id: 3,
     artist: 'Zi Dron',
     title: 'Zi Dron здесь и сейчас: откровенный разговор о музыке, свободе и скандале без цензуры',
     date: '28 октября 2025',
@@ -275,32 +275,21 @@ Zi Dron здесь и сейчас: откровенный разговор о �
 
 
 export default function Index() {
-  const [interviews, setInterviews] = useState<any[]>([]);
-  const [interviewsLoading, setInterviewsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadInterviews = async () => {
+  const [interviews, setInterviews] = useState(() => {
+    const savedInterviews = localStorage.getItem('interviews');
+    if (savedInterviews) {
       try {
-        const response = await fetch('https://functions.poehali.dev/b6d79023-63bc-4221-a0dc-e8ca92218ef5');
-        const data = await response.json();
-        const dbInterviews = (data.interviews || []).filter((item: any) => ![1,2,3,4,5].includes(item.id));
-        
-        const merged = [...defaultInterviews, ...dbInterviews];
-        const unique = merged.filter((item, index, self) => 
-          index === self.findIndex((t) => t.id === item.id)
-        );
-        
-        setInterviews(unique);
-      } catch (error) {
-        console.error('Failed to load interviews:', error);
-        setInterviews(defaultInterviews);
-      } finally {
-        setInterviewsLoading(false);
+        const parsed = JSON.parse(savedInterviews);
+        parsed.forEach((item: any) => {
+          item.publishedAt = new Date(item.publishedAt);
+        });
+        return [...parsed, ...defaultInterviews];
+      } catch {
+        return defaultInterviews;
       }
-    };
-
-    loadInterviews();
-  }, []);
+    }
+    return defaultInterviews;
+  });
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [listenerCount, setListenerCount] = useState(650);
@@ -726,19 +715,17 @@ export default function Index() {
               </h1>
             </div>
           </div>
-
-          <div className="flex items-center gap-2">
-            {showInstallButton && (
-              <Button
-                onClick={handleInstallClick}
-                size="sm"
-                className="bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg hover:shadow-xl transition-all"
-              >
-                <Icon name="Download" size={16} className="mr-1" />
-                <span className="hidden sm:inline">Установить</span>
-              </Button>
-            )}
-          </div>
+          
+          {showInstallButton && (
+            <Button
+              onClick={handleInstallClick}
+              size="sm"
+              className="bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg hover:shadow-xl transition-all"
+            >
+              <Icon name="Download" size={16} className="mr-1" />
+              <span className="hidden sm:inline">Установить</span>
+            </Button>
+          )}
 
         </div>
       </header>
