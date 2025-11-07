@@ -69,6 +69,8 @@ export default function Admin() {
       parsed.forEach((item: any) => {
         item.publishedAt = new Date(item.publishedAt);
       });
+      console.log('Загружено интервью:', parsed.length);
+      console.log('Все ID:', parsed.map((i: any) => ({ id: i.id, artist: i.artist })));
       setInterviews(parsed);
     }
   }, []);
@@ -211,7 +213,7 @@ export default function Admin() {
             <CardTitle>Поиск интервью</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="flex gap-2 mb-4">
+            <div className="flex items-center gap-2 mb-4">
               <Input
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -225,6 +227,9 @@ export default function Admin() {
               >
                 <Icon name="X" size={16} />
               </Button>
+              <div className="text-sm text-muted-foreground whitespace-nowrap">
+                Всего: {interviews.length}
+              </div>
             </div>
             
             <div className="space-y-3 max-h-96 overflow-y-auto">
