@@ -278,6 +278,16 @@ export default function Admin() {
                     Найти
                   </Button>
                 </div>
+                <div className="text-sm text-muted-foreground bg-muted p-3 rounded">
+                  Всего интервью в базе: <strong>{interviews.length}</strong>
+                  {interviews.length > 0 && (
+                    <div className="mt-2 space-y-1">
+                      {interviews.map(i => (
+                        <div key={i.id}>ID: {i.id} — {i.artist}</div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
               
               <div className="border-t pt-6 space-y-4">
