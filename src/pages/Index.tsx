@@ -280,10 +280,14 @@ export default function Index() {
     if (savedInterviews) {
       try {
         const parsed = JSON.parse(savedInterviews);
-        parsed.forEach((item: any) => {
+        const filtered = parsed.filter((item: any) => item.id !== 6);
+        filtered.forEach((item: any) => {
           item.publishedAt = new Date(item.publishedAt);
         });
-        return [...parsed, ...defaultInterviews];
+        if (filtered.length !== parsed.length) {
+          localStorage.setItem('interviews', JSON.stringify(filtered));
+        }
+        return [...filtered, ...defaultInterviews];
       } catch {
         return defaultInterviews;
       }
