@@ -160,19 +160,29 @@ export default function Admin() {
   };
 
   const handleSearch = () => {
-    const query = searchQuery.toLowerCase().trim();
-    if (!query) return;
+    const query = searchQuery.trim();
+    if (!query) {
+      alert('Введите ID или имя артиста');
+      return;
+    }
     
-    const found = interviews.find(item => 
-      item.id.toString() === query || 
-      item.artist.toLowerCase().includes(query)
-    );
+    console.log('Поиск:', query);
+    console.log('Всего интервью:', interviews.length);
+    console.log('Все интервью:', interviews.map(i => ({ id: i.id, artist: i.artist })));
+    
+    const found = interviews.find(item => {
+      const matchId = item.id.toString() === query;
+      const matchArtist = item.artist.toLowerCase().includes(query.toLowerCase());
+      console.log(`Проверка ID=${item.id}, artist=${item.artist}: matchId=${matchId}, matchArtist=${matchArtist}`);
+      return matchId || matchArtist;
+    });
     
     if (found) {
+      console.log('Найдено:', found);
       handleEdit(found);
       setSearchQuery('');
     } else {
-      alert('Интервью не найдено');
+      alert(`Интервью не найдено. Всего интервью в базе: ${interviews.length}`);
     }
   };
 
