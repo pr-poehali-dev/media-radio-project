@@ -29,6 +29,8 @@ export default function Admin() {
   const [interviews, setInterviews] = useState<Interview[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [viewsManagement, setViewsManagement] = useState({ id: '', initialViews: '', viewsPerHour: '' });
   const [formData, setFormData] = useState<Partial<Interview>>({
     id: Date.now(),
     artist: '',
@@ -157,6 +159,47 @@ export default function Admin() {
     });
   };
 
+  const handleSearch = () => {
+    const query = searchQuery.toLowerCase().trim();
+    if (!query) return;
+    
+    const found = interviews.find(item => 
+      item.id.toString() === query || 
+      item.artist.toLowerCase().includes(query)
+    );
+    
+    if (found) {
+      handleEdit(found);
+      setSearchQuery('');
+    } else {
+      alert('Интервью не найдено');
+    }
+  };
+
+  const handleUpdateViews = () => {
+    const id = parseInt(viewsManagement.id);
+    const initialViews = parseInt(viewsManagement.initialViews);
+    const viewsPerHour = parseInt(viewsManagement.viewsPerHour);
+    
+    if (!id || isNaN(initialViews) || isNaN(viewsPerHour)) {
+      alert('Заполните все поля корректно');
+      return;
+    }
+    
+    const found = interviews.find(item => item.id === id);
+    if (!found) {
+      alert('Интервью с таким ID не найдено');
+      return;
+    }
+    
+    const updated = interviews.map(item => 
+      item.id === id ? { ...item, initialViews, viewsPerHour } : item
+    );
+    saveInterviews(updated);
+    setViewsManagement({ id: '', initialViews: '', viewsPerHour: '' });
+    alert('Просмотры обновлены!');
+  };
+
   if (!isAuthenticated) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
@@ -203,6 +246,59 @@ export default function Admin() {
               На главную
             </Button>
           </div>
+        </div>
+
+        <div className="grid gap-8 mb-8">
+          <Card>
+            <CardHeader>
+              <CardTitle>Поиск и управление интервью</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-4">
+                <h3 className="font-semibold">Найти по ID или исполнителю</h3>
+                <div className="flex gap-2">
+                  <Input
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder="Введите ID или имя артиста"
+                    onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                  />
+                  <Button onClick={handleSearch}>
+                    <Icon name="Search" size={16} className="mr-2" />
+                    Найти
+                  </Button>
+                </div>
+              </div>
+              
+              <div className="border-t pt-6 space-y-4">
+                <h3 className="font-semibold">Управление просмотрами</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <Input
+                    type="number"
+                    value={viewsManagement.id}
+                    onChange={(e) => setViewsManagement({ ...viewsManagement, id: e.target.value })}
+                    placeholder="ID интервью"
+                  />
+                  <Input
+                    type="number"
+                    value={viewsManagement.initialViews}
+                    onChange={(e) => setViewsManagement({ ...viewsManagement, initialViews: e.target.value })}
+                    placeholder="Начальные просмотры"
+                  />
+                  <Input
+                    type="number"
+                    value={viewsManagement.viewsPerHour}
+                    onChange={(e) => setViewsManagement({ ...viewsManagement, viewsPerHour: e.target.value })}
+                    placeholder="Просмотров/час"
+                  />
+                </div>
+                <Button onClick={handleUpdateViews} className="w-full">
+                  <Icon name="TrendingUp" size={16} className="mr-2" />
+                  Обновить просмотры
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-8">
