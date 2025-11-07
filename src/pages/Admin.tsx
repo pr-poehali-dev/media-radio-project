@@ -23,12 +23,10 @@ export default function Admin() {
     date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }),
     excerpt: '',
     image: '',
-    vkLink: '',
     publishedAt: new Date(),
     initialViews: 0,
     viewsPerHour: 1,
     images: [],
-    yandexMusic: '',
     fullText: ''
   });
 
@@ -76,12 +74,13 @@ export default function Admin() {
       date: formData.date || '',
       excerpt: formData.excerpt || '',
       image: formData.image || '',
-      vkLink: formData.vkLink || '',
+      vkLink: formData.vkLink,
       publishedAt: formData.publishedAt || new Date(),
       initialViews: formData.initialViews || 0,
-      viewsPerHour: formData.viewsPerHour || 1,
+      viewsPerHour: formData.viewsPerHour,
       images: formData.images || [],
-      yandexMusic: formData.yandexMusic || '',
+      yandexMusic: formData.yandexMusic,
+      litnetLinks: formData.litnetLinks,
       fullText: formData.fullText || ''
     };
 
@@ -117,12 +116,10 @@ export default function Admin() {
       date: new Date().toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' }),
       excerpt: '',
       image: '',
-      vkLink: '',
       publishedAt: new Date(),
       initialViews: 0,
       viewsPerHour: 1,
       images: [],
-      yandexMusic: '',
       fullText: ''
     });
     setIsEditing(false);
