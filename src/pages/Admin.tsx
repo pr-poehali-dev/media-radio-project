@@ -29,7 +29,6 @@ export default function Admin() {
   const [interviews, setInterviews] = useState<Interview[]>([]);
   const [isEditing, setIsEditing] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [searchQuery, setSearchQuery] = useState('');
   const [formData, setFormData] = useState<Partial<Interview>>({
     id: Date.now(),
     artist: '',
@@ -69,30 +68,7 @@ export default function Admin() {
       parsed.forEach((item: any) => {
         item.publishedAt = new Date(item.publishedAt);
       });
-      console.log('Загружено интервью:', parsed.length);
-      console.log('Все ID:', parsed.map((i: any) => ({ id: i.id, artist: i.artist })));
       setInterviews(parsed);
-    } else {
-      const initialData: Interview[] = [
-        {
-          id: 6,
-          artist: 'Кот Феликс',
-          title: 'Кот Феликс: «Мяу мяу мяу»',
-          date: '8 ноября 2025',
-          excerpt: 'Интервью с самым известным котом',
-          image: 'https://via.placeholder.com/800x600',
-          vkLink: 'https://vk.com',
-          publishedAt: new Date('2025-11-08'),
-          initialViews: 1000,
-          viewsPerHour: 10,
-          images: [],
-          yandexMusic: '',
-          fullText: 'Полный текст интервью с котом Феликсом'
-        }
-      ];
-      localStorage.setItem('interviews', JSON.stringify(initialData));
-      setInterviews(initialData);
-      console.log('Созданы начальные данные:', initialData.length);
     }
   }, []);
 
@@ -228,83 +204,6 @@ export default function Admin() {
             </Button>
           </div>
         </div>
-
-        <Card className="mb-8">
-          <CardHeader>
-            <CardTitle>Поиск интервью</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center gap-2 mb-4">
-              <Input
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Поиск по исполнителю или заголовку..."
-                className="flex-1"
-              />
-              <Button 
-                onClick={() => setSearchQuery('')}
-                variant="outline"
-                disabled={!searchQuery}
-              >
-                <Icon name="X" size={16} />
-              </Button>
-              <div className="text-sm text-muted-foreground whitespace-nowrap">
-                Всего: {interviews.length}
-              </div>
-            </div>
-            
-            <div className="space-y-3 max-h-96 overflow-y-auto">
-              {interviews
-                .filter(interview => {
-                  if (!searchQuery) return true;
-                  const query = searchQuery.toLowerCase();
-                  return interview.artist.toLowerCase().includes(query) || 
-                         interview.title.toLowerCase().includes(query);
-                })
-                .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
-                .map(interview => (
-                  <div key={interview.id} className="flex items-center justify-between p-3 border rounded-lg hover:bg-accent transition-colors">
-                    <div className="flex-1 min-w-0">
-                      <div className="font-medium truncate">{interview.artist}</div>
-                      <div className="text-sm text-muted-foreground truncate">{interview.title}</div>
-                      <div className="text-xs text-muted-foreground">{interview.date} • ID: {interview.id}</div>
-                    </div>
-                    <div className="flex gap-2 ml-4">
-                      <Button 
-                        onClick={() => handleEdit(interview)}
-                        size="sm"
-                        variant="outline"
-                      >
-                        <Icon name="Pencil" size={14} className="mr-1" />
-                        Редактировать
-                      </Button>
-                      <Button 
-                        onClick={() => handleDelete(interview.id)}
-                        size="sm"
-                        variant="destructive"
-                      >
-                        <Icon name="Trash2" size={14} />
-                      </Button>
-                    </div>
-                  </div>
-                ))}
-              {interviews.length === 0 && (
-                <div className="text-center text-muted-foreground py-8">
-                  Нет интервью
-                </div>
-              )}
-              {interviews.length > 0 && searchQuery && interviews.filter(interview => {
-                const query = searchQuery.toLowerCase();
-                return interview.artist.toLowerCase().includes(query) || 
-                       interview.title.toLowerCase().includes(query);
-              }).length === 0 && (
-                <div className="text-center text-muted-foreground py-8">
-                  Ничего не найдено
-                </div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
 
         <div className="grid lg:grid-cols-2 gap-8">
           <Card>
