@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "Test upload image with valid token",
+      "method": "POST",
+      "path": "/",
+      "headers": {
+        "X-Admin-Token": "0624"
+      },
+      "body": {
+        "image": "data:image/jpeg;base64,/9j/4AAQSkZJRg==",
+        "fileType": "image/jpeg"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "url": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test upload without token",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "image": "data:image/jpeg;base64,/9j/4AAQ==",
+        "fileType": "image/jpeg"
+      },
+      "expectedStatus": 401,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

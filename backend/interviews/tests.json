@@ -1,0 +1,41 @@
+{
+  "tests": [
+    {
+      "name": "Test get all interviews",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "interviews": "array"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test search interviews",
+      "method": "GET",
+      "path": "/?search=Сергей",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "interviews": "array"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Test create interview without token",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "name": "Test User",
+        "role": "Test Role",
+        "imageUrl": "https://example.com/image.jpg",
+        "audioUrl": "https://example.com/audio.mp3",
+        "duration": "10:00"
+      },
+      "expectedStatus": 401,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
