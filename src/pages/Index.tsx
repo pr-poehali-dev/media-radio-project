@@ -320,7 +320,19 @@ export default function Index() {
     const calculateViews = (interview: typeof interviews[0]) => {
       const hoursSincePublish = (Date.now() - interview.publishedAt.getTime()) / (1000 * 60 * 60);
       const viewsPerHour = (interview as any).viewsPerHour || 7;
-      return interview.initialViews + Math.floor(hoursSincePublish * viewsPerHour);
+      let calculatedViews = interview.initialViews + Math.floor(hoursSincePublish * viewsPerHour);
+      
+      const specialIds = [1, 2, 3];
+      if (specialIds.includes(interview.id)) {
+        const startDate = new Date('2025-11-08T00:00:00');
+        const now = new Date();
+        if (now >= startDate) {
+          const daysSinceStart = Math.floor((now.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24));
+          calculatedViews += daysSinceStart;
+        }
+      }
+      
+      return calculatedViews;
     };
     
     const saved = localStorage.getItem('interviewViewsData');
