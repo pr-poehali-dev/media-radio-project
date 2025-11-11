@@ -1891,10 +1891,23 @@ export default function Index() {
                     >
                       <Icon name="Send" size={24} className="text-white" />
                     </a>
+                    <a 
+                      href="mailto:kontentmediapro@gmail.com" 
+                      className="w-12 h-12 bg-gradient-to-br from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 transition-all hover:scale-105 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
+                    >
+                      <Icon name="Mail" size={24} className="text-white" />
+                    </a>
                   </div>
                   <div className="flex-1">
-                    <p className="font-bold mb-2">Наши социальные сети</p>
-                    <p className="text-sm text-muted-foreground">По всем вопросам и предложениям пишите нам в ВК или в ТГ</p>
+                    <p className="font-bold mb-2">Наши контакты</p>
+                    <p className="text-sm text-muted-foreground mb-2">По всем вопросам и предложениям пишите нам в ВК, ТГ или на почту</p>
+                    <a 
+                      href="mailto:kontentmediapro@gmail.com"
+                      className="text-sm text-primary hover:text-primary/80 transition-colors font-medium inline-flex items-center gap-1"
+                    >
+                      <Icon name="Mail" size={14} />
+                      kontentmediapro@gmail.com
+                    </a>
                   </div>
                 </div>
               </CardContent>
