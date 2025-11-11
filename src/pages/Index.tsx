@@ -1900,14 +1900,7 @@ export default function Index() {
                   </div>
                   <div className="flex-1">
                     <p className="font-bold mb-2">Наши контакты</p>
-                    <p className="text-sm text-muted-foreground mb-2">По всем вопросам и предложениям пишите нам в ВК, ТГ или на почту</p>
-                    <a 
-                      href="mailto:kontentmediapro@gmail.com"
-                      className="text-sm text-primary hover:text-primary/80 transition-colors font-medium inline-flex items-center gap-1"
-                    >
-                      <Icon name="Mail" size={14} />
-                      kontentmediapro@gmail.com
-                    </a>
+                    <p className="text-sm text-muted-foreground">По всем вопросам и предложениям</p>
                   </div>
                 </div>
               </CardContent>
