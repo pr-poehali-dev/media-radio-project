@@ -1871,7 +1871,7 @@ export default function Index() {
 
             <Card className="bg-card border-border">
               <CardContent className="p-5">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4 mb-4">
                   <div className="flex gap-3">
                     <a 
                       href="https://vk.com/kontentmediapro" 
@@ -1902,6 +1902,16 @@ export default function Index() {
                     <p className="font-bold mb-2">Наши контакты</p>
                     <p className="text-sm text-muted-foreground">По всем вопросам и предложениям</p>
                   </div>
+                </div>
+                
+                <div className="text-xs text-muted-foreground/80 leading-relaxed space-y-2 border-t border-border pt-4">
+                  <p>Наш сайт, включая радио — это некоммерческий любительский проект без какой-либо рекламы. Мы играем лучшую музыку со всей планеты!</p>
+                  
+                  <p>Мы целенаправленно поддерживаем молодых и малоизвестных музыкантов, давая им площадку для представления своего творчества.</p>
+                  
+                  <p>Вся музыка в эфире предназначена только для ознакомления и недоступна для скачивания. Права на все аудио и изображения принадлежат их авторам, и КонтентМедиаPRO не претендует на них.</p>
+                  
+                  <p className="text-muted-foreground/60">Сайт может содержать контент для взрослых (16+).</p>
                 </div>
               </CardContent>
             </Card>
