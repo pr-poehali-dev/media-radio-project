@@ -1356,7 +1356,7 @@ export default function Index() {
                               {'🎵 10. Вопрос:' + interview.fullText.split('🎵 10. Вопрос:')[1]}
                             </div>
                           </>
-                        ) : (
+                        ) : interview.id === 2 ? (
                           <>
                             <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed">
                               {interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[0]}
@@ -1377,6 +1377,8 @@ export default function Index() {
                               {interview.fullText.split('❤️ О ДРУЖБЕ С КАТЕЙ ДЕНИСОВОЙ')[1] || ''}
                             </div>
                           </>
+                        ) : (
+                          <div className="whitespace-pre-wrap text-sm text-foreground leading-relaxed" dangerouslySetInnerHTML={{ __html: interview.fullText.replace(/<img /g, '<img class="w-full h-auto rounded-2xl my-6" ') }} />
                         )}
                       </div>
                       
