@@ -1833,8 +1833,8 @@ export default function Index() {
                                 <Button
                                   size="sm"
                                   onClick={() => {
-                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#6`);
-                                    const text = encodeURIComponent('🎸 Алексей Лебедев о музыкальном детоксе и трилогии искупления');
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#${interview.id}`);
+                                    const text = encodeURIComponent(interview.title);
                                     window.open(`https://vk.com/share.php?url=${url}&title=${text}`, '_blank');
                                   }}
                                   className="bg-[#0077FF] hover:bg-[#0066DD] text-white"
@@ -1847,8 +1847,8 @@ export default function Index() {
                                 <Button
                                   size="sm"
                                   onClick={() => {
-                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#6`);
-                                    const text = encodeURIComponent('🎸 Алексей Лебедев о музыкальном детоксе и трилогии искупления');
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#${interview.id}`);
+                                    const text = encodeURIComponent(interview.title);
                                     window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
                                   }}
                                   className="bg-[#0088cc] hover:bg-[#0077bb] text-white"
@@ -1859,8 +1859,8 @@ export default function Index() {
                                 <Button
                                   size="sm"
                                   onClick={() => {
-                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#6`);
-                                    const text = encodeURIComponent('🎸 Алексей Лебедев о музыкальном детоксе и трилогии искупления');
+                                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#${interview.id}`);
+                                    const text = encodeURIComponent(interview.title);
                                     window.open(`https://api.whatsapp.com/send?text=${text}%20${url}`, '_blank');
                                   }}
                                   className="bg-[#25D366] hover:bg-[#1fbf58] text-white"
@@ -1872,7 +1872,7 @@ export default function Index() {
                                   size="sm"
                                   variant="outline"
                                   onClick={() => {
-                                    const url = `${window.location.origin}${window.location.pathname}#6`;
+                                    const url = `${window.location.origin}${window.location.pathname}#${interview.id}`;
                                     navigator.clipboard.writeText(url);
                                   }}
                                   className="border-border"
