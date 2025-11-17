@@ -1804,6 +1804,29 @@ export default function Index() {
                         </>
                       ) : interview.id === 6 ? (
                         <>
+                          <div className="my-6 p-4 bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 rounded-xl shadow-lg">
+                            <div className="flex items-center gap-2 mb-2">
+                              <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary/60 rounded-lg flex items-center justify-center">
+                                <Icon name="Music" size={16} className="text-white" />
+                              </div>
+                              <div>
+                                <p className="text-sm font-bold text-foreground">🎵 Послушай EP "Преодоление. Трилогия"</p>
+                                <p className="text-xs text-muted-foreground">SPLAV</p>
+                              </div>
+                            </div>
+                            <div className="rounded-lg overflow-hidden">
+                              <iframe 
+                                frameBorder="0" 
+                                allow="clipboard-write" 
+                                style={{ border: 'none', width: '100%', height: '240px', display: 'block' }}
+                                width="100%" 
+                                height="240" 
+                                src="https://music.yandex.ru/iframe/album/38338545"
+                                title="Преодоление. Трилогия - SPLAV"
+                              />
+                            </div>
+                          </div>
+
                           <div className="mt-6 p-4 bg-primary/5 border border-primary/20 rounded-2xl">
                             <div className="flex items-center gap-4">
                               <a 
