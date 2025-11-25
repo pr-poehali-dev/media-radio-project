@@ -257,7 +257,8 @@ const defaultInterviews = [
     image: 'https://cdn.poehali.dev/files/3d89c3c9-2e7e-4e59-b3df-c9d1b93ee86b.jpg',
     vkLink: 'https://vk.com/catherineflox',
     publishedAt: new Date('2025-11-01T00:00:00'),
-    initialViews: 267,
+    initialViews: 4509,
+    viewsPerHour: 0.006,
     images: [
       'https://cdn.poehali.dev/files/3d89c3c9-2e7e-4e59-b3df-c9d1b93ee86b.jpg',
       'https://cdn.poehali.dev/files/aae19a93-47e9-4273-a5bb-5eadc7a784b0.jpg',
@@ -325,7 +326,8 @@ Catherine Flox: о музыке, свободе и любви к картошк�
     vkLink: 'https://vk.com/pannpanter',
     yandexMusic: 'https://music.yandex.ru/iframe/album/38582527/track/143848317',
     publishedAt: new Date('2025-11-01T00:00:00'),
-    initialViews: 234,
+    initialViews: 4476,
+    viewsPerHour: 0.006,
     images: [
       'https://cdn.poehali.dev/files/b94c00dd-dea4-4a41-ad62-e05f5dbfcc41.jpg',
       'https://cdn.poehali.dev/files/3cd66fac-8071-4c21-9a72-701e7112b5f8.jpg'
@@ -366,7 +368,8 @@ Catherine Flox: о музыке, свободе и любви к картошк�
     vkLink: 'https://m.vk.com/harcorerap',
     yandexMusic: 'https://music.yandex.ru/iframe/album/36666533/track/139256845',
     publishedAt: new Date('2025-11-01T00:00:00'),
-    initialViews: 291,
+    initialViews: 4533,
+    viewsPerHour: 0.006,
     images: [
       'https://cdn.poehali.dev/files/24e14799-cdb1-42fa-983a-5b5234a1e6ca.jpg',
       'https://cdn.poehali.dev/files/d533f998-e174-4d41-867b-6c0c6691d01e.jpg',
