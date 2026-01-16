@@ -2457,10 +2457,21 @@ export default function Index() {
                     >
                       <Icon name="Mail" size={24} className="text-white" />
                     </a>
+                    <a 
+                      href="tel:+79023200624" 
+                      className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 transition-all hover:scale-105 rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg"
+                    >
+                      <Icon name="Phone" size={24} className="text-white" />
+                    </a>
                   </div>
                   <div className="flex-1">
                     <p className="font-bold mb-2">Наши контакты</p>
                     <p className="text-sm text-muted-foreground">По всем вопросам и предложениям</p>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      <a href="tel:+79023200624" className="hover:text-foreground transition-colors">
+                        +7 902 320-06-24
+                      </a>
+                    </p>
                   </div>
                 </div>
                 
