@@ -2431,8 +2431,8 @@ export default function Index() {
 
             <Card className="bg-card border-border">
               <CardContent className="p-5">
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex gap-3">
+                <div className="mb-4">
+                  <div className="flex gap-3 mb-3">
                     <a 
                       href="https://vk.com/kontentmediapro" 
                       target="_blank" 
@@ -2464,14 +2464,9 @@ export default function Index() {
                       <Icon name="Phone" size={24} className="text-white" />
                     </a>
                   </div>
-                  <div className="flex-1">
+                  <div>
                     <p className="font-bold mb-2">Наши контакты</p>
                     <p className="text-sm text-muted-foreground">По всем вопросам и предложениям</p>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      <a href="tel:+79023200624" className="hover:text-foreground transition-colors">
-                        +7 902 320-06-24
-                      </a>
-                    </p>
                   </div>
                 </div>
                 
