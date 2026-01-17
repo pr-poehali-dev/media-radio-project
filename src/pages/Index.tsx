@@ -2414,7 +2414,7 @@ export default function Index() {
             <Card className="bg-card border-border overflow-hidden">
               <CardContent className="p-0">
                 <div className="flex flex-col md:flex-row">
-                  <div className="w-full p-6 md:p-8 flex flex-col justify-center">
+                  <div className="w-full md:w-2/3 p-6 md:p-8 flex flex-col justify-center">
                     <h3 className="text-2xl font-bold mb-2">Ольга Владимировна</h3>
                     <p className="text-sm text-primary font-semibold mb-4">Основатель «КонтентМедиаPRO»</p>
                     <div className="space-y-3 text-muted-foreground leading-relaxed">
@@ -2422,6 +2422,13 @@ export default function Index() {
                       <p>Создала «КонтентМедиаPRO», чтобы быть трамплином для начинающих музыкантов, писателей, художников и просто творческих людей. Мой профессиональный опыт и личное убеждение, что добрый и качественный контент меняет мир к лучшему, легли в основу этого проекта.</p>
                       <p className="font-medium text-foreground">Здесь мы занимаемся реальным пиаром и поддерживаем тех, о ком завтра заговорят все.</p>
                     </div>
+                  </div>
+                  <div className="w-full md:w-1/3 bg-gradient-to-br from-background to-muted flex items-center justify-center p-8">
+                    <img 
+                      src="https://cdn.poehali.dev/files/Utool-20251025-152834646.jpg" 
+                      alt="Контент Медиа PRO"
+                      className="w-full max-w-[200px] object-contain drop-shadow-2xl"
+                    />
                   </div>
                 </div>
               </CardContent>
