@@ -4136,7 +4136,7 @@ export default function Index() {
                         </div>
 
                         <div className="bg-black/40 backdrop-blur-sm rounded-2xl px-4 py-3 border-l-4 border-pink-500">
-                          <p className="text-white text-[12px] font-black leading-tight italic">«Сезон открывает окно — твоя задача просто в него прыгнуть»</p>
+                          <p className="text-white text-[12px] font-black leading-tight italic">«Новый сезон — как чистый холст: краски уже у тебя в руках»</p>
                           <p className="text-gray-400 text-[9px] mt-1">— КонтентМедиаPRO</p>
                         </div>
 
@@ -4144,7 +4144,7 @@ export default function Index() {
 
                       {/* Нижняя полоса */}
                       <div className="bg-gradient-to-r from-pink-950/90 via-black/90 to-purple-950/90 flex items-center justify-between px-4 py-2">
-                        <span className="text-pink-600 text-[8px] font-bold uppercase tracking-wider">Весна · 2025</span>
+                        <span className="text-pink-600 text-[8px] font-bold uppercase tracking-wider">Весна · 2026</span>
                         <div className="flex gap-1">
                           {[1,2,3,4,5,6,7,8,9,10].map(i => <div key={i} className={`w-1.5 h-1.5 rounded-full ${i === 9 ? 'bg-pink-400' : 'bg-gray-700'}`} />)}
                         </div>
@@ -4235,7 +4235,7 @@ export default function Index() {
                         {/* Подпись */}
                         <div className="text-center pb-1">
                           <p className="text-white text-[16px] font-black tracking-wide drop-shadow-lg">КонтентМедиаPRO</p>
-                          <p className="text-gray-400 text-[8px] tracking-[0.3em] uppercase mt-0.5">Выпуск № 1 · 2025</p>
+                          <p className="text-gray-400 text-[8px] tracking-[0.3em] uppercase mt-0.5">Выпуск № 1 · 2026</p>
                         </div>
 
                       </div>
