@@ -3527,6 +3527,109 @@ export default function Index() {
                   </div>
                 </div>
 
+                {/* ===== СТРАНИЦА 4: СТАРТ НА СЦЕНЕ ===== */}
+                <div className="flex-none w-full snap-start">
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+
+                    {/* Шапка */}
+                    <div className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-red-600 px-4 py-2.5 flex items-center justify-between">
+                      <div>
+                        <p className="text-[8px] tracking-[0.25em] text-yellow-100 uppercase">Страница 4 · Советы</p>
+                        <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Старт на сцене</h2>
+                      </div>
+                      <div className="bg-white/15 rounded-full px-2.5 py-1">
+                        <span className="text-white text-[9px] font-bold">10 правил</span>
+                      </div>
+                    </div>
+
+                    {/* Фото-баннер с микрофоном */}
+                    <div className="relative w-full overflow-hidden" style={{ height: '130px' }}>
+                      <img
+                        src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/4c7e20a7-1906-4667-9bc4-675efc9b17e9.jpg"
+                        alt="Сцена"
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 px-4 pb-3">
+                        <p className="text-yellow-400 font-black text-[13px] leading-tight">Что должен знать каждый начинающий артист</p>
+                        <p className="text-gray-300 text-[9px] mt-0.5">Советы от тех, кто уже вышел на свет прожекторов</p>
+                      </div>
+                    </div>
+
+                    <div className="px-3 pt-2 pb-16">
+
+                      {/* Два столбца советов */}
+                      <div className="flex gap-3 mt-2">
+
+                        {/* Левый столбец: советы 1-5 */}
+                        <div className="flex-1 space-y-2">
+                          {[
+                            { n: '1', title: 'Найди свой звук', text: 'Не копируй кумиров — ищи то, что делает тебя узнаваемым. Уникальность важнее техники.' },
+                            { n: '2', title: 'Пиши каждый день', text: 'Даже если получается плохо. Мышца автора растёт только в движении, а не в ожидании вдохновения.' },
+                            { n: '3', title: 'Записывай демо', text: 'Не жди идеальной студии. Первые треки — это твоя живая история, а не повод для стыда.' },
+                            { n: '4', title: 'Строй команду', text: 'Продюсер, фотограф, SMM — даже один толковый партнёр умножает твои шансы в разы.' },
+                            { n: '5', title: 'Выходи в прямые эфиры', text: 'Живое общение с аудиторией создаёт связь, которую не заменит ни один клип.' },
+                          ].map(item => (
+                            <div key={item.n} className="flex gap-2 items-start">
+                              <div className="flex-none w-5 h-5 bg-red-600 rounded flex items-center justify-center mt-0.5">
+                                <span className="text-white font-black text-[9px]">{item.n}</span>
+                              </div>
+                              <div>
+                                <p className="text-yellow-300 font-bold text-[9px] leading-none">{item.title}</p>
+                                <p className="text-gray-400 text-[8px] leading-tight mt-0.5">{item.text}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Правый столбец: фото + советы 6-10 */}
+                        <div className="flex-1 space-y-2">
+                          <div className="relative rounded-xl overflow-hidden mb-2" style={{ height: '100px' }}>
+                            <img
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/3aca1be1-f12b-4012-a28b-f4b00440c66c.jpg"
+                              alt="Артист на сцене"
+                              className="w-full h-full object-cover object-top"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                            <div className="absolute bottom-1.5 left-2 right-2">
+                              <p className="text-yellow-300 text-[8px] font-bold italic leading-tight">«Свет прожектора — для тех, кто осмелился выйти»</p>
+                            </div>
+                          </div>
+                          {[
+                            { n: '6', title: 'Не бойся отказов', text: 'Каждое «нет» — это компас. Он показывает, где нужно расти или изменить подход.' },
+                            { n: '7', title: 'Изучай бизнес', text: 'Авторские права, лицензии, договоры — скучно, но именно это защитит твою музыку.' },
+                            { n: '8', title: 'Соцсети — твоя сцена', text: 'Один вирусный ролик может дать больше, чем год выступлений в клубах.' },
+                            { n: '9', title: 'Береги голос и здоровье', text: 'Твой инструмент — ты сам. Сон, вода, разминка. Артист без голоса — не артист.' },
+                            { n: '10', title: 'Верь в долгую игру', text: 'Overnight success — миф. Большинство звёзд шли к этому 5–10 лет. Не сдавайся раньше времени.' },
+                          ].map(item => (
+                            <div key={item.n} className="flex gap-2 items-start">
+                              <div className="flex-none w-5 h-5 bg-yellow-500 rounded flex items-center justify-center mt-0.5">
+                                <span className="text-black font-black text-[9px]">{item.n}</span>
+                              </div>
+                              <div>
+                                <p className="text-yellow-300 font-bold text-[9px] leading-none">{item.title}</p>
+                                <p className="text-gray-400 text-[8px] leading-tight mt-0.5">{item.text}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* Нижняя полоса */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-yellow-950 to-black flex items-center justify-between px-4 py-2">
+                      <span className="text-yellow-700 text-[8px] font-bold uppercase tracking-wider">Старт на сцене</span>
+                      <div className="flex gap-1">
+                        {[1,2,3,4,5].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-700" />)}
+                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-500" />
+                      </div>
+                      <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
 
               {/* Swipe navigation dots — synced via JS scroll listener would need useEffect,
