@@ -2969,26 +2969,171 @@ export default function Index() {
                   </div>
                 </div>
 
-                {/* ===== PAGE 1 placeholder ===== */}
+                {/* ===== СОДЕРЖАНИЕ ===== */}
                 <div className="flex-none w-full snap-start">
-                  <div
-                    className="relative w-full overflow-hidden rounded-xl flex flex-col items-center justify-center"
-                    style={{
-                      background: 'linear-gradient(135deg, #0a0a0a 0%, #1a0000 40%, #0a0a0a 100%)',
-                      minHeight: '85vh',
-                    }}
-                  >
-                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
-                    <div className="text-center px-8">
-                      <p className="text-red-500 text-xs tracking-[0.3em] uppercase mb-3">Страница 1</p>
-                      <Icon name="BookOpen" size={40} className="text-gray-700 mx-auto mb-4" />
-                      <p className="text-gray-500 text-sm">Материал готовится к публикации</p>
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+
+                    {/* Шапка содержания */}
+                    <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-3">
+                      <p className="text-[9px] tracking-[0.3em] text-red-200 uppercase">КонтентМедиаPRO · №1 · Март 2026</p>
+                      <h2 className="text-xl font-black text-white leading-none mt-0.5 tracking-wide">СОДЕРЖАНИЕ</h2>
                     </div>
-                    <div className="absolute bottom-4 flex gap-1.5">
-                      <div className="w-2 h-2 rounded-full bg-gray-700" />
-                      <div className="w-2 h-2 rounded-full bg-red-500" />
+
+                    {/* Список страниц */}
+                    <div className="px-4 py-3 space-y-0">
+
+                      {/* 1 */}
+                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
+                          <span className="text-white font-black text-[11px]">1</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white font-bold text-[12px] leading-tight">Светлана Чарушина</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Пишу против правил, ломаю устои и обращаюсь к небесам»</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-red-500" />
+                        </div>
+                      </div>
+
+                      {/* 2 */}
+                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
+                          <span className="text-white font-black text-[11px]">2</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white font-bold text-[12px] leading-tight">Тимур Лэнг</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Подарок на Новый год запустил киновселенную»: история 40-летнего писателя</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-red-500" />
+                        </div>
+                      </div>
+
+                      {/* 3 */}
+                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
+                          <span className="text-white font-black text-[11px]">3</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white font-bold text-[12px] leading-tight">Катя Денисова</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">Бизнес-леди, мама, певица: история, которая доказала — у мечты нет дедлайна</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-red-500" />
+                        </div>
+                      </div>
+
+                      {/* 4 */}
+                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                        <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
+                          <span className="text-black font-black text-[11px]">4</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-yellow-400 font-bold text-[12px] leading-tight">Старт на сцене</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">10 правил, которые должен знать каждый начинающий артист</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-yellow-500" />
+                        </div>
+                      </div>
+
+                      {/* 5 */}
+                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
+                          <span className="text-white font-black text-[11px]">5</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white font-bold text-[12px] leading-tight">Вероника Печерская</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Я перевожу боль на язык порядка»</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-red-500" />
+                        </div>
+                      </div>
+
+                      {/* 6 */}
+                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
+                          <span className="text-white font-black text-[11px]">6</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white font-bold text-[12px] leading-tight">Кристина Che</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Мы строим хип-хоп братство без контрактов»</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-red-500" />
+                        </div>
+                      </div>
+
+                      {/* 7 */}
+                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
+                          <span className="text-white font-black text-[11px]">7</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white font-bold text-[12px] leading-tight">NATA RARE</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Он мой!» и ещё множество треков: как Наталья из Ростова стала NATA RARE</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-red-500" />
+                        </div>
+                      </div>
+
+                      {/* 8 */}
+                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
+                          <span className="text-white font-black text-[11px]">8</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-white font-bold text-[12px] leading-tight">PiterMaks</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Моя муза — любовь, моя школа — русские народные под гитару»</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-red-500" />
+                        </div>
+                      </div>
+
+                      {/* 9 */}
+                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                        <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
+                          <span className="text-black font-black text-[11px]">9</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-yellow-400 font-bold text-[12px] leading-tight">Весна пришла — время действовать</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">Как новый сезон открывает возможности для творчества и карьеры</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-yellow-500" />
+                        </div>
+                      </div>
+
+                      {/* 10 */}
+                      <div className="flex items-start gap-3 py-2.5">
+                        <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
+                          <span className="text-black font-black text-[11px]">10</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-yellow-400 font-bold text-[12px] leading-tight">Заряди себя на позитив</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">7 простых привычек, которые превращают серый день в отличный</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-yellow-500" />
+                        </div>
+                      </div>
+
                     </div>
+
+                    {/* Нижняя полоса */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                      <div className="flex gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
+                      </div>
+                      <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                    </div>
+
                   </div>
                 </div>
               </div>
