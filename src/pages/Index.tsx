@@ -950,7 +950,7 @@ export default function Index() {
     script.setAttribute('data-vmid', '0');
     script.setAttribute('data-lang', 'ru');
     script.async = true;
-    
+    script.onerror = () => {};
     document.body.appendChild(script);
     
     const checkForAudioElements = () => {
