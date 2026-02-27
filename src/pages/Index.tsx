@@ -3435,7 +3435,7 @@ export default function Index() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                           </div>
                           <div className="mt-1.5 bg-red-950/60 rounded-lg px-2 py-1.5 border-l-2 border-red-500">
-                            <p className="text-red-300 text-[8px] italic leading-tight">«В 36 лет жизнь снова началась — с чистого листа и чужого микрофона»</p>
+                            <p className="text-red-300 text-[8px] italic leading-tight">«В 36 лет творческая жизнь только началась — и я от этого кайфую!»</p>
                           </div>
                         </div>
                         <div className="flex-1">
