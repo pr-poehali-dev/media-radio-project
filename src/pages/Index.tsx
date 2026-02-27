@@ -4119,41 +4119,25 @@ export default function Index() {
                       <div className="flex-1 flex flex-col justify-center px-4 py-2 gap-3">
 
                         <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/20 shadow-xl">
+                          <p className="text-[9px] text-pink-200 uppercase tracking-widest font-bold mb-1.5">Вопрос сезона</p>
                           <p className="text-white text-[11px] leading-relaxed font-light">
-                            Апрель. Воздух пахнет сакурой и возможностями.<br/>
-                            <span className="text-pink-300 font-semibold">Художник</span> натягивает холст на мольберт, 
-                            <span className="text-cyan-300 font-semibold"> предприниматель</span> разворачивает голографический дашборд, 
-                            а <span className="text-yellow-300 font-semibold">дрон</span> уже снимает это всё с высоты птичьего полёта.
+                            <span className="text-pink-300 font-semibold">Новый сезон — это сброс настроек.</span> Природа обнуляется — и ты вместе с ней. Именно в такие моменты рождаются лучшие идеи: когда старое ушло, а новое ещё не успело стать привычным.
                           </p>
                         </div>
 
                         <div className="bg-gradient-to-r from-pink-900/60 to-purple-900/60 backdrop-blur-sm rounded-2xl px-4 py-3 border border-pink-500/30 shadow-xl">
-                          <p className="text-[9px] text-pink-200 uppercase tracking-widest font-bold mb-1">Мысль номера</p>
-                          <p className="text-white text-[12px] font-black leading-tight italic">«Творчество и технологии — не конкуренты. Они цветут вместе, как сад в мае»</p>
+                          <p className="text-[9px] text-pink-200 uppercase tracking-widest font-bold mb-1">Для творчества</p>
+                          <p className="text-white text-[11px] leading-relaxed font-light">Смена сезона будит <span className="text-pink-300 font-semibold">новые образы и сюжеты.</span> Художники видят другой свет. Авторы — другие слова. Музыканты слышат другой ритм. Сезон — лучший куратор вдохновения.</p>
                         </div>
 
-                        <div className="grid grid-cols-3 gap-2">
-                          <div className="bg-white/10 backdrop-blur-sm rounded-xl px-2 py-2.5 text-center border border-white/10">
-                            <p className="text-2xl">🌸</p>
-                            <p className="text-white text-[8px] font-bold mt-1">Идеи</p>
-                            <p className="text-gray-300 text-[7px] leading-tight">расцветают в правильной среде</p>
-                          </div>
-                          <div className="bg-white/10 backdrop-blur-sm rounded-xl px-2 py-2.5 text-center border border-cyan-400/20">
-                            <p className="text-2xl">🚀</p>
-                            <p className="text-white text-[8px] font-bold mt-1">Команды</p>
-                            <p className="text-gray-300 text-[7px] leading-tight">создают новые миры вместе</p>
-                          </div>
-                          <div className="bg-white/10 backdrop-blur-sm rounded-xl px-2 py-2.5 text-center border border-yellow-400/20">
-                            <p className="text-2xl">✨</p>
-                            <p className="text-white text-[8px] font-bold mt-1">Контент</p>
-                            <p className="text-gray-300 text-[7px] leading-tight">живёт и меняет жизни</p>
-                          </div>
+                        <div className="bg-gradient-to-r from-cyan-900/50 to-blue-900/50 backdrop-blur-sm rounded-2xl px-4 py-3 border border-cyan-500/30 shadow-xl">
+                          <p className="text-[9px] text-cyan-200 uppercase tracking-widest font-bold mb-1">Для карьеры</p>
+                          <p className="text-white text-[11px] leading-relaxed font-light">Новый сезон — лучший момент для <span className="text-cyan-300 font-semibold">первого шага.</span> Запустить проект. Сменить нишу. Написать заявку. Мозг в режиме «всё новое» принимает смелые решения легче.</p>
                         </div>
 
                         <div className="bg-black/40 backdrop-blur-sm rounded-2xl px-4 py-3 border-l-4 border-pink-500">
-                          <p className="text-gray-300 text-[10px] leading-relaxed">
-                            Этой весной <span className="text-white font-semibold">КонтентМедиаPRO</span> снова в поле — снимаем, пишем, создаём. Потому что лучшее время для старта — это всегда сейчас. Когда цветут деревья. Когда небо открыто. Когда радуга обещает: <span className="text-pink-300 font-semibold">всё получится.</span>
-                          </p>
+                          <p className="text-white text-[12px] font-black leading-tight italic">«Сезон открывает окно — твоя задача просто в него прыгнуть»</p>
+                          <p className="text-gray-400 text-[9px] mt-1">— КонтентМедиаPRO</p>
                         </div>
 
                       </div>
@@ -4197,58 +4181,61 @@ export default function Index() {
                       {/* Основной контент */}
                       <div className="flex-1 flex flex-col justify-end px-4 pb-4 gap-3">
 
-                        {/* Пожелания */}
-                        <div className="bg-black/50 backdrop-blur-md rounded-2xl px-4 py-4 border border-yellow-500/30 shadow-2xl">
-                          <div className="flex items-center gap-2 mb-3">
-                            <div className="w-6 h-6 rounded-full bg-yellow-500 flex items-center justify-center">
-                              <span className="text-black text-[10px] font-black">★</span>
+                        {/* Заголовок блока */}
+                        <div className="bg-black/50 backdrop-blur-md rounded-2xl px-4 py-3 border border-yellow-500/30 shadow-2xl">
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-5 h-5 rounded-full bg-yellow-500 flex items-center justify-center flex-none">
+                              <span className="text-black text-[9px] font-black">7</span>
                             </div>
-                            <p className="text-yellow-400 text-[9px] uppercase tracking-widest font-bold">От команды КонтентМедиаPRO</p>
+                            <p className="text-yellow-400 text-[10px] font-black uppercase tracking-wider leading-tight">привычек, которые превращают серый день в отличный</p>
                           </div>
-                          <p className="text-white text-[11px] leading-relaxed font-light mb-3">
-                            Дорогой читатель, этот выпуск мы создавали с <span className="text-yellow-300 font-semibold">душой и теплом</span>. Каждая страница — это история живых людей, настоящих идей, настоящего творчества.
-                          </p>
-                          <p className="text-gray-300 text-[10px] leading-relaxed">
-                            Пусть каждый день приносит вам вдохновение, как это поле в лучах заходящего солнца. Танцуйте. Создавайте. Делитесь. <span className="text-yellow-400 font-semibold">Живите ярко.</span>
-                          </p>
+                          <div className="space-y-1.5">
+                            {[
+                              { n: '01', icon: '☀️', title: 'Начни с благодарности', text: 'Одна мысль о том, что хорошо — и мозг переключается в режим «жить»' },
+                              { n: '02', icon: '🎵', title: 'Включи любимый трек', text: 'Музыка за 3 минуты меняет химию настроения. Это не метафора' },
+                              { n: '03', icon: '🚶', title: 'Выйди на 10 минут', text: 'Воздух и движение — лучший апгрейд для мыслей и энергии' },
+                              { n: '04', icon: '✍️', title: 'Запиши одну идею', text: 'Не завтра. Прямо сейчас. Даже если кажется глупой — запиши' },
+                              { n: '05', icon: '📵', title: 'Час без телефона', text: 'Тишина не пуста — она полна тем, что ты откладывал' },
+                              { n: '06', icon: '☕', title: 'Сделай что-то руками', text: 'Кофе, рисунок, уборка. Тело занято — голова отдыхает' },
+                              { n: '07', icon: '🤝', title: 'Напиши кому-то тёплое', text: 'Одно сообщение с добром возвращается к тебе вдвойне' },
+                            ].map(item => (
+                              <div key={item.n} className="flex items-start gap-2">
+                                <span className="text-base flex-none leading-none mt-0.5">{item.icon}</span>
+                                <div className="flex-1 min-w-0">
+                                  <span className="text-yellow-300 text-[9px] font-black">{item.title}. </span>
+                                  <span className="text-gray-300 text-[9px] leading-tight">{item.text}</span>
+                                </div>
+                              </div>
+                            ))}
+                          </div>
                         </div>
 
-                        {/* Иконки-пожелания */}
-                        <div className="grid grid-cols-4 gap-1.5">
-                          {[
-                            { icon: '☀️', label: 'Свет' },
-                            { icon: '🎵', label: 'Музыка' },
-                            { icon: '📖', label: 'Знания' },
-                            { icon: '🤝', label: 'Дружба' },
-                          ].map(item => (
-                            <div key={item.label} className="bg-white/10 backdrop-blur-sm rounded-xl py-2 px-1 text-center border border-white/10">
-                              <p className="text-xl">{item.icon}</p>
-                              <p className="text-white text-[8px] font-semibold mt-0.5">{item.label}</p>
+                        {/* Кнопка VK + следующий выпуск */}
+                        <div className="flex flex-col gap-2">
+                          <a
+                            href="https://vk.ru/kontentmediapro"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-2 bg-gradient-to-r from-blue-700 to-blue-600 hover:from-blue-600 hover:to-blue-500 rounded-2xl px-4 py-3 shadow-lg transition-all active:scale-95"
+                          >
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z"/></svg>
+                            <span className="text-white text-[12px] font-black">Подпишись на КонтентМедиаPRO</span>
+                          </a>
+
+                          <div className="bg-gradient-to-r from-yellow-900/60 to-orange-900/60 backdrop-blur-sm rounded-2xl px-4 py-2.5 border border-yellow-400/30 text-center">
+                            <div className="flex items-center justify-center gap-1.5 mb-0.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
+                              <p className="text-yellow-300 text-[9px] uppercase tracking-[0.2em] font-bold">Ожидайте следующий выпуск</p>
+                              <div className="w-1.5 h-1.5 rounded-full bg-yellow-400 animate-pulse" />
                             </div>
-                          ))}
-                        </div>
-
-                        {/* Следующий выпуск */}
-                        <div className="bg-gradient-to-r from-yellow-900/70 to-orange-900/70 backdrop-blur-sm rounded-2xl px-4 py-3 border border-yellow-400/40 shadow-xl text-center">
-                          <p className="text-yellow-300 text-[9px] uppercase tracking-[0.2em] font-bold mb-1">⏳ Уже готовим</p>
-                          <p className="text-white text-[14px] font-black leading-tight">Следующий выпуск</p>
-                          <p className="text-gray-300 text-[9px] mt-1 leading-relaxed">Новые герои · Новые истории · Новые открытия</p>
-                          <div className="mt-2 flex items-center justify-center gap-1">
-                            <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
-                            <p className="text-yellow-400 text-[8px] font-bold tracking-widest uppercase">Оставайтесь с нами</p>
-                            <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
+                            <p className="text-gray-400 text-[8px]">Новые герои · Новые истории · Новые открытия</p>
                           </div>
                         </div>
 
                         {/* Подпись */}
                         <div className="text-center pb-1">
-                          <p className="text-white text-[18px] font-black tracking-wide drop-shadow-lg">КонтентМедиаPRO</p>
-                          <p className="text-gray-400 text-[9px] tracking-[0.3em] uppercase mt-0.5">Выпуск № 1 · 2025</p>
-                          <div className="flex items-center justify-center gap-1 mt-2">
-                            {[...Array(10)].map((_, i) => (
-                              <div key={i} className={`h-0.5 rounded-full ${i === 9 ? 'w-4 bg-yellow-400' : 'w-2 bg-gray-600'}`} />
-                            ))}
-                          </div>
+                          <p className="text-white text-[16px] font-black tracking-wide drop-shadow-lg">КонтентМедиаPRO</p>
+                          <p className="text-gray-400 text-[8px] tracking-[0.3em] uppercase mt-0.5">Выпуск № 1 · 2025</p>
                         </div>
 
                       </div>
