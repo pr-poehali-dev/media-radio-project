@@ -3972,6 +3972,126 @@ export default function Index() {
                   </div>
                 </div>
 
+                {/* ===== СТРАНИЦА 8: PITERMAKS ===== */}
+                <div className="flex-none w-full snap-start">
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+
+                    {/* Шапка */}
+                    <div className="bg-gradient-to-r from-black via-red-900 to-black px-4 py-2.5 flex items-center justify-between">
+                      <div>
+                        <p className="text-[8px] tracking-[0.25em] text-red-300 uppercase">Страница 8 · Хип-хоп / Deep house</p>
+                        <h2 className="text-[15px] font-black text-white leading-none mt-0.5">PiterMaks</h2>
+                      </div>
+                      <a
+                        href="https://vk.ru/pitermaksimov"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 rounded-full px-2.5 py-1.5 transition-colors"
+                      >
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z"/></svg>
+                        <span className="text-white text-[9px] font-bold">VK</span>
+                      </a>
+                    </div>
+
+                    <div className="px-3 pt-3 pb-16 space-y-3">
+
+                      {/* Блок 1: портрет в кардигане + вводный текст */}
+                      <div className="flex gap-3 items-start">
+                        <div className="flex-none" style={{ width: '36%' }}>
+                          <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '160px' }}>
+                            <img
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/c412863f-baff-414a-aa9c-fca57193124c.jpg"
+                              alt="PiterMaks"
+                              className="w-full h-full object-cover object-top"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                          </div>
+                          <div className="mt-1.5 bg-red-950/60 rounded-lg px-2 py-1.5 border-l-2 border-red-500">
+                            <p className="text-red-300 text-[8px] italic leading-tight">«Сцена — его место. Творчество ждало своего часа»</p>
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-white font-black text-[13px] leading-tight mb-1">Из народных песен — в хип-хоп</h3>
+                          <p className="text-gray-300 text-[10px] leading-relaxed"><span className="text-red-400 font-semibold">Пётр Максимов, он же PiterMaks.</span> Путь начался в детстве — с народных песен и гитары на семейных праздниках.</p>
+                          <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">Потом была <span className="text-yellow-400 font-semibold">«Галактика»</span> — ансамбль в Тамбовском ВВАИУРЭ. Там он понял: сцена — его место. Но долгое время творчество оставалось в тени.</p>
+                        </div>
+                      </div>
+
+                      {/* Разделитель */}
+                      <div className="flex items-center gap-2">
+                        <div className="h-px flex-1 bg-red-900/50" />
+                        <span className="text-red-600 text-[8px] tracking-widest uppercase">Команда</span>
+                        <div className="h-px flex-1 bg-red-900/50" />
+                      </div>
+
+                      {/* Блок 2: текст о команде + фото в кепке */}
+                      <div className="flex gap-3 items-start">
+                        <div className="flex-1">
+                          <p className="text-gray-300 text-[10px] leading-relaxed">Сегодня PiterMaks работает с командой профессионалов: <span className="text-red-400 font-semibold">Yuri Nedoseykin, Trippy Mane, Lexir, Moonix, Naughty 9, Nevada Smith.</span></p>
+                          <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">В его арсенале — хип-хоп, рэп, deep house. В каждом треке — личное: воспоминания, мечты, тепло.</p>
+                          <div className="mt-2 bg-white/5 rounded-lg px-2.5 py-2 border-l-2 border-yellow-500">
+                            <p className="text-yellow-300 text-[9px] italic leading-tight font-medium">«Моя муза — любовь, моя школа — русские народные под гитару»</p>
+                          </div>
+                        </div>
+                        <div className="flex-none" style={{ width: '35%' }}>
+                          <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '138px' }}>
+                            <img
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/97163b4d-201f-4197-a89d-94c250971c0d.jpg"
+                              alt="PiterMaks"
+                              className="w-full h-full object-cover object-top"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Разделитель */}
+                      <div className="flex items-center gap-2">
+                        <div className="h-px flex-1 bg-red-900/50" />
+                        <span className="text-red-600 text-[8px] tracking-widest uppercase">Миссия</span>
+                        <div className="h-px flex-1 bg-red-900/50" />
+                      </div>
+
+                      {/* Блок 3: третье фото + миссия + ссылка */}
+                      <div className="flex gap-3 items-start">
+                        <div className="flex-none" style={{ width: '34%' }}>
+                          <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '110px' }}>
+                            <img
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/7accbeca-5f16-41a0-972b-7105688a9ff3.jpg"
+                              alt="PiterMaks"
+                              className="w-full h-full object-cover object-top"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                          </div>
+                          <div className="mt-1.5 bg-red-950/60 rounded-lg px-2 py-1.5 border-l-2 border-red-500">
+                            <p className="text-red-300 text-[8px] italic leading-tight">«Цель — дарить свет. И аудитория это чувствует»</p>
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-gray-300 text-[10px] leading-relaxed">Цель одна — <span className="text-red-400 font-semibold">дарить свет</span>. И судя по тому, как растёт аудитория, у него получается.</p>
+                          <a href="https://vk.ru/pitermaksimov" target="_blank" rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 mt-2.5 bg-gradient-to-r from-red-700 to-red-600 rounded-full px-3 py-1.5 shadow-md">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z"/></svg>
+                            <span className="text-white text-[9px] font-bold">PiterMaks в VK</span>
+                          </a>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* Нижняя полоса */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                      <span className="text-red-700 text-[8px] font-bold uppercase tracking-wider">PiterMaks</span>
+                      <div className="flex gap-1">
+                        {[1,2,3,4,5,6,7,8,9].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-700" />)}
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                      </div>
+                      <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
 
               {/* Swipe navigation dots — synced via JS scroll listener would need useEffect,
