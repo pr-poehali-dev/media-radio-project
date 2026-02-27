@@ -4092,6 +4092,178 @@ export default function Index() {
                   </div>
                 </div>
 
+                {/* ===== СТРАНИЦА 9: ВЕСНА ПЕРЕМЕН ===== */}
+                <div className="flex-none w-full snap-start">
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0a0f1e', minHeight: '92vh' }}>
+
+                    {/* Фоновое изображение */}
+                    <div className="absolute inset-0">
+                      <img
+                        src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/ee9992bf-ffc6-4f85-bb95-59039e5b19c9.jpg"
+                        alt="Весна перемен"
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
+                    </div>
+
+                    {/* Контент поверх */}
+                    <div className="relative z-10 flex flex-col h-full" style={{ minHeight: '92vh' }}>
+
+                      {/* Шапка */}
+                      <div className="px-4 pt-4 pb-2">
+                        <p className="text-[8px] tracking-[0.3em] text-pink-300 uppercase font-semibold">Страница 9 · Редакционная колонка</p>
+                        <h2 className="text-[22px] font-black text-white leading-tight mt-1 drop-shadow-lg">Весна<br/><span className="text-pink-400">Перемен</span></h2>
+                      </div>
+
+                      {/* Центральный блок — цитата */}
+                      <div className="flex-1 flex flex-col justify-center px-4 py-2 gap-3">
+
+                        <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-4 py-3 border border-white/20 shadow-xl">
+                          <p className="text-white text-[11px] leading-relaxed font-light">
+                            Апрель. Воздух пахнет сакурой и возможностями.<br/>
+                            <span className="text-pink-300 font-semibold">Художник</span> натягивает холст на мольберт, 
+                            <span className="text-cyan-300 font-semibold"> предприниматель</span> разворачивает голографический дашборд, 
+                            а <span className="text-yellow-300 font-semibold">дрон</span> уже снимает это всё с высоты птичьего полёта.
+                          </p>
+                        </div>
+
+                        <div className="bg-gradient-to-r from-pink-900/60 to-purple-900/60 backdrop-blur-sm rounded-2xl px-4 py-3 border border-pink-500/30 shadow-xl">
+                          <p className="text-[9px] text-pink-200 uppercase tracking-widest font-bold mb-1">Мысль номера</p>
+                          <p className="text-white text-[12px] font-black leading-tight italic">«Творчество и технологии — не конкуренты. Они цветут вместе, как сад в мае»</p>
+                        </div>
+
+                        <div className="grid grid-cols-3 gap-2">
+                          <div className="bg-white/10 backdrop-blur-sm rounded-xl px-2 py-2.5 text-center border border-white/10">
+                            <p className="text-2xl">🌸</p>
+                            <p className="text-white text-[8px] font-bold mt-1">Идеи</p>
+                            <p className="text-gray-300 text-[7px] leading-tight">расцветают в правильной среде</p>
+                          </div>
+                          <div className="bg-white/10 backdrop-blur-sm rounded-xl px-2 py-2.5 text-center border border-cyan-400/20">
+                            <p className="text-2xl">🚀</p>
+                            <p className="text-white text-[8px] font-bold mt-1">Команды</p>
+                            <p className="text-gray-300 text-[7px] leading-tight">создают новые миры вместе</p>
+                          </div>
+                          <div className="bg-white/10 backdrop-blur-sm rounded-xl px-2 py-2.5 text-center border border-yellow-400/20">
+                            <p className="text-2xl">✨</p>
+                            <p className="text-white text-[8px] font-bold mt-1">Контент</p>
+                            <p className="text-gray-300 text-[7px] leading-tight">живёт и меняет жизни</p>
+                          </div>
+                        </div>
+
+                        <div className="bg-black/40 backdrop-blur-sm rounded-2xl px-4 py-3 border-l-4 border-pink-500">
+                          <p className="text-gray-300 text-[10px] leading-relaxed">
+                            Этой весной <span className="text-white font-semibold">КонтентМедиаPRO</span> снова в поле — снимаем, пишем, создаём. Потому что лучшее время для старта — это всегда сейчас. Когда цветут деревья. Когда небо открыто. Когда радуга обещает: <span className="text-pink-300 font-semibold">всё получится.</span>
+                          </p>
+                        </div>
+
+                      </div>
+
+                      {/* Нижняя полоса */}
+                      <div className="bg-gradient-to-r from-pink-950/90 via-black/90 to-purple-950/90 flex items-center justify-between px-4 py-2">
+                        <span className="text-pink-600 text-[8px] font-bold uppercase tracking-wider">Весна · 2025</span>
+                        <div className="flex gap-1">
+                          {[1,2,3,4,5,6,7,8,9,10].map(i => <div key={i} className={`w-1.5 h-1.5 rounded-full ${i === 9 ? 'bg-pink-400' : 'bg-gray-700'}`} />)}
+                        </div>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
+                {/* ===== СТРАНИЦА 10: ПРОЩАНИЕ ===== */}
+                <div className="flex-none w-full snap-start">
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ minHeight: '92vh' }}>
+
+                    {/* Фоновое изображение */}
+                    <div className="absolute inset-0">
+                      <img
+                        src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8ba34f36-1312-4546-a5b1-0ed74211c53c.jpg"
+                        alt="До новых встреч"
+                        className="w-full h-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-b from-amber-950/40 via-orange-900/30 to-black/85" />
+                    </div>
+
+                    {/* Контент */}
+                    <div className="relative z-10 flex flex-col h-full" style={{ minHeight: '92vh' }}>
+
+                      {/* Шапка */}
+                      <div className="px-4 pt-4 pb-2">
+                        <p className="text-[8px] tracking-[0.3em] text-yellow-300 uppercase font-semibold">Страница 10 · Финал выпуска</p>
+                        <h2 className="text-[20px] font-black text-white leading-tight mt-1 drop-shadow-lg">До новых<br/><span className="text-yellow-400">встреч</span></h2>
+                      </div>
+
+                      {/* Основной контент */}
+                      <div className="flex-1 flex flex-col justify-end px-4 pb-4 gap-3">
+
+                        {/* Пожелания */}
+                        <div className="bg-black/50 backdrop-blur-md rounded-2xl px-4 py-4 border border-yellow-500/30 shadow-2xl">
+                          <div className="flex items-center gap-2 mb-3">
+                            <div className="w-6 h-6 rounded-full bg-yellow-500 flex items-center justify-center">
+                              <span className="text-black text-[10px] font-black">★</span>
+                            </div>
+                            <p className="text-yellow-400 text-[9px] uppercase tracking-widest font-bold">От команды КонтентМедиаPRO</p>
+                          </div>
+                          <p className="text-white text-[11px] leading-relaxed font-light mb-3">
+                            Дорогой читатель, этот выпуск мы создавали с <span className="text-yellow-300 font-semibold">душой и теплом</span>. Каждая страница — это история живых людей, настоящих идей, настоящего творчества.
+                          </p>
+                          <p className="text-gray-300 text-[10px] leading-relaxed">
+                            Пусть каждый день приносит вам вдохновение, как это поле в лучах заходящего солнца. Танцуйте. Создавайте. Делитесь. <span className="text-yellow-400 font-semibold">Живите ярко.</span>
+                          </p>
+                        </div>
+
+                        {/* Иконки-пожелания */}
+                        <div className="grid grid-cols-4 gap-1.5">
+                          {[
+                            { icon: '☀️', label: 'Свет' },
+                            { icon: '🎵', label: 'Музыка' },
+                            { icon: '📖', label: 'Знания' },
+                            { icon: '🤝', label: 'Дружба' },
+                          ].map(item => (
+                            <div key={item.label} className="bg-white/10 backdrop-blur-sm rounded-xl py-2 px-1 text-center border border-white/10">
+                              <p className="text-xl">{item.icon}</p>
+                              <p className="text-white text-[8px] font-semibold mt-0.5">{item.label}</p>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* Следующий выпуск */}
+                        <div className="bg-gradient-to-r from-yellow-900/70 to-orange-900/70 backdrop-blur-sm rounded-2xl px-4 py-3 border border-yellow-400/40 shadow-xl text-center">
+                          <p className="text-yellow-300 text-[9px] uppercase tracking-[0.2em] font-bold mb-1">⏳ Уже готовим</p>
+                          <p className="text-white text-[14px] font-black leading-tight">Следующий выпуск</p>
+                          <p className="text-gray-300 text-[9px] mt-1 leading-relaxed">Новые герои · Новые истории · Новые открытия</p>
+                          <div className="mt-2 flex items-center justify-center gap-1">
+                            <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
+                            <p className="text-yellow-400 text-[8px] font-bold tracking-widest uppercase">Оставайтесь с нами</p>
+                            <div className="w-2 h-2 rounded-full bg-yellow-400 animate-pulse" />
+                          </div>
+                        </div>
+
+                        {/* Подпись */}
+                        <div className="text-center pb-1">
+                          <p className="text-white text-[18px] font-black tracking-wide drop-shadow-lg">КонтентМедиаPRO</p>
+                          <p className="text-gray-400 text-[9px] tracking-[0.3em] uppercase mt-0.5">Выпуск № 1 · 2025</p>
+                          <div className="flex items-center justify-center gap-1 mt-2">
+                            {[...Array(10)].map((_, i) => (
+                              <div key={i} className={`h-0.5 rounded-full ${i === 9 ? 'w-4 bg-yellow-400' : 'w-2 bg-gray-600'}`} />
+                            ))}
+                          </div>
+                        </div>
+
+                      </div>
+
+                      {/* Нижняя полоса */}
+                      <div className="bg-gradient-to-r from-black via-yellow-950/80 to-black flex items-center justify-between px-4 py-2">
+                        <span className="text-yellow-700 text-[8px] font-bold uppercase tracking-wider">Финал</span>
+                        <span className="text-gray-500 text-[8px] italic">До встречи в следующем номере ✦</span>
+                        <span className="text-gray-700 text-[8px]">10 / 10</span>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
               </div>
 
               {/* Swipe navigation dots — synced via JS scroll listener would need useEffect,
