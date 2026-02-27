@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef } from 'react';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import Hls from 'hls.js';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -2797,42 +2795,13 @@ export default function Index() {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={async () => {
-                    const btn = document.querySelector('[data-dl-btn]') as HTMLButtonElement;
-                    if (btn) { btn.disabled = true; btn.textContent = 'Готовим…'; }
-                    try {
-                      const pageIds = ['mag-page-1','mag-page-2','mag-page-3','mag-page-4','mag-page-5','mag-page-6','mag-page-7','mag-page-8','mag-page-9','mag-page-10'];
-                      const scroll = document.getElementById('magazine-scroll');
-                      const cover = scroll?.children[0] as HTMLElement | undefined;
-                      const toc = scroll?.children[1] as HTMLElement | undefined;
-                      const elements: HTMLElement[] = [];
-                      if (cover) elements.push(cover);
-                      if (toc) elements.push(toc);
-                      pageIds.forEach(id => { const el = document.getElementById(id); if (el) elements.push(el); });
-                      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-                      const W = 210; const H = 297;
-                      for (let i = 0; i < elements.length; i++) {
-                        const el = elements[i];
-                        el.scrollIntoView({ inline: 'start' });
-                        await new Promise(r => setTimeout(r, 120));
-                        const canvas = await html2canvas(el, { scale: 1.5, useCORS: true, allowTaint: true, backgroundColor: '#0f0f0f', logging: false });
-                        const imgData = canvas.toDataURL('image/jpeg', 0.85);
-                        const ratio = canvas.height / canvas.width;
-                        const imgH = Math.min(W * ratio, H);
-                        if (i > 0) pdf.addPage();
-                        pdf.addImage(imgData, 'JPEG', 0, 0, W, imgH);
-                        if (btn) btn.textContent = `${i + 1} / ${elements.length}…`;
-                      }
-                      pdf.save('КонтентМедиаPRO_№1_2026.pdf');
-                    } finally {
-                      if (btn) { btn.disabled = false; btn.textContent = 'Скачать'; }
-                    }
+                  onClick={() => {
+                    window.print();
                   }}
-                  data-dl-btn
-                  className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-muted hover:bg-muted/80 text-foreground text-xs font-medium transition-colors disabled:opacity-60"
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-muted hover:bg-muted/80 text-foreground text-xs font-medium transition-colors"
                 >
                   <Icon name="Download" size={13} />
-                  Скачать
+                  Скачать PDF
                 </button>
                 <button
                   onClick={() => {
