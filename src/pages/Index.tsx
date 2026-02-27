@@ -2919,23 +2919,58 @@ export default function Index() {
                         </div>
                       </div>
 
-                      {/* Trio: Kristina Che, Nata Rare, PiterMaks */}
-                      <div className="relative rounded-lg overflow-hidden" style={{ height: '130px' }}>
+                      {/* PiterMaks — top-left in photo */}
+                      <div className="relative rounded-lg overflow-hidden col-span-2" style={{ height: '100px' }}>
                         <img
                           src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/d07aba16-a19b-40a6-bde7-f3c7dd3a6b75.jpg"
-                          alt="Хип-хоп сцена"
-                          className="w-full h-full object-cover object-top"
+                          alt="PiterMaks"
+                          className="w-full h-full object-cover"
+                          style={{ objectPosition: '25% 5%' }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                         <div className="absolute bottom-0 left-0 right-0 p-2">
-                          <p className="text-red-400 font-bold text-[10px] leading-none">PiterMaks · NATA RARE · Кристина Che</p>
-                          <p className="text-gray-200 text-[9px] leading-tight mt-0.5">«Мы строим хип-хоп братство»</p>
+                          <p className="text-red-400 font-bold text-[10px] leading-none">PiterMaks</p>
+                          <p className="text-gray-200 text-[9px] leading-tight mt-0.5">«Моя муза — любовь, моя школа — русские народные под гитару»</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Third row: NATA RARE + Kristina Che */}
+                    <div className="relative z-10 px-3 mt-2 grid grid-cols-2 gap-2">
+                      {/* NATA RARE — blonde in black jacket, bottom-left in photo */}
+                      <div className="relative rounded-lg overflow-hidden" style={{ height: '120px' }}>
+                        <img
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/d07aba16-a19b-40a6-bde7-f3c7dd3a6b75.jpg"
+                          alt="NATA RARE"
+                          className="w-full h-full object-cover"
+                          style={{ objectPosition: '25% 75%' }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-2">
+                          <p className="text-red-400 font-bold text-[10px] leading-none">NATA RARE</p>
+                          <p className="text-gray-200 text-[9px] leading-tight mt-0.5">«Он мой!» и множество треков: как Наталья из Ростова стала звездой</p>
+                        </div>
+                      </div>
+
+                      {/* Kristina Che — pink tee, right in photo */}
+                      <div className="relative rounded-lg overflow-hidden" style={{ height: '120px' }}>
+                        <img
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/d07aba16-a19b-40a6-bde7-f3c7dd3a6b75.jpg"
+                          alt="Кристина Che"
+                          className="w-full h-full object-cover"
+                          style={{ objectPosition: '80% 30%' }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-2">
+                          <p className="text-red-400 font-bold text-[10px] leading-none">Кристина Che</p>
+                          <p className="text-gray-200 text-[9px] leading-tight mt-0.5">«Мы строим хип-хоп братство без контрактов»</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Bottom swipe hint */}
-                    <div className="relative z-10 flex items-center justify-center gap-2 py-4 mt-2">
+                    <div className="relative z-10 flex items-center justify-center gap-2 py-3 mt-1">
                       <div className="flex gap-1.5">
                         <div className="w-2 h-2 rounded-full bg-red-500" />
                         <div className="w-2 h-2 rounded-full bg-gray-600" />
