@@ -2981,120 +2981,45 @@ export default function Index() {
                     {/* Список страниц */}
                     <div className="px-4 py-3 space-y-0">
 
-                      {/* 1 */}
-                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
-                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
-                          <span className="text-white font-black text-[11px]">1</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white font-bold text-[12px] leading-tight">Светлана Чарушина</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Пишу против правил, ломаю устои и обращаюсь к небесам»</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-red-500" />
-                        </div>
-                      </div>
-
-                      {/* 2 */}
-                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
-                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
-                          <span className="text-white font-black text-[11px]">2</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white font-bold text-[12px] leading-tight">Тимур Лэнг</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Подарок на Новый год запустил киновселенную»: история 40-летнего писателя</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-red-500" />
-                        </div>
-                      </div>
-
-                      {/* 3 */}
-                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
-                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
-                          <span className="text-white font-black text-[11px]">3</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white font-bold text-[12px] leading-tight">Катя Денисова</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">Бизнес-леди, мама, певица: история, которая доказала — у мечты нет дедлайна</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-red-500" />
-                        </div>
-                      </div>
-
-                      {/* 4 */}
-                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
-                        <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
-                          <span className="text-black font-black text-[11px]">4</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-yellow-400 font-bold text-[12px] leading-tight">Старт на сцене</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">10 правил, которые должен знать каждый начинающий артист</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-yellow-500" />
-                        </div>
-                      </div>
-
-                      {/* 5 */}
-                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
-                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
-                          <span className="text-white font-black text-[11px]">5</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white font-bold text-[12px] leading-tight">Вероника Печерская</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Я перевожу боль на язык порядка»</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-red-500" />
-                        </div>
-                      </div>
-
-                      {/* 6 */}
-                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
-                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
-                          <span className="text-white font-black text-[11px]">6</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white font-bold text-[12px] leading-tight">Kristina Che</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Мы строим хип-хоп братство без контрактов»</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-red-500" />
-                        </div>
-                      </div>
-
-                      {/* 7 */}
-                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
-                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
-                          <span className="text-white font-black text-[11px]">7</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white font-bold text-[12px] leading-tight">NATA RARE</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Он мой!» и ещё множество треков: как Наталья из Ростова стала NATA RARE</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-red-500" />
-                        </div>
-                      </div>
-
-                      {/* 8 */}
-                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
-                        <div className="flex-none w-7 h-7 bg-red-600 rounded flex items-center justify-center">
-                          <span className="text-white font-black text-[11px]">8</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-white font-bold text-[12px] leading-tight">PiterMaks</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Моя муза — любовь, моя школа — русские народные под гитару»</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-red-500" />
-                        </div>
-                      </div>
+                      {[
+                        { n: 1, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Светлана Чарушина', sub: '«Пишу против правил, ломаю устои и обращаюсь к небесам»' },
+                        { n: 2, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Тимур Лэнг', sub: '«Подарок на Новый год запустил киновселенную»: история 40-летнего писателя' },
+                        { n: 3, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Катя Денисова', sub: 'Бизнес-леди, мама, певица: история, которая доказала — у мечты нет дедлайна' },
+                        { n: 4, bg: 'bg-yellow-500', textColor: 'text-black', border: 'border-yellow-900', iconColor: 'text-yellow-500', titleClass: 'text-yellow-400', title: 'Старт на сцене', sub: '10 правил, которые должен знать каждый начинающий артист' },
+                        { n: 5, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Вероника Печерская', sub: '«Я перевожу боль на язык порядка»' },
+                        { n: 6, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Kristina Che', sub: '«Мы строим хип-хоп братство без контрактов»' },
+                        { n: 7, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'NATA RARE', sub: '«Он мой!» и ещё множество треков: как Наталья из Ростова стала NATA RARE' },
+                        { n: 8, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'PiterMaks', sub: '«Моя муза — любовь, моя школа — русские народные под гитару»' },
+                      ].map(item => (
+                        <button
+                          key={item.n}
+                          className="w-full flex items-start gap-3 py-2.5 border-b border-white/5 text-left active:bg-white/5 transition-colors"
+                          onClick={() => {
+                            const el = document.getElementById(`mag-page-${item.n}`);
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                          }}
+                        >
+                          <div className={`flex-none w-7 h-7 ${item.bg} rounded flex items-center justify-center`}>
+                            <span className={`${item.textColor} font-black text-[11px]`}>{item.n}</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className={`${(item as {titleClass?: string}).titleClass ?? 'text-white'} font-bold text-[12px] leading-tight`}>{item.title}</p>
+                            <p className="text-gray-400 text-[10px] leading-tight mt-0.5">{item.sub}</p>
+                          </div>
+                          <div className={`flex-none w-5 h-5 rounded-full border ${item.border} flex items-center justify-center`}>
+                            <Icon name="ChevronRight" size={10} className={item.iconColor} />
+                          </div>
+                        </button>
+                      ))}
 
                       {/* 9 */}
-                      <div className="flex items-start gap-3 py-2.5 border-b border-white/5">
+                      <button
+                        className="w-full flex items-start gap-3 py-2.5 border-b border-white/5 text-left active:bg-white/5 transition-colors"
+                        onClick={() => {
+                          const el = document.getElementById('mag-page-9');
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                        }}
+                      >
                         <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
                           <span className="text-black font-black text-[11px]">9</span>
                         </div>
@@ -3105,10 +3030,16 @@ export default function Index() {
                         <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
                           <Icon name="ChevronRight" size={10} className="text-yellow-500" />
                         </div>
-                      </div>
+                      </button>
 
                       {/* 10 */}
-                      <div className="flex items-start gap-3 py-2.5">
+                      <button
+                        className="w-full flex items-start gap-3 py-2.5 text-left active:bg-white/5 transition-colors"
+                        onClick={() => {
+                          const el = document.getElementById('mag-page-10');
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                        }}
+                      >
                         <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
                           <span className="text-black font-black text-[11px]">10</span>
                         </div>
@@ -3119,7 +3050,7 @@ export default function Index() {
                         <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
                           <Icon name="ChevronRight" size={10} className="text-yellow-500" />
                         </div>
-                      </div>
+                      </button>
 
                     </div>
 
@@ -3137,7 +3068,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 1: СВЕТЛАНА ЧАРУШИНА ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-1" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
                     {/* Шапка страницы */}
@@ -3268,7 +3199,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 2: ТИМУР ЛЭНГ ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-2" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
                     {/* Шапка */}
@@ -3400,7 +3331,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 3: КАТЯ ДЕНИСОВА ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-3" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
                     {/* Шапка */}
@@ -3527,7 +3458,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 4: СТАРТ НА СЦЕНЕ ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-4" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
                     {/* Шапка */}
@@ -3630,7 +3561,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 5: ВЕРОНИКА ПЕЧЕРСКАЯ ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-5" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
                     {/* Шапка */}
@@ -3748,7 +3679,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 6: KRISTINA CHE ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-6" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
                     {/* Шапка */}
@@ -3853,7 +3784,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 7: NATA RARE ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-7" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
                     {/* Шапка */}
@@ -3973,7 +3904,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 8: PITERMAKS ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-8" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
                     {/* Шапка */}
@@ -4093,7 +4024,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 9: ВЕСНА ПЕРЕМЕН ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-9" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0a0f1e', minHeight: '92vh' }}>
 
                     {/* Фоновое изображение */}
@@ -4156,7 +4087,7 @@ export default function Index() {
                 </div>
 
                 {/* ===== СТРАНИЦА 10: ПРОЩАНИЕ ===== */}
-                <div className="flex-none w-full snap-start">
+                <div id="mag-page-10" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ minHeight: '92vh' }}>
 
                     {/* Фоновое изображение */}
