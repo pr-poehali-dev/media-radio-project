@@ -2828,168 +2828,144 @@ export default function Index() {
               >
                 {/* ===== COVER PAGE ===== */}
                 <div className="flex-none w-full snap-start">
-                  <div
-                    className="relative w-full overflow-hidden rounded-xl"
-                    style={{
-                      background: '#0d0d0d',
-                      minHeight: '92vh',
-                    }}
-                  >
-                    {/* Фоновые диагональные полосы как в "Все звёзды" */}
-                    <div className="absolute inset-0 overflow-hidden">
-                      <div className="absolute top-0 left-0 right-0 bottom-0" style={{
-                        background: 'repeating-linear-gradient(135deg, transparent, transparent 60px, rgba(180,0,0,0.04) 60px, rgba(180,0,0,0.04) 61px)'
-                      }} />
-                      <div className="absolute top-[-20px] left-[-40px] w-48 h-[500px] bg-red-700/10 rotate-[20deg] blur-2xl" />
-                      <div className="absolute bottom-[-40px] right-[-20px] w-40 h-96 bg-red-900/15 rotate-[-15deg] blur-2xl" />
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#111', minHeight: '92vh' }}>
+
+                    {/* ШАПка — логотип сверху на красной полосе */}
+                    <div className="relative z-30 bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-3 py-2 flex items-center justify-between">
+                      <div>
+                        <h1 className="text-[22px] font-black leading-none tracking-tight">
+                          <span className="text-white">КонтентМедиа</span><span className="text-yellow-300">PRO</span>
+                        </h1>
+                        <p className="text-[8px] text-red-200 tracking-widest uppercase">PRO-контент для PRO-фессионалов</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-yellow-300 text-[10px] font-bold leading-none">№1 · 2026</p>
+                        <p className="text-red-200 text-[8px]">Март</p>
+                      </div>
                     </div>
 
-                    {/* ШАП — название журнала */}
-                    <div className="relative z-20 pt-4 px-3">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-[9px] tracking-[0.25em] text-red-500 uppercase font-semibold">Выпуск №1 · Март 2026</p>
-                          <h1 className="text-2xl font-black leading-none mt-0.5">
-                            <span className="text-white">КонтентМедиа</span><span className="text-red-500">PRO</span>
-                          </h1>
-                          <p className="text-[8px] tracking-[0.18em] text-gray-500 uppercase mt-0.5">PRO-контент для PRO-фессионалов</p>
-                        </div>
-                        <div className="flex flex-col items-end gap-1">
-                          <div className="h-px w-16 bg-red-600" />
-                          <div className="h-px w-10 bg-red-800" />
-                          <div className="h-px w-6 bg-red-900" />
-                        </div>
-                      </div>
-                      <div className="h-px bg-gradient-to-r from-red-600 via-red-400 to-transparent mt-2" />
-                    </div>
+                    {/* Основной макет: три колонки */}
+                    <div className="relative z-10 flex" style={{ minHeight: '76vh' }}>
 
-                    {/* ЦЕНТРАЛЬНЫЙ КОЛЛАЖ — абсолютное позиционирование как в "Все звёзды" */}
-                    <div className="relative z-10 mt-2" style={{ height: '72vh' }}>
-
-                      {/* Катя Денисова — центр, большая */}
-                      <div className="absolute left-1/2 top-[2%] -translate-x-1/2 z-20" style={{ width: '52%' }}>
-                        <div className="relative rounded-lg overflow-hidden shadow-2xl" style={{ height: '46vh' }}>
-                          <img
-                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/6e6ef514-7071-44bb-80dd-23ae10d629ae.jpg"
-                            alt="Катя Денисова"
-                            className="w-full h-full object-cover object-top"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent" />
-                          <div className="absolute bottom-0 left-0 right-0 p-2 text-center">
-                            <p className="text-red-400 font-black text-[11px] leading-none uppercase tracking-wide">Катя Денисова</p>
-                            <p className="text-white text-[9px] leading-tight mt-1 font-medium">Бизнес-леди, мама, певица: история, которая доказала — у мечты нет дедлайна</p>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Тимур Лэнг — верхний левый, наклонён */}
-                      <div className="absolute left-[1%] top-[0%] z-10" style={{ width: '40%', transform: 'rotate(-3deg)' }}>
-                        <div className="relative rounded-lg overflow-hidden shadow-xl border border-red-900/40" style={{ height: '22vh' }}>
+                      {/* ЛЕВАЯ колонка — 3 карточки */}
+                      <div className="flex flex-col gap-0" style={{ width: '30%' }}>
+                        {/* Тимур Лэнг */}
+                        <div className="relative overflow-hidden border-b border-r border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
                           <img
                             src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/1567b004-6012-4ead-9ab7-b91f61cc97c0.jpg"
                             alt="Тимур Лэнг"
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover object-top absolute inset-0"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                          <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-none">Тимур Лэнг</p>
-                            <p className="text-gray-200 text-[8px] leading-tight mt-0.5">«Подарок на НГ запустил киновселенную»</p>
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-1.5 bg-gradient-to-t from-black/80 to-transparent">
+                            <p className="text-red-400 font-black text-[9px] leading-tight">Тимур Лэнг</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">«Подарок на НГ запустил киновселенную»</p>
                           </div>
                         </div>
-                      </div>
-
-                      {/* Светлана Чарушина — верхний правый, наклонён в другую сторону */}
-                      <div className="absolute right-[1%] top-[1%] z-10" style={{ width: '40%', transform: 'rotate(2.5deg)' }}>
-                        <div className="relative rounded-lg overflow-hidden shadow-xl border border-red-900/40" style={{ height: '22vh' }}>
+                        {/* Светлана Чарушина */}
+                        <div className="relative overflow-hidden border-b border-r border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
                           <img
                             src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/37e4e9da-0598-4859-b3bd-c566283d5dd1.jpg"
                             alt="Светлана Чарушина"
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover object-top absolute inset-0"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-none">С. Чарушина</p>
-                            <p className="text-gray-200 text-[8px] leading-tight mt-0.5">«Пишу против правил, ломаю устои»</p>
+                            <p className="text-red-400 font-black text-[9px] leading-tight">С. Чарушина</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">«Пишу против правил, ломаю устои»</p>
                           </div>
                         </div>
-                      </div>
-
-                      {/* Вероника Печерская — нижний левый */}
-                      <div className="absolute left-[0%] bottom-[22%] z-10" style={{ width: '38%', transform: 'rotate(-2deg)' }}>
-                        <div className="relative rounded-lg overflow-hidden shadow-xl border border-red-900/40" style={{ height: '22vh' }}>
+                        {/* Вероника Печерская */}
+                        <div className="relative overflow-hidden border-r border-red-900/50 flex-1" style={{ minHeight: '26vh' }}>
                           <img
                             src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8a557c75-5d5c-4e5e-8c48-ebeddc541b0e.jpg"
                             alt="Вероника Печерская"
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover object-top absolute inset-0"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-none">В. Печерская</p>
-                            <p className="text-gray-200 text-[8px] leading-tight mt-0.5">«Я перевожу боль на язык порядка»</p>
+                            <p className="text-red-400 font-black text-[9px] leading-tight">В. Печерская</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">«Я перевожу боль на язык порядка»</p>
                           </div>
                         </div>
                       </div>
 
-                      {/* PiterMaks — нижний правый */}
-                      <div className="absolute right-[0%] bottom-[22%] z-10" style={{ width: '38%', transform: 'rotate(3deg)' }}>
-                        <div className="relative rounded-lg overflow-hidden shadow-xl border border-red-900/40" style={{ height: '22vh' }}>
+                      {/* ЦЕНТРАЛЬНАЯ колонка — Катя Денисова */}
+                      <div className="relative flex-1 border-r border-red-900/50" style={{ minHeight: '76vh' }}>
+                        <img
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/6e6ef514-7071-44bb-80dd-23ae10d629ae.jpg"
+                          alt="Катя Денисова"
+                          className="w-full h-full object-cover object-top absolute inset-0"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent" />
+                        {/* Имя сверху */}
+                        <div className="absolute top-0 left-0 right-0 px-2 pt-2">
+                          <div className="bg-red-600/90 rounded px-1.5 py-0.5 inline-block">
+                            <p className="text-white font-black text-[10px] leading-none uppercase tracking-wide">Катя Денисова</p>
+                          </div>
+                        </div>
+                        {/* Цитата снизу */}
+                        <div className="absolute bottom-0 left-0 right-0 p-2">
+                          <p className="text-yellow-300 font-black text-[11px] leading-tight drop-shadow-lg">Бизнес-леди, мама, певица:</p>
+                          <p className="text-white text-[10px] leading-tight mt-0.5 drop-shadow">«У мечты нет дедлайна»</p>
+                        </div>
+                      </div>
+
+                      {/* ПРАВАЯ колонка — 3 карточки */}
+                      <div className="flex flex-col gap-0" style={{ width: '30%' }}>
+                        {/* PiterMaks */}
+                        <div className="relative overflow-hidden border-b border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
                           <img
                             src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/99f5cd61-a50e-4e89-8a96-261ec8cb948f.jpg"
                             alt="PiterMaks"
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover object-top absolute inset-0"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-none">PiterMaks</p>
-                            <p className="text-gray-200 text-[8px] leading-tight mt-0.5">«Моя муза — любовь»</p>
+                            <p className="text-red-400 font-black text-[9px] leading-tight">PiterMaks</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">«Моя муза — любовь, школа — народные»</p>
                           </div>
                         </div>
-                      </div>
-
-                      {/* NATA RARE — нижний центр-левый */}
-                      <div className="absolute left-[3%] bottom-[0%] z-15" style={{ width: '44%', transform: 'rotate(-1.5deg)' }}>
-                        <div className="relative rounded-lg overflow-hidden shadow-xl border border-red-900/40" style={{ height: '24vh' }}>
+                        {/* NATA RARE */}
+                        <div className="relative overflow-hidden border-b border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
                           <img
                             src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/845984f1-d8ad-428b-b0cc-b135b7319528.jpg"
                             alt="NATA RARE"
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover object-top absolute inset-0"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-none">NATA RARE</p>
-                            <p className="text-gray-200 text-[8px] leading-tight mt-0.5">«Он мой!» — как Наталья из Ростова стала звездой</p>
+                            <p className="text-red-400 font-black text-[9px] leading-tight">NATA RARE</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">«Он мой!» — как Наталья стала звездой</p>
                           </div>
                         </div>
-                      </div>
-
-                      {/* Кристина Che — нижний центр-правый */}
-                      <div className="absolute right-[3%] bottom-[0%] z-15" style={{ width: '44%', transform: 'rotate(1.5deg)' }}>
-                        <div className="relative rounded-lg overflow-hidden shadow-xl border border-red-900/40" style={{ height: '24vh' }}>
+                        {/* Кристина Che */}
+                        <div className="relative overflow-hidden flex-1" style={{ minHeight: '26vh' }}>
                           <img
                             src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8fc3d617-2b75-4454-8af2-60c059920a79.jpg"
                             alt="Кристина Che"
-                            className="w-full h-full object-cover object-top"
+                            className="w-full h-full object-cover object-top absolute inset-0"
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-none">Кристина Che</p>
-                            <p className="text-gray-200 text-[8px] leading-tight mt-0.5">«Мы строим хип-хоп братство без контрактов»</p>
+                            <p className="text-red-400 font-black text-[9px] leading-tight">Кристина Che</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">«Мы строим хип-хоп братство»</p>
                           </div>
                         </div>
                       </div>
 
                     </div>
 
-                    {/* Bottom swipe hint */}
-                    <div className="relative z-20 flex items-center justify-center gap-2 pb-3">
-                      <div className="h-px w-8 bg-red-800" />
+                    {/* Нижняя полоса */}
+                    <div className="relative z-20 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-3 py-1.5">
+                      <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Март 2026</span>
                       <div className="flex gap-1.5">
                         <div className="w-2 h-2 rounded-full bg-red-500" />
                         <div className="w-2 h-2 rounded-full bg-gray-700" />
                       </div>
-                      <span className="text-gray-600 text-[9px] tracking-widest uppercase">Листайте →</span>
-                      <div className="h-px w-8 bg-red-800" />
+                      <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
                     </div>
+
                   </div>
                 </div>
 
