@@ -3661,7 +3661,7 @@ export default function Index() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                           </div>
                           <div className="mt-1.5 bg-red-950/60 rounded-lg px-2 py-1.5 border-l-2 border-red-500">
-                            <p className="text-red-300 text-[8px] italic leading-tight">«Трещины — не конец. Это вход»</p>
+                            <p className="text-red-300 text-[8px] italic leading-tight">«Я перевожу боль в нечто, что работает»</p>
                           </div>
                         </div>
                         <div className="flex-1">
@@ -3690,7 +3690,7 @@ export default function Index() {
                         <div className="flex-none" style={{ width: '38%' }}>
                           <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '140px' }}>
                             <img
-                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/37e4e9da-0598-4859-b3bd-c566283d5dd1.jpg"
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/b2250132-b5fa-4e81-98ff-ccae8bfc0e7f.jpg"
                               alt="Вероника Печерская"
                               className="w-full h-full object-cover object-top"
                             />
@@ -3711,10 +3711,10 @@ export default function Index() {
                         <div className="flex-none" style={{ width: '34%' }}>
                           <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '120px' }}>
                             <img
-                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8a557c75-5d5c-4e5e-8c48-ebeddc541b0e.jpg"
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/c2bf4886-dae2-41cb-b904-ac684aeafce1.jpg"
                               alt="Вероника Печерская"
                               className="w-full h-full object-cover"
-                              style={{ objectPosition: '50% 30%' }}
+                              style={{ objectPosition: '50% 20%' }}
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                           </div>
