@@ -3483,11 +3483,11 @@ export default function Index() {
                       {/* Блок 3: третье фото + наследник */}
                       <div className="flex gap-3 items-start">
                         <div className="flex-none" style={{ width: '34%' }}>
-                          <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '120px' }}>
+                          <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '170px' }}>
                             <img
-                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/56e020ca-9b24-4985-8405-cd6fa52279b7.jpg"
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/89451968-375b-458f-b067-0ea2bc1eda24.jpg"
                               alt="Катя Денисова"
-                              className="w-full h-full object-cover object-top"
+                              className="w-full h-full object-cover object-center"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                           </div>
