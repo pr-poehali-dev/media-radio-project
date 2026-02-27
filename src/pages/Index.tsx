@@ -2781,21 +2781,203 @@ export default function Index() {
         )}
 
         {activeSection === 'magazine' && (
-          <div className="space-y-4 animate-fade-in">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/60 rounded-lg flex items-center justify-center">
-                <Icon name="BookOpen" size={24} className="text-white" />
+          <div className="animate-fade-in" id="magazine">
+            {/* Header */}
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-black rounded-lg flex items-center justify-center">
+                  <Icon name="BookOpen" size={22} className="text-white" />
+                </div>
+                <div>
+                  <h2 className="text-xl font-bold leading-none">Журнал</h2>
+                  <p className="text-xs text-muted-foreground">1 марта 2026</p>
+                </div>
               </div>
-              <h2 className="text-2xl font-bold">Журнал</h2>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    const url = `${window.location.origin}${window.location.pathname}#magazine`;
+                    navigator.clipboard.writeText(url);
+                  }}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-muted hover:bg-muted/80 text-foreground text-xs font-medium transition-colors"
+                >
+                  <Icon name="Copy" size={13} />
+                  Копировать
+                </button>
+                <button
+                  onClick={() => {
+                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine`);
+                    const text = encodeURIComponent('КонтентМедиаPRO — журнал PRO-контент для PRO-фессионалов');
+                    window.open(`https://vk.com/share.php?url=${url}&title=${text}`, '_blank');
+                  }}
+                  className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#0077FF] hover:bg-[#0066DD] text-white text-xs font-medium transition-colors"
+                >
+                  <Icon name="Share2" size={13} />
+                  Поделиться
+                </button>
+              </div>
             </div>
-            <Card className="bg-card border-border overflow-hidden">
-              <CardContent className="p-6 text-center space-y-3">
-                <Icon name="BookOpen" size={40} className="text-primary mx-auto" />
-                <p className="text-muted-foreground text-sm">
-                  Раздел находится в разработке. Здесь появятся статьи, репортажи и материалы глянцевого журнала.
-                </p>
-              </CardContent>
-            </Card>
+
+            {/* Horizontal scroll magazine viewer */}
+            <div className="relative overflow-hidden rounded-xl">
+              {/* Pages container */}
+              <div
+                id="magazine-scroll"
+                className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              >
+                {/* ===== COVER PAGE ===== */}
+                <div className="flex-none w-full snap-start">
+                  <div
+                    className="relative w-full overflow-hidden rounded-xl"
+                    style={{
+                      background: 'linear-gradient(135deg, #0a0a0a 0%, #1a0000 40%, #2d0000 60%, #0a0a0a 100%)',
+                      minHeight: '85vh',
+                    }}
+                  >
+                    {/* Red accent lines */}
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+                    <div className="absolute top-0 left-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-red-800 to-transparent" />
+                    <div className="absolute top-0 right-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-red-800 to-transparent" />
+
+                    {/* Top header */}
+                    <div className="relative z-10 pt-5 px-4 text-center">
+                      <div className="inline-block mb-1">
+                        <span className="text-xs tracking-[0.3em] text-red-400 font-medium uppercase">Выпуск №1 · Март 2026</span>
+                      </div>
+                      <h1 className="text-3xl font-black tracking-tight leading-none mb-1">
+                        <span className="text-white">КонтентМедиа</span>
+                        <span className="text-red-500">PRO</span>
+                      </h1>
+                      <div className="flex items-center justify-center gap-2 mb-1">
+                        <div className="h-px flex-1 bg-gradient-to-r from-transparent to-red-700" />
+                        <p className="text-[10px] tracking-[0.2em] text-gray-400 uppercase whitespace-nowrap">PRO-контент для PRO-фессионалов</p>
+                        <div className="h-px flex-1 bg-gradient-to-l from-transparent to-red-700" />
+                      </div>
+                    </div>
+
+                    {/* Central hero — Katya Denisova */}
+                    <div className="relative z-10 flex flex-col items-center px-4 mt-2">
+                      <div className="relative">
+                        <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-transparent via-transparent to-black/90 z-10" />
+                        <div className="absolute -inset-1 rounded-xl bg-red-900/20 blur-md" />
+                        <img
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/6e6ef514-7071-44bb-80dd-23ae10d629ae.jpg"
+                          alt="Катя Денисова"
+                          className="relative w-52 rounded-xl object-cover object-top shadow-2xl shadow-red-900/50"
+                          style={{ height: '260px' }}
+                        />
+                        <div className="absolute bottom-0 left-0 right-0 z-20 p-3 text-center">
+                          <p className="text-white font-bold text-sm leading-tight drop-shadow-lg">Катя Денисова</p>
+                          <p className="text-gray-300 text-[10px] leading-tight mt-0.5 drop-shadow">Бизнес-леди, мама, певица: история, которая доказала, что у мечты нет дедлайна</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Secondary heroes grid */}
+                    <div className="relative z-10 px-3 mt-3 grid grid-cols-2 gap-2">
+                      {/* Timur Lang */}
+                      <div className="relative rounded-lg overflow-hidden" style={{ height: '130px' }}>
+                        <img
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/1567b004-6012-4ead-9ab7-b91f61cc97c0.jpg"
+                          alt="Тимур Лэнг"
+                          className="w-full h-full object-cover object-top"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-2">
+                          <p className="text-red-400 font-bold text-[10px] leading-none">Тимур Лэнг</p>
+                          <p className="text-gray-200 text-[9px] leading-tight mt-0.5">«Подарок на НГ запустил киновселенную»</p>
+                        </div>
+                      </div>
+
+                      {/* Svetlana Charushina */}
+                      <div className="relative rounded-lg overflow-hidden" style={{ height: '130px' }}>
+                        <img
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/37e4e9da-0598-4859-b3bd-c566283d5dd1.jpg"
+                          alt="Светлана Чарушина"
+                          className="w-full h-full object-cover object-top"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-2">
+                          <p className="text-red-400 font-bold text-[10px] leading-none">Светлана Чарушина</p>
+                          <p className="text-gray-200 text-[9px] leading-tight mt-0.5">«Пишу против правил, ломаю устои»</p>
+                        </div>
+                      </div>
+
+                      {/* Veronika Pecherskaya */}
+                      <div className="relative rounded-lg overflow-hidden" style={{ height: '130px' }}>
+                        <img
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8a557c75-5d5c-4e5e-8c48-ebeddc541b0e.jpg"
+                          alt="Вероника Печерская"
+                          className="w-full h-full object-cover object-center"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-2">
+                          <p className="text-red-400 font-bold text-[10px] leading-none">Вероника Печерская</p>
+                          <p className="text-gray-200 text-[9px] leading-tight mt-0.5">«Я перевожу боль на язык порядка»</p>
+                        </div>
+                      </div>
+
+                      {/* Trio: Kristina Che, Nata Rare, PiterMaks */}
+                      <div className="relative rounded-lg overflow-hidden" style={{ height: '130px' }}>
+                        <img
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/d07aba16-a19b-40a6-bde7-f3c7dd3a6b75.jpg"
+                          alt="Хип-хоп сцена"
+                          className="w-full h-full object-cover object-top"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                        <div className="absolute bottom-0 left-0 right-0 p-2">
+                          <p className="text-red-400 font-bold text-[10px] leading-none">PiterMaks · NATA RARE · Кристина Che</p>
+                          <p className="text-gray-200 text-[9px] leading-tight mt-0.5">«Мы строим хип-хоп братство»</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Bottom swipe hint */}
+                    <div className="relative z-10 flex items-center justify-center gap-2 py-4 mt-2">
+                      <div className="flex gap-1.5">
+                        <div className="w-2 h-2 rounded-full bg-red-500" />
+                        <div className="w-2 h-2 rounded-full bg-gray-600" />
+                      </div>
+                      <span className="text-gray-500 text-[10px] tracking-widest uppercase">Листайте →</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ===== PAGE 1 placeholder ===== */}
+                <div className="flex-none w-full snap-start">
+                  <div
+                    className="relative w-full overflow-hidden rounded-xl flex flex-col items-center justify-center"
+                    style={{
+                      background: 'linear-gradient(135deg, #0a0a0a 0%, #1a0000 40%, #0a0a0a 100%)',
+                      minHeight: '85vh',
+                    }}
+                  >
+                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+                    <div className="text-center px-8">
+                      <p className="text-red-500 text-xs tracking-[0.3em] uppercase mb-3">Страница 1</p>
+                      <Icon name="BookOpen" size={40} className="text-gray-700 mx-auto mb-4" />
+                      <p className="text-gray-500 text-sm">Материал готовится к публикации</p>
+                    </div>
+                    <div className="absolute bottom-4 flex gap-1.5">
+                      <div className="w-2 h-2 rounded-full bg-gray-700" />
+                      <div className="w-2 h-2 rounded-full bg-red-500" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Swipe navigation dots — synced via JS scroll listener would need useEffect,
+                  static version with CSS snap indicators instead */}
+            </div>
+
+            {/* Page indicator */}
+            <div className="flex items-center justify-center gap-2 mt-3">
+              <span className="text-xs text-muted-foreground">Листайте страницы журнала вправо</span>
+              <Icon name="ChevronRight" size={14} className="text-red-500" />
+            </div>
           </div>
         )}
 
