@@ -1264,6 +1264,22 @@ export default function Index() {
           </button>
           <button
             onClick={() => {
+              setActiveSection('magazine');
+              setSelectedInterviewId(null);
+              sessionStorage.setItem('activeSection', 'magazine');
+              sessionStorage.removeItem('selectedInterviewId');
+              sessionStorage.setItem('scrollPosition', '0');
+              window.scrollTo(0, 0);
+            }}
+            className={`flex flex-col items-center gap-1 py-3 px-4 ${
+              activeSection === 'magazine' ? 'text-primary' : 'text-muted-foreground'
+            }`}
+          >
+            <Icon name="BookOpen" size={22} />
+            <span className="text-xs font-medium">Журнал</span>
+          </button>
+          <button
+            onClick={() => {
               setActiveSection('tv');
               setSelectedInterviewId(null);
               sessionStorage.setItem('activeSection', 'tv');
@@ -2761,6 +2777,25 @@ export default function Index() {
                 </button>
               </div>
             )}
+          </div>
+        )}
+
+        {activeSection === 'magazine' && (
+          <div className="space-y-4 animate-fade-in">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-primary to-primary/60 rounded-lg flex items-center justify-center">
+                <Icon name="BookOpen" size={24} className="text-white" />
+              </div>
+              <h2 className="text-2xl font-bold">Журнал</h2>
+            </div>
+            <Card className="bg-card border-border overflow-hidden">
+              <CardContent className="p-6 text-center space-y-3">
+                <Icon name="BookOpen" size={40} className="text-primary mx-auto" />
+                <p className="text-muted-foreground text-sm">
+                  Раздел находится в разработке. Здесь появятся статьи, репортажи и материалы глянцевого журнала.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         )}
 
