@@ -2796,13 +2796,12 @@ export default function Index() {
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => {
-                    const url = `${window.location.origin}${window.location.pathname}#magazine`;
-                    navigator.clipboard.writeText(url);
+                    window.print();
                   }}
                   className="flex items-center gap-1 px-3 py-1.5 rounded-full bg-muted hover:bg-muted/80 text-foreground text-xs font-medium transition-colors"
                 >
-                  <Icon name="Copy" size={13} />
-                  Копировать
+                  <Icon name="Download" size={13} />
+                  Скачать PDF
                 </button>
                 <button
                   onClick={() => {
@@ -3058,7 +3057,7 @@ export default function Index() {
                           <span className="text-white font-black text-[11px]">6</span>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-white font-bold text-[12px] leading-tight">Кристина Che</p>
+                          <p className="text-white font-bold text-[12px] leading-tight">Kristina Che</p>
                           <p className="text-gray-400 text-[10px] leading-tight mt-0.5">«Мы строим хип-хоп братство без контрактов»</p>
                         </div>
                         <div className="flex-none w-5 h-5 rounded-full border border-red-900 flex items-center justify-center">
