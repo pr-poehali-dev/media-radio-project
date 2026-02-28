@@ -918,7 +918,16 @@ export default function Index() {
     }
 
     const hash = window.location.hash.slice(1);
-    if (hash) {
+    if (hash === 'magazine') {
+      setActiveSection('magazine');
+      sessionStorage.setItem('activeSection', 'magazine');
+      setTimeout(() => {
+        const element = document.getElementById('magazine');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+    } else if (hash) {
       const interview = interviews.find(i => i.id === parseInt(hash));
       if (interview) {
         setActiveSection('interviews');
