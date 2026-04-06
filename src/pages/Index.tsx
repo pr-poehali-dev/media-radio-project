@@ -4346,7 +4346,7 @@ export default function Index() {
                           <div className="w-px h-6 bg-red-600" />
                           <div>
                             <p className="text-yellow-300 font-black text-[11px] leading-tight tracking-wide">5 женщин. 5 вселенных. Одна сила.</p>
-                            <p className="text-gray-400 text-[7.5px] tracking-widest uppercase mt-0.5">Самодостаточность — это не одиночество. Это выбор.</p>
+                            <p className="text-gray-400 text-[7.5px] tracking-widest uppercase mt-0.5">Любовь, карьера, творчество — и ни одного компромисса с собой.</p>
                           </div>
                         </div>
                         <div className="flex items-center gap-1.5">
