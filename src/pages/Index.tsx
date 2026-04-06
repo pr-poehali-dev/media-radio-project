@@ -2790,16 +2790,16 @@ export default function Index() {
         )}
 
         {activeSection === 'magazine' && (
-          <div className="animate-fade-in" id="magazine">
-            {/* Header */}
+          <div className="animate-fade-in" id="magazine-april">
+            {/* Header апрель — идёт первым */}
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-black rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-700 rounded-lg flex items-center justify-center">
                   <Icon name="BookOpen" size={22} className="text-white" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-bold leading-none">Журнал</h2>
-                  <p className="text-xs text-muted-foreground">1 марта 2026</p>
+                  <h2 className="text-xl font-bold leading-none">Журнал <span className="text-orange-500">№2</span></h2>
+                  <p className="text-xs text-muted-foreground">1 апреля 2026</p>
                 </div>
               </div>
               <div className="flex items-center gap-1.5">
@@ -2807,8 +2807,8 @@ export default function Index() {
                 <button
                   title="Поделиться ВКонтакте"
                   onClick={() => {
-                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine`);
-                    const text = encodeURIComponent('КонтентМедиаPRO — журнал №1 2026');
+                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine-april`);
+                    const text = encodeURIComponent('КонтентМедиаPRO — журнал №2 2026');
                     window.open(`https://vk.com/share.php?url=${url}&title=${text}`, '_blank');
                   }}
                   className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-[#0077FF] hover:bg-[#0066DD] text-white text-xs font-medium transition-colors"
@@ -2820,8 +2820,8 @@ export default function Index() {
                 <button
                   title="Поделиться в Telegram"
                   onClick={() => {
-                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine`);
-                    const text = encodeURIComponent('КонтентМедиаPRO — журнал №1 2026');
+                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine-april`);
+                    const text = encodeURIComponent('КонтентМедиаPRO — журнал №2 2026');
                     window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
                   }}
                   className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-[#229ED9] hover:bg-[#1a8cc4] text-white text-xs font-medium transition-colors"
@@ -2833,8 +2833,8 @@ export default function Index() {
                 <button
                   title="Поделиться в Max"
                   onClick={() => {
-                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine`);
-                    const text = encodeURIComponent('КонтентМедиаPRO — журнал №1 2026');
+                    const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine-april`);
+                    const text = encodeURIComponent('КонтентМедиаPRO — журнал №2 2026');
                     window.open(`https://max.ru/share?url=${url}&title=${text}`, '_blank');
                   }}
                   className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-[#FF6600] hover:bg-[#e55a00] text-white text-xs font-medium transition-colors"
@@ -2846,13 +2846,13 @@ export default function Index() {
                 <button
                   title="Скопировать ссылку"
                   onClick={() => {
-                    const url = `${window.location.origin}${window.location.pathname}#magazine`;
+                    const url = `${window.location.origin}${window.location.pathname}#magazine-april`;
                     navigator.clipboard.writeText(url).then(() => {
-                      const btn = document.querySelector('[data-copy-btn]') as HTMLButtonElement;
+                      const btn = document.querySelector('[data-copy-btn-april]') as HTMLButtonElement;
                       if (btn) { btn.textContent = '✓'; setTimeout(() => { btn.textContent = '🔗'; }, 1500); }
                     });
                   }}
-                  data-copy-btn
+                  data-copy-btn-april
                   className="flex items-center justify-center w-7 h-7 rounded-full bg-muted hover:bg-muted/80 text-foreground text-sm transition-colors"
                 >
                   🔗
@@ -2860,19 +2860,18 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Horizontal scroll magazine viewer */}
+            {/* ===== АПРЕЛЬСКИЙ ЖУРНАЛ — ПЕРВЫМ ===== */}
             <div className="relative overflow-hidden rounded-xl">
-              {/* Pages container */}
               <div
-                id="magazine-scroll"
+                id="magazine-april-scroll"
                 className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
                 style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               >
-                {/* ===== COVER PAGE ===== */}
+                {/* ===== ОБЛОЖКА АПРЕЛЬ ===== */}
                 <div className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#111', minHeight: '92vh' }}>
 
-                    {/* ШАПка — логотип сверху на красной полосе */}
+                    {/* Шапка */}
                     <div className="relative z-30 bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-3 py-2 flex items-center justify-between">
                       <div>
                         <h1 className="text-[22px] font-black leading-none tracking-tight">
@@ -2881,126 +2880,78 @@ export default function Index() {
                         <p className="text-[8px] text-red-200 tracking-widest uppercase">PRO-контент для PRO-фессионалов</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-yellow-300 text-[10px] font-bold leading-none">№1 · 2026</p>
-                        <p className="text-red-200 text-[8px]">Март</p>
+                        <p className="text-yellow-300 text-[10px] font-bold leading-none">№2 · 2026</p>
+                        <p className="text-red-200 text-[8px]">Апрель</p>
                       </div>
                     </div>
 
-                    {/* Основной макет: три колонки */}
+                    {/* Коллаж фото */}
                     <div className="relative z-10 flex" style={{ minHeight: '76vh' }}>
-
-                      {/* ЛЕВАЯ колонка — 3 карточки */}
+                      {/* Левая колонка */}
                       <div className="flex flex-col gap-0" style={{ width: '30%' }}>
-                        {/* Тимур Лэнг */}
                         <div className="relative overflow-hidden border-b border-r border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
-                          <img
-                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/1567b004-6012-4ead-9ab7-b91f61cc97c0.jpg"
-                            alt="Тимур Лэнг"
-                            className="w-full h-full object-cover object-top absolute inset-0"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                          <div className="absolute bottom-0 left-0 right-0 p-1.5 bg-gradient-to-t from-black/80 to-transparent">
-                            <p className="text-red-400 font-black text-[9px] leading-tight">Тимур Лэнг</p>
-                            <p className="text-white text-[8px] leading-tight mt-0.5">«Подарок на Новый год запустил киновселенную»: история 40-летнего писателя</p>
-                          </div>
-                        </div>
-                        {/* Светлана Чарушина */}
-                        <div className="relative overflow-hidden border-b border-r border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
-                          <img
-                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/37e4e9da-0598-4859-b3bd-c566283d5dd1.jpg"
-                            alt="Светлана Чарушина"
-                            className="w-full h-full object-cover object-top absolute inset-0"
-                          />
+                          <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/82799f40-3243-4e07-9d0f-679df5654079.jpg" alt="Героиня 2" className="w-full h-full object-cover object-top absolute inset-0" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-tight">С. Чарушина</p>
-                            <p className="text-white text-[8px] leading-tight mt-0.5">«Пишу против правил, ломаю устои»</p>
+                            <p className="text-red-400 font-black text-[9px] leading-tight">Стр. 2</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">Огонь изнутри</p>
                           </div>
                         </div>
-                        {/* Вероника Печерская */}
+                        <div className="relative overflow-hidden border-b border-r border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
+                          <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/68d15e0c-f41f-40d3-ac2f-96ae381835d7.jpg" alt="Героиня 4" className="w-full h-full object-cover object-top absolute inset-0" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                          <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                            <p className="text-red-400 font-black text-[9px] leading-tight">Стр. 4</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">Красное вино жизни</p>
+                          </div>
+                        </div>
                         <div className="relative overflow-hidden border-r border-red-900/50 flex-1" style={{ minHeight: '26vh' }}>
-                          <img
-                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8a557c75-5d5c-4e5e-8c48-ebeddc541b0e.jpg"
-                            alt="Вероника Печерская"
-                            className="w-full h-full object-cover object-top absolute inset-0"
-                          />
+                          <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8722c4e0-7fb0-4b93-ba09-d7558f40742b.jpg" alt="Героиня 5" className="w-full h-full object-cover object-top absolute inset-0" />
                           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-tight">В. Печерская</p>
-                            <p className="text-white text-[8px] leading-tight mt-0.5">«Я перевожу боль на язык порядка»</p>
+                            <p className="text-red-400 font-black text-[9px] leading-tight">Стр. 5</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">Своя история</p>
                           </div>
                         </div>
                       </div>
 
-                      {/* ЦЕНТРАЛЬНАЯ колонка — Катя Денисова */}
-                      <div className="relative flex-1 border-r border-red-900/50" style={{ minHeight: '76vh' }}>
-                        <img
-                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/6e6ef514-7071-44bb-80dd-23ae10d629ae.jpg"
-                          alt="Катя Денисова"
-                          className="w-full h-full object-cover object-top absolute inset-0"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent" />
-                        {/* Имя сверху */}
-                        <div className="absolute top-0 left-0 right-0 px-2 pt-2">
-                          <div className="bg-red-600/90 rounded px-1.5 py-0.5 inline-block">
-                            <p className="text-white font-black text-[10px] leading-none uppercase tracking-wide">Катя Денисова</p>
+                      {/* Центральная — главная героиня */}
+                      <div className="relative overflow-hidden flex-1 border-r border-red-900/50">
+                        <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/d4d7407e-2069-4bf4-8347-d53e78cc0a5f.jpg" alt="Главная героиня" className="w-full h-full object-cover object-top absolute inset-0" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                        <div className="absolute top-2 left-2 right-2">
+                          <div className="inline-block bg-red-600 px-2 py-0.5 mb-1">
+                            <span className="text-white font-black text-[9px] tracking-widest uppercase">Обложка</span>
                           </div>
                         </div>
-                        {/* Цитата снизу */}
                         <div className="absolute bottom-0 left-0 right-0 p-2">
-                          <p className="text-yellow-300 font-black text-[11px] leading-tight drop-shadow-lg">Бизнес-леди, мама, певица:</p>
-                          <p className="text-white text-[10px] leading-tight mt-0.5 drop-shadow">«У мечты нет дедлайна»</p>
+                          <p className="text-yellow-300 font-black text-[11px] leading-none uppercase tracking-wide">Лица апреля</p>
+                          <p className="text-white text-[9px] leading-tight mt-1">Истории тех, кто создаёт контент и меняет мир вокруг себя</p>
                         </div>
                       </div>
 
-                      {/* ПРАВАЯ колонка — 3 карточки */}
-                      <div className="flex flex-col gap-0" style={{ width: '30%' }}>
-                        {/* PiterMaks */}
-                        <div className="relative overflow-hidden border-b border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
-                          <img
-                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/99f5cd61-a50e-4e89-8a96-261ec8cb948f.jpg"
-                            alt="PiterMaks"
-                            className="w-full h-full object-cover object-top absolute inset-0"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                      {/* Правая колонка */}
+                      <div className="flex flex-col" style={{ width: '22%' }}>
+                        <div className="relative overflow-hidden border-b border-red-900/50 flex-1" style={{ minHeight: '51vh' }}>
+                          <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/5ba0e8aa-0d8e-4793-9bc1-f32e0c5797d7.jpg" alt="Героиня 3" className="w-full h-full object-cover object-top absolute inset-0" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                           <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-tight">PiterMaks</p>
-                            <p className="text-white text-[8px] leading-tight mt-0.5">«Моя муза — любовь, моя школа — русские народные под гитару»</p>
+                            <p className="text-red-400 font-black text-[9px] leading-tight">Стр. 3</p>
+                            <p className="text-white text-[8px] leading-tight mt-0.5">Блеск и тайна</p>
                           </div>
                         </div>
-                        {/* NATA RARE */}
-                        <div className="relative overflow-hidden border-b border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
-                          <img
-                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/845984f1-d8ad-428b-b0cc-b135b7319528.jpg"
-                            alt="NATA RARE"
-                            className="w-full h-full object-cover object-top absolute inset-0"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                          <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-tight">NATA RARE</p>
-                            <p className="text-white text-[8px] leading-tight mt-0.5">«Он мой!» и ещё множество треков: как Наталья из Ростова стала NATA RARE</p>
-                          </div>
-                        </div>
-                        {/* Кристина Che */}
-                        <div className="relative overflow-hidden flex-1" style={{ minHeight: '26vh' }}>
-                          <img
-                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8fc3d617-2b75-4454-8af2-60c059920a79.jpg"
-                            alt="Кристина Che"
-                            className="w-full h-full object-cover object-top absolute inset-0"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
-                          <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                            <p className="text-red-400 font-black text-[9px] leading-tight">Кристина Che</p>
-                            <p className="text-white text-[8px] leading-tight mt-0.5">«Мы строим хип-хоп братство»</p>
-                          </div>
+                        <div className="flex-1 bg-gradient-to-br from-red-950 to-black flex flex-col items-center justify-center p-2 gap-1">
+                          <p className="text-yellow-300 font-black text-[16px] leading-none">АПРЕЛЬ</p>
+                          <p className="text-red-400 text-[8px] tracking-widest uppercase">2026</p>
+                          <div className="w-8 h-px bg-red-500 my-1" />
+                          <p className="text-gray-400 text-[7px] text-center leading-tight">5 историй<br />о силе и красоте</p>
                         </div>
                       </div>
-
                     </div>
 
                     {/* Нижняя полоса */}
                     <div className="relative z-20 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-3 py-1.5">
-                      <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Март 2026</span>
+                      <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Апрель 2026</span>
                       <div className="flex gap-1.5">
                         <div className="w-2 h-2 rounded-full bg-red-500" />
                         <div className="w-2 h-2 rounded-full bg-gray-700" />
@@ -3011,34 +2962,28 @@ export default function Index() {
                   </div>
                 </div>
 
-                {/* ===== СОДЕРЖАНИЕ ===== */}
+                {/* ===== СОДЕРЖАНИЕ АПРЕЛЬ ===== */}
                 <div className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
-
-                    {/* Шапка содержания */}
                     <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-3">
-                      <p className="text-[9px] tracking-[0.3em] text-red-200 uppercase">КонтентМедиаPRO · №1 · Март 2026</p>
+                      <p className="text-[9px] tracking-[0.3em] text-red-200 uppercase">КонтентМедиаPRO · №2 · Апрель 2026</p>
                       <h2 className="text-xl font-black text-white leading-none mt-0.5 tracking-wide">СОДЕРЖАНИЕ</h2>
                     </div>
-
-                    {/* Список страниц */}
                     <div className="px-4 py-3 space-y-0">
-
                       {[
-                        { n: 1, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Светлана Чарушина', sub: '«Пишу против правил, ломаю устои и обращаюсь к небесам»' },
-                        { n: 2, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Тимур Лэнг', sub: '«Подарок на Новый год запустил киновселенную»: история 40-летнего писателя' },
-                        { n: 3, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Катя Денисова', sub: 'Бизнес-леди, мама, певица: история, которая доказала — у мечты нет дедлайна' },
-                        { n: 4, bg: 'bg-yellow-500', textColor: 'text-black', border: 'border-yellow-900', iconColor: 'text-yellow-500', titleClass: 'text-yellow-400', title: 'Старт на сцене', sub: '10 правил, которые должен знать каждый начинающий артист' },
-                        { n: 5, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Вероника Печерская', sub: '«Я перевожу боль на язык порядка»' },
-                        { n: 6, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Kristina Che', sub: '«Мы строим хип-хоп братство без контрактов»' },
-                        { n: 7, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'NATA RARE', sub: '«Он мой!» и ещё множество треков: как Наталья из Ростова стала NATA RARE' },
-                        { n: 8, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'PiterMaks', sub: '«Моя муза — любовь, моя школа — русские народные под гитару»' },
+                        { n: 1, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Нежность и сила', sub: 'Портрет апреля: героиня, которая меняет пространство вокруг себя' },
+                        { n: 2, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Огонь изнутри', sub: 'Как превратить внутреннюю энергию в контент, который цепляет' },
+                        { n: 3, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Блеск и тайна', sub: 'История о том, почему загадочность — лучший маркетинговый инструмент' },
+                        { n: 4, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Красное вино жизни', sub: 'Осознанность, страсть и умение наслаждаться моментом' },
+                        { n: 5, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Своя история', sub: 'Как найти свой голос в эпоху бесконечного шума' },
+                        { n: 6, bg: 'bg-yellow-500', textColor: 'text-black', border: 'border-yellow-900', iconColor: 'text-yellow-500', title: 'Апрельский старт', sub: '7 шагов, чтобы запустить свой проект прямо сейчас' },
+                        { n: 7, bg: 'bg-yellow-500', textColor: 'text-black', border: 'border-yellow-900', iconColor: 'text-yellow-500', title: 'Контент без масок', sub: 'Почему аутентичность побеждает идеальную картинку' },
                       ].map(item => (
                         <button
                           key={item.n}
                           className="w-full flex items-start gap-3 py-2.5 border-b border-white/5 text-left active:bg-white/5 transition-colors"
                           onClick={() => {
-                            const el = document.getElementById(`mag-page-${item.n}`);
+                            const el = document.getElementById(`apr-page-${item.n}`);
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
                           }}
                         >
@@ -3046,7 +2991,7 @@ export default function Index() {
                             <span className={`${item.textColor} font-black text-[11px]`}>{item.n}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className={`${(item as {titleClass?: string}).titleClass ?? 'text-white'} font-bold text-[12px] leading-tight`}>{item.title}</p>
+                            <p className={`${item.bg === 'bg-yellow-500' ? 'text-yellow-400' : 'text-white'} font-bold text-[12px] leading-tight`}>{item.title}</p>
                             <p className="text-gray-400 text-[10px] leading-tight mt-0.5">{item.sub}</p>
                           </div>
                           <div className={`flex-none w-5 h-5 rounded-full border ${item.border} flex items-center justify-center`}>
@@ -3054,50 +2999,7 @@ export default function Index() {
                           </div>
                         </button>
                       ))}
-
-                      {/* 9 */}
-                      <button
-                        className="w-full flex items-start gap-3 py-2.5 border-b border-white/5 text-left active:bg-white/5 transition-colors"
-                        onClick={() => {
-                          const el = document.getElementById('mag-page-9');
-                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-                        }}
-                      >
-                        <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
-                          <span className="text-black font-black text-[11px]">9</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-yellow-400 font-bold text-[12px] leading-tight">Весна пришла — время действовать</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">Как новый сезон открывает возможности для творчества и карьеры</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-yellow-500" />
-                        </div>
-                      </button>
-
-                      {/* 10 */}
-                      <button
-                        className="w-full flex items-start gap-3 py-2.5 text-left active:bg-white/5 transition-colors"
-                        onClick={() => {
-                          const el = document.getElementById('mag-page-10');
-                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-                        }}
-                      >
-                        <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
-                          <span className="text-black font-black text-[11px]">10</span>
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-yellow-400 font-bold text-[12px] leading-tight">Заряди себя на позитив</p>
-                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">7 простых привычек, которые превращают серый день в отличный</p>
-                        </div>
-                        <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
-                          <Icon name="ChevronRight" size={10} className="text-yellow-500" />
-                        </div>
-                      </button>
-
                     </div>
-
-                    {/* Нижняя полоса */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
                       <div className="flex gap-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
@@ -3106,7 +3008,6 @@ export default function Index() {
                       </div>
                       <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
                     </div>
-
                   </div>
                 </div>
 
@@ -3114,14 +3015,14 @@ export default function Index() {
                 <div id="mag-page-1" className="flex-none w-full snap-start">
                   <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
-                    {/* Шапка страницы */}
+                    {/* Шапка */}
                     <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-2.5 flex items-center justify-between">
                       <div>
-                        <p className="text-[8px] tracking-[0.25em] text-red-200 uppercase">Страница 1 · Поэзия</p>
-                        <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Светлана Чарушина</h2>
+                        <p className="text-[8px] tracking-[0.25em] text-red-200 uppercase">Страница 2 · Кино & Литература</p>
+                        <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Тимур Лэнг</h2>
                       </div>
                       <a
-                        href="https://vk.ru/shyopotnebes"
+                        href="https://vk.ru/id843006034"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-1.5 bg-white/15 hover:bg-white/25 transition-colors rounded-full px-2.5 py-1"
@@ -3241,16 +3142,7 @@ export default function Index() {
                   </div>
                 </div>
 
-                {/* ===== СТРАНИЦА 2: ТИМУР ЛЭНГ ===== */}
-                <div id="mag-page-2" className="flex-none w-full snap-start">
-                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
-
-                    {/* Шапка */}
-                    <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-2.5 flex items-center justify-between">
-                      <div>
-                        <p className="text-[8px] tracking-[0.25em] text-red-200 uppercase">Страница 2 · Кино & Литература</p>
-                        <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Тимур Лэнг</h2>
-                      </div>
+                {/* Страница 2 (Тимур Лэнг) — уже выше */}
                       <a
                         href="https://vk.ru/id843006034"
                         target="_blank"
@@ -4224,6 +4116,7 @@ export default function Index() {
                     </div>
                   </div>
                 </div>
+                </div>{/* MARCH_PAGES_END_CLEAN */}
 
               </div>
 
@@ -4237,17 +4130,17 @@ export default function Index() {
               <Icon name="ChevronRight" size={14} className="text-red-500" />
             </div>
 
-            {/* ===== ВЫПУСК №2 — АПРЕЛЬ 2026 ===== */}
-            <div id="magazine-april" className="mt-10">
-              {/* Header выпуска 2 */}
+            {/* ===== ВЫПУСК №1 — МАРТ 2026 ===== */}
+            <div id="magazine" className="mt-10">
+              {/* Header выпуска 1 */}
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-700 rounded-lg flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-red-600 to-black rounded-lg flex items-center justify-center">
                     <Icon name="BookOpen" size={22} className="text-white" />
                   </div>
                   <div>
-                    <h2 className="text-xl font-bold leading-none">Журнал <span className="text-orange-500">№2</span></h2>
-                    <p className="text-xs text-muted-foreground">1 апреля 2026</p>
+                    <h2 className="text-xl font-bold leading-none">Журнал <span className="text-red-500">№1</span></h2>
+                    <p className="text-xs text-muted-foreground">1 марта 2026</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-1.5">
@@ -4255,8 +4148,8 @@ export default function Index() {
                   <button
                     title="Поделиться ВКонтакте"
                     onClick={() => {
-                      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine-april`);
-                      const text = encodeURIComponent('КонтентМедиаPRO — журнал №2 2026');
+                      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine`);
+                      const text = encodeURIComponent('КонтентМедиаPRO — журнал №1 2026');
                       window.open(`https://vk.com/share.php?url=${url}&title=${text}`, '_blank');
                     }}
                     className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-[#0077FF] hover:bg-[#0066DD] text-white text-xs font-medium transition-colors"
@@ -4268,8 +4161,8 @@ export default function Index() {
                   <button
                     title="Поделиться в Telegram"
                     onClick={() => {
-                      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine-april`);
-                      const text = encodeURIComponent('КонтентМедиаPRO — журнал №2 2026');
+                      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine`);
+                      const text = encodeURIComponent('КонтентМедиаPRO — журнал №1 2026');
                       window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
                     }}
                     className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-[#229ED9] hover:bg-[#1a8cc4] text-white text-xs font-medium transition-colors"
@@ -4281,8 +4174,8 @@ export default function Index() {
                   <button
                     title="Поделиться в Max"
                     onClick={() => {
-                      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine-april`);
-                      const text = encodeURIComponent('КонтентМедиаPRO — журнал №2 2026');
+                      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine`);
+                      const text = encodeURIComponent('КонтентМедиаPRO — журнал №1 2026');
                       window.open(`https://max.ru/share?url=${url}&title=${text}`, '_blank');
                     }}
                     className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-[#FF6600] hover:bg-[#e55a00] text-white text-xs font-medium transition-colors"
@@ -4294,13 +4187,13 @@ export default function Index() {
                   <button
                     title="Скопировать ссылку"
                     onClick={() => {
-                      const url = `${window.location.origin}${window.location.pathname}#magazine-april`;
+                      const url = `${window.location.origin}${window.location.pathname}#magazine`;
                       navigator.clipboard.writeText(url).then(() => {
-                        const btn = document.querySelector('[data-copy-btn-april]') as HTMLButtonElement;
+                        const btn = document.querySelector('[data-copy-btn-march]') as HTMLButtonElement;
                         if (btn) { btn.textContent = '✓'; setTimeout(() => { btn.textContent = '🔗'; }, 1500); }
                       });
                     }}
-                    data-copy-btn-april
+                    data-copy-btn-march
                     className="flex items-center justify-center w-7 h-7 rounded-full bg-muted hover:bg-muted/80 text-foreground text-sm transition-colors"
                   >
                     🔗
@@ -4308,7 +4201,7 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* ===== АПРЕЛЬСКИЙ ЖУРНАЛ ===== */}
+              {/* ===== МАРТОВСКИЙ ЖУРНАЛ ===== */}
               <div className="relative overflow-hidden rounded-xl">
                 <div
                   id="magazine-april-scroll"
