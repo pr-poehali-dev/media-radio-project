@@ -4340,6 +4340,22 @@ export default function Index() {
                         </div>
                       </div>
 
+                      {/* Заголовок номера */}
+                      <div className="relative z-20 flex items-center justify-between px-3 py-2" style={{ background: 'linear-gradient(90deg, #0a0a0a 0%, #1a0505 50%, #0a0a0a 100%)', borderBottom: '1px solid rgba(185,28,28,0.3)' }}>
+                        <div className="flex items-center gap-2">
+                          <div className="w-px h-6 bg-red-600" />
+                          <div>
+                            <p className="text-yellow-300 font-black text-[11px] leading-tight tracking-wide">5 женщин. 5 вселенных. Одна сила.</p>
+                            <p className="text-gray-400 text-[7.5px] tracking-widest uppercase mt-0.5">Самодостаточность — это не одиночество. Это выбор.</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                          <div className="w-1 h-1 rounded-full bg-red-600" />
+                          <div className="w-1 h-1 rounded-full bg-red-800" />
+                          <div className="w-1 h-1 rounded-full bg-red-900" />
+                        </div>
+                      </div>
+
                       {/* Основной макет обложки — как март: левая колонка / центр / правая колонка */}
                       <div className="relative z-10 flex" style={{ minHeight: '76vh' }}>
 
