@@ -5245,11 +5245,11 @@ export default function Index() {
                       {/* Блок 1: портрет с кольцом + главная новость */}
                       <div className="flex gap-3 items-start">
                         <div className="flex-none" style={{ width: '37%' }}>
-                          <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '160px' }}>
+                          <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '180px' }}>
                             <img
-                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/c71b00bc-100d-4591-8a42-d137bd66649e.jpg"
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/ea170397-b137-4a36-85ec-cb00a9e98db7.jpg"
                               alt="Вандра — помолвка"
-                              className="w-full h-full object-cover object-top"
+                              className="w-full h-full object-cover object-center"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                             <div className="absolute bottom-1.5 left-2 right-2">
