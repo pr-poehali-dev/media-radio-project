@@ -4396,8 +4396,8 @@ export default function Index() {
                               <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
                               <p className="text-red-400 text-[7px] font-bold tracking-[0.2em] uppercase">Апрель 2026</p>
                             </div>
-                            <p className="text-yellow-300 font-black text-[11px] leading-tight drop-shadow-lg">Нежность и сила:</p>
-                            <p className="text-white text-[10px] leading-tight mt-0.5 drop-shadow">Цитата совсем скоро...</p>
+                            <p className="text-yellow-300 font-black text-[11px] leading-tight drop-shadow-lg">Odonata</p>
+                            <p className="text-white text-[9px] leading-tight mt-0.5 drop-shadow italic">«После 50 жизнь только начинается — и я, Стрекоза, пою, танцую и дарю миру лёгкость, которую помню с детства»</p>
                           </div>
                         </div>
 
