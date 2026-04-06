@@ -4308,19 +4308,408 @@ export default function Index() {
                 </div>
               </div>
 
-              {/* Плашка "в разработке" */}
-              <div className="relative overflow-hidden rounded-xl border border-orange-500/20 bg-gradient-to-br from-orange-950/30 via-black to-red-950/20 px-6 py-10 flex flex-col items-center justify-center text-center gap-4">
-                <div className="absolute inset-0 opacity-5 pointer-events-none" style={{backgroundImage: 'repeating-linear-gradient(45deg, #f97316 0, #f97316 1px, transparent 0, transparent 50%)', backgroundSize: '10px 10px'}} />
-                <div className="relative flex flex-col items-center gap-3">
-                  <div className="w-14 h-14 rounded-full bg-orange-500/10 border border-orange-500/30 flex items-center justify-center">
-                    <Icon name="Clock" size={28} className="text-orange-400" />
+              {/* ===== АПРЕЛЬСКИЙ ЖУРНАЛ ===== */}
+              <div className="relative overflow-hidden rounded-xl">
+                <div
+                  id="magazine-april-scroll"
+                  className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+
+                  {/* ===== ОБЛОЖКА АПРЕЛЬ ===== */}
+                  <div className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#111', minHeight: '92vh' }}>
+
+                      {/* Шапка */}
+                      <div className="relative z-30 bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-3 py-2 flex items-center justify-between">
+                        <div>
+                          <h1 className="text-[22px] font-black leading-none tracking-tight">
+                            <span className="text-white">КонтентМедиа</span><span className="text-yellow-300">PRO</span>
+                          </h1>
+                          <p className="text-[8px] text-red-200 tracking-widest uppercase">PRO-контент для PRO-фессионалов</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-yellow-300 text-[10px] font-bold leading-none">№2 · 2026</p>
+                          <p className="text-red-200 text-[8px]">Апрель</p>
+                        </div>
+                      </div>
+
+                      {/* Коллаж фото */}
+                      <div className="relative z-10 flex" style={{ minHeight: '76vh' }}>
+                        {/* Левая колонка */}
+                        <div className="flex flex-col gap-0" style={{ width: '30%' }}>
+                          <div className="relative overflow-hidden border-b border-r border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
+                            <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/82799f40-3243-4e07-9d0f-679df5654079.jpg" alt="Героиня 2" className="w-full h-full object-cover object-top absolute inset-0" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                              <p className="text-red-400 font-black text-[9px] leading-tight">Стр. 2</p>
+                              <p className="text-white text-[8px] leading-tight mt-0.5">Огонь изнутри</p>
+                            </div>
+                          </div>
+                          <div className="relative overflow-hidden border-b border-r border-red-900/50 flex-1" style={{ minHeight: '25vh' }}>
+                            <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/68d15e0c-f41f-40d3-ac2f-96ae381835d7.jpg" alt="Героиня 4" className="w-full h-full object-cover object-top absolute inset-0" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                              <p className="text-red-400 font-black text-[9px] leading-tight">Стр. 4</p>
+                              <p className="text-white text-[8px] leading-tight mt-0.5">Красное вино жизни</p>
+                            </div>
+                          </div>
+                          <div className="relative overflow-hidden border-r border-red-900/50 flex-1" style={{ minHeight: '26vh' }}>
+                            <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8722c4e0-7fb0-4b93-ba09-d7558f40742b.jpg" alt="Героиня 5" className="w-full h-full object-cover object-top absolute inset-0" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                              <p className="text-red-400 font-black text-[9px] leading-tight">Стр. 5</p>
+                              <p className="text-white text-[8px] leading-tight mt-0.5">Своя история</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Центральная — главная героиня */}
+                        <div className="relative overflow-hidden flex-1 border-r border-red-900/50">
+                          <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/d4d7407e-2069-4bf4-8347-d53e78cc0a5f.jpg" alt="Главная героиня" className="w-full h-full object-cover object-top absolute inset-0" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
+                          <div className="absolute top-2 left-2 right-2">
+                            <div className="inline-block bg-red-600 px-2 py-0.5 mb-1">
+                              <span className="text-white font-black text-[9px] tracking-widest uppercase">Обложка</span>
+                            </div>
+                          </div>
+                          <div className="absolute bottom-0 left-0 right-0 p-2">
+                            <p className="text-yellow-300 font-black text-[11px] leading-none uppercase tracking-wide">Лица апреля</p>
+                            <p className="text-white text-[9px] leading-tight mt-1">Истории тех, кто создаёт контент и меняет мир вокруг себя</p>
+                          </div>
+                        </div>
+
+                        {/* Правая колонка */}
+                        <div className="flex flex-col" style={{ width: '22%' }}>
+                          <div className="relative overflow-hidden border-b border-red-900/50 flex-1" style={{ minHeight: '51vh' }}>
+                            <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/5ba0e8aa-0d8e-4793-9bc1-f32e0c5797d7.jpg" alt="Героиня 3" className="w-full h-full object-cover object-top absolute inset-0" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                              <p className="text-red-400 font-black text-[9px] leading-tight">Стр. 3</p>
+                              <p className="text-white text-[8px] leading-tight mt-0.5">Блеск и тайна</p>
+                            </div>
+                          </div>
+                          <div className="flex-1 bg-gradient-to-br from-red-950 to-black flex flex-col items-center justify-center p-2 gap-1">
+                            <p className="text-yellow-300 font-black text-[16px] leading-none">АПРЕЛЬ</p>
+                            <p className="text-red-400 text-[8px] tracking-widest uppercase">2026</p>
+                            <div className="w-8 h-px bg-red-500 my-1" />
+                            <p className="text-gray-400 text-[7px] text-center leading-tight">5 историй<br />о силе и красоте</p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Нижняя полоса */}
+                      <div className="relative z-20 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-3 py-1.5">
+                        <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Апрель 2026</span>
+                        <div className="flex gap-1.5">
+                          <div className="w-2 h-2 rounded-full bg-red-500" />
+                          <div className="w-2 h-2 rounded-full bg-gray-700" />
+                        </div>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+
+                    </div>
                   </div>
-                  <p className="text-lg font-bold text-white">Апрельский выпуск готовится к&nbsp;выходу</p>
-                  <p className="text-sm text-muted-foreground max-w-xs">Редакция работает над новым номером. Следите за обновлениями — совсем скоро.</p>
-                  <div className="flex items-center gap-2 mt-1 px-4 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20">
-                    <span className="w-2 h-2 rounded-full bg-orange-400 animate-pulse" />
-                    <span className="text-xs text-orange-400 font-medium">В разработке · 1 апреля 2026</span>
+
+                  {/* ===== СОДЕРЖАНИЕ АПРЕЛЬ ===== */}
+                  <div className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+                      <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-3">
+                        <p className="text-[9px] tracking-[0.3em] text-red-200 uppercase">КонтентМедиаPRO · №2 · Апрель 2026</p>
+                        <h2 className="text-xl font-black text-white leading-none mt-0.5 tracking-wide">СОДЕРЖАНИЕ</h2>
+                      </div>
+                      <div className="px-4 py-3 space-y-0">
+                        {[
+                          { n: 1, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Нежность и сила', sub: 'Портрет апреля: героиня, которая меняет пространство вокруг себя' },
+                          { n: 2, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Огонь изнутри', sub: 'Как превратить внутреннюю энергию в контент, который цепляет' },
+                          { n: 3, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Блеск и тайна', sub: 'История о том, почему загадочность — лучший маркетинговый инструмент' },
+                          { n: 4, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Красное вино жизни', sub: 'Осознанность, страсть и умение наслаждаться моментом' },
+                          { n: 5, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Своя история', sub: 'Как найти свой голос в эпоху бесконечного шума' },
+                          { n: 6, bg: 'bg-yellow-500', textColor: 'text-black', border: 'border-yellow-900', iconColor: 'text-yellow-500', title: 'Апрельский старт', sub: '7 шагов, чтобы запустить свой проект прямо сейчас' },
+                          { n: 7, bg: 'bg-yellow-500', textColor: 'text-black', border: 'border-yellow-900', iconColor: 'text-yellow-500', title: 'Контент без масок', sub: 'Почему аутентичность побеждает идеальную картинку' },
+                        ].map(item => (
+                          <button
+                            key={item.n}
+                            className="w-full flex items-start gap-3 py-2.5 border-b border-white/5 text-left active:bg-white/5 transition-colors"
+                            onClick={() => {
+                              const el = document.getElementById(`apr-page-${item.n}`);
+                              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                            }}
+                          >
+                            <div className={`flex-none w-7 h-7 ${item.bg} rounded flex items-center justify-center`}>
+                              <span className={`${item.textColor} font-black text-[11px]`}>{item.n}</span>
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <p className={`${item.bg === 'bg-yellow-500' ? 'text-yellow-400' : 'text-white'} font-bold text-[12px] leading-tight`}>{item.title}</p>
+                              <p className="text-gray-400 text-[10px] leading-tight mt-0.5">{item.sub}</p>
+                            </div>
+                            <div className={`flex-none w-5 h-5 rounded-full border ${item.border} flex items-center justify-center`}>
+                              <Icon name="ChevronRight" size={10} className={item.iconColor} />
+                            </div>
+                          </button>
+                        ))}
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                        <div className="flex gap-1.5">
+                          <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                          <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
+                        </div>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+                    </div>
                   </div>
+
+                  {/* ===== СТРАНИЦА 1: НЕЖНОСТЬ И СИЛА ===== */}
+                  <div id="apr-page-1" className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+                      <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-2.5 flex items-center justify-between">
+                        <div>
+                          <p className="text-[8px] tracking-[0.25em] text-red-200 uppercase">Страница 1 · Портрет</p>
+                          <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Нежность и сила</h2>
+                        </div>
+                        <div className="text-yellow-300 text-[9px] font-bold">1 / 7</div>
+                      </div>
+                      <div className="relative" style={{ height: '42vh' }}>
+                        <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/d4d7407e-2069-4bf4-8347-d53e78cc0a5f.jpg" alt="Героиня апреля" className="w-full h-full object-cover object-top" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent" />
+                      </div>
+                      <div className="px-4 py-4 space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-0.5 bg-red-500" />
+                          <span className="text-red-400 text-[10px] tracking-widest uppercase font-bold">Портрет апреля</span>
+                        </div>
+                        <p className="text-white font-black text-[18px] leading-tight">Героиня, которая меняет пространство вокруг себя</p>
+                        <p className="text-gray-300 text-[12px] leading-relaxed">Апрель — месяц пробуждения. И именно такие люди, как героиня этого номера, напоминают нам: настоящая сила не в громкости, а в глубине. Спокойный взгляд, прямая осанка, внутренняя уверенность — это не случайность, это результат работы над собой.</p>
+                        <p className="text-gray-400 text-[12px] leading-relaxed">«Я давно перестала пытаться казаться кем-то. Теперь я просто есть — и этого достаточно», — говорит она, и в этих словах звучит то, что многие ищут годами: принятие себя без условий.</p>
+                        <div className="bg-red-950/40 border border-red-900/40 rounded-lg p-3 mt-2">
+                          <p className="text-red-300 text-[11px] font-bold mb-1">Совет редакции</p>
+                          <p className="text-gray-400 text-[11px] leading-relaxed">Нежность — это не слабость. Это умение оставаться собой даже тогда, когда мир давит и требует масок. Апрель — лучшее время, чтобы снять их.</p>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                        <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO</span>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ===== СТРАНИЦА 2: ОГОНЬ ИЗНУТРИ ===== */}
+                  <div id="apr-page-2" className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+                      <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-2.5 flex items-center justify-between">
+                        <div>
+                          <p className="text-[8px] tracking-[0.25em] text-red-200 uppercase">Страница 2 · Энергия</p>
+                          <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Огонь изнутри</h2>
+                        </div>
+                        <div className="text-yellow-300 text-[9px] font-bold">2 / 7</div>
+                      </div>
+                      <div className="relative" style={{ height: '42vh' }}>
+                        <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/82799f40-3243-4e07-9d0f-679df5654079.jpg" alt="Огонь изнутри" className="w-full h-full object-cover object-top" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent" />
+                      </div>
+                      <div className="px-4 py-4 space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-0.5 bg-red-500" />
+                          <span className="text-red-400 text-[10px] tracking-widest uppercase font-bold">Контент и энергия</span>
+                        </div>
+                        <p className="text-white font-black text-[18px] leading-tight">Как внутренний огонь становится магнитом для аудитории</p>
+                        <p className="text-gray-300 text-[12px] leading-relaxed">Есть люди, на которых невозможно не смотреть. Не потому что они идеальны — а потому что они живые. В каждом взгляде, в каждом движении чувствуется та энергия, которая заражает и притягивает.</p>
+                        <p className="text-gray-400 text-[12px] leading-relaxed">Героиня этой страницы знает: настоящий контент рождается не из трендов, а из внутреннего состояния. «Когда я в потоке — камера это чувствует. Когда нет — никакой фильтр не поможет».</p>
+                        <div className="grid grid-cols-2 gap-2 mt-1">
+                          {['Аутентичность бьёт технику', 'Состояние передаётся зрителю', 'Энергия — твой главный инструмент', 'Не бойся быть интенсивной'].map((tip, i) => (
+                            <div key={i} className="bg-red-950/30 border border-red-900/30 rounded p-2">
+                              <p className="text-gray-300 text-[10px] leading-tight">{tip}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                        <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO</span>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ===== СТРАНИЦА 3: БЛЕСК И ТАЙНА ===== */}
+                  <div id="apr-page-3" className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+                      <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-2.5 flex items-center justify-between">
+                        <div>
+                          <p className="text-[8px] tracking-[0.25em] text-red-200 uppercase">Страница 3 · Стиль</p>
+                          <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Блеск и тайна</h2>
+                        </div>
+                        <div className="text-yellow-300 text-[9px] font-bold">3 / 7</div>
+                      </div>
+                      <div className="relative" style={{ height: '45vh' }}>
+                        <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/5ba0e8aa-0d8e-4793-9bc1-f32e0c5797d7.jpg" alt="Блеск и тайна" className="w-full h-full object-cover object-center" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent" />
+                      </div>
+                      <div className="px-4 py-4 space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-0.5 bg-red-500" />
+                          <span className="text-red-400 text-[10px] tracking-widest uppercase font-bold">Маркетинг образа</span>
+                        </div>
+                        <p className="text-white font-black text-[18px] leading-tight">Загадочность — лучший маркетинговый инструмент</p>
+                        <p className="text-gray-300 text-[12px] leading-relaxed">В эпоху, когда каждый выкладывает каждую секунду своей жизни, умение оставить интригу стало редкостью. И именно редкость создаёт ценность.</p>
+                        <p className="text-gray-400 text-[12px] leading-relaxed">«Я никогда не показываю всё сразу. Пусть люди возвращаются снова и снова — в поисках следующей части истории», — делится она. И в этой стратегии есть глубокая мудрость: лучший контент — тот, который оставляет послевкусие.</p>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                        <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO</span>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ===== СТРАНИЦА 4: КРАСНОЕ ВИНО ЖИЗНИ ===== */}
+                  <div id="apr-page-4" className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+                      <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-2.5 flex items-center justify-between">
+                        <div>
+                          <p className="text-[8px] tracking-[0.25em] text-red-200 uppercase">Страница 4 · Осознанность</p>
+                          <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Красное вино жизни</h2>
+                        </div>
+                        <div className="text-yellow-300 text-[9px] font-bold">4 / 7</div>
+                      </div>
+                      <div className="relative" style={{ height: '42vh' }}>
+                        <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/68d15e0c-f41f-40d3-ac2f-96ae381835d7.jpg" alt="Красное вино жизни" className="w-full h-full object-cover object-top" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent" />
+                      </div>
+                      <div className="px-4 py-4 space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-0.5 bg-red-500" />
+                          <span className="text-red-400 text-[10px] tracking-widest uppercase font-bold">Образ жизни</span>
+                        </div>
+                        <p className="text-white font-black text-[18px] leading-tight">Осознанность, страсть и умение наслаждаться моментом</p>
+                        <p className="text-gray-300 text-[12px] leading-relaxed">Хорошее вино не торопят. Его дают раскрыться. Именно так эта героиня относится к жизни и к своему контенту — без спешки, с удовольствием, полностью присутствуя в моменте.</p>
+                        <p className="text-gray-400 text-[12px] leading-relaxed">«Я не гонюсь за количеством публикаций. Каждый пост — это что-то настоящее. Что-то, что я действительно хочу сказать», — объясняет она свою философию. И аудитория чувствует эту разницу.</p>
+                        <div className="bg-red-950/40 border border-red-900/40 rounded-lg p-3">
+                          <p className="text-yellow-300 text-[12px] font-black italic leading-relaxed">«Жизнь, как хорошее вино — её нужно смаковать, а не выпивать залпом»</p>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                        <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO</span>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ===== СТРАНИЦА 5: СВОЯ ИСТОРИЯ ===== */}
+                  <div id="apr-page-5" className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+                      <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-2.5 flex items-center justify-between">
+                        <div>
+                          <p className="text-[8px] tracking-[0.25em] text-red-200 uppercase">Страница 5 · Голос</p>
+                          <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Своя история</h2>
+                        </div>
+                        <div className="text-yellow-300 text-[9px] font-bold">5 / 7</div>
+                      </div>
+                      <div className="relative" style={{ height: '42vh' }}>
+                        <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8722c4e0-7fb0-4b93-ba09-d7558f40742b.jpg" alt="Своя история" className="w-full h-full object-cover object-top" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#0f0f0f] via-transparent to-transparent" />
+                      </div>
+                      <div className="px-4 py-4 space-y-3">
+                        <div className="flex items-center gap-2">
+                          <div className="w-8 h-0.5 bg-red-500" />
+                          <span className="text-red-400 text-[10px] tracking-widest uppercase font-bold">Авторский голос</span>
+                        </div>
+                        <p className="text-white font-black text-[18px] leading-tight">Как найти свой голос в эпоху бесконечного шума</p>
+                        <p className="text-gray-300 text-[12px] leading-relaxed">Миллионы аккаунтов. Миллиарды постов. Как не потеряться? Как остаться собой, когда каждый алгоритм подталкивает тебя стать как все?</p>
+                        <p className="text-gray-400 text-[12px] leading-relaxed">Ответ нашей героини прост и сложен одновременно: «Перестань смотреть, что делают другие. Начни спрашивать себя — что хочу сказать я?» Именно с этого вопроса начинается настоящий контент.</p>
+                        <div className="space-y-1.5">
+                          {['Выключи сравнение — включи наблюдение', 'Твой опыт уникален — используй его', 'Один честный пост лучше десяти правильных'].map((t, i) => (
+                            <div key={i} className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 rounded-full bg-red-500 flex-none" />
+                              <p className="text-gray-300 text-[11px]">{t}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                        <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO</span>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ===== СТРАНИЦА 6: АПРЕЛЬСКИЙ СТАРТ (желтая) ===== */}
+                  <div id="apr-page-6" className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+                      <div className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 px-4 py-2.5 flex items-center justify-between">
+                        <div>
+                          <p className="text-[8px] tracking-[0.25em] text-yellow-900 uppercase">Страница 6 · Практика</p>
+                          <h2 className="text-[15px] font-black text-black leading-none mt-0.5">Апрельский старт</h2>
+                        </div>
+                        <div className="text-black text-[9px] font-bold">6 / 7</div>
+                      </div>
+                      <div className="px-4 py-5 space-y-4">
+                        <p className="text-yellow-400 font-black text-[22px] leading-tight">7 шагов, чтобы запустить свой проект прямо сейчас</p>
+                        <p className="text-gray-400 text-[12px]">Апрель — идеальное время для старта. Природа просыпается, энергия растёт. Используй этот момент.</p>
+                        <div className="space-y-3">
+                          {[
+                            { n: 1, text: 'Запиши идею — прямо сейчас, не откладывай на потом' },
+                            { n: 2, text: 'Определи, для кого ты создаёшь контент' },
+                            { n: 3, text: 'Выбери одну платформу и освой её до совершенства' },
+                            { n: 4, text: 'Сними первое видео — не ждя «правильного» момента' },
+                            { n: 5, text: 'Опубликуй и попроси обратную связь у 5 человек' },
+                            { n: 6, text: 'Анализируй реакцию — не лайки, а комментарии' },
+                            { n: 7, text: 'Повтори. Снова. И снова. Это и есть рост' },
+                          ].map(step => (
+                            <div key={step.n} className="flex items-start gap-3">
+                              <div className="flex-none w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                                <span className="text-black font-black text-[12px]">{step.n}</span>
+                              </div>
+                              <p className="text-gray-300 text-[12px] leading-relaxed pt-1">{step.text}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-yellow-950 to-black flex items-center justify-between px-4 py-2">
+                        <span className="text-yellow-600 text-[8px] tracking-widest uppercase">КонтентМедиаPRO</span>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* ===== СТРАНИЦА 7: КОНТЕНТ БЕЗ МАСОК (желтая) ===== */}
+                  <div id="apr-page-7" className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+                      <div className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-600 px-4 py-2.5 flex items-center justify-between">
+                        <div>
+                          <p className="text-[8px] tracking-[0.25em] text-yellow-900 uppercase">Страница 7 · Финал</p>
+                          <h2 className="text-[15px] font-black text-black leading-none mt-0.5">Контент без масок</h2>
+                        </div>
+                        <div className="text-black text-[9px] font-bold">7 / 7</div>
+                      </div>
+                      <div className="px-4 py-5 space-y-4">
+                        <p className="text-yellow-400 font-black text-[22px] leading-tight">Почему аутентичность побеждает идеальную картинку</p>
+                        <p className="text-gray-300 text-[12px] leading-relaxed">Люди устали от глянца. От идеальных кухонь, идеальных улыбок и идеальных историй успеха. Им нужна правда — живая, настоящая, с шероховатостями.</p>
+                        <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-xl p-4 space-y-3">
+                          <p className="text-yellow-300 font-black text-[14px]">Что значит быть аутентичным?</p>
+                          {['Говорить о провалах так же, как об успехах', 'Показывать процесс, а не только результат', 'Иметь собственную точку зрения — и отстаивать её', 'Не пытаться понравиться всем'].map((t, i) => (
+                            <div key={i} className="flex items-center gap-2">
+                              <div className="w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center flex-none">
+                                <span className="text-black text-[8px] font-black">✓</span>
+                              </div>
+                              <p className="text-gray-300 text-[12px]">{t}</p>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="text-gray-400 text-[12px] leading-relaxed">Апрель 2026 — время снять маски. Мы верим, что лучший контент ещё впереди. До следующего номера!</p>
+                        <div className="bg-gradient-to-r from-red-900/40 to-red-950/40 border border-red-900/40 rounded-lg p-3 text-center">
+                          <p className="text-white font-black text-[13px]">КонтентМедиа<span className="text-yellow-300">PRO</span></p>
+                          <p className="text-gray-500 text-[9px] tracking-widest mt-0.5 uppercase">До встречи в мае!</p>
+                        </div>
+                      </div>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-yellow-950 to-black flex items-center justify-between px-4 py-2">
+                        <span className="text-yellow-600 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Апрель 2026</span>
+                        <div className="flex gap-1">
+                          {[...Array(7)].map((_, i) => <div key={i} className="w-1.5 h-1.5 rounded-full bg-yellow-500" />)}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>
