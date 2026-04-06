@@ -4381,7 +4381,8 @@ export default function Index() {
                           <img
                             src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/a57466e2-569b-4d8d-a780-43eaa99f3559.jpg"
                             alt="Главная героиня апреля"
-                            className="w-full h-full object-cover object-top absolute inset-0"
+                            className="w-full h-full object-cover absolute inset-0"
+                            style={{ objectPosition: '20% top' }}
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent" />
                           {/* Имя сверху */}
