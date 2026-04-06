@@ -4379,7 +4379,7 @@ export default function Index() {
                         {/* ЦЕНТР — главная героиня (женщина с цветами), во весь рост */}
                         <div className="relative flex-1 border-r border-red-900/50" style={{ minHeight: '76vh' }}>
                           <img
-                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/915af16b-0fcb-455a-a577-a75e1d2cea5f.jpg"
+                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/a57466e2-569b-4d8d-a780-43eaa99f3559.jpg"
                             alt="Главная героиня апреля"
                             className="w-full h-full object-cover object-top absolute inset-0"
                           />
@@ -4387,7 +4387,7 @@ export default function Index() {
                           {/* Имя сверху */}
                           <div className="absolute top-0 left-0 right-0 px-2 pt-2">
                             <div className="bg-red-600/90 rounded px-1.5 py-0.5 inline-block">
-                              <p className="text-white font-black text-[10px] leading-none uppercase tracking-wide">Odonata</p>
+                              <p className="text-white font-black text-[10px] leading-none tracking-wide">Odonata</p>
                             </div>
                           </div>
                           {/* Цитата снизу */}
