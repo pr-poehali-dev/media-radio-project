@@ -3730,124 +3730,106 @@ export default function Index() {
                   </div>
                 </div>
 
-                {/* ===== СТРАНИЦА 6: РЖАВАЯ МОРАЛЬ ===== */}
+                {/* ===== СТРАНИЦА 6: KRISTINA CHE ===== */}
                 <div id="mag-page-6" className="flex-none w-full snap-start">
-                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#080808', minHeight: '92vh' }}>
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
-                    {/* Верхнее фото — полноширинное с текстом поверх */}
-                    <div className="relative w-full" style={{ height: '220px' }}>
-                      <img
-                        src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/7648ce11-4f6d-4bc1-a696-9db979c0a4ed.jpg"
-                        alt="Ржавая Мораль"
-                        className="w-full h-full object-cover object-top"
-                      />
-                      <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(8,8,8,0.95) 100%)' }} />
-                      <div className="absolute bottom-0 left-0 right-0 px-4 pb-3">
-                        <p className="text-[8px] tracking-[0.3em] uppercase mb-1" style={{ color: '#8b0000' }}>Страница 6 · Рок</p>
-                        <h2 className="text-white font-black leading-none" style={{ fontSize: '22px', letterSpacing: '-0.5px', textShadow: '0 0 30px rgba(180,0,0,0.8)' }}>Ржавая Мораль</h2>
-                        <p className="text-[9px] mt-0.5" style={{ color: '#666' }}>Страхи. Эмоции. Внутренние демоны.</p>
+                    {/* Шапка */}
+                    <div className="bg-gradient-to-r from-red-900 via-red-700 to-black px-4 py-2.5 flex items-center justify-between">
+                      <div>
+                        <p className="text-[8px] tracking-[0.25em] text-red-300 uppercase">Страница 6 · Хип-хоп</p>
+                        <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Kristina Che</h2>
                       </div>
-                      {/* VK кнопка */}
                       <a
-                        href="https://vk.ru/club233747573"
+                        href="https://vk.ru/kris_che74"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="absolute top-3 right-3 flex items-center gap-1.5 rounded-full px-2.5 py-1.5 transition-colors"
-                        style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.12)' }}
+                        className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 rounded-full px-2.5 py-1.5 transition-colors"
                       >
                         <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z"/></svg>
                         <span className="text-white text-[9px] font-bold">VK</span>
                       </a>
                     </div>
 
-                    <div className="px-3 pt-2 pb-16 space-y-2.5">
+                    <div className="px-3 pt-3 pb-16 space-y-3">
 
-                      {/* Вводная цитата */}
-                      <div className="py-2 px-3 rounded-lg" style={{ background: 'linear-gradient(135deg, rgba(139,0,0,0.25) 0%, rgba(0,0,0,0) 100%)', borderLeft: '2px solid #8b0000' }}>
-                        <p className="text-[10px] italic leading-relaxed" style={{ color: '#ccc' }}>«Я — голос тех чувств, которые мы привыкли прятать глубоко внутри себя. Моя задача — вытащить наружу всё то, о чём принято молчать.»</p>
-                      </div>
-
-                      {/* Глава I — СТРАХИ */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className="text-[7px] font-black tracking-[0.3em] uppercase px-2 py-0.5 rounded" style={{ background: '#8b0000', color: '#fff' }}>I</span>
-                          <span className="text-[8px] tracking-[0.25em] uppercase font-bold" style={{ color: '#8b0000' }}>Страхи</span>
-                          <div className="h-px flex-1" style={{ background: 'rgba(139,0,0,0.4)' }} />
-                        </div>
-                        <div className="flex gap-2.5 items-start">
-                          <div className="flex-none rounded-lg overflow-hidden shadow-lg" style={{ width: '40%', height: '120px' }}>
+                      {/* Блок 1: портрет + вводный текст */}
+                      <div className="flex gap-3 items-start">
+                        <div className="flex-none" style={{ width: '36%' }}>
+                          <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '160px' }}>
                             <img
-                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/5676c927-133d-4764-9f59-2f4e72910e8d.jpg"
-                              alt="Ржавая Мораль — переулок"
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/0156e708-17ce-4366-814e-3ab4585d2728.jpg"
+                              alt="Kristina Che"
                               className="w-full h-full object-cover object-top"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                           </div>
-                          <div className="flex-1">
-                            <p className="text-[10px] leading-relaxed" style={{ color: '#bbb' }}>Мы боимся признаться себе в слабостях, стесняемся собственных эмоций, скрываем настоящие мысли даже от самих себя.</p>
-                            <p className="text-[10px] leading-relaxed mt-1.5" style={{ color: '#888' }}>Но именно в этих <span style={{ color: '#cc3333', fontWeight: 600 }}>тенях скрыта наша истинная сущность</span>. Через музыку — приглашение заглянуть внутрь.</p>
+                          <div className="mt-1.5 bg-red-950/60 rounded-lg px-2 py-1.5 border-l-2 border-red-500">
+                            <p className="text-red-300 text-[8px] italic leading-tight">«Хип-хоп жив, пока мы друг за друга»</p>
                           </div>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-white font-black text-[13px] leading-tight mb-1">«Мы строим братство без контрактов»</h3>
+                          <p className="text-gray-300 text-[10px] leading-relaxed"><span className="text-red-400 font-semibold">Жена музыканта Starik Che и его боевой менеджер.</span> Вместе они открыли некоммерческий лейбл <span className="text-yellow-400 font-semibold">4m3 Records Label</span> — не для контрактов, а для свободного хип-хопа.</p>
+                          <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">На лейбл не нанимают — здесь дружат. Их миссия: продвигать своё видение хип-хопа и просто помогать своим.</p>
                         </div>
                       </div>
 
-                      {/* Глава II — ЭМОЦИИ */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className="text-[7px] font-black tracking-[0.3em] uppercase px-2 py-0.5 rounded" style={{ background: '#3d1a00', color: '#ff6633' }}>II</span>
-                          <span className="text-[8px] tracking-[0.25em] uppercase font-bold" style={{ color: '#ff6633' }}>Эмоции</span>
-                          <div className="h-px flex-1" style={{ background: 'rgba(255,102,51,0.3)' }} />
-                        </div>
-                        <p className="text-[10px] leading-relaxed" style={{ color: '#bbb' }}>Музыка — это смесь <span style={{ color: '#ff6633', fontWeight: 600 }}>мощного рока и искренних текстов</span>. Каждый аккорд звучит как крик души, каждая строчка раскрывает тайны внутренней борьбы. Хард рок и альтернативное звучание — инструмент самопознания.</p>
-                        <div className="mt-2 rounded-lg px-2.5 py-2" style={{ background: 'rgba(255,102,51,0.07)', border: '1px solid rgba(255,102,51,0.2)' }}>
-                          <p className="text-[9px] italic font-medium" style={{ color: '#ff9966' }}>«Каждый аккорд — крик души. Мои песни — голос ваших сердец»</p>
-                        </div>
+                      {/* Разделитель */}
+                      <div className="flex items-center gap-2">
+                        <div className="h-px flex-1 bg-red-900/50" />
+                        <span className="text-red-600 text-[8px] tracking-widest uppercase">Hip-Hop Nation</span>
+                        <div className="h-px flex-1 bg-red-900/50" />
                       </div>
 
-                      {/* Глава III — ДЕМОНЫ + фото */}
-                      <div>
-                        <div className="flex items-center gap-2 mb-1.5">
-                          <span className="text-[7px] font-black tracking-[0.3em] uppercase px-2 py-0.5 rounded" style={{ background: '#1a0030', color: '#cc88ff' }}>III</span>
-                          <span className="text-[8px] tracking-[0.25em] uppercase font-bold" style={{ color: '#cc88ff' }}>Демоны</span>
-                          <div className="h-px flex-1" style={{ background: 'rgba(180,100,255,0.3)' }} />
-                        </div>
-                        <div className="flex gap-2.5 items-start">
-                          <div className="flex-1">
-                            <p className="text-[10px] leading-relaxed" style={{ color: '#bbb' }}>Новый альбом о поиске себя вышел <span style={{ color: '#cc88ff', fontWeight: 600 }}>21 марта</span> на стриминговые площадки. В <span style={{ color: '#cc88ff', fontWeight: 600 }}>июне 2026</span> — альбом «Белая Стая» и одноимённый роман Владимира Токарева.</p>
-                            <p className="text-[9px] mt-1.5" style={{ color: '#666' }}>Первая коллаборация: музыка и литература — одна история, два голоса.</p>
+                      {/* Блок 2: текст + второе фото */}
+                      <div className="flex gap-3 items-start">
+                        <div className="flex-1">
+                          <p className="text-gray-300 text-[10px] leading-relaxed">Кристина создала закрытое сообщество <span className="text-yellow-400 font-semibold">«Hip-Hop Nation»</span> — тусовку, где артисты реально поддерживают друг друга. Подписки, лайки, репосты — без взаимной выручки в их мире никак.</p>
+                          <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">Берёт интервью, пишет статьи, раскачивает аудиторию лейбла. Хочешь в тусовку? Пиши в личку за инвайтом.</p>
+                          <div className="mt-2 bg-white/5 rounded-lg px-2.5 py-2 border-l-2 border-yellow-500">
+                            <p className="text-yellow-300 text-[9px] italic leading-tight font-medium">«Нужна поддержка? Смотри на стену — там репостят и не жадничают»</p>
                           </div>
-                          <div className="flex-none rounded-lg overflow-hidden shadow-lg" style={{ width: '38%', height: '115px' }}>
+                        </div>
+                        <div className="flex-none" style={{ width: '38%' }}>
+                          <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '145px' }}>
                             <img
-                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/b63e9d99-1e94-4e2e-a97f-972fa9954d7d.jpg"
-                              alt="Ржавая Мораль — студия"
-                              className="w-full h-full object-cover object-top"
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/30d09ef9-571b-46a3-bb36-fc846a0c9c3d.jpg"
+                              alt="Kristina Che"
+                              className="w-full h-full object-cover object-center"
                             />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                           </div>
                         </div>
                       </div>
 
-                      {/* Финальный блок — кнопка VK */}
-                      <div className="rounded-xl p-3 flex items-center justify-between" style={{ background: 'linear-gradient(135deg, rgba(139,0,0,0.3) 0%, rgba(20,0,40,0.6) 100%)', border: '1px solid rgba(139,0,0,0.4)' }}>
-                        <div>
-                          <p className="text-white text-[11px] font-black leading-none">Ржавая Мораль</p>
-                          <p className="text-[9px] mt-0.5" style={{ color: '#888' }}>Слушайте. Чувствуйте. Принимайте.</p>
-                        </div>
-                        <a href="https://vk.ru/club233747573" target="_blank" rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 shadow-lg transition-opacity hover:opacity-90"
-                          style={{ background: 'linear-gradient(135deg, #8b0000, #cc0000)' }}>
+                      {/* Разделитель */}
+                      <div className="flex items-center gap-2">
+                        <div className="h-px flex-1 bg-red-900/50" />
+                        <span className="text-red-600 text-[8px] tracking-widest uppercase">Кредо</span>
+                        <div className="h-px flex-1 bg-red-900/50" />
+                      </div>
+
+                      {/* Блок 3: кредо + ссылка */}
+                      <div className="bg-gradient-to-br from-red-950/40 to-black/60 rounded-xl p-3 border border-red-900/30">
+                        <p className="text-gray-300 text-[10px] leading-relaxed">Главное правило — <span className="text-red-400 font-semibold">открытость</span>. Никаких кабальных договоров, никакой закрытости. Только живые связи, честная поддержка и любовь к игре.</p>
+                        <a href="https://vk.ru/kris_che74" target="_blank" rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 mt-2.5 bg-gradient-to-r from-red-700 to-red-600 rounded-full px-3 py-1.5 shadow-md">
                           <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z"/></svg>
-                          <span className="text-white text-[9px] font-bold">Подписаться в VK</span>
+                          <span className="text-white text-[9px] font-bold">Kristina Che в VK</span>
                         </a>
                       </div>
 
                     </div>
 
                     {/* Нижняя полоса */}
-                    <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-4 py-2" style={{ background: 'linear-gradient(to right, #000, #1a0000, #000)' }}>
-                      <span className="text-[8px] font-bold uppercase tracking-wider" style={{ color: '#8b0000' }}>Ржавая Мораль</span>
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                      <span className="text-red-700 text-[8px] font-bold uppercase tracking-wider">Kristina Che</span>
                       <div className="flex gap-1">
-                        {[1,2,3,4,5,6,7].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full" style={{ background: '#222' }} />)}
-                        <div className="w-1.5 h-1.5 rounded-full" style={{ background: '#8b0000' }} />
+                        {[1,2,3,4,5,6,7].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-700" />)}
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
                       </div>
-                      <span className="text-[8px] tracking-widest" style={{ color: '#444' }}>Листайте →</span>
+                      <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
                     </div>
 
                   </div>
