@@ -927,6 +927,15 @@ export default function Index() {
           element.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }, 150);
+    } else if (hash === 'magazine-april') {
+      setActiveSection('magazine');
+      sessionStorage.setItem('activeSection', 'magazine');
+      setTimeout(() => {
+        const element = document.getElementById('magazine-april');
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
     } else if (hash) {
       const interview = interviews.find(i => i.id === parseInt(hash));
       if (interview) {
@@ -4236,6 +4245,198 @@ export default function Index() {
               <span className="text-xs text-muted-foreground">Листайте страницы журнала вправо</span>
               <Icon name="ChevronRight" size={14} className="text-red-500" />
             </div>
+
+            {/* ===== АПРЕЛЬСКИЙ ВЫПУСК №2 ===== */}
+            <div id="magazine-april" className="mt-10">
+
+              {/* Header апрельского выпуска */}
+              <div className="flex items-center justify-between mb-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-orange-500 to-red-700 rounded-lg flex items-center justify-center">
+                    <Icon name="BookOpen" size={22} className="text-white" />
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-bold leading-none">Журнал <span className="text-orange-500">№2</span></h2>
+                    <p className="text-xs text-muted-foreground">1 апреля 2026</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    title="Поделиться ВКонтакте"
+                    onClick={() => {
+                      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine-april`);
+                      const text = encodeURIComponent('КонтентМедиаPRO — журнал №2 Апрель 2026');
+                      window.open(`https://vk.com/share.php?url=${url}&title=${text}`, '_blank');
+                    }}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-[#0077FF] hover:bg-[#0066DD] text-white text-xs font-medium transition-colors"
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z"/></svg>
+                    VK
+                  </button>
+                  <button
+                    title="Поделиться в Telegram"
+                    onClick={() => {
+                      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine-april`);
+                      const text = encodeURIComponent('КонтентМедиаPRO — журнал №2 Апрель 2026');
+                      window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+                    }}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-[#229ED9] hover:bg-[#1a8cc4] text-white text-xs font-medium transition-colors"
+                  >
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+                    TG
+                  </button>
+                  <button
+                    title="Поделиться в Max"
+                    onClick={() => {
+                      const url = encodeURIComponent(`${window.location.origin}${window.location.pathname}#magazine-april`);
+                      const text = encodeURIComponent('КонтентМедиаPRO — журнал №2 Апрель 2026');
+                      window.open(`https://max.ru/share?url=${url}&title=${text}`, '_blank');
+                    }}
+                    className="flex items-center gap-1 px-2.5 py-1.5 rounded-full bg-[#FF6600] hover:bg-[#e55a00] text-white text-xs font-medium transition-colors"
+                  >
+                    <Icon name="Share2" size={12} />
+                    Max
+                  </button>
+                  <button
+                    title="Скопировать ссылку"
+                    onClick={() => {
+                      const url = `${window.location.origin}${window.location.pathname}#magazine-april`;
+                      navigator.clipboard.writeText(url).then(() => {
+                        const btn = document.querySelector('[data-copy-btn-april]') as HTMLButtonElement;
+                        if (btn) { btn.textContent = '✓'; setTimeout(() => { btn.textContent = '🔗'; }, 1500); }
+                      });
+                    }}
+                    data-copy-btn-april
+                    className="flex items-center justify-center w-7 h-7 rounded-full bg-muted hover:bg-muted/80 text-foreground text-sm transition-colors"
+                  >
+                    🔗
+                  </button>
+                </div>
+              </div>
+
+              {/* Горизонтальный скролл апрельского журнала */}
+              <div className="relative overflow-hidden rounded-xl">
+                <div
+                  id="magazine-april-scroll"
+                  className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide"
+                  style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+                >
+
+                  {/* ===== ОБЛОЖКА АПРЕЛЬ ===== */}
+                  <div className="flex-none w-full snap-start">
+                    <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#111', minHeight: '92vh' }}>
+
+                      {/* Шапка — логотип на красной полосе */}
+                      <div className="relative z-30 bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-3 py-2 flex items-center justify-between">
+                        <div>
+                          <h1 className="text-[22px] font-black leading-none tracking-tight">
+                            <span className="text-white">КонтентМедиа</span><span className="text-yellow-300">PRO</span>
+                          </h1>
+                          <p className="text-[8px] text-red-200 tracking-widest uppercase">PRO-контент для PRO-фессионалов</p>
+                        </div>
+                        <div className="text-right">
+                          <p className="text-yellow-300 text-[10px] font-bold leading-none">№2 · 2026</p>
+                          <p className="text-red-200 text-[8px]">Апрель</p>
+                        </div>
+                      </div>
+
+                      {/* Хаотичный коллаж из 5 фото */}
+                      <div className="relative z-10 flex" style={{ minHeight: '76vh' }}>
+
+                        {/* Левая колонка — 2 фото */}
+                        <div className="flex flex-col gap-0" style={{ width: '30%' }}>
+                          <div className="relative overflow-hidden border-b border-r border-red-900/50 flex-1" style={{ minHeight: '38vh' }}>
+                            <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/82799f40-3243-4e07-9d0f-679df5654079.jpg" alt="Героиня 2" className="w-full h-full object-cover object-top absolute inset-0" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                              <p className="text-orange-400 font-black text-[9px] leading-tight">Стр. 2</p>
+                              <p className="text-white text-[8px] leading-tight mt-0.5">Огонь изнутри</p>
+                            </div>
+                          </div>
+                          <div className="relative overflow-hidden border-r border-red-900/50 flex-1" style={{ minHeight: '38vh' }}>
+                            <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/68d15e0c-f41f-40d3-ac2f-96ae381835d7.jpg" alt="Героиня 4" className="w-full h-full object-cover object-top absolute inset-0" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
+                            <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                              <p className="text-orange-400 font-black text-[9px] leading-tight">Стр. 4</p>
+                              <p className="text-white text-[8px] leading-tight mt-0.5">Блеск и тайна</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Центральная колонка — главное фото */}
+                        <div className="relative flex-1 border-r border-red-900/50" style={{ minHeight: '76vh' }}>
+                          <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/6e6ef514-7071-44bb-80dd-23ae10d629ae.jpg" alt="Главная героиня апреля" className="w-full h-full object-cover object-top absolute inset-0" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent" />
+                          {/* Бейдж апрель */}
+                          <div className="absolute top-2 left-2 z-20">
+                            <div className="bg-orange-500/90 rounded px-1.5 py-0.5 inline-block">
+                              <p className="text-white font-black text-[9px] tracking-wider uppercase">Апрель</p>
+                            </div>
+                          </div>
+                          {/* Подпись снизу */}
+                          <div className="absolute bottom-0 left-0 right-0 px-2 pb-3 z-20">
+                            <div className="border-l-2 border-orange-500 pl-2 mb-1">
+                              <p className="text-orange-400 font-black text-[11px] uppercase tracking-wide leading-none">Героиня номера</p>
+                            </div>
+                            <p className="text-white font-black text-[18px] leading-tight tracking-tight drop-shadow-lg">Нежность<br/>и сила</p>
+                            <p className="text-gray-300 text-[9px] mt-1 leading-tight">Портрет апреля: героиня,<br/>которая меняет мир вокруг</p>
+                          </div>
+                        </div>
+
+                        {/* Правая колонка — 2 фото */}
+                        <div className="flex flex-col gap-0" style={{ width: '28%' }}>
+                          <div className="relative overflow-hidden border-b border-red-900/50 flex-1" style={{ minHeight: '50vh' }}>
+                            <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/37e4e9da-0598-4859-b3bd-c566283d5dd1.jpg" alt="Героиня 3" className="w-full h-full object-cover object-top absolute inset-0" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+                            <div className="absolute top-1.5 right-1.5 z-10">
+                              <div className="bg-red-600/80 rounded-sm px-1 py-0.5">
+                                <p className="text-white text-[8px] font-bold">Стр. 3</p>
+                              </div>
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                              <p className="text-white font-bold text-[9px] leading-tight">Своя история</p>
+                            </div>
+                          </div>
+                          <div className="relative overflow-hidden flex-1" style={{ minHeight: '26vh' }}>
+                            <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/8a557c75-5d5c-4e5e-8c48-ebeddc541b0e.jpg" alt="Героиня 5" className="w-full h-full object-cover object-center absolute inset-0" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                            <div className="absolute top-1.5 right-1.5 z-10">
+                              <div className="bg-orange-500/80 rounded-sm px-1 py-0.5">
+                                <p className="text-white text-[8px] font-bold">Стр. 5</p>
+                              </div>
+                            </div>
+                            <div className="absolute bottom-0 left-0 right-0 p-1.5">
+                              <p className="text-white font-bold text-[9px] leading-tight">Контент без масок</p>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      {/* Нижняя полоса */}
+                      <div className="relative z-20 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-3 py-1.5">
+                        <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Апрель 2026</span>
+                        <div className="flex gap-1.5">
+                          <div className="w-2 h-2 rounded-full bg-red-500" />
+                          <div className="w-2 h-2 rounded-full bg-gray-700" />
+                        </div>
+                        <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* Page indicator апрель */}
+              <div className="flex items-center justify-center gap-2 mt-3">
+                <span className="text-xs text-muted-foreground">Листайте страницы журнала вправо</span>
+                <Icon name="ChevronRight" size={14} className="text-orange-500" />
+              </div>
+
+            </div>
+
           </div>
         )}
 
