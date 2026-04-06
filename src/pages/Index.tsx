@@ -5658,33 +5658,36 @@ export default function Index() {
                       {/* Картинка */}
                       <div className="rounded-xl overflow-hidden shadow-xl" style={{ background: '#111' }}>
                         <img
-                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/files/ca247df9-313e-4c3f-b178-b62bc964dfb1.jpg"
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/files/600e29f3-7916-4ff6-bb54-33d5807778a3.jpg"
                           alt="Творческий заряд"
-                          className="w-full object-contain"
-                          style={{ maxHeight: '140px' }}
+                          className="w-full object-cover"
+                          style={{ maxHeight: '120px' }}
                         />
                       </div>
 
-                      <p className="text-orange-300 text-[9px] tracking-widest uppercase text-center font-bold">10 советов для тех, кто создаёт</p>
+                      <p className="text-orange-300 text-[9px] tracking-widest uppercase text-center font-bold">10 уроков от героев апреля</p>
 
                       {/* Советы */}
                       {[
-                        { n: '01', icon: '🔥', title: 'Твори каждый день', text: 'Хоть 5 минут. Регулярность важнее вдохновения.' },
-                        { n: '02', icon: '📵', title: 'Отключай уведомления', text: 'Глубокое творчество требует тишины и фокуса.' },
-                        { n: '03', icon: '📓', title: 'Веди дневник идей', text: 'Записывай всё — даже «глупое». Золото прячется там.' },
-                        { n: '04', icon: '🎭', title: 'Меняй формат', text: 'Стих → песня, рассказ → аудиоклип. Границ нет.' },
-                        { n: '05', icon: '🤝', title: 'Ищи тандемы', text: 'Лучшее рождается в сотрудничестве с другими.' },
-                        { n: '06', icon: '💪', title: 'Не жди разрешения', text: 'Сказали «нет»? Сделай сам. Светлана так и поступила.' },
-                        { n: '07', icon: '🌱', title: 'Учись у кумиров', text: 'Анализируй тех, кто вдохновляет — и двигайся дальше.' },
-                        { n: '08', icon: '🎯', title: 'Одна цель за раз', text: 'Фокус на одном проекте лучше, чем распыление на десять.' },
-                        { n: '09', icon: '🗣️', title: 'Делись незаконченным', text: 'Обратная связь на раннем этапе спасает от тупика.' },
-                        { n: '10', icon: '⭐', title: 'Верь в свои звёзды', text: 'Если они зажигаются — значит, это кому-нибудь нужно.' },
+                        { n: '01', icon: '🎸', hero: 'Катя Денисова', title: 'Возвращайся', text: 'Пауза — не конец. Катя вернулась после долгого перерыва и выпустила новый трек.' },
+                        { n: '02', icon: '🎵', hero: 'Catherine FLOX', title: 'Не молчи 6 лет', text: 'Тишина затягивает. Catherine нашла эликсир — и снова в деле. Начни сегодня.' },
+                        { n: '03', icon: '💃', hero: 'Odonata', title: 'После 50 — самое интересное', text: 'Odonata доказала: возраст не ограничение, а новая точка старта.' },
+                        { n: '04', icon: '📖', hero: 'Снежана Черкашина', title: 'Фанфик может стать вселенной', text: 'Снежана писала «для себя» — и выросла в автора книжной серии.' },
+                        { n: '05', icon: '🤘', hero: 'Мой Нервный Смех', title: 'Делай музыку, которую сам хочешь слышать', text: 'Классический хард-рок в 2026 — потому что это честно, а не модно.' },
+                        { n: '06', icon: '🌑', hero: 'Ржавая Мораль', title: 'Вытащи тёмное наружу', text: 'Страхи и демоны становятся искусством, если не прятать их внутри.' },
+                        { n: '07', icon: '🔥', hero: 'Вандра', title: 'Гори — чтобы согревать', text: 'Вандра не экономит себя на сцене. Полная отдача — вот что запоминается.' },
+                        { n: '08', icon: '✍️', hero: 'Анастасия Денисова', title: 'Мечта работает', text: 'Настя учила испанский по сериалам — и поговорила с Орейро как журналист.' },
+                        { n: '09', icon: '🌻', hero: 'Галимарванова', title: 'Один добрый толчок меняет всё', text: 'Любимый актёр сказал «ты можешь больше» — и Маргарита решилась.' },
+                        { n: '10', icon: '🎧', hero: 'НЭЙРИС', title: 'Не пропадать же сюжету', text: 'Отказали в клипе? НЭЙРИС сделала аудиоисторию. Выход есть всегда.' },
                       ].map(tip => (
                         <div key={tip.n} className="flex items-start gap-2 bg-white/4 rounded-lg px-2.5 py-2 border border-white/5">
                           <span className="text-[13px] flex-shrink-0 mt-0.5">{tip.icon}</span>
                           <div className="flex-1 min-w-0">
-                            <p className="text-white text-[9px] font-bold leading-tight">{tip.title}</p>
-                            <p className="text-gray-400 text-[8.5px] leading-tight mt-0.5">{tip.text}</p>
+                            <div className="flex items-center gap-1.5 mb-0.5">
+                              <p className="text-white text-[9px] font-bold leading-tight">{tip.title}</p>
+                              <span className="text-orange-600 text-[7px] leading-tight">· {tip.hero}</span>
+                            </div>
+                            <p className="text-gray-400 text-[8.5px] leading-tight">{tip.text}</p>
                           </div>
                           <span className="text-orange-800 text-[8px] font-black flex-shrink-0">{tip.n}</span>
                         </div>
