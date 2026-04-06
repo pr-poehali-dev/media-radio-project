@@ -4367,55 +4367,33 @@ export default function Index() {
                           </div>
                         </div>
 
-                        {/* ЦЕНТРАЛЬНАЯ часть — текстовый блок с цитатами + 2 мини-фото */}
-                        <div className="flex flex-col flex-1">
-
-                          {/* Верхний текстовый блок — цитата Кати */}
-                          <div className="relative border-b border-r border-red-900/50 flex-1 flex flex-col justify-center px-3 py-3" style={{ background: 'linear-gradient(135deg, #0a0a0a 0%, #1a0505 100%)', minHeight: '44vh' }}>
-                            <div className="w-6 h-0.5 bg-red-600 mb-2" />
-                            <div className="inline-flex items-center gap-1.5 mb-2">
+                        {/* ЦЕНТРАЛЬНАЯ часть — новая героиня в полный рост */}
+                        <div className="relative flex-1 border-r border-red-900/50" style={{ minHeight: '76vh' }}>
+                          <img
+                            src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/915af16b-0fcb-455a-a577-a75e1d2cea5f.jpg"
+                            alt="Героиня номера"
+                            className="w-full h-full object-cover absolute inset-0"
+                            style={{ objectPosition: 'center top' }}
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+                          {/* Бейдж */}
+                          <div className="absolute top-2 left-1.5 z-20">
+                            <div className="bg-red-600/90 rounded px-1.5 py-0.5">
+                              <p className="text-white font-black text-[7px] tracking-wider uppercase">Героиня №</p>
+                            </div>
+                          </div>
+                          {/* Имя и цитата — придут позже */}
+                          <div className="absolute bottom-0 left-0 right-0 px-2 pb-3 z-20">
+                            <div className="inline-flex items-center gap-1.5 mb-1.5">
                               <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                              <p className="text-red-400 text-[7px] font-bold tracking-[0.2em] uppercase">Эксклюзив · Апрель 2026</p>
+                              <p className="text-red-400 text-[7px] font-bold tracking-[0.2em] uppercase">Апрель 2026</p>
                             </div>
-                            <p className="text-white font-black leading-tight mb-2" style={{ fontSize: '13px' }}>
-                              «Этот апрель<br/>изменит всё.<br/>
-                              <span className="text-red-400">Ты просто</span><br/>
-                              <span className="text-yellow-300">ещё не знаешь»</span>
-                            </p>
-                            <div className="border-l-2 border-red-600 pl-2 mb-2">
-                              <p className="text-gray-300 text-[9px] font-bold leading-tight">Катя Денисова</p>
-                              <p className="text-red-400 text-[8px] italic leading-tight mt-0.5">— о новом треке</p>
-                            </div>
-                            <div className="rounded bg-red-900/30 border border-red-800/40 px-2 py-1.5">
-                              <p className="text-[7px] text-gray-400 uppercase tracking-widest mb-0.5">Скоро</p>
-                              <p className="text-yellow-300 font-black text-[10px] leading-tight">Новый трек</p>
-                              <p className="text-gray-400 text-[7px] mt-0.5">Катя Денисова · 2026</p>
-                            </div>
+                            <p className="text-white font-black text-[16px] leading-tight drop-shadow-lg">Нежность<br/>и сила</p>
+                            <p className="text-gray-300 text-[8px] mt-1 italic leading-snug">Портрет апреля: героиня,<br/>которая меняет мир вокруг</p>
                           </div>
-
-                          {/* Нижние 2 мини-фото */}
-                          <div className="flex" style={{ minHeight: '32vh' }}>
-                            <div className="relative overflow-hidden border-r border-t border-red-900/50 flex-1">
-                              <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/82799f40-3243-4e07-9d0f-679df5654079.jpg" alt="Героиня 2" className="w-full h-full object-cover object-top absolute inset-0" />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                              <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                                <p className="text-orange-400 font-black text-[8px]">Стр. 2</p>
-                                <p className="text-white text-[7px] leading-tight mt-0.5">Огонь изнутри</p>
-                              </div>
-                            </div>
-                            <div className="relative overflow-hidden border-t border-red-900/50 flex-1">
-                              <img src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/68d15e0c-f41f-40d3-ac2f-96ae381835d7.jpg" alt="Героиня 4" className="w-full h-full object-cover object-top absolute inset-0" />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent" />
-                              <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                                <p className="text-orange-400 font-black text-[8px]">Стр. 4</p>
-                                <p className="text-white text-[7px] leading-tight mt-0.5">Блеск и тайна</p>
-                              </div>
-                            </div>
-                          </div>
-
                         </div>
 
-                        {/* ПРАВАЯ колонка — Катя Денисова в полный рост */}
+                        {/* ПРАВАЯ колонка — Катя Денисова в полный рост + цитата */}
                         <div className="relative border-l border-red-900/50" style={{ width: '26%', minHeight: '76vh' }}>
                           <img
                             src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/e539f72c-d8e8-4530-abc7-4d3d64d46b93.jpg"
@@ -4423,7 +4401,7 @@ export default function Index() {
                             className="w-full h-full object-cover absolute inset-0"
                             style={{ objectPosition: 'center top' }}
                           />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
                           <div className="absolute top-2 right-1.5 z-20">
                             <div className="bg-red-600/90 rounded px-1.5 py-0.5">
                               <p className="text-white font-black text-[7px] tracking-wider uppercase">Стр. 1</p>
@@ -4431,7 +4409,13 @@ export default function Index() {
                           </div>
                           <div className="absolute bottom-0 left-0 right-0 px-1.5 pb-2 z-20">
                             <p className="text-white font-black text-[12px] leading-tight drop-shadow-lg">Катя<br/>Денисова</p>
-                            <p className="text-red-400 text-[7px] mt-0.5 italic">«Ты не готов»</p>
+                            <div className="mt-1.5 border-l border-red-500 pl-1.5">
+                              <p className="text-gray-200 text-[7px] leading-snug italic">«Этот апрель изменит всё. Ты просто ещё не знаешь»</p>
+                            </div>
+                            <div className="mt-1.5 rounded bg-red-900/40 border border-red-800/40 px-1.5 py-1">
+                              <p className="text-[6px] text-gray-400 uppercase tracking-widest mb-0.5">Скоро</p>
+                              <p className="text-yellow-300 font-black text-[9px] leading-tight">Новый трек</p>
+                            </div>
                           </div>
                         </div>
 
