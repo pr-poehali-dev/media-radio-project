@@ -3022,48 +3022,88 @@ export default function Index() {
 
                 {/* ===== СОДЕРЖАНИЕ ===== */}
                 <div className="flex-none w-full snap-start">
-                  <div className="relative w-full overflow-hidden rounded-xl flex flex-col" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
 
-                    {/* Шапка */}
-                    <div className="bg-gradient-to-r from-red-900 via-red-700 to-red-900 px-4 py-2.5 flex-none">
-                      <p className="text-[8px] tracking-[0.3em] text-red-300 uppercase">КонтентМедиаPRO · №1 · Апрель 2026</p>
-                      <h2 className="text-lg font-black text-white leading-none mt-0.5 tracking-[0.15em] uppercase">Содержание</h2>
+                    {/* Шапка содержания */}
+                    <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-800 px-4 py-3">
+                      <p className="text-[9px] tracking-[0.3em] text-red-200 uppercase">КонтентМедиаPRO · №1 · Март 2026</p>
+                      <h2 className="text-xl font-black text-white leading-none mt-0.5 tracking-wide">СОДЕРЖАНИЕ</h2>
                     </div>
 
-                    {/* Список */}
-                    <div className="flex-1 px-3 pt-2 pb-10 overflow-y-auto">
-                      {([
-                        { n: 1, accent: false, title: 'Катя Денисова', sub: 'У мечты нет дедлайна — бизнес, семья и сцена в одном человеке' },
-                        { n: 2, accent: false, title: 'Catherine FLOX', sub: '«Ничего не бойся, не сдавайся и гни свою линию»' },
-                        { n: 3, accent: false, title: 'Odonata', sub: 'Там, где тело — язык, а движение — исповедь' },
-                        { n: 4, accent: false, title: 'Снежана Черкашина', sub: '«Из фанфика по "Клону" родилась моя вселенная книг»' },
-                        { n: 5, accent: false, title: 'Мой Нервный Смех', sub: 'Хард-рок 70–80-х, где сегодняшний яд звучит как твой собственный нерв' },
-                        { n: 6, accent: false, title: 'Ржавая Мораль', sub: '«Музыка, которая читает тебя изнутри»' },
-                        { n: 7, accent: false, title: 'Вандра', sub: 'Голос, который не умещается в один жанр' },
-                        { n: 8, accent: false, title: 'Анастасия Денисова', sub: '«В инвалидном кресле нет границ» — испанский, Орейро и стихи-песни' },
-                        { n: 9, accent: false, title: 'Маргарита Галимарванова', sub: '«Ты можешь больше» — и вот я уже создаю свои песни» ' },
-                        { n: 10, accent: false, title: 'НЭЙРИС', sub: '«Вместо пива — чай, вместо грусти — полёт»' },
-                        { n: 11, accent: true, title: 'Творческий заряд', sub: '7 советов, которые помогут тебе создавать больше и лучше' },
-                        { n: 12, accent: true, title: 'От команды', sub: 'Пожелания от КонтентМедиаPRO — с теплом и верой в вас' },
-                      ] as { n: number; accent: boolean; title: string; sub: string }[]).map((item, idx, arr) => (
+                    {/* Список страниц */}
+                    <div className="px-4 py-3 space-y-0">
+
+                      {[
+                        { n: 1, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Светлана Чарушина', sub: '«Пишу против правил, ломаю устои и обращаюсь к небесам»' },
+                        { n: 2, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Тимур Лэнг', sub: '«Подарок на Новый год запустил киновселенную»: история 40-летнего писателя' },
+                        { n: 3, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Катя Денисова', sub: 'Бизнес-леди, мама, певица: история, которая доказала — у мечты нет дедлайна' },
+                        { n: 4, bg: 'bg-yellow-500', textColor: 'text-black', border: 'border-yellow-900', iconColor: 'text-yellow-500', titleClass: 'text-yellow-400', title: 'Старт на сцене', sub: '10 правил, которые должен знать каждый начинающий артист' },
+                        { n: 5, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Вероника Печерская', sub: '«Я перевожу боль на язык порядка»' },
+                        { n: 6, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'Kristina Che', sub: '«Мы строим хип-хоп братство без контрактов»' },
+                        { n: 7, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'NATA RARE', sub: '«Он мой!» и ещё множество треков: как Наталья из Ростова стала NATA RARE' },
+                        { n: 8, bg: 'bg-red-600', textColor: 'text-white', border: 'border-red-900', iconColor: 'text-red-500', title: 'PiterMaks', sub: '«Моя муза — любовь, моя школа — русские народные под гитару»' },
+                      ].map(item => (
                         <button
                           key={item.n}
-                          className={`w-full flex items-center gap-2.5 py-2 text-left transition-colors active:bg-white/5 ${idx < arr.length - 1 ? 'border-b border-white/5' : ''}`}
+                          className="w-full flex items-start gap-3 py-2.5 border-b border-white/5 text-left active:bg-white/5 transition-colors"
                           onClick={() => {
                             const el = document.getElementById(`mag-page-${item.n}`);
                             if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
                           }}
                         >
-                          <div className={`flex-none w-6 h-6 rounded flex items-center justify-center ${item.accent ? 'bg-yellow-500' : 'bg-red-700'}`}>
-                            <span className={`font-black text-[10px] ${item.accent ? 'text-black' : 'text-white'}`}>{item.n}</span>
+                          <div className={`flex-none w-7 h-7 ${item.bg} rounded flex items-center justify-center`}>
+                            <span className={`${item.textColor} font-black text-[11px]`}>{item.n}</span>
                           </div>
                           <div className="flex-1 min-w-0">
-                            <p className={`font-bold text-[11.5px] leading-tight ${item.accent ? 'text-yellow-400' : 'text-white'}`}>{item.title}</p>
-                            <p className="text-gray-500 text-[9.5px] leading-tight mt-0.5 truncate">{item.sub}</p>
+                            <p className={`${(item as {titleClass?: string}).titleClass ?? 'text-white'} font-bold text-[12px] leading-tight`}>{item.title}</p>
+                            <p className="text-gray-400 text-[10px] leading-tight mt-0.5">{item.sub}</p>
                           </div>
-                          <Icon name="ChevronRight" size={11} className={item.accent ? 'text-yellow-600' : 'text-red-800'} />
+                          <div className={`flex-none w-5 h-5 rounded-full border ${item.border} flex items-center justify-center`}>
+                            <Icon name="ChevronRight" size={10} className={item.iconColor} />
+                          </div>
                         </button>
                       ))}
+
+                      {/* 9 */}
+                      <button
+                        className="w-full flex items-start gap-3 py-2.5 border-b border-white/5 text-left active:bg-white/5 transition-colors"
+                        onClick={() => {
+                          const el = document.getElementById('mag-page-9');
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                        }}
+                      >
+                        <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
+                          <span className="text-black font-black text-[11px]">9</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-yellow-400 font-bold text-[12px] leading-tight">Весна пришла — время действовать</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">Как новый сезон открывает возможности для творчества и карьеры</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-yellow-500" />
+                        </div>
+                      </button>
+
+                      {/* 10 */}
+                      <button
+                        className="w-full flex items-start gap-3 py-2.5 text-left active:bg-white/5 transition-colors"
+                        onClick={() => {
+                          const el = document.getElementById('mag-page-10');
+                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                        }}
+                      >
+                        <div className="flex-none w-7 h-7 bg-yellow-500 rounded flex items-center justify-center">
+                          <span className="text-black font-black text-[11px]">10</span>
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <p className="text-yellow-400 font-bold text-[12px] leading-tight">Заряди себя на позитив</p>
+                          <p className="text-gray-400 text-[10px] leading-tight mt-0.5">7 простых привычек, которые превращают серый день в отличный</p>
+                        </div>
+                        <div className="flex-none w-5 h-5 rounded-full border border-yellow-900 flex items-center justify-center">
+                          <Icon name="ChevronRight" size={10} className="text-yellow-500" />
+                        </div>
+                      </button>
+
                     </div>
 
                     {/* Нижняя полоса */}
