@@ -4498,9 +4498,12 @@ export default function Index() {
                             const container = document.getElementById('magazine-april-scroll');
                             const el = document.getElementById(`apr-page-${item.n}`);
                             if (container && el) {
-                              const containerRect = container.getBoundingClientRect();
-                              const elRect = el.getBoundingClientRect();
-                              container.scrollBy({ left: elRect.left - containerRect.left, behavior: 'smooth' });
+                              container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                              setTimeout(() => {
+                                const containerRect = container.getBoundingClientRect();
+                                const elRect = el.getBoundingClientRect();
+                                container.scrollBy({ left: elRect.left - containerRect.left, behavior: 'smooth' });
+                              }, 400);
                             }
                           }}
                         >
