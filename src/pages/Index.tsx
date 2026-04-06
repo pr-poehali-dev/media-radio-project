@@ -4700,7 +4700,7 @@ export default function Index() {
                       {/* Блок 2: текст + второе фото */}
                       <div className="flex gap-3 items-start">
                         <div className="flex-1">
-                          <p className="text-gray-300 text-[10px] leading-relaxed">В педколледже — ещё больше музыки. Однажды сбежала с урока труда, чтобы лишний раз попеть «Гардемаринов» у Татьяны Николаевны.</p>
+                          <p className="text-gray-300 text-[10px] leading-relaxed">В педколледже — ещё больше музыки. Однажды сбежала с урока труда, чтобы лишний раз попеть «Гардемаринов» у Татьяны Николаевны — любимого преподавателя музыки.</p>
                           <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">Открыла для себя <span className="text-red-400 font-semibold">Милен Фармер</span> — и создала три авторских вечера каверов (2012–2014). Потом — сольные выступления, благотворительные площадки, первые эксперименты.</p>
                           <div className="mt-2 bg-white/5 rounded-lg px-2.5 py-2 border-l-2 border-yellow-500">
                             <p className="text-yellow-300 text-[9px] italic leading-tight font-medium">«Своим музыкальным вкусам не изменяю — как бы ни старалась»</p>
