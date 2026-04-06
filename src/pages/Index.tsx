@@ -5776,7 +5776,7 @@ export default function Index() {
 
                     {/* Нижняя полоса */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
-                      <span className="text-red-700 text-[8px] font-bold uppercase tracking-wider">Апрель 2025</span>
+                      <span className="text-red-700 text-[8px] font-bold uppercase tracking-wider">Апрель 2026</span>
                       <div className="flex gap-1">
                         {[1,2,3,4,5,6,7,8,9,10,11].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-700" />)}
                         <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
