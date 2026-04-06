@@ -4579,11 +4579,11 @@ export default function Index() {
                         <div className="flex-1">
                           <div className="inline-flex items-center gap-2 bg-gradient-to-r from-red-900/80 to-red-800/50 rounded-lg px-3 py-1.5 mb-2 border border-red-700/40">
                             <div className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse" />
-                            <p className="text-yellow-300 font-black text-[11px] tracking-wide">«ТЫ НЕ ГОТОВ»</p>
+                            <p className="text-yellow-300 font-black text-[11px] tracking-wide">«ТЫ НЕ ГОТОВ!»</p>
                             <span className="text-red-300 text-[8px]">· скоро</span>
                           </div>
                           <p className="text-gray-300 text-[10px] leading-relaxed">Трек об игре, о старых отношениях, о том, кто кого. Кошки-мышки, в которые мы все играли хоть раз — Катя превратила это в музыку, от которой не спрятаться.</p>
-                          <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">Его вдохновил старый новый знакомый. Тот самый — знакомый до боли и одновременно чужой.</p>
+                          <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">Её вдохновил старый новый знакомый. Бегал за ней, добивался — да так ничего и не добился.</p>
                         </div>
                         <div className="flex-none" style={{ width: '36%' }}>
                           <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '155px' }}>
