@@ -5191,8 +5191,11 @@ export default function Index() {
                           </div>
                         </div>
                         <div className="flex-1">
-                          <p className="text-gray-300 text-[10px] leading-relaxed">Музыкальный путь только начался, но впереди — очень много работы. История, которая только разворачивается.</p>
-                          <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">Прислушайтесь к своему сердцу. Дайте волю своим чувствам. Позвольте музыке пробудить <span className="text-orange-300 font-semibold">силу и смелость</span>.</p>
+                          <p className="text-gray-300 text-[10px] leading-relaxed">Новый альбом <span className="text-orange-400 font-semibold italic">«о поиске себя»</span> вышел <span className="text-white font-bold">21 марта</span> на стриминговые площадки — новое звучание, новые тексты, прежняя концепция.</p>
+                          <div className="mt-1.5 bg-zinc-900/60 rounded-lg px-2 py-1.5 border-l-2 border-orange-700/70">
+                            <p className="text-orange-200 text-[8px] font-semibold leading-none mb-0.5">Июнь 2026 — коллаборация</p>
+                            <p className="text-gray-400 text-[9px] leading-tight">Мистический роман <span className="text-white italic">«Белая Стая»</span> Владимира Токарева и одноимённый альбом — одна история, рассказанная двумя голосами.</p>
+                          </div>
                           <a href="https://vk.ru/club233747573" target="_blank" rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 mt-2.5 bg-gradient-to-r from-orange-900 to-zinc-800 border border-orange-800/50 rounded-full px-3 py-1.5 shadow-md">
                             <svg width="11" height="11" viewBox="0 0 24 24" fill="white"><path d="M12.785 16.241s.288-.032.436-.193c.136-.148.131-.425.131-.425s-.019-1.298.574-1.489c.584-.188 1.336 1.254 2.132 1.808.602.419 1.06.327 1.06.327l2.128-.03s1.113-.07.585-.959c-.043-.073-.308-.659-1.588-1.863-1.34-1.26-1.16-1.057.454-3.239.982-1.328 1.375-2.137 1.252-2.484-.117-.331-.84-.244-.84-.244l-2.396.015s-.178-.025-.309.056c-.128.079-.21.263-.21.263s-.377.1-.9 2.09c-.552 2.099-1.607 4.403-1.799 4.017-.447-1.068-.327-4.286-.327-4.286s.01-.682-.215-.988c-.187-.254-.528-.335-.678-.355-.378-.05-1.395-.007-2.458.014-1.364.027-.904.405-.904.405s.461.087.631.614c.224.695.216 2.257.216 2.257s.129 2.528-.301 2.841c-.294.215-.697-.224-1.562-2.236-.443-.961-.778-2.024-.778-2.024s-.064-.159-.18-.244c-.14-.104-.336-.137-.336-.137l-2.276.014s-.342.01-.468.161c-.112.134-.009.411-.009.411s1.769 4.207 3.771 6.326c1.835 1.943 3.918 1.816 3.918 1.816h.945z"/></svg>
