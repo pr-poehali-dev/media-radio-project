@@ -5640,6 +5640,150 @@ export default function Index() {
                   </div>
                 </div>
 
+                {/* ===== АПР СТРАНИЦА 11: ТВОРЧЕСКИЙ ЗАРЯД ===== */}
+                <div id="apr-page-11" className="flex-none w-full snap-start">
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#0a0a14', minHeight: '92vh' }}>
+
+                    {/* Шапка */}
+                    <div className="bg-gradient-to-r from-orange-950 via-rose-900 to-orange-950 px-4 py-2.5 flex items-center justify-between">
+                      <div>
+                        <p className="text-[8px] tracking-[0.25em] text-orange-300 uppercase">Страница 11 · Советы</p>
+                        <h2 className="text-[15px] font-black text-white leading-none mt-0.5">Творческий заряд</h2>
+                      </div>
+                      <span className="text-2xl">✨</span>
+                    </div>
+
+                    <div className="px-3 pt-3 pb-16 space-y-2.5">
+
+                      {/* Картинка */}
+                      <div className="rounded-xl overflow-hidden shadow-xl" style={{ background: '#111' }}>
+                        <img
+                          src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/files/ca247df9-313e-4c3f-b178-b62bc964dfb1.jpg"
+                          alt="Творческий заряд"
+                          className="w-full object-contain"
+                          style={{ maxHeight: '140px' }}
+                        />
+                      </div>
+
+                      <p className="text-orange-300 text-[9px] tracking-widest uppercase text-center font-bold">10 советов для тех, кто создаёт</p>
+
+                      {/* Советы */}
+                      {[
+                        { n: '01', icon: '🔥', title: 'Твори каждый день', text: 'Хоть 5 минут. Регулярность важнее вдохновения.' },
+                        { n: '02', icon: '📵', title: 'Отключай уведомления', text: 'Глубокое творчество требует тишины и фокуса.' },
+                        { n: '03', icon: '📓', title: 'Веди дневник идей', text: 'Записывай всё — даже «глупое». Золото прячется там.' },
+                        { n: '04', icon: '🎭', title: 'Меняй формат', text: 'Стих → песня, рассказ → аудиоклип. Границ нет.' },
+                        { n: '05', icon: '🤝', title: 'Ищи тандемы', text: 'Лучшее рождается в сотрудничестве с другими.' },
+                        { n: '06', icon: '💪', title: 'Не жди разрешения', text: 'Сказали «нет»? Сделай сам. Светлана так и поступила.' },
+                        { n: '07', icon: '🌱', title: 'Учись у кумиров', text: 'Анализируй тех, кто вдохновляет — и двигайся дальше.' },
+                        { n: '08', icon: '🎯', title: 'Одна цель за раз', text: 'Фокус на одном проекте лучше, чем распыление на десять.' },
+                        { n: '09', icon: '🗣️', title: 'Делись незаконченным', text: 'Обратная связь на раннем этапе спасает от тупика.' },
+                        { n: '10', icon: '⭐', title: 'Верь в свои звёзды', text: 'Если они зажигаются — значит, это кому-нибудь нужно.' },
+                      ].map(tip => (
+                        <div key={tip.n} className="flex items-start gap-2 bg-white/4 rounded-lg px-2.5 py-2 border border-white/5">
+                          <span className="text-[13px] flex-shrink-0 mt-0.5">{tip.icon}</span>
+                          <div className="flex-1 min-w-0">
+                            <p className="text-white text-[9px] font-bold leading-tight">{tip.title}</p>
+                            <p className="text-gray-400 text-[8.5px] leading-tight mt-0.5">{tip.text}</p>
+                          </div>
+                          <span className="text-orange-800 text-[8px] font-black flex-shrink-0">{tip.n}</span>
+                        </div>
+                      ))}
+
+                    </div>
+
+                    {/* Нижняя полоса */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-orange-950 to-black flex items-center justify-between px-4 py-2">
+                      <span className="text-orange-700 text-[8px] font-bold uppercase tracking-wider">Советы</span>
+                      <div className="flex gap-1">
+                        {[1,2,3,4,5,6,7,8,9,10].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-700" />)}
+                        <div className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                      </div>
+                      <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                    </div>
+
+                  </div>
+                </div>
+
+                {/* ===== АПР СТРАНИЦА 12: ОТ КОМАНДЫ ===== */}
+                <div id="apr-page-12" className="flex-none w-full snap-start">
+                  <div className="relative w-full overflow-hidden rounded-xl" style={{ background: '#08080f', minHeight: '92vh' }}>
+
+                    {/* Шапка */}
+                    <div className="bg-gradient-to-r from-red-950 via-red-700 to-red-950 px-4 py-2.5 flex items-center justify-center">
+                      <div className="text-center">
+                        <p className="text-[8px] tracking-[0.3em] text-red-300 uppercase">Страница 12 · Финал</p>
+                        <h2 className="text-[15px] font-black text-white leading-none mt-0.5">От команды</h2>
+                      </div>
+                    </div>
+
+                    <div className="px-4 pt-5 pb-16 flex flex-col items-center space-y-4">
+
+                      {/* Логотип / заголовок */}
+                      <div className="text-center">
+                        <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-red-700 to-rose-900 shadow-xl mb-3">
+                          <span className="text-3xl">🚀</span>
+                        </div>
+                        <h3 className="text-white font-black text-[18px] leading-tight">КонтентМедиаPRO</h3>
+                        <p className="text-red-400 text-[9px] tracking-widest uppercase mt-0.5">Апрельский выпуск · 2025</p>
+                      </div>
+
+                      {/* Пожелание */}
+                      <div className="bg-gradient-to-br from-red-950/80 to-rose-950/80 rounded-2xl px-4 py-4 border border-red-800/30 w-full">
+                        <p className="text-white text-[11px] leading-relaxed text-center font-medium">
+                          Дорогой читатель,
+                        </p>
+                        <p className="text-gray-300 text-[10px] leading-relaxed text-center mt-2">
+                          Каждая история в этом журнале — доказательство одного простого факта: <span className="text-white font-semibold">мечты работают.</span> Неважно, на сцене ты или за ноутбуком, в студии или на кухне с чашкой чая.
+                        </p>
+                        <p className="text-gray-300 text-[10px] leading-relaxed text-center mt-2">
+                          Пусть этот выпуск зарядит тебя — <span className="text-red-300 font-semibold">создавай, пробуй, не бойся.</span> Твоя звезда уже зажглась. Осталось только решиться.
+                        </p>
+                      </div>
+
+                      {/* Звёзды героев */}
+                      <div className="w-full">
+                        <p className="text-gray-600 text-[8px] tracking-widest uppercase text-center mb-2">Герои апреля</p>
+                        <div className="flex flex-wrap gap-1.5 justify-center">
+                          {['Катя Денисова','Catherine FLOX','Odonata','Снежана','Мой Нервный Смех','Ржавая Мораль','Вандра','А. Денисова','Галимарванова','НЭЙРИС'].map(name => (
+                            <span key={name} className="bg-white/5 border border-white/10 rounded-full px-2 py-0.5 text-[7.5px] text-gray-400">{name}</span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Финальная цитата */}
+                      <div className="w-full bg-gradient-to-r from-transparent via-red-950/40 to-transparent rounded-xl px-3 py-3 text-center">
+                        <p className="text-red-300 text-[11px] italic font-medium leading-snug">«Послушайте! Ведь если звёзды зажигаются — значит, это кому-нибудь нужно?»</p>
+                        <p className="text-red-700 text-[8px] mt-1">— В. Маяковский</p>
+                      </div>
+
+                      {/* До встречи */}
+                      <div className="text-center space-y-1">
+                        <p className="text-white font-black text-[16px] tracking-wide">До встречи в новом выпуске!</p>
+                        <p className="text-gray-500 text-[9px]">С теплом и верой в вас —</p>
+                        <p className="text-red-400 font-bold text-[12px]">Команда КонтентМедиаPRO ❤️</p>
+                      </div>
+
+                      {/* Точки — конец */}
+                      <div className="flex gap-2 items-center justify-center pt-2">
+                        {[1,2,3].map(i => <div key={i} className="w-2 h-2 rounded-full bg-red-800" />)}
+                      </div>
+
+                    </div>
+
+                    {/* Нижняя полоса */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                      <span className="text-red-700 text-[8px] font-bold uppercase tracking-wider">Апрель 2025</span>
+                      <div className="flex gap-1">
+                        {[1,2,3,4,5,6,7,8,9,10,11].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-700" />)}
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                      </div>
+                      <span className="text-gray-700 text-[8px] tracking-widest">Финал ✦</span>
+                    </div>
+
+                  </div>
+                </div>
+
               </div>
             </div>
 
