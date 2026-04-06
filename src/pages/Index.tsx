@@ -4407,7 +4407,7 @@ export default function Index() {
                           {/* Катя Денисова — большая верхняя карточка */}
                           <div className="relative overflow-hidden border-b border-red-900/50 flex-1" style={{ minHeight: '44vh' }}>
                             <img
-                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/e539f72c-d8e8-4530-abc7-4d3d64d46b93.jpg"
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/a1df733b-becf-4f30-8db7-ddf0f59f7714.jpg"
                               alt="Катя Денисова"
                               className="w-full h-full object-cover object-top absolute inset-0"
                             />
