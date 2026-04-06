@@ -4384,20 +4384,15 @@ export default function Index() {
                             className="w-full h-full object-cover object-top absolute inset-0"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-transparent to-transparent" />
-                          {/* Бейдж сверху */}
+                          {/* Имя сверху */}
                           <div className="absolute top-0 left-0 right-0 px-2 pt-2">
                             <div className="bg-red-600/90 rounded px-1.5 py-0.5 inline-block">
-                              <p className="text-white font-black text-[10px] leading-none uppercase tracking-wide">Героиня номера</p>
+                              <p className="text-white font-black text-[10px] leading-none uppercase tracking-wide">Odonata</p>
                             </div>
                           </div>
-                          {/* Подпись снизу */}
+                          {/* Цитата снизу */}
                           <div className="absolute bottom-0 left-0 right-0 p-2">
-                            <div className="inline-flex items-center gap-1.5 mb-1">
-                              <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-                              <p className="text-red-400 text-[7px] font-bold tracking-[0.2em] uppercase">Апрель 2026</p>
-                            </div>
-                            <p className="text-yellow-300 font-black text-[11px] leading-tight drop-shadow-lg">Odonata</p>
-                            <p className="text-white text-[9px] leading-tight mt-0.5 drop-shadow italic">«После 50 жизнь только начинается — и я, Стрекоза, пою, танцую и дарю миру лёгкость, которую помню с детства»</p>
+                            <p className="text-white text-[9px] leading-tight drop-shadow italic">«После 50 жизнь только начинается — и я, Стрекоза, пою, танцую и дарю миру лёгкость, которую помню с детства»</p>
                           </div>
                         </div>
 
