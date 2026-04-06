@@ -5406,12 +5406,11 @@ export default function Index() {
                           <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">За годы учёбы написала второй сборник <span className="text-purple-300 font-semibold">«Купол Веры»</span> и книгу переводов песен Орейро — <span className="text-pink-400 font-semibold">«Девушка в стиле Тропики»</span>.</p>
                         </div>
                         <div className="flex-none" style={{ width: '36%' }}>
-                          <div className="relative rounded-xl overflow-hidden shadow-lg border border-purple-800/40" style={{ height: '150px' }}>
+                          <div className="relative rounded-xl overflow-hidden shadow-lg border border-purple-800/40" style={{ height: '150px', background: '#111' }}>
                             <img
-                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/2350c065-0eb4-4d36-84b5-dd09f89b1d8f.jpg"
+                              src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/980a22c4-9ca3-4854-b37c-b7556be7e59d.jpg"
                               alt="Анастасия с Наталией Орейро"
-                              className="w-full h-full object-cover"
-                              style={{ objectPosition: '50% 20%' }}
+                              className="w-full h-full object-contain"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                             <div className="absolute bottom-1.5 left-2 right-2">
