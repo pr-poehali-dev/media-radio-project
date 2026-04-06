@@ -4562,7 +4562,7 @@ export default function Index() {
                           <h3 className="text-white font-black text-[13px] leading-tight mb-1.5">Старый новый знакомый. Игра. И новый трек</h3>
                           <p className="text-gray-300 text-[10px] leading-relaxed">Иногда человек из прошлого возвращается — не для того, чтобы остаться, а чтобы стать источником вдохновения. Именно так родилась новая история от <span className="text-red-400 font-semibold">Кати Денисовой</span>.</p>
                           <div className="mt-2 bg-red-950/60 rounded-lg px-2.5 py-2 border-l-2 border-red-500">
-                            <p className="text-red-300 text-[9px] italic leading-tight">Старый новый знакомый. Игра. И новый трек.</p>
+                            <p className="text-red-300 text-[9px] italic leading-tight">Не понял. Не отступил. Не получил. <span className="text-yellow-300 font-bold not-italic">Зато стал хитом!</span></p>
                           </div>
                         </div>
                       </div>
