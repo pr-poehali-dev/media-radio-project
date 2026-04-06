@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "./pages/Index";
 import Admin from "./pages/Admin";
+import MagazineCover from "./pages/MagazineCover";
 
 const queryClient = new QueryClient();
 
@@ -59,14 +60,16 @@ const App = () => {
     };
   }, []);
 
-  const isAdminPath = window.location.pathname === '/admin';
+  const path = window.location.pathname;
+  const isAdminPath = path === '/admin';
+  const isCoverPath = path === '/cover';
 
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        {isAdminPath ? <Admin /> : <Index />}
+        {isCoverPath ? <MagazineCover /> : isAdminPath ? <Admin /> : <Index />}
       </TooltipProvider>
     </QueryClientProvider>
   );
