@@ -4360,17 +4360,17 @@ export default function Index() {
                             </div>
                           </div>
 
-                          {/* Героиня в кожанке — меньшая нижняя карточка */}
+                          {/* Ржавая Мораль — меньшая нижняя карточка */}
                           <div className="relative overflow-hidden border-r border-red-900/50 flex-1" style={{ minHeight: '38vh' }}>
                             <img
                               src="https://cdn.poehali.dev/projects/61a19a31-3cb5-42a6-a87e-93a6f5343977/bucket/be833fad-bb79-4701-9084-b37b5295eb73.jpg"
-                              alt="Героиня апреля"
+                              alt="Ржавая Мораль"
                               className="w-full h-full object-cover object-top absolute inset-0"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                             <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                              <p className="text-red-400 font-black text-[9px] leading-tight">Героиня апреля</p>
-                              <p className="text-white text-[8px] leading-tight mt-0.5">Цитата совсем скоро...</p>
+                              <p className="text-red-400 font-black text-[9px] leading-tight">Ржавая Мораль</p>
+                              <p className="text-white text-[8px] leading-tight mt-0.5 italic">«Я — Ржавая Мораль, и моя задача — вытащить наружу ваши страхи, эмоции и демонов, чтобы превратить мрак в свободу»</p>
                             </div>
                           </div>
 
