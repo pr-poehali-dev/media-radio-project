@@ -4465,8 +4465,67 @@ export default function Index() {
                     </div>
                   </div>
 
+                {/* ===== СОДЕРЖАНИЕ АПРЕЛЬ ===== */}
+                <div className="flex-none w-full snap-start">
+                  <div className="relative w-full overflow-hidden rounded-xl flex flex-col" style={{ background: '#0f0f0f', minHeight: '92vh' }}>
+
+                    {/* Шапка */}
+                    <div className="bg-gradient-to-r from-red-900 via-red-700 to-red-900 px-4 py-2.5 flex-none">
+                      <p className="text-[8px] tracking-[0.3em] text-red-300 uppercase">КонтентМедиаPRO · №2 · Апрель 2026</p>
+                      <h2 className="text-lg font-black text-white leading-none mt-0.5 tracking-[0.15em] uppercase">Содержание</h2>
+                    </div>
+
+                    {/* Список */}
+                    <div className="flex-1 px-3 pt-1.5 pb-10 overflow-y-auto">
+                      {([
+                        { n: 1,  accent: false, title: 'Катя Денисова',           sub: '«Этот апрель изменит всё. Ты просто ещё не знаешь»' },
+                        { n: 2,  accent: false, title: 'Catherine FLOX',           sub: '«Музыка — мой эликсир, и после шести лет тишины я снова в деле»' },
+                        { n: 3,  accent: false, title: 'Odonata',                  sub: '«После 50 жизнь только начинается — Стрекоза поёт, танцует и дарит лёгкость»' },
+                        { n: 4,  accent: false, title: 'Снежана Черкашина',        sub: '«Из фанфика по "Клону" родилась моя вселенная книг — я пишу жизни, которым сама верю»' },
+                        { n: 5,  accent: false, title: 'Мой Нервный Смех',         sub: 'Хард-рок 70–80-х, где сегодняшний яд и боги до рождения звучат как твой собственный нерв' },
+                        { n: 6,  accent: false, title: 'Ржавая Мораль',            sub: '«Вытащить наружу страхи и демонов, чтобы превратить мрак в свободу»' },
+                        { n: 7,  accent: false, title: 'Вандра',                   sub: '«Я горю — не чтобы не гаснуть, а чтобы согревать»' },
+                        { n: 8,  accent: false, title: 'Анастасия Денисова',       sub: '«В инвалидном кресле нет границ» — Орейро, испанский и стихи-песни' },
+                        { n: 9,  accent: false, title: 'Маргарита Галимарванова',  sub: '«Ты можешь больше» — и вот я уже создаю свои песни!' },
+                        { n: 10, accent: false, title: 'НЭЙРИС',                   sub: '«Вместо пива — чай, вместо грусти — полёт»' },
+                        { n: 11, accent: true,  title: 'Творческий заряд',         sub: 'Советы для тех, кто создаёт — как не потерять вдохновение и двигаться вперёд' },
+                        { n: 12, accent: true,  title: 'От команды',               sub: 'Пожелания от КонтентМедиаPRO — с теплом и верой в вас' },
+                      ] as { n: number; accent: boolean; title: string; sub: string }[]).map((item, idx, arr) => (
+                        <button
+                          key={item.n}
+                          className={`w-full flex items-center gap-2.5 py-2 text-left transition-colors active:bg-white/5 ${idx < arr.length - 1 ? 'border-b border-white/5' : ''}`}
+                          onClick={() => {
+                            const el = document.getElementById(`apr-page-${item.n}`);
+                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                          }}
+                        >
+                          <div className={`flex-none w-6 h-6 rounded flex items-center justify-center ${item.accent ? 'bg-yellow-500' : 'bg-red-700'}`}>
+                            <span className={`font-black text-[10px] ${item.accent ? 'text-black' : 'text-white'}`}>{item.n}</span>
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <p className={`font-bold text-[11.5px] leading-tight ${item.accent ? 'text-yellow-400' : 'text-white'}`}>{item.title}</p>
+                            <p className="text-gray-500 text-[9.5px] leading-tight mt-0.5 line-clamp-1">{item.sub}</p>
+                          </div>
+                          <Icon name="ChevronRight" size={11} className={item.accent ? 'text-yellow-600' : 'text-red-800'} />
+                        </button>
+                      ))}
+                    </div>
+
+                    {/* Нижняя полоса */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                      <div className="flex gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
+                      </div>
+                      <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
+                    </div>
+
+                  </div>
                 </div>
+
               </div>
+            </div>
 
               {/* Page indicator апрель */}
               <div className="flex items-center justify-center gap-2 mt-3">
