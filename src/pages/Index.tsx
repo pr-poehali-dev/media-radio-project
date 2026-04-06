@@ -4427,8 +4427,8 @@ export default function Index() {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                             <div className="absolute bottom-0 left-0 right-0 p-1.5">
-                              <p className="text-red-400 font-black text-[9px] leading-tight">Героиня апреля</p>
-                              <p className="text-white text-[8px] leading-tight mt-0.5">Цитата совсем скоро...</p>
+                              <p className="text-red-400 font-black text-[9px] leading-tight">Вандра</p>
+                              <p className="text-white text-[8px] leading-tight mt-0.5 italic">«Я горю — не чтобы не гаснуть, а чтобы согревать. И один человек знает: этот свет — только для него»</p>
                             </div>
                           </div>
 
