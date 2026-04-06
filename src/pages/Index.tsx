@@ -4495,8 +4495,13 @@ export default function Index() {
                           key={item.n}
                           className={`w-full flex items-start gap-2.5 py-1.5 text-left transition-colors active:bg-white/5 ${idx < arr.length - 1 ? 'border-b border-white/5' : ''}`}
                           onClick={() => {
+                            const container = document.getElementById('magazine-april-scroll');
                             const el = document.getElementById(`apr-page-${item.n}`);
-                            if (el) el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                            if (container && el) {
+                              const containerRect = container.getBoundingClientRect();
+                              const elRect = el.getBoundingClientRect();
+                              container.scrollBy({ left: elRect.left - containerRect.left, behavior: 'smooth' });
+                            }
                           }}
                         >
                           <div className={`flex-none w-6 h-6 rounded flex items-center justify-center mt-0.5 ${item.accent ? 'bg-yellow-500' : 'bg-red-700'}`}>
