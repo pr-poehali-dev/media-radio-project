@@ -5215,11 +5215,11 @@ export default function Index() {
                     </div>
 
                     {/* Нижняя полоса */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-zinc-900 to-black flex items-center justify-between px-4 py-2 border-t border-orange-900/30">
-                      <span className="text-orange-800 text-[8px] font-bold uppercase tracking-wider">Ржавая Мораль</span>
-                      <div className="flex gap-1">
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                      <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Апрель 2026</span>
+                      <div className="flex gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
                         <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-orange-600" />
                       </div>
                       <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
                     </div>
@@ -5340,11 +5340,10 @@ export default function Index() {
 
                     {/* Нижняя полоса */}
                     <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
-                      <span className="text-red-700 text-[8px] font-bold uppercase tracking-wider">Вандра</span>
-                      <div className="flex gap-1">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
-                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
+                      <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Апрель 2026</span>
+                      <div className="flex gap-1.5">
                         <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
                       </div>
                       <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
                     </div>
@@ -5458,11 +5457,11 @@ export default function Index() {
                     </div>
 
                     {/* Нижняя полоса */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-indigo-950 to-black flex items-center justify-between px-4 py-2">
-                      <span className="text-purple-700 text-[8px] font-bold uppercase tracking-wider">Анастасия Денисова</span>
-                      <div className="flex gap-1">
-                        {[1,2,3,4,5,6,7].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-700" />)}
-                        <div className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                      <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Апрель 2026</span>
+                      <div className="flex gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
                       </div>
                       <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
                     </div>
@@ -5543,11 +5542,11 @@ export default function Index() {
                     </div>
 
                     {/* Нижняя полоса */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-yellow-950 to-black flex items-center justify-between px-4 py-2">
-                      <span className="text-yellow-700 text-[8px] font-bold uppercase tracking-wider">Галимарванова</span>
-                      <div className="flex gap-1">
-                        {[1,2,3,4,5,6,7,8].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-700" />)}
-                        <div className="w-1.5 h-1.5 rounded-full bg-yellow-500" />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                      <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Апрель 2026</span>
+                      <div className="flex gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
                       </div>
                       <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
                     </div>
@@ -5636,11 +5635,11 @@ export default function Index() {
                     </div>
 
                     {/* Нижняя полоса */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-cyan-950 to-black flex items-center justify-between px-4 py-2">
-                      <span className="text-cyan-700 text-[8px] font-bold uppercase tracking-wider">НЭЙРИС</span>
-                      <div className="flex gap-1">
-                        {[1,2,3,4,5,6,7,8,9].map(i => <div key={i} className="w-1.5 h-1.5 rounded-full bg-gray-700" />)}
-                        <div className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-r from-black via-red-950 to-black flex items-center justify-between px-4 py-2">
+                      <span className="text-red-500 text-[8px] tracking-widest uppercase">КонтентМедиаPRO · Апрель 2026</span>
+                      <div className="flex gap-1.5">
+                        <div className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-700" />
                       </div>
                       <span className="text-gray-600 text-[8px] tracking-widest">Листайте →</span>
                     </div>
