@@ -4426,7 +4426,7 @@ export default function Index() {
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
                             <div className="absolute bottom-0 left-0 right-0 p-1.5">
                               <p className="text-red-400 font-black text-[9px] leading-tight">Катя Денисова</p>
-                              <p className="text-white text-[8px] leading-tight mt-0.5">Старый знакомый. Игра. Новый трек.</p>
+                              <p className="text-white text-[8px] leading-tight mt-0.5">«Старый знакомый» — не один. Игра. Новый трек.</p>
                               <div className="mt-1 inline-flex items-center gap-1 rounded bg-red-900/50 border border-red-800/40 px-1.5 py-0.5">
                                 <div className="w-1 h-1 rounded-full bg-red-500 animate-pulse" />
                                 <p className="text-yellow-300 font-black text-[7px]">Новый трек · скоро</p>
@@ -4478,7 +4478,7 @@ export default function Index() {
                     {/* Список */}
                     <div className="flex-1 px-3 pt-1 pb-10 overflow-y-auto">
                       {([
-                        { n: 1,  accent: false, title: 'Катя Денисова',           sub: 'Старый знакомый. Игра. Новый трек.' },
+                        { n: 1,  accent: false, title: 'Катя Денисова',           sub: '«Старый знакомый» — не один. Игра. Новый трек.' },
                         { n: 2,  accent: false, title: 'Catherine FLOX',           sub: '«Музыка — мой эликсир, и после шести лет тишины я снова в деле»' },
                         { n: 3,  accent: false, title: 'Odonata',                  sub: '«После 50 жизнь только начинается — я пою, танцую и дарю лёгкость»' },
                         { n: 4,  accent: false, title: 'Снежана Черкашина',        sub: '«Из фанфика по "Клону" родилась вселенная книг — я пишу жизни, которым сама верю»' },
@@ -4567,8 +4567,8 @@ export default function Index() {
                           </div>
                         </div>
                         <div className="flex-1">
-                          <h3 className="text-white font-black text-[13px] leading-tight mb-1.5">Старый знакомый. Игра. Новый трек.</h3>
-                          <p className="text-gray-300 text-[10px] leading-relaxed">Иногда человек из прошлого возвращается — не для того, чтобы остаться, а чтобы стать источником вдохновения. Именно так родилась новая история от <span className="text-red-400 font-semibold">Кати Денисовой</span>.</p>
+                          <h3 className="text-white font-black text-[13px] leading-tight mb-1.5">«Старый знакомый» — не один. Игра. Новый трек.</h3>
+                          <p className="text-gray-300 text-[10px] leading-relaxed">«Старый знакомый» в новом треке <span className="text-red-400 font-semibold">Кати Денисовой</span> — это собирательный образ. Начали писать многие из прошлого, которых давно не было видно. И каждый, похоже, думал, что он единственный.</p>
                           <div className="mt-2 bg-red-950/60 rounded-lg px-2.5 py-2 border-l-2 border-red-500">
                             <p className="text-red-300 text-[9px] italic leading-tight">Не понял. Не отступил. Не получил. <span className="text-yellow-300 font-bold not-italic">Зато стал хитом!</span></p>
                           </div>
