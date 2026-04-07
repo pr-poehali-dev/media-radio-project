@@ -4591,7 +4591,7 @@ export default function Index() {
                             <span className="text-red-300 text-[8px]">· скоро</span>
                           </div>
                           <p className="text-gray-300 text-[10px] leading-relaxed">Трек об игре, о старых отношениях, о том, кто кого. Кошки-мышки, в которые мы все играли хоть раз — Катя превратила это в музыку, от которой не спрятаться.</p>
-                          <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">Он хотел её — но перрон уже опустел. Поезд ушёл, а билет так и остался в кармане. <span className="text-red-400 font-semibold">Зато стал хитом.</span></p>
+                          <p className="text-gray-400 text-[10px] leading-relaxed mt-1.5">Она была его целью, но... Поезд уже ушёл. Он уже видел её трофеем, себя — охотником. Только она не играла в его игру: не читала сценарий, не ждала на перроне. У неё своя игра: это его сегодня сделали трофеем.</p>
                         </div>
                         <div className="flex-none" style={{ width: '36%' }}>
                           <div className="relative rounded-xl overflow-hidden shadow-lg" style={{ height: '155px' }}>
